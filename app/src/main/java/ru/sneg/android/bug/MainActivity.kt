@@ -14,7 +14,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 fun  main(args: Array<String>){
-    println("fafafa")
+    var forr = 1..10
+    for (y in forr){
+        println(quantity)
+    }
+
+    var arr = arrayOf(1,2,3)
+    println(arr[0])
 }
 
 }
