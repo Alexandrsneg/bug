@@ -9,8 +9,8 @@
 
     <SurfaceView
         android:id="@+id/bugField1"
-        android:layout_width="378dp"
-        android:layout_height="384dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btnHome"
+        android:background="@drawable/btn_home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btnArrow"
+        android:background="@drawable/btn_arrow"
         android:rotation="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
