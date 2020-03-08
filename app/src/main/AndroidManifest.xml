@@ -26,10 +26,20 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Score"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".profile"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".gameMode"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".bugPlacementPlayer1"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".profile"
+        <activity android:name=".blind"
             android:screenOrientation="landscape">
         </activity>
     </application>
+
 
 </manifest>
