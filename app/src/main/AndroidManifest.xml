@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Splash"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
@@ -28,18 +29,17 @@
             android:name=".Score"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".profile"
+            android:name=".Profile"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".gameMode"
+            android:name=".GameMode"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".bugPlacementPlayer1"
+            android:name=".BugPlacementPlayer1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Blind"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".blind"
-            android:screenOrientation="landscape">
-        </activity>
     </application>
-
 
 </manifest>
