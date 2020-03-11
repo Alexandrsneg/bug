@@ -9,27 +9,27 @@
 
     <Button
         android:id="@+id/signUpBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/big_btn"
+        android:background="@drawable/btn_big_grey"
         android:fontFamily="@font/bones"
-        android:text="Sign up"
         android:onClick="signUpBtn"
+        android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <Button
         android:id="@+id/signInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/big_btn"
+        android:background="@drawable/btn_big_grey"
         android:fontFamily="@font/bones"
-        android:text="Sign in"
         android:onClick="signInBtn"
+        android:text="Sign in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent" />

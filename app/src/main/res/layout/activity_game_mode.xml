@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_profile"
+        android:background="@drawable/btn_profile_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_score"
+        android:background="@drawable/btn_score_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnProfile" />
 
@@ -33,27 +33,38 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_arrow"
+        android:background="@drawable/btn_arrow_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bugVsBug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/big_btn"
+        android:background="@drawable/btn_big_grey"
         android:text="Bug vs. Bug"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/bugVsBug2"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_big_grey"
+        android:text="Bug vs. CPU Bug"
+        app:layout_constraintBottom_toTopOf="@+id/bugVsBug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/bugVsRandomBug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/big_btn"
+        android:background="@drawable/btn_big_grey"
         android:text="Bug vs. Random Bug"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
