@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_others"
+    android:background="@drawable/bg_empty"
     tools:context=".SignUp">
 
     <EditText
@@ -15,7 +15,7 @@
         android:background="@drawable/btn_big_grey"
         android:ems="10"
         android:fontFamily="@font/bones"
-        android:hint="  Repeat Password"
+        android:hint="@string/repeat_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/btn_big_grey"
         android:fontFamily="@font/bones"
-        android:text="Sign in"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
@@ -41,7 +41,7 @@
         android:background="@drawable/btn_big_grey"
         android:ems="10"
         android:fontFamily="@font/bones"
-        android:hint="  Login"
+        android:hint="@string/login"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +55,15 @@
         android:background="@drawable/btn_big_grey"
         android:ems="10"
         android:fontFamily="@font/bones"
-        android:hint="  Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <ImageView
+        android:layout_width="137dp"
+        android:layout_height="116dp"
+        android:background="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
