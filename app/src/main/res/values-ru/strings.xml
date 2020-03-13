@@ -5,4 +5,12 @@
     <string name="login">Логин</string>
     <string name="sign_in">Вход</string>
     <string name="repeat_password">Повтори Пароль</string>
+    <string name="name">Имя</string>
+    <string name="loses">проиграл</string>
+    <string name="score">счет</string>
+    <string name="wins">выиграл</string>
+    <string name="bug_vs_random_bug">Жук vs. Случайного Жука</string>
+    <string name="bug_vs_cpu_bug">Жук vs. Бот-Жука</string>
+    <string name="bug_vs_bug">Жук vs. Жук</string>
+    <string name="sign_up">Регистрация</string>
 </resources>

@@ -4,4 +4,12 @@
     <string name="login">Login</string>
     <string name="sign_in">Sign in</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="name">Name</string>
+    <string name="loses">loses</string>
+    <string name="score">score</string>
+    <string name="wins">wins</string>
+    <string name="bug_vs_random_bug">Bug vs. Random Bug</string>
+    <string name="bug_vs_cpu_bug">Bug vs. CPU Bug</string>
+    <string name="bug_vs_bug">Bug vs. Bug</string>
+    <string name="sign_up">Sign up</string>
 </resources>

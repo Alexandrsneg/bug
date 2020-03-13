@@ -62,8 +62,11 @@
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <ImageView
-        android:layout_width="137dp"
-        android:layout_height="116dp"
-        android:background="" />
+        android:layout_width="260dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bugs_heads"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

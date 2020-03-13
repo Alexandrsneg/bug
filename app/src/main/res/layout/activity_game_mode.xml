@@ -8,7 +8,7 @@
     tools:context=".GameMode">
 
     <Button
-        android:id="@+id/btnProfile"
+        android:id="@+id/bProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -18,17 +18,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnScore"
+        android:id="@+id/bScore"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_score_grey"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/bProfile" />
 
     <Button
-        android:id="@+id/btnArrowGameMode"
+        android:id="@+id/bArrowGameMode"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -38,42 +38,38 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/bugVsBug"
+        android:id="@+id/bBugVsBug"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_big_grey"
-        android:text="Bug vs. Bug"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bugVsBug2"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_big_grey"
-        android:text="Bug vs. CPU Bug"
-        app:layout_constraintBottom_toTopOf="@+id/bugVsBug"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bugVsRandomBug"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_big_grey"
-        android:text="Bug vs. Random Bug"
+        android:text="@string/bug_vs_bug"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+    <Button
+        android:id="@+id/bBugVsCpuBug"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_big_grey"
+        android:text="@string/bug_vs_cpu_bug"
+        app:layout_constraintBottom_toTopOf="@+id/bBugVsBug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bBugVsRandomBug"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_big_grey"
+        android:text="@string/bug_vs_random_bug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBugVsBug" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
