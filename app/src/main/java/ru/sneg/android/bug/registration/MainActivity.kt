@@ -1,16 +1,13 @@
-package ru.sneg.android.bug
+package ru.sneg.android.bug.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.content.Intent
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
+import ru.sneg.android.bug.LoginActivity
+import ru.sneg.android.bug.R
 
 
 class MainActivity : AppCompatActivity() {
