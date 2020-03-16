@@ -1,6 +1,7 @@
 package ru.sneg.android.bug.registration
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.*
@@ -9,6 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import ru.sneg.android.bug.GameMode
 import ru.sneg.android.bug.R
 
 class SignUp : MvpAppCompatActivity(), ISignUpView {
@@ -32,6 +34,12 @@ fun providePresenter() = SignUpPresenter()
 
    override fun showError(message: String) {
        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show()
+    }
+
+    //при нажатии кнопки Sign Up переходим на экран выбора режима игры
+    fun signUpBtn(view: View) {
+        val intent = Intent(this@SignUp, GameMode::class.java)
+        startActivity(intent)
     }
 
 }

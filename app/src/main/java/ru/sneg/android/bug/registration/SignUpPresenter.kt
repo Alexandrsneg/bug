@@ -12,7 +12,9 @@ class SignUpPresenter : MvpPresenter<ISignUpView>() {
         // диалог прогрузки
 
         userRepository.signUp({
+
         viewState.showError("Ошибка ввода");
+
         },login, pass)
 
 

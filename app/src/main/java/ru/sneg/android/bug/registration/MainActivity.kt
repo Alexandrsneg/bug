@@ -6,7 +6,7 @@ import android.view.View
 import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
-import ru.sneg.android.bug.LoginActivity
+import ru.sneg.android.bug.SignIn
 import ru.sneg.android.bug.R
 
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signInBtn(view: View) {
-        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        val intent = Intent(this@MainActivity, SignIn::class.java)
         startActivity(intent)
     }
 

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".SignIn"
             android:screenOrientation="landscape" />
         <activity
             android:name=".registration.SignUp"

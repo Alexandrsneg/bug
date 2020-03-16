@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_empty"
-    tools:context=".LoginActivity">
+    tools:context=".SignIn">
 
     <Button
         android:id="@+id/button"
@@ -15,6 +15,7 @@
         android:background="@drawable/btn_big_grey"
         android:fontFamily="@font/bones"
         android:text="@string/sign_in"
+        android:onClick="signInBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
