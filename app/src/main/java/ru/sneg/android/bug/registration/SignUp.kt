@@ -12,6 +12,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import ru.sneg.android.bug.GameMode
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.SignIn
 
 class SignUp : MvpAppCompatActivity(), ISignUpView {
 
@@ -36,9 +37,9 @@ fun providePresenter() = SignUpPresenter()
        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show()
     }
 
-    //при нажатии кнопки Sign Up переходим на экран выбора режима игры
+    //при нажатии кнопки Sign Up переходим на экран Входа
     fun signUpBtn(view: View) {
-        val intent = Intent(this@SignUp, GameMode::class.java)
+        val intent = Intent(this@SignUp, SignIn::class.java)
         startActivity(intent)
     }
 

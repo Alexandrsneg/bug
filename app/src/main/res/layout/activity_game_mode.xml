@@ -13,6 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="profileBtn"
         android:background="@drawable/btn_profile_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,20 +24,10 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="scoreBtn"
         android:background="@drawable/btn_score_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bProfile" />
-
-    <Button
-        android:id="@+id/bArrowGameMode"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:rotation="180"
-        android:background="@drawable/btn_arrow_grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bBugVsBug"
@@ -44,6 +35,8 @@
         android:layout_height="50dp"
         android:background="@drawable/btn_big_grey"
         android:text="@string/bug_vs_bug"
+        android:onClick="pVpBtn"
+        android:fontFamily="@font/bones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +49,8 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_big_grey"
         android:text="@string/bug_vs_cpu_bug"
+        android:onClick="cpuBtn"
+        android:fontFamily="@font/bones"
         app:layout_constraintBottom_toTopOf="@+id/bBugVsBug"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -68,6 +63,8 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/btn_big_grey"
         android:text="@string/bug_vs_random_bug"
+        android:onClick="serverBtn"
+        android:fontFamily="@font/bones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

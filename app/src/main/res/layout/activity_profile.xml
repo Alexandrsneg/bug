@@ -7,21 +7,12 @@
     android:background="@drawable/bg_empty"
     tools:context=".Profile">
 
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_home_grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvWins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/bones"
         android:shadowColor="@android:color/background_dark"
         android:text="@string/wins"
@@ -35,7 +26,7 @@
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/bones"
         android:shadowColor="@android:color/background_dark"
         android:text="@string/score"
@@ -49,7 +40,7 @@
         android:id="@+id/tvLoses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/bones"
         android:shadowColor="@android:color/background_dark"
         android:text="@string/loses"
@@ -63,21 +54,60 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="220dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/bones"
         android:shadowColor="@android:color/background_dark"
         android:text="@string/name"
         android:textColor="#FCE203"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/bBugVsRandomBug"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_big_grey"
+        android:fontFamily="@font/bones"
+        android:onClick="gameModeBtn"
+        android:text="@string/game_modes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="400dp"
-        android:background="@drawable/bug_profile"
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/score_bug"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/avatarka"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/bChangeProfile"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/btn_big_grey"
+        android:text="@string/change_profile"
+        android:onClick="changeProfile"
+        android:fontFamily="@font/bones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarka" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,8 @@
     <string name="bug_vs_cpu_bug">Bug vs. CPU Bug</string>
     <string name="bug_vs_bug">Bug vs. Bug</string>
     <string name="sign_up">Sign up</string>
+    <string name="change_profile">change profile</string>
+    <string name="create_game">create game</string>
+    <string name="join_the_game">join the game</string>
+    <string name="game_modes">Game mode</string>
 </resources>

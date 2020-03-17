@@ -7,7 +7,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
-class SignIn : AppCompatActivity() {
+class ServerSettings : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,12 +15,11 @@ class SignIn : AppCompatActivity() {
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_server_settings)
     }
 
-    //при нажатии кнопки Sign In переходим на экран выбора режима игры
-    fun signInBtn(view: View) {
-        val intent = Intent(this@SignIn, Profile::class.java)
+    fun profileBtn(view: View) {
+        val intent = Intent(this@ServerSettings, Profile::class.java)
         startActivity(intent)
     }
 }

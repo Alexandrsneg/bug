@@ -7,7 +7,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
-class SignIn : AppCompatActivity() {
+class BugPlacementPlayer : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,12 +15,12 @@ class SignIn : AppCompatActivity() {
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_bug_placement_player)
     }
 
-    //при нажатии кнопки Sign In переходим на экран выбора режима игры
-    fun signInBtn(view: View) {
-        val intent = Intent(this@SignIn, Profile::class.java)
+    //при нажатии кнопки Profile переходим на экран профиля
+    fun profileBtn(view: View) {
+        val intent = Intent(this@BugPlacementPlayer, Profile::class.java)
         startActivity(intent)
     }
 }
