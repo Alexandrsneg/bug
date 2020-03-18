@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ServerSettings"></activity>
+        <activity android:name=".RegistrationContainer"
+            android:screenOrientation="landscape"/>
         <activity android:name=".Splash" />
         <activity
             android:name=".registration.MainActivity"
@@ -21,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignIn"
+            android:name=".registration.SignInFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".registration.SignUp"
+            android:name=".registration.SignUpFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Score"
@@ -40,6 +41,9 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Blind"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ServerSettings"
             android:screenOrientation="landscape" />
     </application>
 
