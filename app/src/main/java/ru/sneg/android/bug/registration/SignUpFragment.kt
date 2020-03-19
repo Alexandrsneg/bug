@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -11,7 +12,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import ru.sneg.android.bug.R
 
-class SignUpFragment : MvpAppCompatFragment(), ISignUpView {
+class SignUpFragment : MvpAppCompatFragment(), ISignUpView{
 
     @InjectPresenter
     lateinit var presenter: SignUpPresenter
@@ -35,14 +36,12 @@ class SignUpFragment : MvpAppCompatFragment(), ISignUpView {
             presenter.signUp("${editText.text}", "${editText2.text}", "${editText3.text}")
         }
 
-        //при нажатии кнопки Sign Up переходим на экран Входа
-       /* fun signUpBtn(view: View) {
-            val intent = Intent(this@SignUpFragment, SignIn::class.java)
-            startActivity(intent)
-            presenter.signUp("${editText}", "${editText2}")
-
-        }*/
     }
+
+    override fun validation(login: String, pass: String) {
+        TODO("not implemented")
+    }
+
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }

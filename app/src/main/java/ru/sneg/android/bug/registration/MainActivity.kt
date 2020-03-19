@@ -7,13 +7,10 @@ import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.RegistrationContainer
+import ru.sneg.android.bug.RegistrationActivity
 
 
 class MainActivity : AppCompatActivity() {
-
-      var signIn : Boolean = false;
-      var signUp : Boolean = false;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,19 +23,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signInBtn(view: View) {
-        val intent = Intent(this@MainActivity, RegistrationContainer::class.java)
+        val intent = Intent(this@MainActivity, RegistrationActivity::class.java)
         startActivity(intent)
-
-        signIn = true;
-
     }
 
-
-    fun signUpBtn(view: View) {
-        val intent = Intent(this@MainActivity, RegistrationContainer::class.java)
-        startActivity(intent)
-
-        signUp = true;
-    }
 
 }

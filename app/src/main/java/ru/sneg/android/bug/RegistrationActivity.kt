@@ -8,7 +8,7 @@ import ru.sneg.android.bug.registration.MainActivity
 import ru.sneg.android.bug.registration.SignInFragment
 import ru.sneg.android.bug.registration.SignUpFragment
 
-class RegistrationContainer : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,17 +19,10 @@ class RegistrationContainer : AppCompatActivity() {
         )
         setContentView(R.layout.activity_registration_conteiner)
 
-        if (MainActivity().signUp == true) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.containerActivity, SignUpFragment())
-                .commit()
-        }
-
-        if (MainActivity().signIn == true) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.containerActivity, SignInFragment())
                 .commit()
-        }
+
     }
 }
 

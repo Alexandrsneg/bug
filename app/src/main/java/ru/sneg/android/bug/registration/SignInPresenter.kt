@@ -9,12 +9,19 @@ class SignInPresenter : MvpPresenter<ISignInView>() {
 
     fun signIn (login: String, pass: String){
         // диалог прогрузки
-
-        userRepository.signUp({
-
-            viewState.showError("Ошибка ввода");
+        userRepository.signIn({
+            // закрыть диалог прогрузки
+            if(login.isEmpty())
+                viewState.showError(message = "поле логин не заполнено")
+            if (pass.isEmpty())
+                viewState.showError(message = "Поле пароль незаполнено")
 
         },login, pass)
+
+        fun validation(login:String , pass:String){
+
+
+        }
 
     }
 }

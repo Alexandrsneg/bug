@@ -13,7 +13,10 @@ class SignUpPresenter : MvpPresenter<ISignUpView>() {
 
         userRepository.signUp({
 
-        viewState.showError("Ошибка ввода");
+            if(login.isEmpty())
+                viewState.showError(message = "поле логин не заполнено")
+            if (pass != rPass)
+                viewState.showError(message = "пароли не совпадают")
 
         },login, pass)
 

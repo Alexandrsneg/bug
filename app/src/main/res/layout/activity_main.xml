@@ -9,37 +9,18 @@
     tools:context=".registration.MainActivity">
 
     <Button
-        android:id="@+id/bSignUpBtn"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_big_grey"
-        android:fontFamily="@font/bones"
-        android:onClick="signUpBtn"
-        android:text="@string/sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
-
-    <Button
         android:id="@+id/bSignInBtn"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn_big_grey"
         android:fontFamily="@font/bones"
         android:onClick="signInBtn"
         android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
