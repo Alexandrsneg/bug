@@ -11,15 +11,20 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.base.ABaseFragment
+import javax.inject.Inject
 
-class SignUpFragment : MvpAppCompatFragment(), ISignUpView{
-
-    @InjectPresenter
+class SignUpFragment : ABaseFragment, ISignUpView{
+    @Inject
+    @InjectPresenter // аннотация управляет ж. циклом Presenter
     lateinit var presenter: SignUpPresenter
 
     @ProvidePresenter
     fun providePresenter() = SignUpPresenter()
 
+    constructor(){
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +38,11 @@ class SignUpFragment : MvpAppCompatFragment(), ISignUpView{
 
 
         button.setOnClickListener { // обработчик нажатия на кнопку зерег-ся
-            presenter.signUp("${editText.text}", "${editText2.text}", "${editText3.text}")
+            val login = "${editText.text}"
+            val password = "${editText2.text}"
+            val Rpassword = "${editText3.text}"
+
+
         }
 
     }
@@ -44,5 +53,9 @@ class SignUpFragment : MvpAppCompatFragment(), ISignUpView{
 
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun inject() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

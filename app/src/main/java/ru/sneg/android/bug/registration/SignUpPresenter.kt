@@ -2,11 +2,14 @@ package ru.sneg.android.bug.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ru.sneg.android.bug.repositories.UserRepository
-@InjectViewState
-class SignUpPresenter : MvpPresenter<ISignUpView>() {
+import ru.sneg.android.bug.domain.repositories.UserRepository
+import javax.inject.Inject
 
-    var userRepository : UserRepository = UserRepository()
+
+@InjectViewState // аннотация привязывает ViewState к Presenter, генерирует код ViewState
+class SignUpPresenter : MvpPresenter<ISignUpView>() {
+    @Inject
+   lateinit var userRepository : UserRepository = UserRepository()
 
     fun signUp (login: String, pass: String, rPass: String){
         // диалог прогрузки

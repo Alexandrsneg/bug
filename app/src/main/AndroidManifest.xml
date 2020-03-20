@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".RegistrationActivity"
+        <activity android:name=".registration.RegistrationActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".Splash" />
         <activity
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".registration.SignInFragment"
+            android:name=".auth.SignInFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".registration.SignUpFragment"

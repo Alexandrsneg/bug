@@ -7,7 +7,6 @@ import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.RegistrationActivity
 
 
 class MainActivity : AppCompatActivity() {

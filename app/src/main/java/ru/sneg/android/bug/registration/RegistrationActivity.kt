@@ -1,14 +1,13 @@
-package ru.sneg.android.bug
+package ru.sneg.android.bug.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import ru.sneg.android.bug.registration.MainActivity
-import ru.sneg.android.bug.registration.SignInFragment
-import ru.sneg.android.bug.registration.SignUpFragment
+import ru.sneg.android.bug.R
+import ru.sneg.android.bug.auth.SignInFragment
 
-class RegistrationActivity : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity(), IRegistrationRouter {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +19,15 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration_conteiner)
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.containerActivity, SignInFragment())
+                .replace(
+                    R.id.containerActivity,
+                    SignInFragment()
+                )
                 .commit()
+    }
 
+    override fun showLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
