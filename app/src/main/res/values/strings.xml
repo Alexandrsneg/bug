@@ -16,4 +16,5 @@
     <string name="create_game">create game</string>
     <string name="join_the_game">join the game</string>
     <string name="game_modes">Game mode</string>
+    <string name="sign_up_link"><u>Sign Up</u></string>
 </resources>

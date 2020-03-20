@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/bSignInBtn"
-        android:layout_width="260dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn_big_grey"

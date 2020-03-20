@@ -17,4 +17,5 @@
     <string name="create_game">создать игру</string>
     <string name="join_the_game">присоедениться к игре</string>
     <string name="game_modes">режим игры</string>
+    <string name="sign_up_link"><u>зарегистрироваться</u></string>
 </resources>
