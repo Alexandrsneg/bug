@@ -8,7 +8,7 @@ import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.registration.MainActivity
 
-class Profile : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,13 +21,13 @@ class Profile : AppCompatActivity() {
 
     //при нажатии кнопки Change profile переходим на main экран
     fun changeProfile(view: View) {
-        val intent = Intent(this@Profile, MainActivity::class.java)
+        val intent = Intent(this@ProfileActivity, MainActivity::class.java)
         startActivity(intent)
     }
 
     //при нажатии кнопки Game mode переходим на экран выбора режима игры
     fun gameModeBtn(view: View) {
-        val intent = Intent(this@Profile, GameMode::class.java)
+        val intent = Intent(this@ProfileActivity, GameModeActivity::class.java)
         startActivity(intent)
     }
 }

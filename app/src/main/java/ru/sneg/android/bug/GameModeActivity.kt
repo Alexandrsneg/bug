@@ -7,7 +7,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
-class GameMode : AppCompatActivity() {
+class GameModeActivity : AppCompatActivity() {
 
     // публичные переменные для определения какой тип игры выбран и логики расстановки кораблей;
     public var cpu : Boolean = false;
@@ -25,29 +25,29 @@ class GameMode : AppCompatActivity() {
 
     //при нажатии кнопки Profile переходим на экран профиля
     fun profileBtn(view: View) {
-        val intent = Intent(this@GameMode, Profile::class.java)
+        val intent = Intent(this@GameModeActivity, ProfileActivity::class.java)
         startActivity(intent)
     }
     //при нажатии кнопки Score переходим на экран рекордов
     fun scoreBtn(view: View) {
-        val intent = Intent(this@GameMode, Score::class.java)
+        val intent = Intent(this@GameModeActivity, ScoreActivity::class.java)
         startActivity(intent)
     }
     //при нажатии кнопки Bug vs random Bug переходим на экран настройки сетевй игры
     fun serverBtn(view: View) {
-        val intent = Intent(this@GameMode, ServerSettings::class.java)
+        val intent = Intent(this@GameModeActivity, ServerSettings::class.java)
         startActivity(intent)
         server  = true
     }
     //при нажатии кнопки Bug vs CPU Bug переходим на экран расстановки кораблей (только своих?)
     fun cpuBtn(view: View) {
-        val intent = Intent(this@GameMode, BugPlacementPlayer::class.java)
+        val intent = Intent(this@GameModeActivity, BugPlacementPlayerActivity::class.java)
         startActivity(intent)
         cpu  = true
     }
     //при нажатии кнопки Bug vs Bug переходим на экран расстановки кораблей (только своих?)
     fun pVpBtn(view: View) {
-        val intent = Intent(this@GameMode, BugPlacementPlayer::class.java)
+        val intent = Intent(this@GameModeActivity, BugPlacementPlayerActivity::class.java)
         startActivity(intent)
         server = true
     }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
-class BugPlacementPlayer : AppCompatActivity() {
+class BugPlacementPlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class BugPlacementPlayer : AppCompatActivity() {
 
     //при нажатии кнопки Profile переходим на экран профиля
     fun profileBtn(view: View) {
-        val intent = Intent(this@BugPlacementPlayer, Profile::class.java)
+        val intent = Intent(this@BugPlacementPlayerActivity, ProfileActivity::class.java)
         startActivity(intent)
     }
 }

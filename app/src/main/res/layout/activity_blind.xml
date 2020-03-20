@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blind"
-    tools:context=".Blind">
+    tools:context=".BlindActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

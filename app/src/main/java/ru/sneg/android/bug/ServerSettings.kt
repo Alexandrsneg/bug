@@ -19,7 +19,7 @@ class ServerSettings : AppCompatActivity() {
     }
 
     fun profileBtn(view: View) {
-        val intent = Intent(this@ServerSettings, Profile::class.java)
+        val intent = Intent(this@ServerSettings, ProfileActivity::class.java)
         startActivity(intent)
     }
 }

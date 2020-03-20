@@ -28,19 +28,19 @@
             android:name=".registration.SignUpFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Score"
+            android:name=".ScoreActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Profile"
+            android:name=".ProfileActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GameMode"
+            android:name=".GameModeActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".BugPlacementPlayer"
+            android:name=".BugPlacementPlayerActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Blind"
+            android:name=".BlindActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ServerSettings"
