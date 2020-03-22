@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.registration
+package ru.sneg.android.bug.credentials.registration
 
 import com.arellomobile.mvp.MvpView
 

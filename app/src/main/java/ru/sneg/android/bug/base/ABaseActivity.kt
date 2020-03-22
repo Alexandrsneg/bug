@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_registration_conteiner.view.*
 import ru.sneg.android.bug.R
 
-class ABaseActivity: AppCompatActivity() {
+abstract class ABaseActivity: AppCompatActivity() {
     fun replace (fragment: Fragment, backStack: String? = null, tag: String? = null){
         supportFragmentManager.beginTransaction()
             .replace(R.id.containerActivity, fragment, tag).apply {

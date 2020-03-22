@@ -17,4 +17,5 @@
     <string name="join_the_game">join the game</string>
     <string name="game_modes">Game mode</string>
     <string name="sign_up_link"><u>Sign Up</u></string>
+    <string name="error_login_pass_undefined">enter login/password</string>
 </resources>

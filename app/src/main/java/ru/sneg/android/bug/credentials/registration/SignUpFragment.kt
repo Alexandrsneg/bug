@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.registration
+package ru.sneg.android.bug.credentials.registration
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,15 +14,18 @@ import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
 import javax.inject.Inject
 
-class SignUpFragment : ABaseFragment, ISignUpView{
+class SignUpFragment : ABaseFragment,
+    ISignUpView {
     @Inject
     @InjectPresenter // аннотация управляет ж. циклом Presenter
     lateinit var presenter: SignUpPresenter
 
-    @ProvidePresenter
-    fun providePresenter() = SignUpPresenter()
+    @ProvidePresenter // Реализация для Dagger
+    fun providePresenter() =
+        SignUpPresenter()
 
     constructor(){
+       // DaggerAppComponent.create().inject(this)
 
     }
     override fun onCreateView(
@@ -48,7 +51,7 @@ class SignUpFragment : ABaseFragment, ISignUpView{
     }
 
     override fun validation(login: String, pass: String) {
-        TODO("not implemented")
+
     }
 
     override fun showError(message: String) {
@@ -56,6 +59,10 @@ class SignUpFragment : ABaseFragment, ISignUpView{
     }
 
     override fun inject() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getViewId() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

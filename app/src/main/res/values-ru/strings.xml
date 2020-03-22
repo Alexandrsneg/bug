@@ -18,4 +18,5 @@
     <string name="join_the_game">присоедениться к игре</string>
     <string name="game_modes">режим игры</string>
     <string name="sign_up_link"><u>зарегистрироваться</u></string>
+    <string name="error_login_pass_undefined">введите логин/пароль</string>
 </resources>

@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".registration.RegistrationActivity"
+        <activity android:name=".credentials.CredentialsActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".Splash" />
         <activity
-            android:name=".registration.MainActivity"
+            android:name=".credentials.registration.MainActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".auth.SignInFragment"
+            android:name=".credentials.auth.SignInFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".registration.SignUpFragment"
+            android:name=".credentials.registration.SignUpFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ScoreActivity"

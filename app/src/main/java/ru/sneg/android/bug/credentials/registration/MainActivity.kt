@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.registration
+package ru.sneg.android.bug.credentials.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.credentials.CredentialsActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signInBtn(view: View) {
-        val intent = Intent(this@MainActivity, RegistrationActivity::class.java)
+        val intent = Intent(this@MainActivity, CredentialsActivity::class.java)
         startActivity(intent)
     }
 

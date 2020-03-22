@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.loading
+package ru.sneg.android.bug.credentials.loading
 
 import com.arellomobile.mvp.MvpView
 

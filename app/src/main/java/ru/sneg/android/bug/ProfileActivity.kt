@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import ru.sneg.android.bug.registration.MainActivity
+import ru.sneg.android.bug.credentials.registration.MainActivity
 
 class ProfileActivity : AppCompatActivity() {
 

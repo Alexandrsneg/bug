@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.loading
+package ru.sneg.android.bug.credentials.loading
 
 import com.arellomobile.mvp.MvpPresenter
 import javax.inject.Inject
@@ -11,6 +11,6 @@ class LoadingPresenter : MvpPresenter<ILoadingView> {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-        loadStatic
+       // loadStatic
     }
 }
