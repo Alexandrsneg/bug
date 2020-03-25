@@ -1,9 +1,8 @@
 package ru.sneg.android.bug.credentials.registration
 
 import com.arellomobile.mvp.MvpView
+import ru.sneg.android.bug.base.IBaseView
 
-interface ISignUpView : MvpView {
-    fun showError(message: String)
+interface ISignUpView : IBaseView {
 
-    fun validation(login:String , pass:String)
 }

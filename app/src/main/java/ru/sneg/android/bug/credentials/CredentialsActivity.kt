@@ -10,6 +10,7 @@ import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.credentials.ICredentialsRouter
 import ru.sneg.android.bug.credentials.auth.SignInFragment
+import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.credentials.registration.SignUpFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 

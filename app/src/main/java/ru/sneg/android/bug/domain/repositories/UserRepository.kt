@@ -1,6 +1,7 @@
 package ru.sneg.android.bug.domain.repositories
 
 import ru.sneg.android.bug.base.SubRX
+import ru.sneg.android.bug.base.standardSubscribeIO
 import ru.sneg.android.bug.domain.di.models.User
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.domain.repositories.rest.api.UserRestApi
@@ -18,9 +19,13 @@ class UserRepository {
         this.rest = rest
     }
 
-    fun registration(observer: SubRX<User>, login: String, pass: String) {
+    fun signUp(
+        observer: SubRX<User>,
+        login: String,
+        pass: String
+    ) {
 
-        rest.registration(login, pass)
+        rest.signUp(login, pass)
             .doOnNext { storage.save(it) }
             .standardSubscribeIO(observer)
     }
@@ -37,6 +42,8 @@ class UserRepository {
     fun refreshToken(token: Token): Token {
         TODO("Not yet implemented")
     }
+
+
 
 
 }

@@ -18,4 +18,5 @@
     <string name="game_modes">Game mode</string>
     <string name="sign_up_link"><u>Sign Up</u></string>
     <string name="error_login_pass_undefined">enter login/password</string>
+    <string name="error_password_undefined">passwords not equal</string>
 </resources>

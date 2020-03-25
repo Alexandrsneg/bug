@@ -12,57 +12,43 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
+import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
-class SignUpFragment : ABaseFragment,
-    ISignUpView {
+class SignUpFragment : ABaseFragment(), ISignUpView {
     @Inject
     @InjectPresenter // аннотация управляет ж. циклом Presenter
     lateinit var presenter: SignUpPresenter
 
     @ProvidePresenter // Реализация для Dagger
-    fun providePresenter() =
-        SignUpPresenter()
+    fun providePresenter() = presenter
 
-    constructor(){
-       // DaggerAppComponent.create().inject(this)
+    override fun inject() {
+        DaggerAppComponent.create().inject(this)
+    }
 
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
-    }
+    override fun getViewId() = R.layout.fragment_sign_up
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        button.setOnClickListener { // обработчик нажатия на кнопку зерег-ся
+        button.setOnClickListener {
+            // обработчик нажатия на кнопку зерег-ся
             val login = "${editText.text}"
-            val password = "${editText2.text}"
-            val Rpassword = "${editText3.text}"
+            val pass = "${editText2.text}"
+            val rPass = "${editText3.text}"
 
+            if (login.isEmpty() || pass.isEmpty() || rPass.isEmpty()) {
+                toast(stringId = R.string.error_login_pass_undefined)
+                if (pass != rPass)
+                    toast(stringId = R.string.error_password_undefined)
+                return@setOnClickListener
+            }
 
+            presenter.signUp(login, pass)
         }
 
     }
 
-    override fun validation(login: String, pass: String) {
-
-    }
-
-    override fun showError(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-    override fun inject() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getViewId() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 }

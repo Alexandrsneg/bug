@@ -15,7 +15,6 @@ abstract class ABaseFragment : MvpAppCompatFragment(), IBaseView {
         inject()
     }
     abstract fun inject()
-
     abstract fun getViewId(): Int
 
     override fun onCreateView(
@@ -33,7 +32,6 @@ abstract class ABaseFragment : MvpAppCompatFragment(), IBaseView {
     fun toast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
-
 
     fun visibility(view: View?, value: Boolean = true) {
         view?.visibility = if (value) View.VISIBLE else View.GONE
