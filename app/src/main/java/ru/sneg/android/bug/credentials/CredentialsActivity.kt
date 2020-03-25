@@ -46,7 +46,7 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
             showAuth()
             return
         }
-
+        showLoading()
     }
 
     override fun showLoading() {

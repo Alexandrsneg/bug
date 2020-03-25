@@ -35,5 +35,4 @@ class LoadingFragment : ABaseFragment(), ILoadingView {
                 it.showAuth()
         }
     }
-
 }

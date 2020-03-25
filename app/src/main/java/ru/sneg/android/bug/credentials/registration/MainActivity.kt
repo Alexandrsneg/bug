@@ -6,6 +6,7 @@ import android.view.View
 import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
+import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.credentials.CredentialsActivity
 
