@@ -19,6 +19,7 @@ import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.base.IBaseView
 import ru.sneg.android.bug.credentials.ICredentialsRouter
 import ru.sneg.android.bug.credentials.registration.SignUpFragment
+import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
 
@@ -31,6 +32,7 @@ class SignInFragment : ABaseFragment(), ISignInView {
     fun providePresenter() = presenter
 
     override fun inject() {
+        DaggerAppComponent.create().inject(this)
     }
    /* override fun onCreateView(
         inflater: LayoutInflater,

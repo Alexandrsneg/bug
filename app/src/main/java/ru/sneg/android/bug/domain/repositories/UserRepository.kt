@@ -2,6 +2,7 @@ package ru.sneg.android.bug.domain.repositories
 
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.base.standardSubscribeIO
+import ru.sneg.android.bug.domain.di.models.Token
 import ru.sneg.android.bug.domain.di.models.User
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.domain.repositories.rest.api.UserRestApi

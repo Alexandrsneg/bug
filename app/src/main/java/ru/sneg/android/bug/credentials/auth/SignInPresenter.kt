@@ -8,7 +8,7 @@ import ru.sneg.android.bug.domain.repositories.UserRepository
 import javax.inject.Inject
 
 @InjectViewState
-class SignInPresenter : MvpPresenter<ISignInView>() {
+class SignInPresenter : MvpPresenter<ISignInView> {
 
     @Inject
      lateinit var userRepository : UserRepository
@@ -17,9 +17,9 @@ class SignInPresenter : MvpPresenter<ISignInView>() {
     constructor()
 
     fun signIn (login: String, password: String){
-
+        viewState.lock()
         userRepository.login(SubRX { _, e ->
-
+            viewState.unlock()
             if (e != null) {
                 e.printStackTrace()
                 viewState.onError(e.localizedMessage)

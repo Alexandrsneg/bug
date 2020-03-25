@@ -23,4 +23,3 @@ abstract class ABaseRestApi<S> : IRestApi {
         client.cancelAllRequests()
     }
 }
-}
