@@ -1,11 +1,13 @@
 package ru.sneg.android.bug.credentials.auth
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -24,11 +26,11 @@ import javax.inject.Inject
 
 
 class SignInFragment : ABaseFragment(), ISignInView {
-    @Inject
-    @InjectPresenter
+    @Inject //использование Даггером конструктора из презентера, подставление зависимости
+    @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
     lateinit var presenter: SignInPresenter
 
-    @ProvidePresenter
+    @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
 
     override fun inject() {
@@ -60,7 +62,7 @@ class SignInFragment : ABaseFragment(), ISignInView {
         презентер на проверку*/
         bSigInBtn.setOnClickListener {
 
-            val login = "${editText.text}"
+            val login = "${editText.text}"  //конструкия показывает, что переменная будет String
             val password = "${editText2.text}"
 
             if (login.isEmpty() || password.isEmpty()) {
@@ -98,8 +100,13 @@ class SignInFragment : ABaseFragment(), ISignInView {
 
     override fun onSuccess() {
         toast("SUCCESS")
+
+            activity?.let {
+                val intent = Intent(it, ProfileActivity::class.java)
+                it.startActivity(intent)
+        }
     }
-    //отправить на гл. форму
+
 
     override fun onError(message: String) {
         toast("SOMETHING WRONG")

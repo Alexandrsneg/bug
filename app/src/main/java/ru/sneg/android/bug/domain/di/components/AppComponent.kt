@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [
+@Component(modules = [  // механизм создающий дагер, является мостом между  фрагментом и презентором
 //    AppModule::class,
     NetModule::class
 ])

@@ -49,8 +49,10 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
         showLoading()
     }
 
+   // переопределенные ниже функции взяты из интерфейса-маршрутизатора ICredentialsRouter
+
     override fun showLoading() {
-        replace(LoadingFragment())
+        replace(LoadingFragment()) //функция replace определена в классе ABaseActivity
     }
     /*переопределяет имплементированный метод ICredentialsRouter и вызываясь в SignInFragment
     в tvSignUpBtn.setOnClickListener(е) переходит на SignUp фрагмент*/

@@ -2,7 +2,7 @@ package ru.sneg.android.bug.domain.repositories.rest.api
 
 import ru.sneg.android.bug.base.ABaseRestApi
 import ru.sneg.android.bug.base.IRestClient
-import ru.sneg.android.bug.domain.di.models.User
+import ru.sneg.android.bug.domain.repositories.models.User
 import ru.sneg.android.bug.domain.di.modules.NetModule
 import ru.sneg.android.bug.domain.repositories.rest.service.IUserRestApiService
 import javax.inject.Inject
@@ -15,13 +15,23 @@ class UserRestApi : ABaseRestApi<IUserRestApiService> {
 
 
     fun signUp(login: String, password: String)
-            = service.registration(User(login = login, password = password))
+            = service.registration(
+        User(
+            login = login,
+            password = password
+        )
+    )
 
 
     fun login(login: String, password: String)
-            = service.login(User(login = login, password = password))
+            = service.login(
+        User(
+            login = login,
+            password = password
+        )
+    )
 
 
-//    fun refreshToken(refreshToken: String)
-//            = service.refreshToken("refresh_token", refreshToken, CLIENT_ID, CLIENT_SECRET)
+  fun refreshToken(refreshToken: String)
+           = service.refreshToken(refreshToken)
 }

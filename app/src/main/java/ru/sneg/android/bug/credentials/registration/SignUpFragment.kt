@@ -1,6 +1,7 @@
 package ru.sneg.android.bug.credentials.registration
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -16,15 +17,16 @@ import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
 class SignUpFragment : ABaseFragment(), ISignUpView {
-    @Inject
-    @InjectPresenter // аннотация управляет ж. циклом Presenter
+    @Inject //использование Даггером конструктора из презентера, подставление зависимости
+    @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
     lateinit var presenter: SignUpPresenter
 
-    @ProvidePresenter // Реализация для Dagger
+    @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
 
     override fun inject() {
-        DaggerAppComponent.create().inject(this)
+        DaggerAppComponent.create().inject(this) // DaggerAppComponent генерируется автоматически
+                                                        //при наличии дерева зависимостей и связуещего звена @Component IAppComponent
     }
 
     override fun getViewId() = R.layout.fragment_sign_up
@@ -34,6 +36,9 @@ class SignUpFragment : ABaseFragment(), ISignUpView {
 
 
         button.setOnClickListener {
+
+           // buttonEffect(button)
+
             // обработчик нажатия на кнопку зерег-ся
             val login = "${editText.text}"
             val pass = "${editText2.text}"
@@ -45,6 +50,8 @@ class SignUpFragment : ABaseFragment(), ISignUpView {
                     toast(stringId = R.string.error_password_undefined)
                 return@setOnClickListener
             }
+
+
 
             presenter.signUp(login, pass)
         }

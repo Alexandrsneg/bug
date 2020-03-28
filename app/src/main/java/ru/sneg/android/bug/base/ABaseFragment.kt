@@ -1,8 +1,10 @@
 package ru.sneg.android.bug.base
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -24,6 +26,22 @@ abstract class ABaseFragment : MvpAppCompatFragment(), IBaseView {
     ): View? {
         return inflater.inflate(getViewId(), container, false)
     }
+
+     /*open fun buttonEffect(button: View) { //програмное создание эффекта нажатия на кнопку (смена цвета)
+        button.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    v.background.setColorFilter(-0x1f0b8adf, PorterDuff.Mode.SRC_ATOP)
+                    v.invalidate()
+                }
+                MotionEvent.ACTION_UP -> {
+                    v.background.clearColorFilter()
+                    v.invalidate()
+                }
+            }
+            false
+        }
+    }*/
 
     fun toast(@StringRes stringId: Int) {
         Toast.makeText(context, stringId, Toast.LENGTH_LONG).show()
@@ -55,3 +73,5 @@ abstract class ABaseFragment : MvpAppCompatFragment(), IBaseView {
 
     protected fun tag() = javaClass.simpleName
 }
+
+

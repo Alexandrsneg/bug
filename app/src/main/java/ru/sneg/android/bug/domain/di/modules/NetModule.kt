@@ -15,11 +15,12 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
+//скопипастили с рабочего проекта
 @Module
 class NetModule {
-    companion object {
+    companion object { // секция кода, которая из Котлина на Джаву транслируется в статические методы и атрибуты класса
 
-        private const val DOMAIN = "212.75.210.227"
+        private const val DOMAIN = "212.75.210.227" // взяли со свагера
         private const val DOMAIN_MAIN_API = "http://$DOMAIN:8080"
         private const val CONNECTION_TIMEOUT = 20000L
 
