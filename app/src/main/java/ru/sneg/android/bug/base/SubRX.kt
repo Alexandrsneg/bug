@@ -4,8 +4,6 @@ import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-// Обертка для наблюдателя реактивщины
-
 class SubRX<T>: Observer<T>, Disposable {
 
     private var iComplete: () -> Unit = {}
@@ -19,7 +17,7 @@ class SubRX<T>: Observer<T>, Disposable {
 
     private val composite: CompositeDisposable = CompositeDisposable()
 
-    constructor() { }
+    constructor() {}
 
     constructor(iFinally: (T?, Throwable?) -> Unit) {
         this.iFinally = iFinally

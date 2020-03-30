@@ -29,7 +29,7 @@ class LoadingPresenter : MvpPresenter<ILoadingView> {
 
             val user = userRepository.getUser()
             if (user != null){
-                CredentialsActivity.show()
+                MainActivity.show()
                 return@postDelayed
             }
 

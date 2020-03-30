@@ -28,6 +28,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/btn_big_grey"
+        android:foreground="?android:attr/selectableItemBackground"
         android:fontFamily="@font/bones"
         android:onClick="signUpBtn"
         android:text="@string/sign_up"

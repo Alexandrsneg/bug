@@ -2,6 +2,7 @@ package ru.sneg.android.bug.credentials.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import ru.sneg.android.bug.MainActivity
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.credentials.CredentialsActivity
 import ru.sneg.android.bug.domain.repositories.UserRepository
@@ -22,7 +23,7 @@ class SignUpPresenter : MvpPresenter<ISignUpView> {
 
     fun signUp(login:String,pass:String){
         viewState.lock()
-        userRepository.signUp(SubRX { _, e ->
+        userRepository.login(SubRX { _, e ->
             viewState.unlock()
 
             if (e != null) {
@@ -31,7 +32,7 @@ class SignUpPresenter : MvpPresenter<ISignUpView> {
                 return@SubRX
             }
 
-            CredentialsActivity.show()
+            MainActivity.show()
 
         },login,pass)
 

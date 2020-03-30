@@ -35,11 +35,9 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+            WindowManager.LayoutParams.FLAG_FULLSCREEN )
         setContentView(R.layout.activity_registration_conteiner)
-        if (savedInstanceState != null)
-            return
+
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
             UserStorage().dropCredentials()

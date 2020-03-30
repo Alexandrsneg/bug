@@ -2,6 +2,7 @@ package ru.sneg.android.bug.credentials.auth
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import ru.sneg.android.bug.MainActivity
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.credentials.CredentialsActivity
 import ru.sneg.android.bug.domain.repositories.UserRepository
@@ -26,7 +27,7 @@ class SignInPresenter : MvpPresenter<ISignInView> {
                 return@SubRX
             }
 
-            CredentialsActivity.show()
+            MainActivity.show()
         }, login, password)
     }
 }

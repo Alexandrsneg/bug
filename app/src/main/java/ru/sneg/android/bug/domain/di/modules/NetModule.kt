@@ -8,7 +8,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import ru.sneg.android.bug.base.IRestClient
-import ru.sneg.android.bug.domain.repositories.TokenInterceptor
+import ru.sneg.android.bug.domain.repositories.rest.TokenInterceptor
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import ru.sneg.android.bug.domain.repositories.rest.RestClient
 import java.util.concurrent.TimeUnit
@@ -31,7 +31,10 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideTokenInterceptor(userRepository: UserRepository) = TokenInterceptor(userRepository)
+    fun provideTokenInterceptor(userRepository: UserRepository) =
+        TokenInterceptor(
+            userRepository
+        )
 
 
     @Provides

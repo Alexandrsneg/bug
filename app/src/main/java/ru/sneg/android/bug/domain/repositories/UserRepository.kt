@@ -3,8 +3,8 @@ package ru.sneg.android.bug.domain.repositories
 import android.os.SystemClock
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.base.standardSubscribeIO
-import ru.sneg.android.bug.domain.repositories.models.Token
-import ru.sneg.android.bug.domain.repositories.models.User
+import ru.sneg.android.bug.domain.repositories.models.rest.Token
+import ru.sneg.android.bug.domain.repositories.models.rest.User
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.domain.repositories.rest.api.UserRestApi
 import java.net.HttpURLConnection
@@ -16,15 +16,15 @@ class UserRepository {
     private val storage: UserStorage
     private val rest: UserRestApi
 
-    @Inject //аннотировали, что он может выступать в роли зависимости, инжектировали в SignUpPresenter
+    @Inject
     constructor(storage: UserStorage, rest: UserRestApi) {
         this.storage = storage
         this.rest = rest
     }
 
-    fun signUp(observer: SubRX<User>, login: String, pass: String) {
+    fun registration(observer: SubRX<User>, login: String, pass: String) {
 
-        rest.signUp(login, pass)
+        rest.registration(login, pass)
             .doOnNext { storage.save(it) }
             .standardSubscribeIO(observer)
     }
@@ -36,7 +36,7 @@ class UserRepository {
             .standardSubscribeIO(observer)
     }
 
-    fun getUser() = storage.user
+    fun getUser() = storage.getUser()
 
     fun refreshToken(token: Token, onRetry: (Int) -> Boolean = { it == HttpURLConnection.HTTP_UNAUTHORIZED }): Token? {
 
@@ -53,8 +53,4 @@ class UserRepository {
 
         return null
     }
-
-
-
-
 }

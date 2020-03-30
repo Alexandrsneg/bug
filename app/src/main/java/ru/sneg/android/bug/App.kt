@@ -7,20 +7,28 @@ import io.realm.RealmConfiguration
 
 class App : Application() {
 
-companion object {
+    companion object {
 
-lateinit var appContext: Context
-}
+        lateinit var appContext: Context
+    }
+
     override fun onCreate() {
         super.onCreate()
 
         appContext = applicationContext
+
+        initRealm()
+
     }
 
-    private fun initRealm(){
-        Realm.init()
+    private fun initRealm() {
+
+        Realm.init(this)
         Realm.setDefaultConfiguration(RealmConfiguration.Builder()
             .deleteRealmIfMigrationNeeded()
+//            .schemaVersion(Migration.DB_VERSION)
+//            .migration(Migration())
             .build()
+        )
     }
 }

@@ -1,14 +1,14 @@
 package ru.sneg.android.bug.domain.repositories.rest.service
 
 
-import ru.sneg.android.bug.domain.repositories.models.User
+import ru.sneg.android.bug.domain.repositories.models.rest.User
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import ru.sneg.android.bug.domain.repositories.models.Token
+import ru.sneg.android.bug.domain.repositories.models.rest.Token
 
 interface IUserRestApiService {
     /**

@@ -20,21 +20,5 @@ fun replace (fragment: Fragment, backStack: String? = null, tag: String? = null)
         .commit()
 }
 
-    open fun buttonEffect(button: View) { //програмное создание эффекта нажатия на кнопку (смена цвета)
-        button.setOnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    v.background.setColorFilter(-0x1f0b8adf, PorterDuff.Mode.SRC_ATOP)
-                    v.invalidate()
-                }
-                MotionEvent.ACTION_UP -> {
-                    v.background.clearColorFilter()
-                    v.invalidate()
-                }
-            }
-            false
-        }
-    }
-
 
 }
