@@ -45,13 +45,11 @@ class SignUpFragment : ABaseFragment(), ISignUpView {
             val rPass = "${editText3.text}"
 
             if (login.isEmpty() || pass.isEmpty() || rPass.isEmpty()) {
-                toast(stringId = R.string.error_login_pass_undefined)
-                if (pass != rPass)
+                toast(stringId = R.string.error_login_pass_undefined)}
+                 if (pass != rPass){
                     toast(stringId = R.string.error_password_undefined)
                 return@setOnClickListener
             }
-
-
 
             presenter.signUp(login, pass)
         }

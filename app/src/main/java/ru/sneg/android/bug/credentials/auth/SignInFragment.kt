@@ -107,8 +107,4 @@ class SignInFragment : ABaseFragment(), ISignInView {
         }
     }
 
-
-    override fun onError(message: String) {
-        toast("SOMETHING WRONG")
-    }
 }
