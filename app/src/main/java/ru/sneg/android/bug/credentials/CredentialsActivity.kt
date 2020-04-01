@@ -1,16 +1,15 @@
 package ru.sneg.android.bug.credentials
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseActivity
-import ru.sneg.android.bug.credentials.ICredentialsRouter
 import ru.sneg.android.bug.credentials.auth.SignInFragment
 import ru.sneg.android.bug.credentials.loading.LoadingFragment
+import ru.sneg.android.bug.credentials.profile.ProfileFragment
 import ru.sneg.android.bug.credentials.registration.SignUpFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
@@ -60,6 +59,10 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
 
     override fun showAuth() {
         replace(SignInFragment())
+    }
+
+    override fun showProfile() {
+        replace(ProfileFragment(), "Registration")
     }
 
 }

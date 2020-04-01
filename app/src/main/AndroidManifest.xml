@@ -34,7 +34,7 @@
             android:name=".ScoreActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".credentials.profile.ProfileFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".GameModeActivity"

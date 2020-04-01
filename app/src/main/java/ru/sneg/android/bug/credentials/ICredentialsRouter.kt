@@ -5,4 +5,5 @@ interface ICredentialsRouter {
     fun showLoading()
     fun showSignUp()
     fun showAuth()
+    fun showProfile()
 }

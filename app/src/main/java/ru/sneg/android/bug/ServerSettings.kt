@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import ru.sneg.android.bug.credentials.profile.ProfileFragment
 
 class ServerSettings : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class ServerSettings : AppCompatActivity() {
     }
 
     fun profileBtn(view: View) {
-        val intent = Intent(this@ServerSettings, ProfileActivity::class.java)
+        val intent = Intent(this@ServerSettings, ProfileFragment::class.java)
         startActivity(intent)
     }
 }

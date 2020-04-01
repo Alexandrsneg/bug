@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import ru.sneg.android.bug.credentials.profile.ProfileFragment
 
 class GameModeActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class GameModeActivity : AppCompatActivity() {
 
     //при нажатии кнопки Profile переходим на экран профиля
     fun profileBtn(view: View) {
-        val intent = Intent(this@GameModeActivity, ProfileActivity::class.java)
+        val intent = Intent(this@GameModeActivity, ProfileFragment::class.java)
         startActivity(intent)
     }
     //при нажатии кнопки Score переходим на экран рекордов

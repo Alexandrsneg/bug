@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import ru.sneg.android.bug.credentials.profile.ProfileFragment
 
 class BugPlacementPlayerActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class BugPlacementPlayerActivity : AppCompatActivity() {
 
     //при нажатии кнопки Profile переходим на экран профиля
     fun profileBtn(view: View) {
-        val intent = Intent(this@BugPlacementPlayerActivity, ProfileActivity::class.java)
+        val intent = Intent(this@BugPlacementPlayerActivity, ProfileFragment::class.java)
         startActivity(intent)
     }
 }

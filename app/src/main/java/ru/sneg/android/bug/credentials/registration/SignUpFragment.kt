@@ -10,9 +10,13 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlinx.android.synthetic.main.fragment_sign_up.editText
+import kotlinx.android.synthetic.main.fragment_sign_up.editText2
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
+import ru.sneg.android.bug.credentials.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
@@ -37,23 +41,28 @@ class SignUpFragment : ABaseFragment(), ISignUpView {
 
         button.setOnClickListener {
 
-           // buttonEffect(button)
-
             // обработчик нажатия на кнопку зерег-ся
             val login = "${editText.text}"
             val pass = "${editText2.text}"
             val rPass = "${editText3.text}"
 
-            if (login.isEmpty() || pass.isEmpty() || rPass.isEmpty()) {
-                toast(stringId = R.string.error_login_pass_undefined)}
-                 if (pass != rPass){
+
+            if ((login.isEmpty() || pass.isEmpty() || rPass.isEmpty()) || (pass != rPass)) {
+                if (login.isEmpty() || pass.isEmpty())
+                toast(stringId = R.string.error_login_pass_undefined)
+                 if (pass != rPass)
                     toast(stringId = R.string.error_password_undefined)
-                return@setOnClickListener
+               // return@setOnClickListener
+            }
+            else {
+            presenter.signUp(login, pass)
+
+            activity?.let {
+                if (it is ICredentialsRouter)
+                    it.showProfile()
             }
 
-            presenter.signUp(login, pass)
+            }
         }
-
     }
-
 }

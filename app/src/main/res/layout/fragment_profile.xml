@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_empty"
-    tools:context=".ProfileActivity">
+    tools:context=".credentials.profile.ProfileFragment">
 
 
     <TextView
@@ -73,6 +72,7 @@
         android:fontFamily="@font/bones"
         android:onClick="gameModeBtn"
         android:text="@string/game_modes"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -104,6 +104,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/btn_big_grey"
         android:text="@string/change_profile"
+        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="changeProfile"
         android:fontFamily="@font/bones"
         app:layout_constraintStart_toStartOf="parent"
