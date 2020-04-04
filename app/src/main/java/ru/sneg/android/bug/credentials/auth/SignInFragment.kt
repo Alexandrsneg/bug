@@ -1,6 +1,5 @@
 package ru.sneg.android.bug.credentials.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -8,10 +7,9 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_in.editText
 import kotlinx.android.synthetic.main.fragment_sign_in.editText2
-import ru.sneg.android.bug.credentials.profile.ProfileFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
-import ru.sneg.android.bug.credentials.ICredentialsRouter
+import ru.sneg.android.bug.activities.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.credentials
+package ru.sneg.android.bug.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,8 @@ import ru.sneg.android.bug.credentials.profile.ProfileFragment
 import ru.sneg.android.bug.credentials.registration.SignUpFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
-class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
+class CredentialsActivity : ABaseActivity(),
+    ICredentialsRouter {
 
     companion object {
 
@@ -54,7 +55,7 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
     /*переопределяет имплементированный метод ICredentialsRouter и вызываясь в SignInFragment
     в tvSignUpBtn.setOnClickListener(е) переходит на SignUp фрагмент*/
     override fun showSignUp() {
-        replace(SignUpFragment(), "Registration")
+        replace(SignUpFragment(), "Back")
     }
 
     override fun showAuth() {
@@ -62,7 +63,7 @@ class CredentialsActivity : ABaseActivity(), ICredentialsRouter {
     }
 
     override fun showProfile() {
-        replace(ProfileFragment(), "Registration")
+        replace(ProfileFragment(), "Back")
     }
 
 }

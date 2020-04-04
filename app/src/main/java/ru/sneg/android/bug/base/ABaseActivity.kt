@@ -1,11 +1,9 @@
 package ru.sneg.android.bug.base
 
-import android.graphics.PorterDuff
-import android.view.MotionEvent
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.credentials.loading.LoadingFragment
 
 abstract class ABaseActivity: AppCompatActivity() {
 /* определяем базовую функцию для для смены (.replace) фрагментов в containerActivity, чтобы не писать руками

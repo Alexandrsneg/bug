@@ -2,9 +2,8 @@ package ru.sneg.android.bug.credentials.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ru.sneg.android.bug.MainActivity
+import ru.sneg.android.bug.activities.MainActivity
 import ru.sneg.android.bug.base.SubRX
-import ru.sneg.android.bug.credentials.CredentialsActivity
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import javax.inject.Inject
 

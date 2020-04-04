@@ -4,7 +4,7 @@ import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
-import ru.sneg.android.bug.credentials.CredentialsActivity
+import ru.sneg.android.bug.activities.CredentialsActivity
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import ru.sneg.android.bug.domain.repositories.models.rest.Token
 import ru.sneg.android.bug.exceptions.AuthException

@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.credentials
+package ru.sneg.android.bug.activities
 
 interface ICredentialsRouter {
 

@@ -1,22 +1,15 @@
 package ru.sneg.android.bug.credentials.registration
 
-import android.content.Intent
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_sign_up.editText
 import kotlinx.android.synthetic.main.fragment_sign_up.editText2
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
-import ru.sneg.android.bug.credentials.ICredentialsRouter
+import ru.sneg.android.bug.activities.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 

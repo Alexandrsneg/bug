@@ -8,7 +8,7 @@ import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.credentials.profile.ProfileFragment
 
-class ServerSettings : AppCompatActivity() {
+class ServerSettingsFragment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +16,11 @@ class ServerSettings : AppCompatActivity() {
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
-        setContentView(R.layout.activity_server_settings)
+        setContentView(R.layout.fragment_server_settings)
     }
 
     fun profileBtn(view: View) {
-        val intent = Intent(this@ServerSettings, ProfileFragment::class.java)
+        val intent = Intent(this@ServerSettingsFragment, ProfileFragment::class.java)
         startActivity(intent)
     }
 }

@@ -1,16 +1,10 @@
 package ru.sneg.android.bug.credentials.loading
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
-import ru.sneg.android.bug.credentials.ICredentialsRouter
+import ru.sneg.android.bug.activities.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 

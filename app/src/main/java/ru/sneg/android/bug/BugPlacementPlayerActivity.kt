@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.credentials.profile.ProfileFragment
 
-class BugPlacementPlayerActivity : AppCompatActivity() {
+class BugPlacementPlayerActivity : ABaseActivity()   {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

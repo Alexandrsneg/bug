@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".credentials.CredentialsActivity"
+        <activity android:name=".activities.CredentialsActivity"
             android:screenOrientation="landscape">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="landscape"/>
         <activity
             android:name=".credentials.auth.SignInFragment"
@@ -31,13 +31,13 @@
             android:name=".credentials.registration.SignUpFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ScoreActivity"
+            android:name=".activities.ScoreActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".credentials.profile.ProfileFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GameModeActivity"
+            android:name=".credentials.gameModes.GameModeFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".BugPlacementPlayerActivity"
@@ -46,7 +46,7 @@
             android:name=".BlindActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ServerSettings"
+            android:name=".ServerSettingsFragment"
             android:screenOrientation="landscape" />
     </application>
 

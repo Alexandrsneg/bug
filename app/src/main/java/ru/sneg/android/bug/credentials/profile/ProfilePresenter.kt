@@ -2,7 +2,7 @@ package ru.sneg.android.bug.credentials.profile
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ru.sneg.android.bug.MainActivity
+import ru.sneg.android.bug.activities.MainActivity
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import javax.inject.Inject
@@ -16,7 +16,7 @@ class ProfilePresenter : MvpPresenter<IProfileView> {
     @Inject
     constructor()
 
-    /*fun showAchieves(name: String, score: Int, wins: Int, loses: Int){
+    fun showAchieves(name: String, score: Int, wins: Int, loses: Int){
         viewState.lock()
         userRepository.achivies(SubRX { _, e ->
             viewState.unlock()
@@ -31,6 +31,6 @@ class ProfilePresenter : MvpPresenter<IProfileView> {
 
         },name, score, wins, loses)
 
-    }*/
+    }
 
 }
