@@ -58,6 +58,10 @@ class CredentialsActivity : ABaseActivity(),
         replace(SignUpFragment(), "Back")
     }
 
+    override fun showSignIn() {
+        replace(SignInFragment(), "Back")
+    }
+
     override fun showAuth() {
         replace(SignInFragment())
     }

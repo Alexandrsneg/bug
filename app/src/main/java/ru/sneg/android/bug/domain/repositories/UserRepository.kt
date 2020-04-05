@@ -54,7 +54,5 @@ class UserRepository {
         return null
     }
 
-    fun achivies(subRX: Any, name: String, score: Int, wins: Int, loses: Int) {
 
-    }
 }
