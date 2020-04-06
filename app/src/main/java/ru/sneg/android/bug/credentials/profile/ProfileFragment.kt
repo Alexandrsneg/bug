@@ -2,19 +2,15 @@ package ru.sneg.android.bug.credentials.profile
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.ICredentialsRouter
-import ru.sneg.android.bug.activities.IGameModeRouter
+import ru.sneg.android.bug.activities.GameModeActivity
+import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
-import ru.sneg.android.bug.domain.repositories.UserRepository
-import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.domain.repositories.models.realm.UserRealm
-import ru.sneg.android.bug.domain.repositories.models.rest.User
 import javax.inject.Inject
 
 class ProfileFragment : ABaseFragment(), IProfileView {
@@ -60,11 +56,8 @@ class ProfileFragment : ABaseFragment(), IProfileView {
 
         //при нажатии кнопки Game mode переходим на экран выбора режима игры
         bGameMode.setOnClickListener {
-            activity?.let {
-                if (it is IGameModeRouter)
-                    it.showGameMode()
+            GameModeActivity.show()
             }
-        }
     }
 
     override fun showProfile() {

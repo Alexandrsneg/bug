@@ -40,7 +40,7 @@
             android:name=".credentials.gameModes.GameModeFragment"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".BugPlacementPlayerActivity"
+            android:name=".BugPlacementPlayerFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".BlindActivity"

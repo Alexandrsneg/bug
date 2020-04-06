@@ -7,11 +7,12 @@ import android.view.WindowManager
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.credentials.gameModes.GameModeFragment
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.routers.IGameModeRouter
 import ru.sneg.android.bug.base.ABaseActivity
-import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
-class GameModeActivity : ABaseActivity(), IGameModeRouter {
+class GameModeActivity : ABaseActivity(),
+    IGameModeRouter {
 
         companion object {
 
@@ -45,9 +46,8 @@ class GameModeActivity : ABaseActivity(), IGameModeRouter {
 
         // переопределенные ниже функции взяты из интерфейса-маршрутизатора ICredentialsRouter
 
-    override fun showGameMode() {
+    override fun showGameMode(){
         replace(GameModeFragment())
     }
-
 
 }

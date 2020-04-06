@@ -6,6 +6,7 @@ import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.credentials.auth.SignInFragment
 import ru.sneg.android.bug.credentials.loading.LoadingFragment

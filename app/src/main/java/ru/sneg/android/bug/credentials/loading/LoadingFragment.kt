@@ -4,7 +4,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
-import ru.sneg.android.bug.activities.ICredentialsRouter
+import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 

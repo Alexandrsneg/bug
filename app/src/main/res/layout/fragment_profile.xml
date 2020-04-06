@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".credentials.profile.ProfileFragment">
 
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/score_bug"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/tvWins"
         android:layout_width="wrap_content"
@@ -77,15 +85,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/score_bug"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/avatarka"

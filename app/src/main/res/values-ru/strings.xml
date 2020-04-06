@@ -20,4 +20,6 @@
     <string name="sign_up_link"><u>зарегистрироваться</u></string>
     <string name="error_login_pass_undefined">введите логин/пароль</string>
     <string name="error_password_undefined">пароли не совпадают</string>
+    <string name="game_name">название игры</string>
+    <string name="game_name_error">введите название игры</string>
 </resources>

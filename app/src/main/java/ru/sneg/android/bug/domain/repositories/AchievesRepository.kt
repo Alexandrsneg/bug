@@ -2,14 +2,14 @@ package ru.sneg.android.bug.domain.repositories
 
 import javax.inject.Inject
 
-abstract class AchievesRepository  {
+ class AchievesRepository  {
     @Inject
     constructor()
 
-    abstract fun showScore()
+     fun showScore(){}
 
-    abstract fun showWins()
+     fun showWins(){}
 
-    abstract fun showLoses()
+     fun showLoses(){}
 
 }

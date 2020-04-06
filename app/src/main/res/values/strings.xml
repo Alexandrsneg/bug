@@ -19,4 +19,6 @@
     <string name="sign_up_link"><u>Sign Up</u></string>
     <string name="error_login_pass_undefined">enter login/password</string>
     <string name="error_password_undefined">passwords not equal</string>
+    <string name="game_name">name of game</string>
+    <string name="game_name_error">enter name of the game</string>
 </resources>
