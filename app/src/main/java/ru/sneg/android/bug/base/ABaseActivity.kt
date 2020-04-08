@@ -9,6 +9,8 @@ abstract class ABaseActivity: AppCompatActivity() {
 /* определяем базовую функцию для для смены (.replace) фрагментов в containerActivity, чтобы не писать руками
 это каждый раз для каждой активити
  */
+    //open fun getConteiner(): Int = R.id.containerActivity
+
 fun replace (fragment: Fragment, backStack: String? = null, tag: String? = null){
 
     supportFragmentManager.beginTransaction()

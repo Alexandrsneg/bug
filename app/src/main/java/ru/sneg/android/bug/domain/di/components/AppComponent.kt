@@ -9,6 +9,7 @@ import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.credentials.profile.ProfileFragment
 import ru.sneg.android.bug.credentials.registration.SignUpFragment
 import ru.sneg.android.bug.domain.di.modules.NetModule
+import ru.sneg.android.bug.credentials.score.DialogsFragment
 import javax.inject.Singleton
 
 
@@ -27,5 +28,6 @@ interface AppComponent {
     fun inject(target: GameModeFragment)
     fun inject(target: CreateGameFragment)
     fun inject(target: BugPlacementPlayerFragment)
+    fun inject(target: DialogsFragment)
 
 }

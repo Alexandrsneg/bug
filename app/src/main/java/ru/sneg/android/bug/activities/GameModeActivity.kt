@@ -21,7 +21,7 @@ class GameModeActivity : ABaseActivity(),
             fun show() {
                 App.appContext.let {
                     it.startActivity(Intent(it, GameModeActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        //flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         putExtra(ARG_DROP_CREDENTIALS, true)
                     })
                 }

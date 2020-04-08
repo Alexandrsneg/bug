@@ -104,10 +104,19 @@
         android:background="@drawable/btn_big_grey"
         android:text="@string/change_profile"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="changeProfile"
         android:fontFamily="@font/bones"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarka" />
 
+    <Button
+        android:id="@+id/bScore"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_score_grey"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

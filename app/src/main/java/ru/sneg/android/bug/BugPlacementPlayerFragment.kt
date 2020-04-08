@@ -13,11 +13,11 @@ import javax.inject.Inject
 
 class BugPlacementPlayerFragment : ABaseFragment() {
 
-    @Inject //использование Даггером конструктора из презентера, подставление зависимости
-    @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
+   // @Inject //использование Даггером конструктора из презентера, подставление зависимости
+   // @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
     lateinit var presenter: ProfilePresenter
 
-    @ProvidePresenter // предоставление презентера для Moxy
+   // @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
 
     override fun inject() {

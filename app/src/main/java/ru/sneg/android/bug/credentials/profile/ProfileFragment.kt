@@ -7,6 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
+import ru.sneg.android.bug.activities.ScoreActivity
 import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
@@ -58,6 +59,10 @@ class ProfileFragment : ABaseFragment(), IProfileView {
         bGameMode.setOnClickListener {
             GameModeActivity.show()
             }
+
+        bScore.setOnClickListener {
+            ScoreActivity.show()
+        }
     }
 
     override fun showProfile() {

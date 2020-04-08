@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:id="@+id/containerActivity"
     android:background="@drawable/bg_empty"
-    tools:context=".activities.CredentialsActivity">
+    tools:context=".activities.ScoreActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

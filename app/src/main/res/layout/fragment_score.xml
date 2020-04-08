@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_empty"
-    tools:context=".activities.ScoreActivity">
+    tools:context=".credentials.score.DialogsFragment">
 
     <Button
         android:id="@+id/home"
@@ -18,14 +17,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
         android:background="@drawable/score_bug"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/users_score"
+        android:id="@+id/rv_users_score"
         android:layout_width="330dp"
         android:layout_height="280dp"
         android:layout_marginTop="48dp"

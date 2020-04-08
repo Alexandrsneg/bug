@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.base.ABaseActivity
+import ru.sneg.android.bug.credentials.score.DialogsFragment
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ABaseActivity() {
 
     companion object {
 
@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState != null)
             return // Не будем пересоздавать фрагмент, пусть берется старый из стека
 
-        bSignInBtn.setOnClickListener {
-            CredentialsActivity.show()
-        }
+        replace(DialogsFragment())
     }
 }

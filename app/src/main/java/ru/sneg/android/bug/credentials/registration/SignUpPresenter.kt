@@ -11,14 +11,15 @@ import javax.inject.Inject
 @InjectViewState // аннотация привязывает ViewState к Presenter, генерирует код ViewState
 
 class SignUpPresenter : MvpPresenter<ISignUpView> {
-    @Inject
-    lateinit var userRepository : UserRepository /* lateinit - фича Котлина проставляется в зависимостях, обеспечивает NullSafe
-                                                   "var будет определена, но чуть позже"*/
+
+    private val userRepository : UserRepository
 
 
         @Inject      /*предоставление зависимостей (презентера во фрагмент) вызовом конструктора;
                      механизм создающий дагер делается на основе интерфейса AppComponent помечается аннотацией @component*/
-        constructor()
+        constructor(userRepository : UserRepository){
+            this.userRepository = userRepository
+        }
 
     fun signUp(login:String,pass:String){
         viewState.lock()
