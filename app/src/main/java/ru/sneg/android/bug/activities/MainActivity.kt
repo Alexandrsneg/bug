@@ -7,7 +7,7 @@ import android.view.WindowManager
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseActivity
-import ru.sneg.android.bug.credentials.score.DialogsFragment
+import ru.sneg.android.bug.credentials.score.ScoreFragment
 
 
 class MainActivity : ABaseActivity() {
@@ -33,6 +33,6 @@ class MainActivity : ABaseActivity() {
         if (savedInstanceState != null)
             return // Не будем пересоздавать фрагмент, пусть берется старый из стека
 
-        replace(DialogsFragment())
+        replace(ScoreFragment())
     }
 }

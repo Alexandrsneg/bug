@@ -6,7 +6,7 @@ import ru.sneg.android.bug.domain.repositories.DialogsRepository
 import javax.inject.Inject
 
 @InjectViewState // аннотация для Moxy, что бы предоставить вьюстэйт
-class DialogsPresenter : MvpPresenter<IDialogsView> {
+class ScorePresenter : MvpPresenter<IScoreView> {
 
     private val repository: DialogsRepository
 

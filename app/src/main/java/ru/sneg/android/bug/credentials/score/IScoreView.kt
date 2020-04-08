@@ -4,6 +4,6 @@ import com.arellomobile.mvp.MvpView
 import ru.sneg.android.bug.domain.repositories.models.CellUserItem
 
 
-interface IDialogsView : MvpView {
+interface IScoreView : MvpView {
     fun bindDialogs(dialogs: List<CellUserItem>)
 }
