@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.App
-import ru.sneg.android.bug.BugPlacementPlayerFragment
+import ru.sneg.android.bug.game.BugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
-class BattleGroundsActivity : ABaseActivity(), IBattleGroundsRouter {
+class GameActivity : ABaseActivity(), IBattleGroundsRouter {
     companion object {
 
         private const val ARG_DROP_CREDENTIALS = "ARG_DROP_CREDENTIALS"

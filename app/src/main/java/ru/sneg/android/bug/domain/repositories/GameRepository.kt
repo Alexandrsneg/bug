@@ -8,4 +8,8 @@ class GameRepository {
     fun createGame(subscriber: (String) -> Unit, nameGame: String) {
         subscriber.invoke("$nameGame")
     }
+
+    fun BugPlacementPlayerShow(){
+
+    }
 }

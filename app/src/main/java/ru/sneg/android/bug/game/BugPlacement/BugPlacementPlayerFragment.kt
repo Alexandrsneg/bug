@@ -1,30 +1,31 @@
-package ru.sneg.android.bug
+package ru.sneg.android.bug.game.BugPlacement
 
 import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
+import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.credentials.profile.ProfilePresenter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
-class BugPlacementPlayerFragment : ABaseFragment() {
+class BugPlacementPlayerFragment : ABaseFragment(), IBugPlaycementPlayerView {
 
-   // @Inject //использование Даггером конструктора из презентера, подставление зависимости
-   // @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
-    lateinit var presenter: ProfilePresenter
+    @Inject //использование Даггером конструктора из презентера, подставление зависимости
+    @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
+    lateinit var presenter: BugPlacementPlayerPresenter
 
-   // @ProvidePresenter // предоставление презентера для Moxy
+    @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
 
     override fun inject() {
         DaggerAppComponent.create().inject(this)
     }
 
-    override fun getViewId() = R.layout.fragment_profile
+    override fun getViewId() = R.layout.fragment_bug_placement_player
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

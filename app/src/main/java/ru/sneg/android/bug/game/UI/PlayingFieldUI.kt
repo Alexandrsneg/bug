@@ -22,17 +22,14 @@ class PlayingFieldUI: IElementUI {
         val random = Random(System.currentTimeMillis())
         for (i in 1..100)
             takes.add(TakeUI().apply {
-                state = 0//random.nextInt(3)
+                state = random.nextInt(10)
 
             })
 
-        //  for (i in 11..20)
-        //   takes[i-1].state=0
-        //    setshipsfour(5)
 
     }
 
-    fun setBugsFour(n: Int) {
+   /* fun setBugsFour(n: Int) {
         var kol:Int
 
 
@@ -56,10 +53,9 @@ class PlayingFieldUI: IElementUI {
                 takes[ranx + 10 * rany + 2].state = 2
                 takes[ranx + 10 * rany + 3].state = 2
             }
-            // for (i in 1..100)
-            //     takes[i].state=1
+
         }
-    }
+    }*/
     override fun render(canvas: Canvas) {
 
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)

@@ -6,7 +6,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_mode.*
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.BattleGroundsActivity
+import ru.sneg.android.bug.activities.GameActivity
 import ru.sneg.android.bug.activities.CreateGameActivity
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
@@ -34,11 +34,11 @@ class GameModeFragment : ABaseFragment(), IGameModeView {
 
         //игра против бота
         bBugVsCpuBug.setOnClickListener() {
-            BattleGroundsActivity.show()
+            GameActivity.show()
         }
         //игра на одном устройстве
         bBugVsBug.setOnClickListener() {
-            BattleGroundsActivity.show()
+            GameActivity.show()
         }
         //игра по сети
         bBugVsRandomBug.setOnClickListener() {

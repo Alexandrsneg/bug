@@ -7,7 +7,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_create.*
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.BattleGroundsActivity
+import ru.sneg.android.bug.activities.GameActivity
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
@@ -50,6 +50,6 @@ class CreateGameFragment : ABaseFragment(),ICreateGameView {
     }
 
     override fun showBattleGroundsActivity() {
-        BattleGroundsActivity.show()
+        GameActivity.show()
     }
 }

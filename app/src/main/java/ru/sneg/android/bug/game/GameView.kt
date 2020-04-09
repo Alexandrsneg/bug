@@ -29,7 +29,7 @@ class GameView @JvmOverloads constructor(
     }
 
 
-    fun setBugs(){
+   /* fun setBugs(){
         playingField.setBugsFour(5)
         //super.onAttachedToWindow()
         //GameView(gameView.context).onAttachedToWindow()
@@ -37,7 +37,7 @@ class GameView @JvmOverloads constructor(
         // render()
         post({ render() })
 
-    }
+    }*/
 
     fun render() {
 
