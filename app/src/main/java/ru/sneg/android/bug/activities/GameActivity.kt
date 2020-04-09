@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.App
-import ru.sneg.android.bug.game.BugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseActivity
@@ -18,8 +18,8 @@ class GameActivity : ABaseActivity(), IBattleGroundsRouter {
 
         fun show() {
             App.appContext.let {
-                it.startActivity(Intent(it, GameModeActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                it.startActivity(Intent(it, GameActivity::class.java).apply {
+                    //flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     putExtra(ARG_DROP_CREDENTIALS, true)
                 })
             }

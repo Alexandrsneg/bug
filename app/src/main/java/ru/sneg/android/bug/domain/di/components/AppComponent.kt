@@ -1,7 +1,7 @@
 package ru.sneg.android.bug.domain.di.components
 
 import dagger.Component
-import ru.sneg.android.bug.game.BugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.credentials.auth.SignInFragment
 import ru.sneg.android.bug.credentials.createGame.CreateGameFragment
 import ru.sneg.android.bug.credentials.gameModes.GameModeFragment
