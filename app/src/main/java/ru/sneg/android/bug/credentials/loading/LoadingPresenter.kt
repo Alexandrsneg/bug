@@ -3,7 +3,7 @@ package ru.sneg.android.bug.credentials.loading
 import android.os.Handler
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ru.sneg.android.bug.activities.MainActivity
+import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import javax.inject.Inject
 
@@ -28,7 +28,7 @@ class LoadingPresenter : MvpPresenter<ILoadingView> {
 
             val user = userRepository.getUser()
             if (user != null){
-                MainActivity.show()
+                GameModeActivity.show()
                 return@postDelayed
             }
 

@@ -2,9 +2,10 @@ package ru.sneg.android.bug.credentials.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ru.sneg.android.bug.activities.MainActivity
+import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.base.SubRX
 import ru.sneg.android.bug.domain.repositories.UserRepository
+import ru.sneg.android.bug.game.engine.GameState
 import javax.inject.Inject
 
 
@@ -23,7 +24,7 @@ class SignUpPresenter : MvpPresenter<ISignUpView> {
 
     fun signUp(login:String,pass:String){
         viewState.lock()
-        userRepository.login(SubRX { _, e ->
+        userRepository.registration(SubRX { _, e ->
             viewState.unlock()
 
             if (e != null) {
@@ -32,7 +33,7 @@ class SignUpPresenter : MvpPresenter<ISignUpView> {
                 return@SubRX
             }
 
-            MainActivity.show()
+            GameModeActivity.show()
 
         },login,pass)
 

@@ -28,9 +28,6 @@
             android:name=".activities.GameActivity"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".activities.MainActivity"
-            android:screenOrientation="landscape"/>
-        <activity
             android:name=".credentials.auth.SignInFragment"
             android:screenOrientation="landscape" />
         <activity

@@ -58,10 +58,6 @@ class SignInFragment : ABaseFragment(), ISignInView {
                 toast(R.string.error_login_pass_undefined)
                 return@setOnClickListener
             } else {
-                    activity?.let {
-                        if (it is ICredentialsRouter)
-                            it.showProfile()
-                    }
 
                 presenter.signIn(login, password)
             }

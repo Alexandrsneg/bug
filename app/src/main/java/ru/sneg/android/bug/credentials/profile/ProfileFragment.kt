@@ -6,9 +6,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.CredentialsActivity
 import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.ScoreActivity
 import ru.sneg.android.bug.activities.routers.ICredentialsRouter
+import ru.sneg.android.bug.activities.routers.IGameModeRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.domain.repositories.models.realm.UserRealm
@@ -49,16 +51,16 @@ class ProfileFragment : ABaseFragment(), IProfileView {
 
         //при нажатии кнопки Change profile переходим
         bChangeProfile.setOnClickListener {
-            activity?.let {
-                if (it is ICredentialsRouter)
-                    it.showSignIn()
-            }
+           CredentialsActivity.show()
         }
 
         //при нажатии кнопки Game mode переходим на экран выбора режима игры
         bGameMode.setOnClickListener {
-            GameModeActivity.show()
+            activity?.let {
+                if (it is IGameModeRouter)
+                    it.showGameModes()
             }
+        }
 
         bScore.setOnClickListener {
             ScoreActivity.show()

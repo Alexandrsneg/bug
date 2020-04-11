@@ -40,6 +40,7 @@ class CredentialsActivity : ABaseActivity(),
         setContentView(R.layout.activity_registration_conteiner)
 
 
+
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
             UserStorage().dropCredentials()
             showAuth()
@@ -59,17 +60,10 @@ class CredentialsActivity : ABaseActivity(),
         replace(SignUpFragment(), "Back")
     }
 
-    override fun showSignIn() {
+    override fun showAuth() {
         replace(SignInFragment(), "Back")
     }
 
-    override fun showAuth() {
-        replace(SignInFragment())
-    }
-
-    override fun showProfile() {
-        replace(ProfileFragment(), "Back")
-    }
 
 }
 

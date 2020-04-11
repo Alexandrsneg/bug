@@ -45,15 +45,10 @@ class SignUpFragment : ABaseFragment(), ISignUpView {
                 toast(stringId = R.string.error_login_pass_undefined)
                  if (pass != rPass)
                     toast(stringId = R.string.error_password_undefined)
-               // return@setOnClickListener
+                return@setOnClickListener
             }
             else {
             presenter.signUp(login, pass)
-
-            activity?.let {
-                if (it is ICredentialsRouter)
-                    it.showProfile()
-            }
 
             }
         }

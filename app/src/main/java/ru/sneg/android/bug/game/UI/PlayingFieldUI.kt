@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import ru.sneg.android.bug.game.engine.GameState
 import kotlin.random.Random
 
 //отображение игрового поля
@@ -83,4 +84,17 @@ class PlayingFieldUI: IElementUI {
         }
     }
 
+     fun onClick(x: Float, y: Float): TakeUI? {
+        return takes.firstOrNull{it.x < x && it.x + it.width >= x && it.y < y && it.y + it.width >= y}
+    }
+
+   /* fun setGameState(state: GameState){
+        val game = state.game.toTypedArray()
+        for(i in 0 until 9){
+            takes.get(i).state = when (game[i]){
+                0 -> 1
+
+            }
+        }
+    }*/
 }
