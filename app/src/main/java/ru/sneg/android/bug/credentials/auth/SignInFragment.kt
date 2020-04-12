@@ -57,11 +57,10 @@ class SignInFragment : ABaseFragment(), ISignInView {
             if (login.isEmpty() || password.isEmpty()) {
                 toast(R.string.error_login_pass_undefined)
                 return@setOnClickListener
-            } else {
-
+            }
                 presenter.signIn(login, password)
             }
-        }
+
         /*
          * обработчик нажатия кнопк регистрации во ФРАГМЕНТЕ, реализует переход на др. ФРАГМЕНТ
         tvSignUpBtn.setOnClickListener {

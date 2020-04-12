@@ -22,7 +22,7 @@ class GameModeActivity : ABaseActivity(),
             fun show() {
                 App.appContext.let {
                     it.startActivity(Intent(it, GameModeActivity::class.java).apply {
-                        //flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         putExtra(ARG_DROP_GAME_MODE_ACTIVITY, true)
                     })
                 }
@@ -39,7 +39,7 @@ class GameModeActivity : ABaseActivity(),
 
 
             if (intent.getBooleanExtra(ARG_DROP_GAME_MODE_ACTIVITY, false)) {
-                UserStorage().dropCredentials()
+               // UserStorage().dropCredentials()
                 showProfile()
                 return
             }

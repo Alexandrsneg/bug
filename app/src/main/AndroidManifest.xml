@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".activities.CredentialsActivity"
             android:screenOrientation="landscape">
         <intent-filter>
@@ -28,22 +29,7 @@
             android:name=".activities.GameActivity"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".credentials.auth.SignInFragment"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".credentials.registration.SignUpFragment"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".activities.ScoreActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".credentials.profile.ProfileFragment"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".credentials.gameModes.GameModeFragment"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".game.bugPlacement.BugPlacementPlayerFragment"
             android:screenOrientation="landscape" />
         <activity
             android:name=".BlindActivity"

@@ -10,6 +10,7 @@ import javax.inject.Named
 
 class UserRestApi : ABaseRestApi<IUserRestApiService> {
 
+
     @Inject
     constructor(@Named(NetModule.NAME_AUTH_REST_CLIENT) client: IRestClient) : super(client)
 
