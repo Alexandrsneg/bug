@@ -10,53 +10,22 @@ import kotlin.random.Random
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
 
-    private val takes = mutableListOf<TakeUI>()
+    private val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
     private val bgPaint = Paint().apply { color = Color.DKGRAY }
 
     var width: Int = 0
     var height: Int = 0
 
-    var k: Int = 0
+
 
     init {
-
-        val random = Random(System.currentTimeMillis())
+        //заполнение игрового поля пустыми клетками (STATE_UNDEFINED)
         for (i in 1..100)
             takes.add(TakeUI().apply {
-                state = random.nextInt(10)
-
+                state = 0
             })
-
-
     }
 
-   /* fun setBugsFour(n: Int) {
-        var kol:Int
-
-
-        for (kol in 1..10) {
-
-            val randome = Random(System.currentTimeMillis())
-            if (randome.nextInt(2) == 0)
-            {//вертикальный
-
-                var ran: Int = randome.nextInt(69)
-                takes[ran].state = 2
-                takes[ran + 10].state = 2
-                takes[ran + 20].state = 2
-                takes[ran + 30].state = 2
-            } else {//горизонтальный
-
-                var ranx: Int = randome.nextInt(7)
-                var rany: Int = randome.nextInt(10)
-                takes[ranx + 10 * rany].state = 2
-                takes[ranx + 10 * rany + 1].state = 2
-                takes[ranx + 10 * rany + 2].state = 2
-                takes[ranx + 10 * rany + 3].state = 2
-            }
-
-        }
-    }*/
     override fun render(canvas: Canvas) {
 
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
@@ -84,8 +53,10 @@ class PlayingFieldUI: IElementUI {
         }
     }
 
+    //определяет по тычку на какую клетку попали
      fun onClick(x: Float, y: Float): TakeUI? {
-        return takes.firstOrNull{it.x < x && it.x + it.width >= x && it.y < y && it.y + it.width >= y}
+        //лямбда проверяющая входит ли нажатая область в опрееленные в Тэйках клетки
+        return takes.firstOrNull{it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y}
     }
 
    /* fun setGameState(state: GameState){

@@ -15,7 +15,7 @@ class DialogsRepository  {
 
         val result = mutableListOf<CellUserItem>()
         val random = Random(System.currentTimeMillis())
-        val count = random.nextInt(100) + 10
+        val count = random.nextInt(900) + 100
         for (index in 0 until count)
             result.add(CellUserItem("$index", random.nextBoolean()))
 

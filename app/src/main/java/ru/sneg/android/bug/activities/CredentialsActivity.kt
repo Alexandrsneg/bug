@@ -39,7 +39,8 @@ class CredentialsActivity : ABaseActivity(),
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
         setContentView(R.layout.activity_registration_conteiner)
 
-
+        if (savedInstanceState != null)
+            return
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
             UserStorage().dropCredentials()

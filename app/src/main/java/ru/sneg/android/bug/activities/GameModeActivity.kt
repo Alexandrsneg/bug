@@ -17,13 +17,13 @@ class GameModeActivity : ABaseActivity(),
 
         companion object {
 
-            private const val ARG_DROP_CREDENTIALS = "ARG_DROP_CREDENTIALS"
+            private const val ARG_DROP_GAME_MODE_ACTIVITY = "ARG_DROP_GAME_MODE_ACTIVITY"
 
             fun show() {
                 App.appContext.let {
                     it.startActivity(Intent(it, GameModeActivity::class.java).apply {
                         //flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        putExtra(ARG_DROP_CREDENTIALS, true)
+                        putExtra(ARG_DROP_GAME_MODE_ACTIVITY, true)
                     })
                 }
             }
@@ -38,7 +38,7 @@ class GameModeActivity : ABaseActivity(),
             setContentView(R.layout.activity_game_mode_conteiner)
 
 
-            if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
+            if (intent.getBooleanExtra(ARG_DROP_GAME_MODE_ACTIVITY, false)) {
                 UserStorage().dropCredentials()
                 showProfile()
                 return

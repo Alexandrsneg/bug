@@ -31,6 +31,10 @@ class BugPlacementPlayerFragment : ABaseFragment(), IBugPlaycementPlayerView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        gameView.onSelectListener = {
+            println(it)
+        }
 
 
         //при нажатии кнопки Change profile выводим фрагмент SignIn в CredentialsActivity

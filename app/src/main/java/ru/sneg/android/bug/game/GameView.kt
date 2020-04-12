@@ -13,17 +13,9 @@ class GameView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
-    override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
-        sfHolder = p0
-    }
-
-    override fun surfaceDestroyed(p0: SurfaceHolder?) {
-        sfHolder = null
-    }
-
-    override fun surfaceCreated(p0: SurfaceHolder?) {
-        sfHolder = p0
-    }
+    override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) { }
+    override fun surfaceDestroyed(p0: SurfaceHolder?) { sfHolder = null }
+    override fun surfaceCreated(p0: SurfaceHolder?) { sfHolder = p0 }
 
     private var sfHolder: SurfaceHolder? = null
         set(value) {
@@ -38,63 +30,54 @@ class GameView @JvmOverloads constructor(
     var onSelectListener: ((TakeUI) -> Unit)? = null
 
     init {
-
         sfHolder = holder
 
-        setOnTouchListener { _, event ->
+        //обработчик нажатия
+        setOnTouchListener {_, event ->
 
-
-            when (event.action) {
-                //  MotionEvent.ACTION_DOWN -> onDown() //опустили палец вниз
-                MotionEvent.ACTION_UP -> onClick(event.x, event.y) //убрали палец
+            when (event.action){
+                MotionEvent.ACTION_UP -> onClick(event.x, event.y)
                 else -> false
             }
         }
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        postDelayed({ render() }, 2000)
+    }
 
-        /* fun setBugs(){
-        playingField.setBugsFour(5)
-        //super.onAttachedToWindow()
-        //GameView(gameView.context).onAttachedToWindow()
-        //super.onAttachedToWindow()
-        // render()
-        post({ render() })
+    fun render() {
 
-    }*/
+        val holder = sfHolder ?: return
+        var canvas: Canvas? = null
 
-        fun render() {
+        try {
 
-            val holder = sfHolder ?: return
-            var canvas: Canvas? = null
+            canvas = holder.lockCanvas()
+            if (canvas != null)
+                render(canvas)
 
-            try {
-
-                canvas = holder.lockCanvas()
-                if (canvas != null)
-                    render(canvas)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                canvas?.let { holder.unlockCanvasAndPost(it) }
-            }
-        }
-
-        private fun render(canvas: Canvas) {
-            playingField.width = width
-            playingField.height = height
-            playingField.render(canvas)
-        }
-
-        private fun onClick(x: Float, y: Float): Boolean{
-            val listener = onSelectListener ?: return false
-
-            playingField.onClick(x,y)?.let{
-            if (it.state == TakeUI.STATE_UNDEFINED)
-                listener(it)
-                return true
-            }
-            return false
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            canvas?.let { holder.unlockCanvasAndPost(it) }
         }
     }
+
+    private fun render(canvas: Canvas) {
+        playingField.width = width
+        playingField.height = height
+        playingField.render(canvas)
+    }
+
+    private fun onClick(x: Float, y: Float) : Boolean{
+        val listener = onSelectListener ?: return false
+
+       playingField.onClick(x,y)?.let{  //если значения onClick не null -> срабатывет .let
+           if(it.state == TakeUI.STATE_UNDEFINED)
+           listener(it)
+       }
+        return true
+    }
+}

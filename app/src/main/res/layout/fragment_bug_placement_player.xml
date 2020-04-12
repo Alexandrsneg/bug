@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".game.bugPlacement.BugPlacementPlayerFragment">
 
-    <SurfaceView
-        android:id="@+id/svBugField"
+    <ru.sneg.android.bug.game.GameView
+        android:id="@+id/gameView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginEnd="100dp"
@@ -15,22 +15,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <SurfaceView
-        android:id="@+id/svBugs"
-        android:layout_width="209dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/bProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="profileBtn"
         android:background="@drawable/btn_profile_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

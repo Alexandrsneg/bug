@@ -23,8 +23,7 @@ class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            val view: View =
-                CellUserView(parent.context)
+            val view: View = CellUserView(parent.context)
             return object: RecyclerView.ViewHolder(view){ }
         }
 

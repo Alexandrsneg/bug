@@ -9,15 +9,15 @@ class TakeUI : IElementUI {
 
     companion object {
         const val STATE_UNDEFINED = 0
-        const val STATE_CROSS = 1
-        const val STATE_ZERO = 2
+        //const val STATE_CROSS = 1
+        //const val STATE_ZERO = 2
 
-        val paintRed = Paint().apply {
-            color = Color.RED
-            this.strokeWidth = 2f
+        val paintWhite = Paint().apply {
+            color = Color.WHITE
+            this.strokeWidth = 4f
         }
-        val paintBlue = Paint().apply { color = Color.BLUE }
-        val paintYellow = Paint().apply { color = Color.YELLOW }
+        //val paintBlue = Paint().apply { color = Color.BLUE }
+        //val paintYellow = Paint().apply { color = Color.YELLOW }
     }
 
     var x: Int = 0
@@ -32,8 +32,8 @@ class TakeUI : IElementUI {
     override fun render(canvas: Canvas) {
 
         when (state) {
-            STATE_CROSS -> renderCross(canvas)
-            STATE_ZERO -> renderZero(canvas)
+            //STATE_CROSS -> renderCross(canvas)
+            //STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderField(canvas)
         }
     }
@@ -46,15 +46,15 @@ class TakeUI : IElementUI {
         val h = height.toFloat()
 
 
-        canvas.drawLine(x, y, x, y + w, paintYellow)
-        canvas.drawLine(x, y, x + h, y, paintYellow)
-        canvas.drawLine(x + h, y, x + h, y + w, paintYellow)
-        canvas.drawLine(x + h, y + w, x, y + w, paintYellow)
+        canvas.drawLine(x, y, x, y + w, paintWhite)
+        canvas.drawLine(x, y, x + h, y, paintWhite)
+        canvas.drawLine(x + h, y, x + h, y + w, paintWhite)
+        canvas.drawLine(x + h, y + w, x, y + w, paintWhite)
 
 
     }
 
-    //функция отрисовки игрового поля
+   /*
     private fun renderCross(canvas: Canvas) {
 
         val x = x.toFloat()
@@ -78,7 +78,7 @@ class TakeUI : IElementUI {
 
         canvas.drawCircle(cx, cy, hw, paintBlue)
         canvas.drawCircle(cx, cy, hw * 0.9f, paintYellow)
-    }
+    }*/
 }
 
 
