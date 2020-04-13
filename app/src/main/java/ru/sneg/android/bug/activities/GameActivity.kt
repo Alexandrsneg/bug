@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import ru.sneg.android.bug.App
-import ru.sneg.android.bug.game.bugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseActivity
@@ -36,7 +36,7 @@ class GameActivity : ABaseActivity(), IBattleGroundsRouter {
 
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
-            UserStorage().dropCredentials()
+           // UserStorage().dropCredentials()
             showBugPlaycement()
             return
         }

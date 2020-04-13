@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.game.bugPlacement
+package ru.sneg.android.bug.credentials.bugPlacement
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,8 @@ import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
-class BugPlacementPlayerFragment : ABaseFragment(), IBugPlaycementPlayerView {
+class BugPlacementPlayerFragment : ABaseFragment(),
+    IBugPlaycementPlayerView {
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter

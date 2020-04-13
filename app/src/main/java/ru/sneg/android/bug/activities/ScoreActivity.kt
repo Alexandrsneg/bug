@@ -36,7 +36,7 @@ class ScoreActivity : ABaseActivity(), IScoreRouter {
         setContentView(R.layout.activity_score_conteiner)
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
-            UserStorage().dropCredentials()
+           // UserStorage().dropCredentials()
             showScore()
             return
         }

@@ -9,15 +9,19 @@ class TakeUI : IElementUI {
 
     companion object {
         const val STATE_UNDEFINED = 0
-        //const val STATE_CROSS = 1
-        //const val STATE_ZERO = 2
+        const val STATE_SHIP_PART = 1 // клетка жука
+        const val STATE_MISS = 2 // промах (клетка пуста)
+        const val STATE_EXPLODE = 3 // ранение
+        // const val STATE_NOTHING = 4
 
-        val paintWhite = Paint().apply {
-            color = Color.WHITE
+
+        //определение цветов для отрисовок
+        val paintWhite = Paint().apply { color = Color.WHITE
             this.strokeWidth = 4f
         }
-        //val paintBlue = Paint().apply { color = Color.BLUE }
-        //val paintYellow = Paint().apply { color = Color.YELLOW }
+        val paintGreen = Paint().apply { color = Color.GREEN }
+        val paintRed = Paint().apply { color = Color.RED}
+        val paintBlack = Paint().apply { color = Color.BLACK}
     }
 
     var x: Int = 0
@@ -32,9 +36,11 @@ class TakeUI : IElementUI {
     override fun render(canvas: Canvas) {
 
         when (state) {
-            //STATE_CROSS -> renderCross(canvas)
-            //STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderField(canvas)
+            STATE_SHIP_PART -> renderBugPart(canvas)
+            STATE_MISS  -> renderMiss(canvas)
+            STATE_EXPLODE -> renderExplode(canvas)
+            //STATE_NOTHING -> renderNothing(canvas)
         }
     }
 
@@ -51,22 +57,27 @@ class TakeUI : IElementUI {
         canvas.drawLine(x + h, y, x + h, y + w, paintWhite)
         canvas.drawLine(x + h, y + w, x, y + w, paintWhite)
 
-
     }
 
-   /*
-    private fun renderCross(canvas: Canvas) {
+   //отрисовка промаха
+    private fun renderMiss(canvas: Canvas) {
 
         val x = x.toFloat()
         val y = y.toFloat()
         val w = width.toFloat()
         val h = height.toFloat()
 
-        canvas.drawLine(x, y, x + w, y + h, paintRed)
-        canvas.drawLine(x + w, y, x, y + h, paintRed)
+       canvas.drawLine(x, y, x, y + w, paintWhite)
+       canvas.drawLine(x, y, x + h, y, paintWhite)
+       canvas.drawLine(x + h, y, x + h, y + w, paintWhite)
+       canvas.drawLine(x + h, y + w, x, y + w, paintWhite)
+
+        canvas.drawLine(x, y, x + w, y + h, paintWhite)
+        canvas.drawLine(x + w, y, x, y + h, paintWhite)
     }
 
-    private fun renderZero(canvas: Canvas) {
+    //отрисовка ранения
+    private fun renderExplode(canvas: Canvas) {
 
         val x = x.toFloat()
         val y = y.toFloat()
@@ -76,9 +87,33 @@ class TakeUI : IElementUI {
         val cx = x + hw
         val cy = y + h * 0.5f
 
-        canvas.drawCircle(cx, cy, hw, paintBlue)
-        canvas.drawCircle(cx, cy, hw * 0.9f, paintYellow)
-    }*/
+        canvas.drawLine(x, y, x, y + w, paintWhite)
+        canvas.drawLine(x, y, x + h, y, paintWhite)
+        canvas.drawLine(x + h, y, x + h, y + w, paintWhite)
+        canvas.drawLine(x + h, y + w, x, y + w, paintWhite)
+
+        canvas.drawCircle(cx, cy, hw, paintBlack)
+        canvas.drawCircle(cx, cy, hw * 0.9f, paintRed)
+    }
+    //отрисовка клетки с жуком
+    private fun renderBugPart(canvas: Canvas) {
+        val x = x.toFloat()
+        val y = y.toFloat()
+        val w = width.toFloat()
+        val h = height.toFloat()
+        val hw = w * 0.5f
+        val cx = x + hw
+        val cy = y + h * 0.5f
+
+        canvas.drawLine(x, y, x, y + w, paintWhite)
+        canvas.drawLine(x, y, x + h, y, paintWhite)
+        canvas.drawLine(x + h, y, x + h, y + w, paintWhite)
+        canvas.drawLine(x + h, y + w, x, y + w, paintWhite)
+
+        canvas.drawCircle(cx, cy, hw, paintBlack)
+        canvas.drawCircle(cx, cy, hw * 0.9f, paintGreen)
+    }
+
 }
 
 

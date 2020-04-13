@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.game.bugPlacement
+package ru.sneg.android.bug.credentials.bugPlacement
 
 import ru.sneg.android.bug.base.IBaseView
 

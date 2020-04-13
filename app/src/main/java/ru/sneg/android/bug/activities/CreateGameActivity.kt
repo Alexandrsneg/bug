@@ -37,7 +37,7 @@ class CreateGameActivity: ABaseActivity(),
 
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
-            UserStorage().dropCredentials()
+           // UserStorage().dropCredentials()
             showCreateGame()
             return
         }

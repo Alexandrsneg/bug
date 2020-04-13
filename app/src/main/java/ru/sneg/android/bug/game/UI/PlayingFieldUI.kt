@@ -19,12 +19,34 @@ class PlayingFieldUI: IElementUI {
 
 
     init {
+        //тест отрисовки клетки жука
+        for (i in 0..3){
+            takes.add(TakeUI().apply {
+                state = 1
+            })}
+
+        //тест отрисовки клетки промаха
+        for (i in 0..2){
+            takes.add(TakeUI().apply {
+                state = 2
+            })}
+
+        //тест отрисовки клетки ранения
+        for (i in 0..1){
+            takes.add(TakeUI().apply {
+                state = 3
+            })}
+
         //заполнение игрового поля пустыми клетками (STATE_UNDEFINED)
         for (i in 1..100)
             takes.add(TakeUI().apply {
                 state = 0
             })
+
+
     }
+
+
 
     override fun render(canvas: Canvas) {
 
