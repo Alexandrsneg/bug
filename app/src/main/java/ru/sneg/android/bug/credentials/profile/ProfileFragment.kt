@@ -5,6 +5,7 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.CredentialsActivity
 import ru.sneg.android.bug.activities.GameModeActivity
@@ -13,7 +14,10 @@ import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.activities.routers.IGameModeRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
+import ru.sneg.android.bug.domain.repositories.UserRepository
+import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.domain.repositories.models.realm.UserRealm
+import ru.sneg.android.bug.domain.repositories.models.rest.User
 import javax.inject.Inject
 
 class ProfileFragment : ABaseFragment(), IProfileView {
@@ -21,6 +25,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
     lateinit var presenter: ProfilePresenter
+
 
     @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
@@ -37,7 +42,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
 
       // ЗДЕСЬ ДОЛЖНЫ ОТОБРАЖАТЬСЯ РЕЗУЛЬТАТЫ КОНКРЕТНОГО ПОЛЬЗОВАТЕЛЯ
 
-        var name = UserRealm().login //берем имя-логин из реалм модели
+        tvName.text = UserStorage().getUser()!!.login // отображение имени пользователя (ЛОГИНА)
 
         // пока абстрактные методы для полученния неободимх данных
         var score = presenter.showScore()
@@ -45,7 +50,6 @@ class ProfileFragment : ABaseFragment(), IProfileView {
         var loses = presenter.showLoses()
 
 
-        //отображение достижений игрока
 
 
 
