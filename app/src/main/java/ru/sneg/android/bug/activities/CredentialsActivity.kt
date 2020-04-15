@@ -24,7 +24,7 @@ class CredentialsActivity : ABaseActivity(),
         fun show() {
             App.appContext.let {
                 it.startActivity(Intent(it, CredentialsActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    //flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     putExtra(ARG_DROP_CREDENTIALS, true)
                 })
             }
@@ -39,8 +39,6 @@ class CredentialsActivity : ABaseActivity(),
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
         setContentView(R.layout.activity_registration_conteiner)
 
-        if (savedInstanceState != null)
-            return
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
             UserStorage().dropCredentials()

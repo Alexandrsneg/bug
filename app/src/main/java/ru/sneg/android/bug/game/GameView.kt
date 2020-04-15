@@ -8,34 +8,37 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
+import ru.sneg.android.bug.game.engine.GameState
 
 class GameView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
     override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) { }
-    override fun surfaceDestroyed(p0: SurfaceHolder?) { sfHolder = null }
-    override fun surfaceCreated(p0: SurfaceHolder?) { sfHolder = p0 }
+    override fun surfaceDestroyed(p0: SurfaceHolder?) { }
+    override fun surfaceCreated(p0: SurfaceHolder?) { render()}
 
-    private var sfHolder: SurfaceHolder? = null
+   /* private var sfHolder: SurfaceHolder? = null
         set(value) {
             field?.removeCallback(this)
             field = value
             value?.addCallback(this)
             render()
-        }
+        }*/
+
 
     private val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
 
     init {
-        sfHolder = holder
+        holder.addCallback(this)
 
         //обработчик нажатия
         setOnTouchListener {_, event ->
 
             when (event.action){
+                MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
                 MotionEvent.ACTION_UP -> onClick(event.x, event.y)
                 else -> false
             }
@@ -49,7 +52,6 @@ class GameView @JvmOverloads constructor(
 
     fun render() {
 
-        val holder = sfHolder ?: return
         var canvas: Canvas? = null
 
         try {
@@ -65,6 +67,12 @@ class GameView @JvmOverloads constructor(
         }
     }
 
+    fun setGameState(state: GameState) {
+
+        playingField.setGameState(state)
+        render()
+    }
+
     private fun render(canvas: Canvas) {
         playingField.width = width
         playingField.height = height
@@ -72,6 +80,11 @@ class GameView @JvmOverloads constructor(
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{
+
+        playingField.onClickSquare(x, y)
+        post({ render() })
+
+
         val listener = onSelectListener ?: return false
 
        playingField.onClick(x,y)?.let{  //если значения onClick не null -> срабатывет .let

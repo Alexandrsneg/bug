@@ -4,12 +4,14 @@ import android.app.Application
 import android.content.Context
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import ru.sneg.android.bug.domain.di.components.AppComponent
 
 class App : Application() {
 
     companion object {
 
         lateinit var appContext: Context
+
     }
 
     override fun onCreate() {

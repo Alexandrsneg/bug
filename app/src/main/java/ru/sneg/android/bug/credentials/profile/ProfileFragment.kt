@@ -65,7 +65,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
                     it.showGameModes()
             }
         }
-
+        //кнопка перехода на таблицу рекордов
         bScore.setOnClickListener {
             ScoreActivity.show()
         }

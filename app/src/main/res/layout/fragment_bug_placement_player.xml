@@ -22,16 +22,31 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_profile_grey"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bAutoSetUp2"
+        android:text="@string/auto_set_up_bugs"
+        android:fontFamily="@font/bones"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_big_grey"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gameView" />
 
     <Button
         android:id="@+id/bForward"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_arrow_grey"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/gameView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

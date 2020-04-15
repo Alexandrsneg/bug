@@ -24,7 +24,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="1.8"
-        android:background="@drawable/btn_big_grey"
+        android:background="@android:color/darker_gray"
         android:orientation="horizontal">
 
 

@@ -22,4 +22,5 @@
     <string name="error_password_undefined">пароли не совпадают</string>
     <string name="game_name">название игры</string>
     <string name="game_name_error">введите название игры</string>
+    <string name="auto_set_up_bugs">авто</string>
 </resources>

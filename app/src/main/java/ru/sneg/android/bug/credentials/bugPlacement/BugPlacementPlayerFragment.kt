@@ -10,6 +10,8 @@ import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
+import ru.sneg.android.bug.game.engine.GameState
+import ru.sneg.android.bug.game.engine.NetworkPlayer
 import javax.inject.Inject
 
 class BugPlacementPlayerFragment : ABaseFragment(),
@@ -22,6 +24,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
     @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
 
+
     override fun inject() {
         DaggerAppComponent.create().inject(this)
     }
@@ -29,12 +32,13 @@ class BugPlacementPlayerFragment : ABaseFragment(),
     override fun getViewId() = R.layout.fragment_bug_placement_player
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
+
         gameView.onSelectListener = {
             println(it)
+            presenter.onCell(it)
         }
 
 
@@ -43,7 +47,11 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             GameModeActivity.show()
             }
         }
+
+    override fun onRender(state: GameState) {
+        gameView.setGameState(state)
     }
+}
 
 
 

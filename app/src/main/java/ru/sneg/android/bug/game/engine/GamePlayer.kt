@@ -1,12 +1,11 @@
 package ru.sneg.android.bug.game.engine
 
-class GamePlayer(
-    val UserId: Int,
-    val UserLogin: String,
-    val action: Boolean
-
-    ) {
-
-
-
-}
+data class GamePlayer(
+    val userId: Int,
+    val userLogin: String,
+    val action: Boolean,
+    val actionType: Int,
+    val winCounter: Int,
+    val isOnline: Boolean,
+    val isReady: Boolean
+    )

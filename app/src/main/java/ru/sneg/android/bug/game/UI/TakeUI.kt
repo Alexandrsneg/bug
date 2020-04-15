@@ -5,11 +5,13 @@ import android.graphics.Color
 import android.graphics.Paint
 
 //выбор игрока
-class TakeUI : IElementUI {
+open class TakeUI(
+    val index: Int
+) : IElementUI {
 
     companion object {
         const val STATE_UNDEFINED = 0
-        const val STATE_SHIP_PART = 1 // клетка жука
+        const val STATE_BUG_PART = 1 // клетка жука
         const val STATE_MISS = 2 // промах (клетка пуста)
         const val STATE_EXPLODE = 3 // ранение
         // const val STATE_NOTHING = 4
@@ -37,7 +39,7 @@ class TakeUI : IElementUI {
 
         when (state) {
             STATE_UNDEFINED -> renderField(canvas)
-            STATE_SHIP_PART -> renderBugPart(canvas)
+            STATE_BUG_PART -> renderBugPart(canvas)
             STATE_MISS  -> renderMiss(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
             //STATE_NOTHING -> renderNothing(canvas)

@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import ru.sneg.android.bug.game.engine.GameState
-import kotlin.random.Random
+import ru.sneg.android.bug.game.gameObjects.Const
 
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
@@ -19,33 +19,22 @@ class PlayingFieldUI: IElementUI {
 
 
     init {
-        //тест отрисовки клетки жука
-        for (i in 0..3){
-            takes.add(TakeUI().apply {
-                state = 1
-            })}
-
-        //тест отрисовки клетки промаха
-        for (i in 0..2){
-            takes.add(TakeUI().apply {
-                state = 2
-            })}
-
-        //тест отрисовки клетки ранения
-        for (i in 0..1){
-            takes.add(TakeUI().apply {
-                state = 3
-            })}
-
         //заполнение игрового поля пустыми клетками (STATE_UNDEFINED)
-        for (i in 1..100)
-            takes.add(TakeUI().apply {
+        for (index in 0..99)
+            takes.add(TakeUI(index).apply {
                 state = 0
             })
-
-
     }
 
+    //обработчик нажатия на клетку поля
+    fun onClickSquare(x: Float, y: Float){
+        val x : Int = (x/(width/10)).toInt()
+        val y : Int = (y/(height/10)).toInt()
+
+        if (takes[y*10+x].state==1)  //bug_part
+              takes[y*10+x].state=3   //explode
+        else  takes[y*10+x].state=2 //miss
+    }
 
 
     override fun render(canvas: Canvas) {
@@ -81,13 +70,19 @@ class PlayingFieldUI: IElementUI {
         return takes.firstOrNull{it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y}
     }
 
-   /* fun setGameState(state: GameState){
-        val game = state.game.toTypedArray()
-        for(i in 0 until 9){
-            takes.get(i).state = when (game[i]){
-                0 -> 1
 
+    //отображение данных присланных с сервера
+    fun setGameState(state: GameState) {
+
+        val game = state.game.toTypedArray()
+        for (i in 0 until 99)
+            takes.get(i).state = when (game[i]) {
+                Const.SELECT_TYPE_SHIP_PART-> TakeUI.STATE_BUG_PART
+                Const.SELECT_TYPE_MISS -> TakeUI.STATE_MISS
+                else -> TakeUI.STATE_UNDEFINED
             }
-        }
-    }*/
+
+        if (state.winner != null)
+            println("WIN!")
+    }
 }

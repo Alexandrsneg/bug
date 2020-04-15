@@ -13,7 +13,6 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="profileBtn"
         android:background="@drawable/btn_profile_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

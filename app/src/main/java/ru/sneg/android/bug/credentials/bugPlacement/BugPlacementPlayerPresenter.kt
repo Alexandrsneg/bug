@@ -5,6 +5,10 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import ru.sneg.android.bug.domain.repositories.GameRepository
 import ru.sneg.android.bug.domain.repositories.UserRepository
+import ru.sneg.android.bug.game.UI.TakeUI
+import ru.sneg.android.bug.game.engine.GameState
+import ru.sneg.android.bug.game.engine.NetworkPlayer
+import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
 @InjectViewState
@@ -12,7 +16,8 @@ class BugPlacementPlayerPresenter : MvpPresenter<IBugPlaycementPlayerView> {
 
     private val gameRepository: GameRepository
     private val userRepository: UserRepository
-   // private val handler: Handler()
+    private var player: NetworkPlayer? = null
+    private val handler = Handler()
 
 
 
@@ -22,11 +27,48 @@ class BugPlacementPlayerPresenter : MvpPresenter<IBugPlaycementPlayerView> {
         this.userRepository = userRepository
     }
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
 
-    fun BugPlacementPlayer (str: String){
+        fun BugPlacementPlayer(str: String) {
+            gameRepository.BugPlacementPlayerShow()
+        }
 
-        gameRepository.BugPlacementPlayerShow()
+        /*val tokenProvider: () -> String = {
+            userRepository.getUser()?.token?.access
+                ?: throw IllegalStateException("Undefined token")
+        }
+
+        val onErrorAuthListener: () -> String = {
+            val token =
+                userRepository.getUser()?.token ?: throw IllegalStateException("Token undefined")
+            userRepository.refreshToken(token)?.access
+                ?: throw IllegalStateException("Token undefined")
+        }
+
+        val renderCounter = AtomicInteger()  // к переменным можно обращаться только из одного потока, без паралельности, + отсутствует кэширование
+
+        val renderListener: (GameState) -> Unit = {
+            println(it)
+
+            handler.post { viewState.onRender(it) }
+            if (renderCounter.getAndIncrement() == 0)
+                player?.ready()
+        }
+
+               player = NetworkPlayer(
+           "212.75.210.227", 3456,
+           tokenProvider, onErrorAuthListener, renderListener
+        ).apply {
+            start()
+        }*/
+
 
     }
 
+    fun onCell(take: TakeUI) {
+        player?.cell(take.index)
+    }
 }
+
+
