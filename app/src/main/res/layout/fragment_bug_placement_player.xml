@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bAutoSetUp2"
+        android:id="@+id/bAutoSetUp"
         android:text="@string/auto_set_up_bugs"
         android:fontFamily="@font/bones"
         android:layout_width="60dp"

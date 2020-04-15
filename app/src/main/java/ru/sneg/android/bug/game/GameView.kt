@@ -50,6 +50,11 @@ class GameView @JvmOverloads constructor(
         postDelayed({ render() }, 2000)
     }
 
+    fun autoPlacing(){
+        playingField.fourBugPlacing()
+        render()
+    }
+
     fun render() {
 
         var canvas: Canvas? = null
@@ -81,8 +86,8 @@ class GameView @JvmOverloads constructor(
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
-        playingField.onClickSquare(x, y)
-        post({ render() })
+        playingField.onClickField(x, y)
+        render()
 
 
         val listener = onSelectListener ?: return false

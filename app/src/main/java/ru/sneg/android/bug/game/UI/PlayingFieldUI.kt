@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
+import kotlin.random.Random
 
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
@@ -27,13 +28,26 @@ class PlayingFieldUI: IElementUI {
     }
 
     //обработчик нажатия на клетку поля
-    fun onClickSquare(x: Float, y: Float){
+    fun onClickField(x: Float, y: Float){
         val x : Int = (x/(width/10)).toInt()
         val y : Int = (y/(height/10)).toInt()
 
         if (takes[y*10+x].state==1)  //bug_part
               takes[y*10+x].state=3   //explode
         else  takes[y*10+x].state=2 //miss
+    }
+
+    fun fourBugPlacing () {
+
+        for (i in 1..1) {
+            val random = 31 + Math.random() * 70
+            //возможные вертикальные расстановки 4 палубника
+            var i: Int = random.toInt()
+            takes[i].state = 1
+            takes[i - 10].state = 1
+            takes[i - 20].state = 1
+            takes[i - 30].state = 1
+        }
     }
 
 

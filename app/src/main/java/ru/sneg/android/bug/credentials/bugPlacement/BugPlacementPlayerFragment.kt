@@ -46,6 +46,10 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         bProfile.setOnClickListener {
             GameModeActivity.show()
             }
+
+        bAutoSetUp.setOnClickListener {
+            gameView.autoPlacing()
+        }
         }
 
     override fun onRender(state: GameState) {
