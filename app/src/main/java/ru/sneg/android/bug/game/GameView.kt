@@ -27,6 +27,7 @@ class GameView @JvmOverloads constructor(
         }*/
 
 
+
     private val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
@@ -51,7 +52,10 @@ class GameView @JvmOverloads constructor(
     }
 
     fun autoPlacing(){
-        playingField.fourBugPlacing()
+        playingField.autoBugsPlacing(1,4)
+        playingField.autoBugsPlacing(2,3)
+        playingField.autoBugsPlacing(3,2)
+        playingField.autoBugsPlacing(4,1)
         render()
     }
 
@@ -86,8 +90,8 @@ class GameView @JvmOverloads constructor(
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
-        playingField.onClickField(x, y)
-        render()
+            playingField.onClickFieldBugFour(x, y)
+            render()
 
 
         val listener = onSelectListener ?: return false

@@ -4,6 +4,9 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.os.Bundle
+import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
+import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
 import kotlin.random.Random
@@ -11,12 +14,21 @@ import kotlin.random.Random
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
 
+    companion object {
+
+        var fourPartBug: Int = 1
+        var threePartBug: Int = 2
+        var twoPartBug: Int = 3
+        var onePartBug: Int = 4
+
+        var chooseHorizontal: Int = 0
+    }
+
     private val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
     private val bgPaint = Paint().apply { color = Color.DKGRAY }
 
     var width: Int = 0
     var height: Int = 0
-
 
     init {
         //заполнение игрового поля пустыми клетками (STATE_UNDEFINED)
@@ -27,112 +39,198 @@ class PlayingFieldUI: IElementUI {
     }
 
     //обработчик нажатия на клетку поля
-    fun onClickField(x: Float, y: Float) {
+    fun onClickFieldBugFour(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
+        val y: Int = (y / (height / 10)).toInt()
+
+        val i: Int = y * 10 + x
+
+
+        if (fourPartBug > 0) {
+            if (i in 0..99) {
+                //горизонтальная установка и удаление на первых трех строках
+                if (i in 0..6 || i in 10..16 || i in 20..26) {
+                    for (s in 0..3) takes[i + s].state = 1;
+
+                    if (chooseHorizontal == 1 || chooseHorizontal == 2) {
+                        for (s in 0..3) takes[i + s].state = 0;
+                    }
+                }
+                //вертикальная установка по всему полю кроме первых трех строк
+                if (chooseHorizontal == 0 && i in 30..99) {
+                    for (s in 0..3) takes[i - s * 10].state = 1;
+                }
+                // удаление вертикальных кораблей в последних трех столбах
+                if (!(i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1 || chooseHorizontal == 2)) {
+                    for (s in 0..3) takes[i - s * 10].state = 0;
+                    chooseHorizontal = 2
+                }
+                //горизонтальное расположение кораблей кроме последних трех столбцов
+                if ((i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
+                    for (s in 0..3) takes[i + s].state = 1;
+                    for (s in 1..3) takes[i - s * 10].state = 0;
+                }
+                //удаление горизонтального корабля, завершение цикла установки корабля
+                if (chooseHorizontal == 2 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
+                    for (s in 0..3) takes[i + s].state = 0;
+                }
+                chooseHorizontal++
+                if (chooseHorizontal == 3) {
+                    chooseHorizontal = 0
+                }
+            }
+        } else if (threePartBug > 0) {
+            if (i in 0..99) {
+                //горизонтальная установка и удаление на первых трех строках
+                if (i in 0..7 || i in 10..17) {
+                    for (s in 0..2) takes[i + s].state = 1;
+
+                    if (chooseHorizontal == 1) {
+                        for (s in 0..2) takes[i + s].state = 0;
+                        chooseHorizontal = 2
+                    }
+                }
+                //вертикальная установка и удаление по всему полю кроме первых двух строк
+                if (chooseHorizontal == 0 && i in 20..99) {
+                    for (s in 0..2) takes[i - s * 10].state = 1;
+                }
+                // удаление вертикальных кораблей в последних двух столбах
+                if (!(i in 0..7 || i in 10..17 || i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && chooseHorizontal == 1) {
+                    for (s in 0..2) takes[i - s * 10].state = 0;
+                    chooseHorizontal = 2
+                }
+                //горизонтальное расположение кораблей кроме последних трех столбцов
+                if ((i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && (chooseHorizontal == 1)) {
+                    for (s in 0..2) takes[i + s].state = 1;
+                    for (s in 1..2) takes[i - s * 10].state = 0;
+                }
+                //удаление горизонтального корабля, завершение цикла установки корабля
+                if (chooseHorizontal == 2 && (i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97)) {
+                    for (s in 0..2) takes[i + s].state = 0;
+                }
+                chooseHorizontal++
+                if (chooseHorizontal == 3) {
+                    chooseHorizontal = 0
+                }
+            }
+        } else if (twoPartBug > 0) {
+            if (i in 0..99) {
+                //горизонтальная установка и удаление на первой строке
+                if (i in 0..8) {
+                    for (s in 0..1) takes[i + s].state = 1;
+
+                    if (chooseHorizontal == 1) {
+                        for (s in 0..1) takes[i + s].state = 0;
+                        chooseHorizontal = 2
+                    }
+                }
+                //вертикальная установка по всему полю кроме первой строки
+                if (chooseHorizontal == 0 && i in 10..99) {
+                    for (s in 0..1) takes[i - s * 10].state = 1;
+                }
+                // удаление вертикальных кораблей в последних двух столбах
+                if (!(i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88|| i in 90..98) && chooseHorizontal == 1) {
+                    for (s in 0..1) takes[i - s * 10].state = 0;
+                    chooseHorizontal = 2
+                }
+                //горизонтальное расположение кораблей кроме последних трех столбцов
+                if ((i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && (chooseHorizontal == 1)) {
+                    for (s in 0..1) takes[i + s].state = 1;
+                    for (s in 1..1) takes[i - s * 10].state = 0;
+                }
+                //удаление горизонтального корабля, завершение цикла установки корабля
+                if (chooseHorizontal == 2 && (i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98)) {
+                    for (s in 0..1) takes[i + s].state = 0;
+                }
+                chooseHorizontal++
+                if (chooseHorizontal == 3) {
+                    chooseHorizontal = 0
+                }
+            }
+        }else if (onePartBug > 0) {
+            if (i in 0..99) {
+                    takes[i].state = 1;
+                    if (chooseHorizontal == 2) {
+                         takes[i].state = 0;
+                    }
+                onePartBug--
+            }
+        }
+
+
+        /* val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
 
         if (takes[y * 10 + x].state == 1)  //bug_part
             takes[y * 10 + x].state = 3   //explode
-        else takes[y * 10 + x].state = 2 //miss
-    }
+        else takes[y * 10 + x].state = 2 //miss*/
 
-    fun fourBugPlacing() {
+        fun autoBugsPlacing(kol: Int, parts: Int) {
+            var count: Int = 1
 
-        for (i in 1..1) {
-            val random = 31 + Math.random() * 70
-            //возможные вертикальные расстановки 4 палубника
-            var i: Int = random.toInt()
-            takes[i-1].state = 1
-            takes[i-1 - 10].state = 1
-            takes[i-1 - 20].state = 1
-            takes[i-1 - 30].state = 1
+            while (count <= kol) {
 
-            if (i == 40) {
-                //если корабль стоит в крайней правой колонке в верхнем углу
-                takes[i - 1 + 9].state = 2; takes[i - 1 + 10].state = 2
-                takes[i - 1 - 1].state = 2
-                takes[i - 1 - 11].state = 2
-                takes[i - 1 - 21].state = 2
-                takes[i - 1 - 31].state = 2
-            }
+                val random = Random(System.currentTimeMillis())
+                var kx: Int = random.nextInt(10 - (parts - 1))
+                var ky: Int = random.nextInt(10 - (parts - 1))
+                var j: Int = random.nextInt(2)
 
-            if (i == 31) {
-                //если корабль стоит в крайней левой колонке в верхнем углу
-                takes[i - 1 + 10].state = 2; takes[i - 1 + 11].state = 2; takes[i - 1 + 1].state = 2
-                takes[i - 1 - 9].state = 2
-                takes[i - 1 - 19].state = 2
-                takes[i - 1 - 29].state = 2
-            }
-
-            if (i == 100) {
-                //если корабль стоит в крайней правой колонке в нижнем углу
-                takes[i - 1 - 1].state = 2
-                takes[i - 1 - 11].state = 2
-                takes[i - 1 - 21].state = 2
-                takes[i - 1 - 31].state = 2; takes[i - 1 - 40].state = 2; takes[i - 1 - 41].state =
-                    2;
-            }
-
-            if (i == 91) {
-                //если корабль стоит в крайней левой колонке в нижнем углу
-                takes[i - 1 + 1].state = 2;
-                takes[i - 1 - 9].state = 2
-                takes[i - 1 - 19].state = 2
-                takes[i - 1 - 29].state = 2; takes[i - 1 - 30].state = 2; takes[i - 1 - 40].state =
-                    2;
-            }
-            if (i % 10 == 0 && i != 100 && i != 40) {
-                //если корабль стоит в крайней правой колонке
-                takes[i - 1 - 1].state = 2; takes[i - 1 + 9].state = 2; takes[i - 1 + 10].state = 2;
-                takes[i - 1 - 11].state = 2
-                takes[i - 1 - 21].state = 2
-                takes[i - 1 - 31].state = 2; takes[i - 1 - 40].state = 2; takes[i - 1 - 41].state =
-                    2;
-            }
-            if (i % 10 == 1 && i != 91 && i != 31) {
-                //если корабль стоит в крайней левой колонке
-                takes[i - 1 + 1].state = 2; takes[i - 1 + 10].state = 2; takes[i - 1 + 11].state = 2
-                takes[i - 1 - 9].state = 2
-                takes[i - 1 - 19].state = 2
-                takes[i - 1 - 29].state = 2; takes[i - 1 - 39].state = 2; takes[i - 1 - 40].state =
-                    2;
-            }
-            if (i in 32..39) {
-                //если корабль стоит по верхней строке
-                takes[i - 1 - 1].state = 2; takes[i - 1 + 1].state = 2; takes[i - 1 + 9].state =
-                    2; takes[i - 1 + 10].state = 2; takes[i - 1 + 11].state = 2;
-
-                takes[i - 1 - 1].state = 2; takes[i - 1 + 1].state = 2;
-
-                takes[i - 1 - 11].state = 2; takes[i - 1 - 9].state = 2;
-                takes[i - 1 - 21].state = 2; takes[i - 1 - 19].state = 2;
-                takes[i - 1 - 31].state = 2; takes[i - 1 - 29].state = 2;
-            }
-            if (i in 92..99) {
-                //если корабль стоит в нижней строке
-                takes[i - 1 - 1].state = 2; takes[i - 1 + 1].state = 2;
-
-                takes[i - 1 - 11].state = 2; takes[i - 1 - 9].state = 2;
-                takes[i - 1 - 21].state = 2; takes[i - 1 - 19].state = 2;
-
-                takes[i - 1 - 31].state = 2; takes[i - 1 - 29].state = 2; takes[i - 1 - 39].state =
-                    2; takes[i - 1 - 40].state = 2; takes[i - 1 - 41].state = 2;
-            }
-                if ((i in 42..49) || (i in 52..59) || (i in 62..69) || (i in 72..79)|| (i in 82..89)) {
-                    //не пограничные варианты расположения корабля
-                    takes[i - 1 - 1].state = 2; takes[i - 1 + 1].state = 2; takes[i - 1 + 9].state =
-                    2; takes[i - 1 + 10].state = 2; takes[i - 1 + 11].state = 2;
-
-                     takes[i - 1 - 11].state = 2; takes[i - 1 - 9].state = 2;
-                     takes[i - 1 - 21].state = 2; takes[i - 1 - 19].state = 2;
-
-                    takes[i - 1 - 31].state = 2; takes[i - 1 - 29].state = 2; takes[i - 1 - 39].state =
-                    2; takes[i - 1 - 40].state = 2; takes[i - 1 - 41].state = 2;
+                if (j == 0) {
+                    //вертикальная постановка
+                    if (chek(parts, 0, kx, ky) == 0) {
+                        for (i in 1..parts) {
+                            takes[(ky + i - 1) * 10 + kx].state = 1
+                        }
+                        count++
+                    }
+                } else {
+                    //горизонтальная
+                    if (chek(parts, 1, kx, ky) == 0) {
+                        for (i in 1..parts) {
+                            takes[ky * 10 + kx + i - 1].state = 1
+                        }
+                        count++
+                    }
                 }
-
             }
         }
 
+
+        fun chek(part: Int, j: Int, x: Int, y: Int): Int {
+            var s: Int = 0
+            if (j == 0) {
+                //vertical
+                var a: Int = x - 1
+                var b: Int = x + 1
+                var c: Int = y - 1
+                var d: Int = y + part
+                //проверка не вышли ли за пределы поля
+                if (a == -1) a++
+                if (b == 10) b--
+                if (c == -1) c++
+                if (d == 10) d--
+
+                for (i in a..b)
+                    for (j in c..d)
+                        if (takes[j * 10 + i].state == 1)
+                            s++
+            } else {//gorizontal
+                var a: Int = x - 1
+                var b: Int = x + part
+                var c: Int = y - 1
+                var d: Int = y + 1
+                if (a == -1) a++
+                if (b == 10) b--
+                if (c == -1) c++
+                if (d == 10) d--
+
+                for (i in a..b)
+                    for (j in c..d)
+                        if (takes[j * 10 + i].state == 1)
+                            s++
+            }
+            return s
+        }
 
         override fun render(canvas: Canvas) {
 
@@ -183,3 +281,4 @@ class PlayingFieldUI: IElementUI {
                 println("WIN!")
         }
     }
+

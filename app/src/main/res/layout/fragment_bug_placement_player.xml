@@ -6,6 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".credentials.bugPlacement.BugPlacementPlayerFragment">
 
+    <TextView
+        android:id="@+id/tvCountBugOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsOne"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsOne" />
+
+    <Button
+        android:id="@+id/bCountBugsOne"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/btn_big_grey"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugsTwo"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugsTwo" />
+
+    <Button
+        android:id="@+id/bCountBugsThree"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/btn_big_grey"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugFour"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugFour" />
+
+    <Button
+        android:id="@+id/bCountBugsTwo"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/btn_big_grey"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugsThree"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugsThree" />
+
     <ru.sneg.android.bug.game.GameView
         android:id="@+id/gameView"
         android:layout_width="300dp"
@@ -49,4 +86,45 @@
         android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gameView" />
+
+    <Button
+        android:id="@+id/bCountBugFour"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/btn_big_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCountBugFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugFour"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugFour" />
+
+    <TextView
+        android:id="@+id/tvCountBugThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsThree"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsThree" />
+
+    <TextView
+        android:id="@+id/tvCountBugTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsTwo"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsTwo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
