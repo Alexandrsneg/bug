@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
+import java.util.stream.IntStream
 import kotlin.random.Random
 
 //отображение игрового поля
@@ -24,10 +25,13 @@ class PlayingFieldUI: IElementUI {
         var bugsRemaining: Int = 10
 
         var chooseHorizontal: Int = 0
+
+        val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
     }
 
-    private val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
     private val bgPaint = Paint().apply { color = Color.DKGRAY }
+
+
 
     var width: Int = 0
     var height: Int = 0
@@ -39,6 +43,8 @@ class PlayingFieldUI: IElementUI {
                 state = 0
             })
     }
+
+
 
     //обработчик нажатия на клетку поля
     fun onClickFieldBugFour(x: Float, y: Float) {
@@ -53,7 +59,6 @@ class PlayingFieldUI: IElementUI {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..6 || i in 10..16 || i in 20..26) {
                     for (s in 0..3) takes[i + s].state = 1;
-
                     if (chooseHorizontal == 1 || chooseHorizontal == 2) {
                         for (s in 0..3) takes[i + s].state = 0;
                     }

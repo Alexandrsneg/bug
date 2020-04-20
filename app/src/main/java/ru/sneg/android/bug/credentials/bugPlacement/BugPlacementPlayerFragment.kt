@@ -32,6 +32,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         DaggerAppComponent.create().inject(this)
     }
 
+
     override fun getViewId() = R.layout.fragment_bug_placement_player
 
 
@@ -60,63 +61,56 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             gameView.autoPlacing()
         }
 
-       /* bCountBugFour.setOnClickListener {
-            PlayingFieldUI.chooseHorizontal = 0
-
-            if (PlayingFieldUI.fourPartBug > 0) {
-                PlayingFieldUI.fourPartBug--
-            }
-            tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
-        }
-        bCountBugsThree.setOnClickListener {
-            PlayingFieldUI.chooseHorizontal = 0
-
-            if (PlayingFieldUI.threePartBug > 0) {
-                PlayingFieldUI.threePartBug--
-            }
-            tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
-        }
-        bCountBugsTwo.setOnClickListener {
-            PlayingFieldUI.chooseHorizontal = 0
-
-            if (PlayingFieldUI.twoPartBug > 0) {
-                PlayingFieldUI.twoPartBug--
-            }
-            tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
-        }
-        bCountBugsOne.setOnClickListener {
-
-            tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
-        }*/
         bAcceptBug.setOnClickListener {
             PlayingFieldUI.chooseHorizontal = 0
 
-            if (PlayingFieldUI.bugsRemaining == 10) {
-                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
-                PlayingFieldUI.fourPartBug--
-                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+            var sum: Int = 0
+            for (i in 0..99) {
+                sum += PlayingFieldUI.takes[i].state
             }
 
+            if (PlayingFieldUI.bugsRemaining == 10 && sum == 4) {
+                PlayingFieldUI.fourPartBug--
+                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+                PlayingFieldUI.bugsRemaining--
+                return@setOnClickListener
+            }
+
+              else if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
+                toast(stringId = R.string.extra_bugs_on_field)
+              }
+            else if (PlayingFieldUI.bugsRemaining == 10 && sum < 4 ){
+                toast(stringId = R.string.not_enougth_bugs_on_field)
+            }
+
+
             if (PlayingFieldUI.bugsRemaining in 8..9) {
-                tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
                 PlayingFieldUI.threePartBug--
                 tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+                PlayingFieldUI.bugsRemaining--
+                return@setOnClickListener
             }
 
             if (PlayingFieldUI.bugsRemaining in 5..7) {
-                tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
                 PlayingFieldUI.twoPartBug--
                 tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+                PlayingFieldUI.bugsRemaining--
+                return@setOnClickListener
             }
 
             if (PlayingFieldUI.bugsRemaining in 1..4) {
-                tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
                 PlayingFieldUI.onePartBug--
                 tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+                PlayingFieldUI.bugsRemaining--
+                return@setOnClickListener
             }
-            PlayingFieldUI.bugsRemaining--
         }
     }
+
+    fun sumChek(){
+
+    }
+
 
     override fun onRender(state: GameState) {
         gameView.setGameState(state)

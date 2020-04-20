@@ -23,4 +23,6 @@
     <string name="game_name_error">enter name of the game</string>
     <string name="auto_set_up_bugs">auto</string>
     <string name="accept_bug">accept bug</string>
+    <string name="extra_bugs_on_field">delete excess bugs</string>
+    <string name="not_enougth_bugs_on_field">add bugs</string>
 </resources>

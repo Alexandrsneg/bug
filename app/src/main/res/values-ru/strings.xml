@@ -24,4 +24,6 @@
     <string name="game_name_error">введите название игры</string>
     <string name="auto_set_up_bugs">авто</string>
     <string name="accept_bug">установить</string>
+    <string name="extra_bugs_on_field">уберите лишних жуков</string>
+    <string name="not_enougth_bugs_on_field">на поле не хватает жуков</string>
 </resources>
