@@ -21,6 +21,8 @@ class PlayingFieldUI: IElementUI {
         var twoPartBug: Int = 3
         var onePartBug: Int = 4
 
+        var bugsRemaining: Int = 10
+
         var chooseHorizontal: Int = 0
     }
 
@@ -129,7 +131,7 @@ class PlayingFieldUI: IElementUI {
                     for (s in 0..1) takes[i - s * 10].state = 1;
                 }
                 // удаление вертикальных кораблей в последних двух столбах
-                if (!(i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88|| i in 90..98) && chooseHorizontal == 1) {
+                if (!(i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && chooseHorizontal == 1) {
                     for (s in 0..1) takes[i - s * 10].state = 0;
                     chooseHorizontal = 2
                 }
@@ -147,15 +149,19 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        }else if (onePartBug > 0) {
-            if (i in 0..99) {
-                    takes[i].state = 1;
-                    if (chooseHorizontal == 2) {
-                         takes[i].state = 0;
-                    }
-                onePartBug--
+        } else if (onePartBug > 0) {
+                takes[i].state = 1;
+                if (chooseHorizontal == 1) {
+                    takes[i].state = 0;
+                    chooseHorizontal == 2
+                    chooseHorizontal++
+                }
+                chooseHorizontal++
+                if (chooseHorizontal == 3) {
+                    chooseHorizontal = 0
+                }
             }
-        }
+    }
 
 
         /* val x: Int = (x / (width / 10)).toInt()

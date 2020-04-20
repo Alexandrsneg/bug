@@ -60,7 +60,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             gameView.autoPlacing()
         }
 
-        bCountBugFour.setOnClickListener {
+       /* bCountBugFour.setOnClickListener {
             PlayingFieldUI.chooseHorizontal = 0
 
             if (PlayingFieldUI.fourPartBug > 0) {
@@ -85,12 +85,36 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
         }
         bCountBugsOne.setOnClickListener {
+
+            tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+        }*/
+        bAcceptBug.setOnClickListener {
             PlayingFieldUI.chooseHorizontal = 0
 
-            if (PlayingFieldUI.onePartBug > 0) {
-                PlayingFieldUI.onePartBug--
+            if (PlayingFieldUI.bugsRemaining == 10) {
+                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+                PlayingFieldUI.fourPartBug--
+                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
             }
-            tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+
+            if (PlayingFieldUI.bugsRemaining in 8..9) {
+                tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+                PlayingFieldUI.threePartBug--
+                tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+            }
+
+            if (PlayingFieldUI.bugsRemaining in 5..7) {
+                tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+                PlayingFieldUI.twoPartBug--
+                tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+            }
+
+            if (PlayingFieldUI.bugsRemaining in 1..4) {
+                tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+                PlayingFieldUI.onePartBug--
+                tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+            }
+            PlayingFieldUI.bugsRemaining--
         }
     }
 
