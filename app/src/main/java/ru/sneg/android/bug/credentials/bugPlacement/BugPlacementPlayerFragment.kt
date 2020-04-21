@@ -7,13 +7,12 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
-import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.GameView
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
+import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
-import ru.sneg.android.bug.game.engine.NetworkPlayer
 import javax.inject.Inject
 class BugPlacementPlayerFragment : ABaseFragment(),
     IBugPlaycementPlayerView {
@@ -31,6 +30,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
     override fun inject() {
         DaggerAppComponent.create().inject(this)
     }
+
 
 
     override fun getViewId() = R.layout.fragment_bug_placement_player
@@ -61,12 +61,41 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             gameView.autoPlacing()
         }
 
+        // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
+        bCleanFields.setOnClickListener {
+            PlayingFieldUI.fourPartBug = 1
+            PlayingFieldUI.threePartBug = 2
+            PlayingFieldUI.twoPartBug = 3
+            PlayingFieldUI.onePartBug = 4
+
+            PlayingFieldUI.bugsRemaining = 10
+
+            tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+            tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+            tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+            tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+
+            PlayingFieldUI.chooseHorizontal = 0
+            for (index in 0..99) {
+                PlayingFieldUI.takes[index].state = 0
+            }
+            gameView.render()
+        }
+
+
         bAcceptBug.setOnClickListener {
             PlayingFieldUI.chooseHorizontal = 0
 
             var sum: Int = 0
             for (i in 0..99) {
                 sum += PlayingFieldUI.takes[i].state
+            }
+
+            if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
+                toast(stringId = R.string.extra_bugs_on_field)
+            }
+            if (PlayingFieldUI.bugsRemaining == 10 && sum < 4 ){
+                toast(stringId = R.string.not_enougth_bugs_on_field)
             }
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum == 4) {
@@ -76,33 +105,43 @@ class BugPlacementPlayerFragment : ABaseFragment(),
                 return@setOnClickListener
             }
 
-              else if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
-                toast(stringId = R.string.extra_bugs_on_field)
-              }
-            else if (PlayingFieldUI.bugsRemaining == 10 && sum < 4 ){
-                toast(stringId = R.string.not_enougth_bugs_on_field)
-            }
-
-
-            if (PlayingFieldUI.bugsRemaining in 8..9) {
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum == (4 + (9 - 3*PlayingFieldUI.threePartBug))) {
                 PlayingFieldUI.threePartBug--
                 tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum > (4 + (9 - 3*PlayingFieldUI.threePartBug))){
+                toast(stringId = R.string.extra_bugs_on_field)
+            }
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum < (4 + (9 - 3*PlayingFieldUI.threePartBug))){
+                toast(stringId = R.string.not_enougth_bugs_on_field)
+            }
 
-            if (PlayingFieldUI.bugsRemaining in 5..7) {
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum == (10 + (8 - 2*PlayingFieldUI.twoPartBug))) {
                 PlayingFieldUI.twoPartBug--
                 tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum > (10 + (8 - 2*PlayingFieldUI.twoPartBug))){
+                toast(stringId = R.string.extra_bugs_on_field)
+            }
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum < (10 + (8 - 2*PlayingFieldUI.twoPartBug))){
+                toast(stringId = R.string.not_enougth_bugs_on_field)
+            }
 
-            if (PlayingFieldUI.bugsRemaining in 1..4) {
+            if (PlayingFieldUI.bugsRemaining in 1..4 && sum == (16 + (5 - PlayingFieldUI.onePartBug))) {
                 PlayingFieldUI.onePartBug--
                 tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
+            }
+            if (PlayingFieldUI.bugsRemaining in 1..4 && sum > (16 + (5 - PlayingFieldUI.onePartBug))){
+                toast(stringId = R.string.extra_bugs_on_field)
+            }
+            if (PlayingFieldUI.bugsRemaining in 1..4 && sum < (16 + (5 - PlayingFieldUI.onePartBug))){
+                toast(stringId = R.string.not_enougth_bugs_on_field)
             }
         }
     }

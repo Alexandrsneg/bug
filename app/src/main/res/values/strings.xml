@@ -25,4 +25,5 @@
     <string name="accept_bug">accept bug</string>
     <string name="extra_bugs_on_field">delete excess bugs</string>
     <string name="not_enougth_bugs_on_field">add bugs</string>
+    <string name="clean_field">clean field</string>
 </resources>
