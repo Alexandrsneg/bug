@@ -53,6 +53,12 @@ class UserRepository {
 
         return null
     }
-
-
+//получение списка всех пользователей SWAGER
+    fun users(observer: SubRX<List<User>>, token: Token?) {
+        if (token != null) {
+            rest.users(accessToken = token.access)
+                .doOnNext { storage.save(it) }
+                .standardSubscribeIO(observer)
+        }
+    }
 }

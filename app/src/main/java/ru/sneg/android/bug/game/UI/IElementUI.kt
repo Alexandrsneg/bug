@@ -5,4 +5,5 @@ import android.graphics.Canvas
 interface IElementUI {
 
     fun render(canvas: Canvas)
+    fun renderSecond(canvas: Canvas)
 }

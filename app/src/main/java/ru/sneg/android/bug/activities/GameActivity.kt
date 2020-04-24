@@ -9,6 +9,7 @@ import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseActivity
+import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
 class GameActivity : ABaseActivity(), IBattleGroundsRouter {
@@ -46,5 +47,14 @@ class GameActivity : ABaseActivity(), IBattleGroundsRouter {
 
     override fun showBugPlaycement() {
         replace(BugPlacementPlayerFragment())
+    }
+
+
+    override fun showBugPlaycementSecond() {
+        replace(BugPlacementPlayerSecondFragment())
+    }
+
+    override fun showBugVsBugGame() {
+
     }
 }

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".credentials.bugPlacement.BugPlacementPlayerFragment">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_marginStart="24dp"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsOne"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsOne"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsOne" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_marginStart="24dp"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsTwo"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsTwo"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsTwo" />
+
+    <Button
+        android:id="@+id/bAcceptBug"
+        android:layout_width="117dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/btn_big_grey"
+        android:fontFamily="@font/bones"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/accept_bug"
+        app:layout_constraintEnd_toEndOf="@+id/tvCountBugOne"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugsOne"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugsOne" />
+
+    <TextView
+        android:id="@+id/tvCountBugOneS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="tv"
+        android:textSize="20sp"
+        android:fontFamily="@font/bones"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsOne"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsOne"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsOne" />
+
+
+    <ImageView
+        android:id="@+id/bCountBugsOne"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bugs_circle_one"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugsTwo"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugsTwo" />
+
+    <ImageView
+        android:id="@+id/bCountBugFour"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/bugs_circle_four"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCountBugFourS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="tv"
+        android:textSize="20sp"
+        android:fontFamily="@font/bones"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugFour"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugFour"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugFour" />
+
+    <TextView
+        android:id="@+id/tvCountBugThreeS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="tv"
+        android:textSize="20sp"
+        android:fontFamily="@font/bones"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsThree"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsThree"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsThree" />
+
+    <TextView
+        android:id="@+id/tvCountBugTwoS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="tv"
+        android:textSize="20sp"
+        android:fontFamily="@font/bones"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsTwo"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsTwo"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsTwo" />
+
+    <ImageView
+        android:id="@+id/bCountBugsThree"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bugs_circle_three"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugFour"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugFour" />
+
+    <ImageView
+        android:id="@+id/bCountBugsTwo"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bugs_circle_two"
+        app:layout_constraintStart_toStartOf="@+id/bCountBugsThree"
+        app:layout_constraintTop_toBottomOf="@+id/bCountBugsThree" />
+
+
+
+    <ru.sneg.android.bug.game.GameViewSecondPlayer
+        android:id="@+id/gameViewSecond"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/bAutoSetUp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_big_grey"
+        android:fontFamily="@font/bones"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/auto_set_up_bugs"
+        app:layout_constraintBottom_toBottomOf="@+id/gameViewSecond"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gameViewSecond" />
+
+    <Button
+        android:id="@+id/bCleanFields"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/btn_emty_red"
+        android:fontFamily="@font/bones"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/clean_field"
+        app:layout_constraintBottom_toTopOf="@+id/bAutoSetUp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/bForward"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_arrow_grey"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bAutoSetUp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_marginStart="24dp"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugsThree"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugsThree"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugsThree" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="X"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/bCountBugFour"
+        app:layout_constraintStart_toEndOf="@+id/bCountBugFour"
+        app:layout_constraintTop_toTopOf="@+id/bCountBugFour" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

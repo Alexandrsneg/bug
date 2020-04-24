@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
 @InjectViewState
-class BugPlacementPlayerPresenter : MvpPresenter<IBugPlaycementPlayerView> {
+class BugPlacementPlayerSecondPresenter : MvpPresenter<IBugPlaycementPlayerSecondView> {
 
     private val gameRepository: GameRepository
     private val userRepository: UserRepository
@@ -30,7 +30,7 @@ class BugPlacementPlayerPresenter : MvpPresenter<IBugPlaycementPlayerView> {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-        fun BugPlacementPlayer(str: String) {
+        fun BugPlacementPlayerSecond(str: String) {
             gameRepository.BugPlacementPlayerShow()
         }
 

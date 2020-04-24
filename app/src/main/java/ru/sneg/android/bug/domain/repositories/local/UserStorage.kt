@@ -11,6 +11,7 @@ import javax.inject.Inject
 
 class UserStorage {
 
+    private lateinit var score: List<User?>
     private var user: User? = null
 
     @Inject
@@ -58,6 +59,16 @@ class UserStorage {
 
         Realm.getDefaultInstance().use {
             return it.where(UserRealm::class.java).findFirst()?.toBase().apply { user = this }
+        }
+    }
+
+    fun save(score: List<User?>) {
+        this.score = score
+
+        Realm.getDefaultInstance().use {
+            it.executeTransaction { realm ->
+                user.toRealm()?.let { realm.copyToRealmOrUpdate(it) }
+            }
         }
     }
 }

@@ -46,6 +46,16 @@ open class TakeUI(
         }
     }
 
+    override fun renderSecond(canvas: Canvas) {
+        when (state) {
+            STATE_UNDEFINED -> renderField(canvas)
+            STATE_BUG_PART -> renderBugPart(canvas)
+            STATE_MISS  -> renderMiss(canvas)
+            STATE_EXPLODE -> renderExplode(canvas)
+            //STATE_NOTHING -> renderNothing(canvas)
+        }
+    }
+
     //функция отрисовки игрового поля
     private fun renderField(canvas: Canvas) {
         val x = x.toFloat()

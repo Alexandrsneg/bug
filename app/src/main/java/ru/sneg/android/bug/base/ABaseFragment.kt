@@ -1,17 +1,18 @@
 package ru.sneg.android.bug.base
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.arellomobile.mvp.MvpAppCompatFragment
 
+
 abstract class ABaseFragment : MvpAppCompatFragment(), IBaseView {
+
 
     init {
         inject()

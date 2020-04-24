@@ -4,10 +4,7 @@ package ru.sneg.android.bug.domain.repositories.rest.service
 import ru.sneg.android.bug.domain.repositories.models.rest.User
 import io.reactivex.Observable
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 import ru.sneg.android.bug.domain.repositories.models.rest.Token
 
 interface IUserRestApiService {
@@ -32,4 +29,7 @@ interface IUserRestApiService {
     fun refreshToken(
         @Header("refresh_token") refreshToken: String
     ): Call<Token>
+
+    @GET("/user/v1/users")
+    fun users(@Header("access_token") accessToken: String): Observable<List<User>>
 }
