@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.game
+package ru.sneg.android.bug.game.gameViews
 
 import android.content.Context
 import android.graphics.Canvas
@@ -10,7 +10,7 @@ import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 
-class GameView @JvmOverloads constructor(
+class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
@@ -76,27 +76,27 @@ class GameView @JvmOverloads constructor(
         }
     }
 
-    fun setGameState(state: GameState) {
+    fun setGameStateSecond(state: GameState) {
 
-        playingField.setGameStateOne(state)
+        playingField.setGameStateSecond(state)
         render()
     }
 
     private fun render(canvas: Canvas) {
         playingField.width = width
         playingField.height = height
-        playingField.render(canvas)
+        playingField.renderSecond(canvas)
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
-            playingField.onClickFieldBugPlacingFirst(x, y)
+            playingField.onClickFieldBugPlacingSecond(x, y)
             render()
 
 
         val listener = onSelectListener ?: return false
 
-       playingField.onClick(x,y)?.let{  //если значения onClick не null -> срабатывет .let
+       playingField.onClickSecond(x,y)?.let{  //если значения onClick не null -> срабатывет .let
            if(it.state == TakeUI.STATE_UNDEFINED)
            listener(it)
        }

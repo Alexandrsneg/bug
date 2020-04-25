@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
-import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
 import java.util.stream.IntStream
@@ -52,7 +52,7 @@ class PlayingFieldUI: IElementUI {
     }
 
 
-
+//*****************расстановка жуков****************************************************
     //обработчик нажатия на клетку поля
     fun onClickFieldBugPlacingFirst(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
@@ -188,7 +188,7 @@ class PlayingFieldUI: IElementUI {
                 if (i in 0..6 || i in 10..16 || i in 20..26) {
                     for (s in 0..3) takesPlayerTwo[i + s].state = 1;
                     if (chooseHorizontal == 1 || chooseHorizontal == 2) {
-                        for (s in 0..3) takes[i + s].state = 0;
+                        for (s in 0..3) takesPlayerTwo[i + s].state = 0;
                     }
                 }
                 //вертикальная установка по всему полю кроме первых трех строк
@@ -283,9 +283,9 @@ class PlayingFieldUI: IElementUI {
                 }
             }
         } else if (onePartBug > 0) {
-            takes[i].state = 1;
+            takesPlayerTwo[i].state = 1;
             if (chooseHorizontal == 1) {
-                takes[i].state = 0;
+                takesPlayerTwo[i].state = 0;
                 chooseHorizontal == 2
                 chooseHorizontal++
             }
@@ -295,14 +295,29 @@ class PlayingFieldUI: IElementUI {
             }
         }
     }
+//**************************конец расстановки жуков*****************************************
 
+//**************************выстрелы по полям***********************************************
+fun onClickGameFieldFirst(x: Float, y: Float) {
+    val x: Int = (x / (width / 10)).toInt()
+    val y: Int = (y / (height / 10)).toInt()
 
-        /* val x: Int = (x / (width / 10)).toInt()
+    if (takes[y * 10 + x].state == 1)  //bug_part
+        takes[y * 10 + x].state = 3   //explode
+    else takes[y * 10 + x].state = 2 //miss
+}
+
+    fun onClickGameFieldSecond(x: Float, y: Float) {
+        val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
 
-        if (takes[y * 10 + x].state == 1)  //bug_part
-            takes[y * 10 + x].state = 3   //explode
-        else takes[y * 10 + x].state = 2 //miss*/
+        if (takesPlayerTwo[y * 10 + x].state == 1)  //bug_part
+            takesPlayerTwo[y * 10 + x].state = 3   //explode
+        else takesPlayerTwo[y * 10 + x].state = 2 //miss
+    }
+
+//**************************выстрелы по полям***********************************************
+
 
         fun autoBugsPlacing(kol: Int, parts: Int) {
             var count: Int = 1
@@ -430,6 +445,11 @@ class PlayingFieldUI: IElementUI {
             return takes.firstOrNull { it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y }
         }
 
+    fun onClickSecond(x: Float, y: Float): TakeUI? {
+        //лямбда проверяющая входит ли нажатая область в опрееленные в Тэйках клетки
+        return takesPlayerTwo.firstOrNull { it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y }
+    }
+
 
         //отображение данных присланных с сервера
         fun setGameStateOne(state: GameState) {
@@ -459,5 +479,6 @@ class PlayingFieldUI: IElementUI {
         if (state.winner != null)
             println("WIN!")
     }
+
     }
 

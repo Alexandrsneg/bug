@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".credentials.bugPlacement.BugPlacementPlayerFragment">
+    tools:context=".credentials.game.bugPlacement.BugPlacementPlayerFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -133,7 +133,7 @@
 
 
 
-    <ru.sneg.android.bug.game.GameView
+    <ru.sneg.android.bug.game.gameViews.GameBugPlacementView
         android:id="@+id/gameView"
         android:layout_width="300dp"
         android:layout_height="300dp"

@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.credentials.bugPlacement
+package ru.sneg.android.bug.credentials.game.bugPlacement
 
 import android.os.Handler
 import com.arellomobile.mvp.InjectViewState

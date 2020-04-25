@@ -1,4 +1,4 @@
-package ru.sneg.android.bug.game
+package ru.sneg.android.bug.game.gameViews
 
 import android.content.Context
 import android.graphics.Canvas
@@ -10,7 +10,7 @@ import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 
-class GameViewSecondPlayer @JvmOverloads constructor(
+class GameBugPlacementView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
@@ -76,21 +76,21 @@ class GameViewSecondPlayer @JvmOverloads constructor(
         }
     }
 
-    fun setGameStateSecond(state: GameState) {
+    fun setGameState(state: GameState) {
 
-        playingField.setGameStateSecond(state)
+        playingField.setGameStateOne(state)
         render()
     }
 
     private fun render(canvas: Canvas) {
         playingField.width = width
         playingField.height = height
-        playingField.renderSecond(canvas)
+        playingField.render(canvas)
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
-            playingField.onClickFieldBugPlacingSecond(x, y)
+            playingField.onClickFieldBugPlacingFirst(x, y)
             render()
 
 

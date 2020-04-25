@@ -42,7 +42,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
 
       // ЗДЕСЬ ДОЛЖНЫ ОТОБРАЖАТЬСЯ РЕЗУЛЬТАТЫ КОНКРЕТНОГО ПОЛЬЗОВАТЕЛЯ
 
-        tvName.text = UserStorage().getUser()!!.login // отображение имени пользователя (ЛОГИНА)
+        tvName.text = UserStorage().getUser()?.login?: "Unanimous Bug" // отображение имени пользователя (ЛОГИНА)
 
         // пока абстрактные методы для полученния неободимх данных
         var score = presenter.showScore()

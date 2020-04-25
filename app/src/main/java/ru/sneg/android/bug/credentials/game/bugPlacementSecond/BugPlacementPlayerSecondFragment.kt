@@ -10,70 +10,78 @@ import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAcceptBug
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAutoSetUp
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bCleanFields
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.bForward
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugFour
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugOne
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugThree
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugTwo
 import kotlinx.android.synthetic.main.fragment_bug_placement_player_second.*
-import kotlinx.android.synthetic.main.fragment_sign_in.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
-import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
-import ru.sneg.android.bug.game.GameView
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 import javax.inject.Inject
-class BugPlacementPlayerFragment : ABaseFragment(),
-    IBugPlaycementPlayerView {
+class BugPlacementPlayerSecondFragment : ABaseFragment(),
+    IBugPlaycementPlayerSecondView {
+
+
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
-    lateinit var presenter: BugPlacementPlayerPresenter
+    lateinit var presenter: BugPlacementPlayerSecondPresenter
 
     @ProvidePresenter // предоставление презентера для Moxy
     fun providePresenter() = presenter
+
 
     override fun inject() {
         DaggerAppComponent.create().inject(this)
     }
 
-    override fun getViewId() = R.layout.fragment_bug_placement_player
+    override fun getViewId() = R.layout.fragment_bug_placement_player_second
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
-        tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
-        tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
-        tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+        PlayingFieldUI.fourPartBug = 1
+        PlayingFieldUI.threePartBug = 2
+        PlayingFieldUI.twoPartBug = 3
+        PlayingFieldUI.onePartBug = 4
+
+        PlayingFieldUI.bugsRemaining = 10
+
+        PlayingFieldUI.chooseHorizontal = 0
+
+       //gameViewSecond.render()
+
+        tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
+        tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
+        tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
+        tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
 
 
 
-        gameView.onSelectListener = {
+        gameViewSecond.onSelectListener = {
             println(it)
             presenter.onCell(it)
         }
 
-// смена фрагмента на расстановку жуков для второго игрока
-        bForward.setOnClickListener {
-            activity?.let {
-                if (it is IBattleGroundsRouter)
-                    it.showBugPlaycementSecond()
-            }
-        }
-
-        //при нажатии кнопки Change profile выводим фрагмент SignIn в CredentialsActivity
-        bProfile.setOnClickListener {
-            GameModeActivity.show()
-            }
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-            gameView.autoPlacing()
+
+            gameViewSecond.autoPlacing()
+        }
+
+        // смена фрагмента на фрагмент игры офлайн
+        bForwardSecond.setOnClickListener {
+            activity?.let {
+                if (it is IBattleGroundsRouter)
+                    it.showBugVsBugGame()
+            }
         }
 
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
@@ -81,7 +89,24 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
            /* val animation = AnimationUtils.loadAnimation(context, R.anim.scale)
             bCleanFields.startAnimation(animation)*/
-            clean()
+
+            PlayingFieldUI.fourPartBug = 1
+            PlayingFieldUI.threePartBug = 2
+            PlayingFieldUI.twoPartBug = 3
+            PlayingFieldUI.onePartBug = 4
+
+            PlayingFieldUI.bugsRemaining = 10
+
+            tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
+            tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
+            tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
+            tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
+
+            PlayingFieldUI.chooseHorizontal = 0
+            for (index in 0..99) {
+                PlayingFieldUI.takesPlayerTwo[index].state = 0
+            }
+            gameViewSecond.render()
         }
 
 
@@ -90,7 +115,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
             var sum: Int = 0
             for (i in 0..99) {
-                sum += PlayingFieldUI.takes[i].state
+                sum += PlayingFieldUI.takesPlayerTwo[i].state
             }
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
@@ -102,14 +127,14 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum == 4) {
                 PlayingFieldUI.fourPartBug--
-                tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+                tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
 
             if (PlayingFieldUI.bugsRemaining in 8..9 && sum == (4 + (9 - 3*PlayingFieldUI.threePartBug))) {
                 PlayingFieldUI.threePartBug--
-                tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+                tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
@@ -122,7 +147,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
             if (PlayingFieldUI.bugsRemaining in 5..7 && sum == (10 + (8 - 2*PlayingFieldUI.twoPartBug))) {
                 PlayingFieldUI.twoPartBug--
-                tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+                tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
@@ -135,7 +160,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
             if (PlayingFieldUI.bugsRemaining in 1..4 && sum == (16 + (5 - PlayingFieldUI.onePartBug))) {
                 PlayingFieldUI.onePartBug--
-                tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+                tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
@@ -148,31 +173,11 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
     }
 
-
+    fun sumChek(){
+    }
     override fun onRender(state: GameState) {
-        gameView.setGameState(state)
+        gameViewSecond.setGameStateSecond(state)
     }
-
-    fun clean(){
-        PlayingFieldUI.fourPartBug = 1
-        PlayingFieldUI.threePartBug = 2
-        PlayingFieldUI.twoPartBug = 3
-        PlayingFieldUI.onePartBug = 4
-
-        PlayingFieldUI.bugsRemaining = 10
-
-        tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
-        tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
-        tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
-        tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
-
-        PlayingFieldUI.chooseHorizontal = 0
-        for (index in 0..99) {
-            PlayingFieldUI.takes[index].state = 0
-        }
-        gameView.render()
-    }
-
 }
 
 

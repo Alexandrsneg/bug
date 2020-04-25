@@ -1,10 +1,11 @@
 package ru.sneg.android.bug.domain.di.components
 
 import dagger.Component
-import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.credentials.auth.SignInFragment
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.credentials.createGame.CreateGameFragment
+import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 import ru.sneg.android.bug.credentials.gameModes.GameModeFragment
 import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.credentials.profile.ProfileFragment
@@ -31,5 +32,6 @@ interface AppComponent {
     fun inject(target: BugPlacementPlayerFragment)
     fun inject(target: ScoreFragment)
     fun inject(target: BugPlacementPlayerSecondFragment)
+    fun inject(target: GameOfflinePvpFragment)
 
 }
