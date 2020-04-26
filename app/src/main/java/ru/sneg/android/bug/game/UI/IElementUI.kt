@@ -6,4 +6,7 @@ interface IElementUI {
 
     fun render(canvas: Canvas)
     fun renderSecond(canvas: Canvas)
+
+    fun renderWithoutBugsParts(canvas: Canvas)
+    fun renderWithoutBugsPartsSecond(canvas: Canvas)
 }

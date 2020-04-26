@@ -78,7 +78,7 @@ class GameOfflinePvpSecondPlayerView @JvmOverloads constructor(
     private fun render(canvas: Canvas) {
         playingField.width = width
         playingField.height = height
-        playingField.renderSecond(canvas)
+        playingField.renderWithoutBugsPartsSecond(canvas)
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{

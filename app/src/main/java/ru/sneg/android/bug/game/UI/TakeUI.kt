@@ -3,6 +3,7 @@ package ru.sneg.android.bug.game.UI
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 
 //выбор игрока
 open class TakeUI(
@@ -37,22 +38,39 @@ open class TakeUI(
 
     override fun render(canvas: Canvas) {
 
+        renderField(canvas)
+
         when (state) {
-            STATE_UNDEFINED -> renderField(canvas)
+            //STATE_UNDEFINED -> renderField(canvas)
+            STATE_BUG_PART  -> renderBugPart(canvas)
+            STATE_MISS  -> renderMiss(canvas)
+            STATE_EXPLODE -> renderExplode(canvas)
+        }
+    }
+    override fun renderSecond(canvas: Canvas) {
+        renderField(canvas)
+        when (state) {
+           //STATE_UNDEFINED -> renderField(canvas)
             STATE_BUG_PART -> renderBugPart(canvas)
             STATE_MISS  -> renderMiss(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
-            //STATE_NOTHING -> renderNothing(canvas)
         }
     }
 
-    override fun renderSecond(canvas: Canvas) {
+    override fun renderWithoutBugsParts(canvas: Canvas) {
+        renderField(canvas)
+
         when (state) {
-            STATE_UNDEFINED -> renderField(canvas)
-            STATE_BUG_PART -> renderBugPart(canvas)
             STATE_MISS  -> renderMiss(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
-            //STATE_NOTHING -> renderNothing(canvas)
+        }
+    }
+
+    override fun renderWithoutBugsPartsSecond(canvas: Canvas) {
+        renderField(canvas)
+        when (state) {
+            STATE_MISS  -> renderMiss(canvas)
+            STATE_EXPLODE -> renderExplode(canvas)
         }
     }
 
