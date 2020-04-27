@@ -12,8 +12,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/btn_profile_grey"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/btn_profile_anim"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

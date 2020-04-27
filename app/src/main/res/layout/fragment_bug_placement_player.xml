@@ -33,9 +33,8 @@
         android:layout_width="117dp"
         android:layout_height="35dp"
         android:layout_marginTop="21dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:fontFamily="@font/bones"
-        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/accept_bug"
         app:layout_constraintEnd_toEndOf="@+id/tvCountBugOne"
         app:layout_constraintStart_toStartOf="@+id/bCountBugsOne"
@@ -148,8 +147,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_profile_grey"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/btn_profile_anim"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,9 +156,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:fontFamily="@font/bones"
-        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/auto_set_up_bugs"
         app:layout_constraintBottom_toBottomOf="@+id/gameView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,9 +169,8 @@
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/btn_emty_red"
+        android:background="@drawable/btn_clean_anim"
         android:fontFamily="@font/bones"
-        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/clean_field"
         app:layout_constraintBottom_toTopOf="@+id/bAutoSetUp"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -185,8 +181,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/btn_arrow_grey"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/btn_arrow_anim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bAutoSetUp" />
 

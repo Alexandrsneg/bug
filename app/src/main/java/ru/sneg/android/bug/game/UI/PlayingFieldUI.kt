@@ -60,14 +60,46 @@ class PlayingFieldUI: IElementUI {
 
         val i: Int = y * 10 + x
 
-
         if (fourPartBug > 0) {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..6 || i in 10..16 || i in 20..26) {
                     for (s in 0..3) takes[i + s].state = 1
-                    if (chooseHorizontal == 1 || chooseHorizontal == 2) {
+                    //клетки вокруг
+                        if (i == 0) {
+                            takes[i + 4].state = 4
+                            for (s in 0..4) takes[i + 10 + s].state = 4
+                        }
+                        if (i == 6) {
+                            takes[i -1].state = 4
+                            for (s in -1..3) takes[i + 10 + s].state = 4
+                        }
+                        if (i in 1..5) {
+                            takes[i - 1].state = 4
+                            takes[i + 4].state = 4
+                            for (s in -1..4) takes[i + 10 + s].state = 4
+                        }
+                        if (i == 16 || i == 26) {
+                            takes[i -1].state = 4
+                            for (s in -1..3) takes[i + 10 + s].state = 4
+                            for (s in -1..3) takes[i - 10 + s].state = 4
+                        }
+                        if (i == 10 || i == 20) {
+                            takes[i + 4].state = 4
+                            for (s in 0..4) takes[i + 10 + s].state = 4
+                            for (s in 0..4) takes[i - 10 + s].state = 4
+                        }
+                    if (i in 11..15 || i in 21..25){
+                        takes[i-1].state = 4
+                        takes[i+4].state = 4
+                        for (s in -1..4) takes[i+10+s].state = 4
+                        for (s in -1..4) takes[i-10+s].state = 4
+                    }
+
+                    if (chooseHorizontal == 1) {
                         for (s in 0..3) takes[i + s].state = 0
+                        for (s in 0..39) takes[s].state = 0
+                        chooseHorizontal = 2
                     }
                 }
                 //вертикальная установка по всему полю кроме первых трех строк
@@ -75,7 +107,7 @@ class PlayingFieldUI: IElementUI {
                     for (s in 0..3) takes[i - s * 10].state = 1
                 }
                 // удаление вертикальных кораблей в последних трех столбах
-                if (!(i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1 || chooseHorizontal == 2)) {
+                if (!(i in 7..9 || i in 17..19 || i in 27..29 || i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
                     for (s in 0..3) takes[i - s * 10].state = 0
                     chooseHorizontal = 2
                 }
@@ -83,6 +115,11 @@ class PlayingFieldUI: IElementUI {
                 if ((i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
                     for (s in 0..3) takes[i + s].state = 1
                     for (s in 1..3) takes[i - s * 10].state = 0
+
+                    if(i in 90..93){
+                        takes[94].state = 4
+                        for (s in 0..4) takes[i-10+s].state = 4
+                    }
                 }
                 //удаление горизонтального корабля, завершение цикла установки корабля
                 if (chooseHorizontal == 2 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
@@ -93,7 +130,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (threePartBug > 0) {
+        } else if (fourPartBug == 0 || threePartBug > 0) {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..7 || i in 10..17) {
@@ -127,7 +164,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (twoPartBug > 0) {
+        } else if (threePartBug == 0 || twoPartBug > 0) {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первой строке
                 if (i in 0..8) {
@@ -161,7 +198,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (onePartBug > 0) {
+        } else if (twoPartBug == 0 || onePartBug > 0) {
                 takes[i].state = 1
                 if (chooseHorizontal == 1) {
                     takes[i].state = 0
@@ -187,8 +224,9 @@ class PlayingFieldUI: IElementUI {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..6 || i in 10..16 || i in 20..26) {
                     for (s in 0..3) takesPlayerTwo[i + s].state = 1
-                    if (chooseHorizontal == 1 || chooseHorizontal == 2) {
+                    if (chooseHorizontal == 1) {
                         for (s in 0..3) takesPlayerTwo[i + s].state = 0
+                        chooseHorizontal = 2
                     }
                 }
                 //вертикальная установка по всему полю кроме первых трех строк
@@ -196,7 +234,7 @@ class PlayingFieldUI: IElementUI {
                     for (s in 0..3) takesPlayerTwo[i - s * 10].state = 1
                 }
                 // удаление вертикальных кораблей в последних трех столбах
-                if (!(i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1 || chooseHorizontal == 2)) {
+                if (!(i in 7..9 || i in 17..19 || i in 27..29 || i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
                     for (s in 0..3) takesPlayerTwo[i - s * 10].state = 0
                     chooseHorizontal = 2
                 }
@@ -304,7 +342,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
 
     if (takes[y * 10 + x].state == 1){  //bug_part
         takes[y * 10 + x].state = 3}   //explode
-    if (takes[y * 10 + x].state == 0){ //undefined
+    if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
         takes[y * 10 + x].state = 2}   //miss
 }
 
@@ -314,7 +352,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
 
         if (takesPlayerTwo[y * 10 + x].state == 1){  //bug_part
             takesPlayerTwo[y * 10 + x].state = 3}   //explode
-        if (takesPlayerTwo[y * 10 + x].state == 0){ //undefined
+        if (takesPlayerTwo[y * 10 + x].state == 0 || takesPlayerTwo[y * 10 + x].state == 4){ //undefined
             takesPlayerTwo[y * 10 + x].state = 2}   //miss
     }
 

@@ -45,8 +45,6 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
         tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
 
-
-
         gameView.onSelectListener = {
             println(it)
             presenter.onCell(it)
@@ -54,10 +52,13 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
 // смена фрагмента на расстановку жуков для второго игрока
         bForward.setOnClickListener {
-            activity?.let {
-                if (it is IBattleGroundsRouter)
-                    it.showBugPlaycementSecond()
-            }
+                if(PlayingFieldUI.bugsRemaining == 0) {
+                    activity?.let {
+                        if (it is IBattleGroundsRouter)
+                            it.showBugPlaycementSecond()
+                    }
+                }
+                else toast(stringId = R.string.not_enougth_bugs_on_field)
         }
 
         //при нажатии кнопки Change profile выводим фрагмент SignIn в CredentialsActivity
@@ -79,11 +80,13 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
 
         bAcceptBug.setOnClickListener {
+            var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
 
-            var sum: Int = 0
             for (i in 0..99) {
-                sum += PlayingFieldUI.takes[i].state
+                if ( PlayingFieldUI.takes[i].state == 1 ) {
+                    sum += PlayingFieldUI.takes[i].state
+                }
             }
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
@@ -141,7 +144,6 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
     }
 
-
     override fun onRender(state: GameState) {
         gameView.setGameState(state)
     }
@@ -165,7 +167,6 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
         gameView.render()
     }
-
 }
 
 

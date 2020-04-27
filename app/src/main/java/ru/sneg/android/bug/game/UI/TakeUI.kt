@@ -15,7 +15,7 @@ open class TakeUI(
         const val STATE_BUG_PART = 1 // клетка жука
         const val STATE_MISS = 2 // промах (клетка пуста)
         const val STATE_EXPLODE = 3 // ранение
-        // const val STATE_NOTHING = 4
+        const val STATE_NOTHING = 4
 
 
         //определение цветов для отрисовок
@@ -25,6 +25,8 @@ open class TakeUI(
         val paintGreen = Paint().apply { color = Color.GREEN }
         val paintRed = Paint().apply { color = Color.RED}
         val paintBlack = Paint().apply { color = Color.BLACK}
+        val paintYellow = Paint().apply { color = Color.YELLOW}
+
     }
 
     var x: Int = 0
@@ -43,7 +45,7 @@ open class TakeUI(
         when (state) {
             //STATE_UNDEFINED -> renderField(canvas)
             STATE_BUG_PART  -> renderBugPart(canvas)
-            STATE_MISS  -> renderMiss(canvas)
+            STATE_NOTHING  -> renderNothing(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
         }
     }
@@ -52,7 +54,7 @@ open class TakeUI(
         when (state) {
            //STATE_UNDEFINED -> renderField(canvas)
             STATE_BUG_PART -> renderBugPart(canvas)
-            STATE_MISS  -> renderMiss(canvas)
+            STATE_NOTHING  -> renderMiss(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
         }
     }
@@ -142,6 +144,22 @@ open class TakeUI(
 
         canvas.drawCircle(cx, cy, hw, paintBlack)
         canvas.drawCircle(cx, cy, hw * 0.9f, paintGreen)
+    }
+
+    private fun renderNothing(canvas: Canvas) {
+
+        val x = x.toFloat()
+        val y = y.toFloat()
+        val w = width.toFloat()
+        val h = height.toFloat()
+
+        canvas.drawLine(x, y, x, y + w, paintYellow)
+        canvas.drawLine(x, y, x + h, y, paintYellow)
+        canvas.drawLine(x + h, y, x + h, y + w, paintYellow)
+        canvas.drawLine(x + h, y + w, x, y + w, paintYellow)
+
+        canvas.drawLine(x, y, x + w, y + h, paintYellow)
+        canvas.drawLine(x + w, y, x, y + h, paintYellow)
     }
 
 }

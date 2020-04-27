@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:onClick="profileBtn"
-        android:background="@drawable/btn_profile_grey"
+        android:background="@drawable/btn_profile_anim"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:text="@string/create_game"
         android:fontFamily="@font/bones"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -34,7 +34,7 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:text="@string/join_the_game"
         android:fontFamily="@font/bones"
         app:layout_constraintEnd_toEndOf="parent"

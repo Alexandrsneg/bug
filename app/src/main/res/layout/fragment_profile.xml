@@ -76,11 +76,9 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:fontFamily="@font/bones"
-        android:onClick="gameModeBtn"
         android:text="@string/game_modes"
-        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,9 +99,8 @@
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/btn_big_grey_anim"
         android:text="@string/change_profile"
-        android:foreground="?android:attr/selectableItemBackground"
         android:fontFamily="@font/bones"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarka" />
@@ -114,8 +111,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/btn_score_grey"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/btn_score_anim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

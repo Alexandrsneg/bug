@@ -27,7 +27,7 @@ import javax.inject.Inject
 class BugPlacementPlayerSecondFragment : ABaseFragment(),
     IBugPlaycementPlayerSecondView {
 
-
+    //var sum: Int = 0
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
@@ -64,7 +64,6 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
 
 
-
         gameViewSecond.onSelectListener = {
             println(it)
             presenter.onCell(it)
@@ -78,10 +77,13 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         // смена фрагмента на фрагмент игры офлайн
         bForwardSecond.setOnClickListener {
-            activity?.let {
-                if (it is IBattleGroundsRouter)
-                    it.showBugVsBugGame()
+            if(PlayingFieldUI.bugsRemaining == 0) {
+                activity?.let {
+                    if (it is IBattleGroundsRouter)
+                        it.showBugVsBugGame()
+                }
             }
+            else toast(stringId = R.string.not_enougth_bugs_on_field)
         }
 
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
@@ -109,13 +111,14 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             gameViewSecond.render()
         }
 
-
         bAcceptBug.setOnClickListener {
+            var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
 
-            var sum: Int = 0
             for (i in 0..99) {
-                sum += PlayingFieldUI.takesPlayerTwo[i].state
+                if ( PlayingFieldUI.takesPlayerTwo[i].state == 1 ) {
+                    sum += PlayingFieldUI.takesPlayerTwo[i].state
+                }
             }
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
@@ -173,8 +176,6 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         }
     }
 
-    fun sumChek(){
-    }
     override fun onRender(state: GameState) {
         gameViewSecond.setGameStateSecond(state)
     }
