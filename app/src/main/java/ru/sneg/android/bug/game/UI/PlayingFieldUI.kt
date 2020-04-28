@@ -104,7 +104,8 @@ class PlayingFieldUI: IElementUI {
                 }
                 //вертикальная установка по всему полю кроме первых трех строк
                 if (chooseHorizontal == 0 && i in 30..99) {
-                    for (s in 0..3) takes[i - s * 10].state = 1
+                    //for (s in 0..3) takes[i - s * 10].state = 1
+                    marginTakes(chooseHorizontal, i, 4)
                 }
                 // удаление вертикальных кораблей в последних трех столбах
                 if (!(i in 7..9 || i in 17..19 || i in 27..29 || i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
@@ -572,5 +573,70 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
             println("WIN!")
     }
 
+    fun marginTakes(chooseHor: Int, i: Int, bugPart: Int){
+        // если вертикальная расстановка
+        if (chooseHor == 0)
+
+        // проерка, что на пути жука statы пустые
+            if (!fieldNotEmpty(i,bugPart, chooseHor)) {
+
+                //если голова в крайнем левом столбце
+                if (i % 10 == 0) {
+
+                    for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                    // если голова в крайнем нижнем углу
+                    if (i == 90) {
+                        takes[i - 10 * bugPart].state = 4
+                        for (s in 0..bugPart) takes[(i + 1) - 10 * s].state = 4
+                    }
+                    //если хвост попадает на крайний левый угол
+                    if (i - 10 * bugPart == -10) {
+                        takes[i + 10].state = 4
+                        for (s in -1 until bugPart) takes[(i + 1) - 10 * s].state = 4 // поле вокруг жука
+                        // все средние значения в первом столбце
+                    }
+                    if ((i - 10 * bugPart != -10) && i != 90) {
+                        takes[i + 10].state = 4
+                        takes[i - 10 * bugPart].state = 4
+                        for (s in -1..bugPart) takes[(i + 1) - 10 * s].state = 4
+                    }
+                }
+                //если голова в крайнем правом столбце
+               /* if (i % 10 % 9 == 0 && i != 99) {
+                    for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                    //если хвост попадает на крайний левый угол
+                    if (i - 10 * bugPart == -10) {
+                        takes[i + 10].state = 4
+                        for (s in -1 until bugPart) takes[(i - 1) - 10 * s].state = 4
+                    } else {
+                        takes[i + 10].state = 4
+                        takes[i - 11 * bugPart].state = 4
+                        for (s in -1..bugPart) takes[(i - 1) - 10 * s].state = 4
+                    }
+                    if (i == 99) {
+                        takes[i - 10 * bugPart].state = 4
+                        for (s in 0..bugPart) takes[(i - 1) - 10 * s].state = 4
+                    }
+                }*/
+            }
+        }
+
+    fun fieldNotEmpty(i: Int, bugPart: Int, chooseHor: Int): Boolean{
+        var empty: Boolean = false
+        if (chooseHor == 0) {
+            for (s in 0 until bugPart)
+                if (takes[i - 10 * s].state != 0)
+                    empty = true
+
+        }
+        if (chooseHor == 1) {
+            for (s in 0 until bugPart)
+                if (takes[i + bugPart * s].state !=0)
+                    empty = true
+        }
+        return empty
     }
+
+
+}
 
