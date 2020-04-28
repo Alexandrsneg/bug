@@ -172,7 +172,7 @@ class PlayingFieldUI: IElementUI {
                     for (s in 0..1) takes[i + s].state = 1
 
                     if (chooseHorizontal == 1) {
-                        for (s in 0..1) takes[i + s].state = 0;
+                        for (s in 0..1) takes[i + s].state = 0
                         chooseHorizontal = 2
                     }
                 }
@@ -257,10 +257,10 @@ class PlayingFieldUI: IElementUI {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..7 || i in 10..17) {
-                    for (s in 0..2) takesPlayerTwo[i + s].state = 1;
+                    for (s in 0..2) takesPlayerTwo[i + s].state = 1
 
                     if (chooseHorizontal == 1) {
-                        for (s in 0..2) takesPlayerTwo[i + s].state = 0;
+                        for (s in 0..2) takesPlayerTwo[i + s].state = 0
                         chooseHorizontal = 2
                     }
                 }
@@ -322,9 +322,9 @@ class PlayingFieldUI: IElementUI {
                 }
             }
         } else if (onePartBug > 0) {
-            takesPlayerTwo[i].state = 1;
+            takesPlayerTwo[i].state = 1
             if (chooseHorizontal == 1) {
-                takesPlayerTwo[i].state = 0;
+                takesPlayerTwo[i].state = 0
                 chooseHorizontal == 2
                 chooseHorizontal++
             }
@@ -579,11 +579,10 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
 
         // проерка, что на пути жука statы пустые
             if (!fieldNotEmpty(i,bugPart, chooseHor)) {
-
+                for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
                 //если голова в крайнем левом столбце
                 if (i % 10 == 0) {
-
-                    for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
                     // если голова в крайнем нижнем углу
                     if (i == 90) {
                         takes[i - 10 * bugPart].state = 4
@@ -602,22 +601,41 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
                     }
                 }
                 //если голова в крайнем правом столбце
-               /* if (i % 10 % 9 == 0 && i != 99) {
-                    for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
-                    //если хвост попадает на крайний левый угол
-                    if (i - 10 * bugPart == -10) {
-                        takes[i + 10].state = 4
-                        for (s in -1 until bugPart) takes[(i - 1) - 10 * s].state = 4
-                    } else {
-                        takes[i + 10].state = 4
-                        takes[i - 11 * bugPart].state = 4
-                        for (s in -1..bugPart) takes[(i - 1) - 10 * s].state = 4
-                    }
+                if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89 || i == 99 ) {
+                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                    // если голова в крайнем правом углу
                     if (i == 99) {
                         takes[i - 10 * bugPart].state = 4
-                        for (s in 0..bugPart) takes[(i - 1) - 10 * s].state = 4
+                        for (s in 0..bugPart) takes[i - 1 - 10 * s].state = 4
                     }
-                }*/
+                    //если хвост попадает на крайний правый угол
+                    if (i - 10 * bugPart == -1) {
+                        takes[i + 10].state = 4
+                        for (s in -1 until bugPart) takes[i - 1 - 10 * s].state = 4
+                    }
+                    if ((i - 10 * bugPart != -1) && i != 99){
+                        takes[i + 10].state = 4
+                        takes[i - 10 * bugPart].state = 4
+                        for (s in -1..bugPart) takes[i - 1 - 10 * s].state = 4
+                    }
+                }
+                // если голова идет по нижнему краю
+                if (i in 91..98){
+                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                    takes[i - 10 * bugPart].state = 4
+                    for (s in 0..bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                }
+                // если хвост идёт по верхнему краю
+                if ((i - 10 * bugPart) in -9..-2){
+                    takes[i + 10].state = 4
+                    for (s in -1 until bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                }
+                // все не пограничные значения
+                if (i in 41..49 ||i in 51..59 || i in 61..69 || i in 71..79 || i in 81..89){
+                    takes[i - 10 * bugPart].state = 4
+                    takes[i + 10].state = 4
+                    for (s in -1..bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                }
             }
         }
 
