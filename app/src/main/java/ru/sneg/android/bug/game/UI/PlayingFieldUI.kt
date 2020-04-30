@@ -62,50 +62,11 @@ class PlayingFieldUI: IElementUI {
 
         if (fourPartBug > 0) {
             if (i in 0..99) {
-                //горизонтальная установка и удаление на первых трех строках
-                if (i in 0..6 || i in 10..16 || i in 20..26) {
-                    for (s in 0..3) takes[i + s].state = 1
-                    //клетки вокруг
-                        if (i == 0) {
-                            takes[i + 4].state = 4
-                            for (s in 0..4) takes[i + 10 + s].state = 4
-                        }
-                        if (i == 6) {
-                            takes[i -1].state = 4
-                            for (s in -1..3) takes[i + 10 + s].state = 4
-                        }
-                        if (i in 1..5) {
-                            takes[i - 1].state = 4
-                            takes[i + 4].state = 4
-                            for (s in -1..4) takes[i + 10 + s].state = 4
-                        }
-                        if (i == 16 || i == 26) {
-                            takes[i -1].state = 4
-                            for (s in -1..3) takes[i + 10 + s].state = 4
-                            for (s in -1..3) takes[i - 10 + s].state = 4
-                        }
-                        if (i == 10 || i == 20) {
-                            takes[i + 4].state = 4
-                            for (s in 0..4) takes[i + 10 + s].state = 4
-                            for (s in 0..4) takes[i - 10 + s].state = 4
-                        }
-                    if (i in 11..15 || i in 21..25){
-                        takes[i-1].state = 4
-                        takes[i+4].state = 4
-                        for (s in -1..4) takes[i+10+s].state = 4
-                        for (s in -1..4) takes[i-10+s].state = 4
-                    }
 
-                    if (chooseHorizontal == 1) {
-                        for (s in 0..3) takes[i + s].state = 0
-                        for (s in 0..39) takes[s].state = 0
-                        chooseHorizontal = 2
-                    }
-                }
                 //вертикальная установка по всему полю кроме первых трех строк
                 if (chooseHorizontal == 0 && i in 30..99) {
                     //for (s in 0..3) takes[i - s * 10].state = 1
-                    marginTakes(chooseHorizontal, i, 4)
+                    marginTakes(chooseHorizontal, i, 4, takes)
                 }
                 // удаление вертикальных кораблей в последних трех столбах
                 if (!(i in 7..9 || i in 17..19 || i in 27..29 || i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
@@ -113,14 +74,9 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 2
                 }
                 //горизонтальное расположение кораблей кроме последних трех столбцов
-                if ((i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
-                    for (s in 0..3) takes[i + s].state = 1
-                    for (s in 1..3) takes[i - s * 10].state = 0
-
-                    if(i in 90..93){
-                        takes[94].state = 4
-                        for (s in 0..4) takes[i-10+s].state = 4
-                    }
+                if ((i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
+                    clear(i,4, chooseHorizontal,takes)
+                    marginTakes(chooseHorizontal,i,4, takes)
                 }
                 //удаление горизонтального корабля, завершение цикла установки корабля
                 if (chooseHorizontal == 2 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
@@ -131,7 +87,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (fourPartBug == 0 || threePartBug > 0) {
+        } else if (fourPartBug == 0 && threePartBug > 0) {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первых трех строках
                 if (i in 0..7 || i in 10..17) {
@@ -165,7 +121,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (threePartBug == 0 || twoPartBug > 0) {
+        } else if (threePartBug == 0 && twoPartBug > 0) {
             if (i in 0..99) {
                 //горизонтальная установка и удаление на первой строке
                 if (i in 0..8) {
@@ -199,7 +155,7 @@ class PlayingFieldUI: IElementUI {
                     chooseHorizontal = 0
                 }
             }
-        } else if (twoPartBug == 0 || onePartBug > 0) {
+        } else if (twoPartBug == 0 && onePartBug > 0) {
                 takes[i].state = 1
                 if (chooseHorizontal == 1) {
                     takes[i].state = 0
@@ -573,86 +529,261 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
             println("WIN!")
     }
 
-    fun marginTakes(chooseHor: Int, i: Int, bugPart: Int){
-        // если вертикальная расстановка
-        if (chooseHor == 0)
-
-        // проерка, что на пути жука statы пустые
-            if (!fieldNotEmpty(i,bugPart, chooseHor)) {
-                for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+    private fun marginTakes(chooseHor: Int, i: Int, bugPart: Int, tk: MutableList<TakeUI>) {
+        // *********************вертикальные расстановки****************************
+        if (chooseHor == 0) {
+            // проерка, что на пути жука statы пустые
+            if (!fieldNotEmpty(i, bugPart, chooseHor, tk)) {
+                for (s in 0 until bugPart) tk[i - 10 * s].state = 1 // сам жук
                 //если голова в крайнем левом столбце
                 if (i % 10 == 0) {
-                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
                     // если голова в крайнем нижнем углу
                     if (i == 90) {
-                        takes[i - 10 * bugPart].state = 4
-                        for (s in 0..bugPart) takes[(i + 1) - 10 * s].state = 4
+                        tk[i - 10 * bugPart].state = 4
+                        for (s in 0..bugPart) tk[(i + 1) - 10 * s].state = 4
                     }
                     //если хвост попадает на крайний левый угол
                     if (i - 10 * bugPart == -10) {
-                        takes[i + 10].state = 4
-                        for (s in -1 until bugPart) takes[(i + 1) - 10 * s].state = 4 // поле вокруг жука
-                        // все средние значения в первом столбце
+                        tk[i + 10].state = 4
+                        for (s in -1 until bugPart) tk[(i + 1) - 10 * s].state = 4 // поле вокруг жука
                     }
+                    // все средние значения в первом столбце
                     if ((i - 10 * bugPart != -10) && i != 90) {
-                        takes[i + 10].state = 4
-                        takes[i - 10 * bugPart].state = 4
-                        for (s in -1..bugPart) takes[(i + 1) - 10 * s].state = 4
+                        tk[i + 10].state = 4
+                        tk[i - 10 * bugPart].state = 4
+                        for (s in -1..bugPart) tk[(i + 1) - 10 * s].state = 4
                     }
                 }
                 //если голова в крайнем правом столбце
-                if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89 || i == 99 ) {
-                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
+                val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
+                if (i in list) {
                     // если голова в крайнем правом углу
                     if (i == 99) {
-                        takes[i - 10 * bugPart].state = 4
-                        for (s in 0..bugPart) takes[i - 1 - 10 * s].state = 4
+                        tk[i - 10 * bugPart].state = 4
+                        for (s in 0..bugPart) tk[i - 1 - 10 * s].state = 4
                     }
                     //если хвост попадает на крайний правый угол
                     if (i - 10 * bugPart == -1) {
-                        takes[i + 10].state = 4
-                        for (s in -1 until bugPart) takes[i - 1 - 10 * s].state = 4
+                        tk[i + 10].state = 4
+                        for (s in -1 until bugPart) tk[i - 1 - 10 * s].state = 4
                     }
-                    if ((i - 10 * bugPart != -1) && i != 99){
-                        takes[i + 10].state = 4
-                        takes[i - 10 * bugPart].state = 4
-                        for (s in -1..bugPart) takes[i - 1 - 10 * s].state = 4
+                    if ((i - 10 * bugPart != -1) && i != 99) {
+                        tk[i + 10].state = 4
+                        tk[i - 10 * bugPart].state = 4
+                        for (s in -1..bugPart) tk[i - 1 - 10 * s].state = 4
                     }
                 }
                 // если голова идет по нижнему краю
-                if (i in 91..98){
-                    //for (s in 0 until bugPart) takes[i - 10 * s].state = 1 // сам жук
-                    takes[i - 10 * bugPart].state = 4
-                    for (s in 0..bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                if (i in 91..98) {
+                    tk[i - 10 * bugPart].state = 4
+                    for (s in 0..bugPart) {
+                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
+                    }
                 }
                 // если хвост идёт по верхнему краю
-                if ((i - 10 * bugPart) in -9..-2){
-                    takes[i + 10].state = 4
-                    for (s in -1 until bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                if ((i - 10 * bugPart) in -9..-2) {
+                    tk[i + 10].state = 4
+                    for (s in -1 until bugPart) {
+                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
+                    }
                 }
                 // все не пограничные значения
-                if (i in 41..49 ||i in 51..59 || i in 61..69 || i in 71..79 || i in 81..89){
-                    takes[i - 10 * bugPart].state = 4
-                    takes[i + 10].state = 4
-                    for (s in -1..bugPart){ takes[i - 1 - 10 * s].state = 4; takes[(i + 1) - 10 * s].state = 4}
+                if ((i - 10 * bugPart) !in -9..-2 && ( i in 11..48 || i in 21..28 || i in 31..38 || i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88)) {
+                    tk[i - 10 * bugPart].state = 4
+                    tk[i + 10].state = 4
+                    for (s in -1..bugPart) {
+                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
+                    }
+                }
+            }
+        }
+        //*********************горизонтальные расстановки****************************
+        if (chooseHor == 1) {
+            if (fieldNotEmpty(i, bugPart, chooseHor, tk)) {
+                for (s in 0 until bugPart) tk[i + 1 * s].state = 1 // сам жук
+                //если голова в крайнем левом столбце
+                if (i % 10 == 0) {
+                    // если голова в крайнем нижнем углу
+                    if (i == 90) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
+                    }
+                    //если голова попадает на крайний левый угол
+                    if (i == 0) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4 // поле вокруг жука
+                    }
+                    // все средние значения в первом столбце
+                    if (i != 0 && i != 90) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
+                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4
+                    }
+                }
+            }
+            // проерка, что на пути жука statы пустые
+            if (!fieldNotEmpty(i, bugPart, chooseHor, tk)) {
+                for (s in 0 until bugPart) tk[i + 1 * s].state = 1 // сам жук
+                //если голова в крайнем левом столбце
+                if (i % 10 == 0) {
+                    // если голова в крайнем нижнем углу
+                    if (i == 90) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
+                    }
+                    //если голова попадает на крайний левый угол
+                    if (i == 0) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4 // поле вокруг жука
+                    }
+                    // все средние значения в первом столбце
+                    if (i != 0 && i != 90) {
+                        tk[i + bugPart].state = 4
+                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
+                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4
+                    }
+                }
+                //если хвост идёт по крайней правой колонке
+                val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
+                if ((i + 1 * (bugPart-1)) in list) {
+                    // если хвост в  правом верхнем углу
+                    if ((i + 1 * (bugPart-1)) == 9) {
+                        tk[i - 1].state = 4
+                        for (s in -1 until bugPart) tk[i + 10 + s].state = 4
+                    }
+                    // если хвост в  правом нижнем углу
+                    if ((i + 1 * (bugPart-1)) == 99) {
+                        tk[i - 1].state = 4
+                        for (s in -1 until bugPart) tk[i - 10 + s].state = 4
+                    }
+                    if (((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9){
+                        tk[i - 1].state = 4
+                        for (s in -1 until bugPart) tk[i - 10 + s].state = 4
+                        for (s in -1 until bugPart) tk[i + 10 + s].state = 4
+                    }
+                }
+                // если жук идет по нижнему краю
+                if ((i + bugPart-1) in 91..98 && i != 90 && i != 99) {
+
+                    tk[i - 1].state = 4
+                    tk[i + bugPart].state = 4
+                    for (s in -1..bugPart) tk[i - 10 + s].state = 4
+
+                }
+                // если жук идёт по верхнему краю
+                if ((i + bugPart-1) in 1..8 && i != 0 && i != 9) {
+                    tk[i - 1].state = 4
+                    tk[i + bugPart].state = 4
+                    for (s in -1..bugPart) tk[i + 10 + s].state = 4
+
+                }
+                // все не пограничные значения
+                if ((i in 11..18 || i in 21..28 || i in 31..38 || i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88)
+                        && !(((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9)) {
+                    tk[i - 1].state = 4
+                    tk[i + bugPart].state = 4
+                    for (s in -1..bugPart){
+                        tk[i + 10 + s].state = 4; tk[i - 10 + s].state = 4
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fieldNotEmpty(i: Int, bugPart: Int, chooseHor: Int, tk: MutableList<TakeUI>): Boolean{
+        var notEmpty: Boolean = false
+        if (chooseHor == 0) {
+            for (s in 0 until bugPart)
+                if (tk[i - 10 * s].state != 0)
+                    notEmpty = true
+        }
+        if (chooseHor == 1) {
+            for (s in 0 until bugPart)
+                if (tk[i + 1 * s].state !=0)
+                    notEmpty = true
+        }
+        if (chooseHor == 1 && i == 1){
+            notEmpty = false
+        }
+        return notEmpty
+    }
+
+    private  fun clear(i: Int, bugPart: Int, chooseHor: Int, tk: MutableList<TakeUI>){
+        if (chooseHor == 1) {
+            for (s in 0 until bugPart)
+                try {
+                    tk[i - 10 * s].state = 0 // сам жук
+                }
+                catch (e : ArrayIndexOutOfBoundsException){
+                    println(e)
+                }
+            //если голова в крайнем левом столбце
+            if (i % 10 == 0) {
+                // если голова в крайнем нижнем углу
+                if (i == 90) {
+                    tk[i - 10 * bugPart].state = 0
+                    for (s in 0..bugPart) tk[(i + 1) - 10 * s].state = 0
+                }
+                //если хвост попадает на крайний левый угол
+                if (i - 10 * bugPart == -10) {
+                    tk[i + 10].state = 0
+                    for (s in -1 until bugPart) tk[(i + 1) - 10 * s].state = 0 // поле вокруг жука
+                }
+                // все средние значения в первом столбце
+                if ((i - 10 * bugPart != -10) && i != 90) {
+                    try {
+                        tk[i + 10].state = 0
+                        tk[i - 10 * bugPart].state = 0
+                        for (s in -1..bugPart) tk[(i + 1) - 10 * s].state = 0
+                    }
+                    catch (e : ArrayIndexOutOfBoundsException){
+                        println(e)
+                    }
+                }
+            }
+            //если голова в крайнем правом столбце
+            if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89 || i == 99) {
+                // если голова в крайнем правом углу
+                if (i == 99) {
+                    tk[i - 10 * bugPart].state = 0
+                    for (s in 0..bugPart) tk[i - 1 - 10 * s].state = 0
+                }
+                //если хвост попадает на крайний правый угол
+                if (i - 10 * bugPart == -1) {
+                    tk[i + 10].state = 0
+                    for (s in -1 until bugPart) tk[i - 1 - 10 * s].state = 0
+                }
+                if ((i - 10 * bugPart != -1) && i != 99) {
+                    tk[i + 10].state = 0
+                    tk[i - 10 * bugPart].state = 0
+                    for (s in -1..bugPart) tk[i - 1 - 10 * s].state = 0
+                }
+            }
+            // если голова идет по нижнему краю
+            if (i in 91..98) {
+                tk[i - 10 * bugPart].state = 0
+                for (s in 0..bugPart) {
+                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
+                }
+            }
+            // если хвост идёт по верхнему краю
+            if ((i - 10 * bugPart) in -9..-2) {
+                tk[i + 10].state = 0
+                for (s in -1 until bugPart) {
+                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
+                }
+            }
+            // все не пограничные значения
+            if (i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88) {
+                tk[i - 10 * bugPart].state = 0
+                tk[i + 10].state = 0
+                for (s in -1..bugPart) {
+                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
                 }
             }
         }
 
-    fun fieldNotEmpty(i: Int, bugPart: Int, chooseHor: Int): Boolean{
-        var empty: Boolean = false
-        if (chooseHor == 0) {
-            for (s in 0 until bugPart)
-                if (takes[i - 10 * s].state != 0)
-                    empty = true
 
-        }
-        if (chooseHor == 1) {
-            for (s in 0 until bugPart)
-                if (takes[i + bugPart * s].state !=0)
-                    empty = true
-        }
-        return empty
     }
 
 
