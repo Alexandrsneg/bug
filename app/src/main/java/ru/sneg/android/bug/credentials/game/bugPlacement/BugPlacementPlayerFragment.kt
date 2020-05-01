@@ -19,6 +19,8 @@ import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
+import ru.sneg.android.bug.game.UI.PlayingFieldUI.Companion.takes
+import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 import javax.inject.Inject
 class BugPlacementPlayerFragment : ABaseFragment(),
@@ -52,19 +54,18 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
 // смена фрагмента на расстановку жуков для второго игрока
         bForward.setOnClickListener {
-                if(PlayingFieldUI.bugsRemaining == 0) {
-                    activity?.let {
-                        if (it is IBattleGroundsRouter)
-                            it.showBugPlaycementSecond()
-                    }
+            if (PlayingFieldUI.bugsRemaining == 0) {
+                activity?.let {
+                    if (it is IBattleGroundsRouter)
+                        it.showBugPlaycementSecond()
                 }
-                else toast(stringId = R.string.not_enougth_bugs_on_field)
+            } else toast(stringId = R.string.not_enougth_bugs_on_field)
         }
 
         //при нажатии кнопки Change profile выводим фрагмент SignIn в CredentialsActivity
         bProfile.setOnClickListener {
             GameModeActivity.show()
-            }
+        }
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
             gameView.autoPlacing()
@@ -73,7 +74,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
 
-           /* val animation = AnimationUtils.loadAnimation(context, R.anim.scale)
+            /* val animation = AnimationUtils.loadAnimation(context, R.anim.scale)
             bCleanFields.startAnimation(animation)*/
             clean()
         }
@@ -82,17 +83,19 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         bAcceptBug.setOnClickListener {
             var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
+            surrounding(takes)
+
 
             for (i in 0..99) {
-                if ( PlayingFieldUI.takes[i].state == 1 ) {
+                if (PlayingFieldUI.takes[i].state == 1) {
                     sum += PlayingFieldUI.takes[i].state
                 }
             }
 
-            if (PlayingFieldUI.bugsRemaining == 10 && sum > 4 ){
+            if (PlayingFieldUI.bugsRemaining == 10 && sum > 4) {
                 toast(stringId = R.string.extra_bugs_on_field)
             }
-            if (PlayingFieldUI.bugsRemaining == 10 && sum < 4 ){
+            if (PlayingFieldUI.bugsRemaining == 10 && sum < 4) {
                 toast(stringId = R.string.not_enougth_bugs_on_field)
             }
 
@@ -103,29 +106,29 @@ class BugPlacementPlayerFragment : ABaseFragment(),
                 return@setOnClickListener
             }
 
-            if (PlayingFieldUI.bugsRemaining in 8..9 && sum == (4 + (9 - 3*PlayingFieldUI.threePartBug))) {
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum == (4 + (9 - 3 * PlayingFieldUI.threePartBug))) {
                 PlayingFieldUI.threePartBug--
                 tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
-            if (PlayingFieldUI.bugsRemaining in 8..9 && sum > (4 + (9 - 3*PlayingFieldUI.threePartBug))){
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum > (4 + (9 - 3 * PlayingFieldUI.threePartBug))) {
                 toast(stringId = R.string.extra_bugs_on_field)
             }
-            if (PlayingFieldUI.bugsRemaining in 8..9 && sum < (4 + (9 - 3*PlayingFieldUI.threePartBug))){
+            if (PlayingFieldUI.bugsRemaining in 8..9 && sum < (4 + (9 - 3 * PlayingFieldUI.threePartBug))) {
                 toast(stringId = R.string.not_enougth_bugs_on_field)
             }
 
-            if (PlayingFieldUI.bugsRemaining in 5..7 && sum == (10 + (8 - 2*PlayingFieldUI.twoPartBug))) {
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum == (10 + (8 - 2 * PlayingFieldUI.twoPartBug))) {
                 PlayingFieldUI.twoPartBug--
                 tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
-            if (PlayingFieldUI.bugsRemaining in 5..7 && sum > (10 + (8 - 2*PlayingFieldUI.twoPartBug))){
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum > (10 + (8 - 2 * PlayingFieldUI.twoPartBug))) {
                 toast(stringId = R.string.extra_bugs_on_field)
             }
-            if (PlayingFieldUI.bugsRemaining in 5..7 && sum < (10 + (8 - 2*PlayingFieldUI.twoPartBug))){
+            if (PlayingFieldUI.bugsRemaining in 5..7 && sum < (10 + (8 - 2 * PlayingFieldUI.twoPartBug))) {
                 toast(stringId = R.string.not_enougth_bugs_on_field)
             }
 
@@ -135,10 +138,10 @@ class BugPlacementPlayerFragment : ABaseFragment(),
                 PlayingFieldUI.bugsRemaining--
                 return@setOnClickListener
             }
-            if (PlayingFieldUI.bugsRemaining in 1..4 && sum > (16 + (5 - PlayingFieldUI.onePartBug))){
+            if (PlayingFieldUI.bugsRemaining in 1..4 && sum > (16 + (5 - PlayingFieldUI.onePartBug))) {
                 toast(stringId = R.string.extra_bugs_on_field)
             }
-            if (PlayingFieldUI.bugsRemaining in 1..4 && sum < (16 + (5 - PlayingFieldUI.onePartBug))){
+            if (PlayingFieldUI.bugsRemaining in 1..4 && sum < (16 + (5 - PlayingFieldUI.onePartBug))) {
                 toast(stringId = R.string.not_enougth_bugs_on_field)
             }
         }
@@ -148,7 +151,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         gameView.setGameState(state)
     }
 
-    fun clean(){
+    fun clean() {
         PlayingFieldUI.fourPartBug = 1
         PlayingFieldUI.threePartBug = 2
         PlayingFieldUI.twoPartBug = 3
@@ -167,7 +170,52 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
         gameView.render()
     }
-}
+
+    private fun surrounding(tk: MutableList<TakeUI>) {
+
+        for (i: Int in 0..99) {
+            if (tk[i].state == 1) {
+
+                // обводка всех клеток по горизонтали сверху
+                if (tk[i + 1].state == 1 && i !in 0..9) {
+                    tk[i - 10].state = 4
+                    tk[i - 9].state = 4
+                }
+                // если горизонтальный жук
+                if (tk[i - 1].state == 0 && tk[i + 1].state == 1 ){
+                    tk[i - 11].state = 4
+                    tk[i - 1].state = 4
+                    tk[i + 9].state = 4
+                }
+
+                    //обводка клеток снизу кор и слева длин
+                    if (tk[i + 1].state == 1 && i !in 90..99) {
+                        tk[i + 10].state = 4
+                        tk[i + 11].state = 4
+                    }
+                    else if (tk[i + 1].state == 0) {
+                        tk[i + 1].state = 4
+                        tk[i + 11].state = 4
+                        tk[i - 9].state = 4
+                    }
+
+                //обводка клетое слева кор и снизу длин
+                if (tk[i + 10].state == 1 && i % 10 != 0 && i != 0) {
+                    tk[i - 11].state = 4
+                    tk[i + 9].state = 4
+                }
+                else if (tk[i + 10].state == 0) {
+                    tk[i + 9].state = 4
+                    tk[i + 10].state = 4
+                    tk[i + 11].state = 4
+                }
+                }
+            }
+        gameView.render()
+        }
+    }
+
+
 
 
 
