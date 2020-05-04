@@ -9,7 +9,7 @@ class GameRepository {
         subscriber.invoke("$nameGame")
     }
 
-    fun BugPlacementPlayerShow(){
+    fun bugPlacementPlayerShow(){
 
     }
 }

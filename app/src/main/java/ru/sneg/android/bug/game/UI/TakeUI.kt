@@ -54,7 +54,7 @@ open class TakeUI(
         when (state) {
            //STATE_UNDEFINED -> renderField(canvas)
             STATE_BUG_PART -> renderBugPart(canvas)
-            STATE_NOTHING  -> renderMiss(canvas)
+            STATE_NOTHING  -> renderNothing(canvas)
             STATE_EXPLODE -> renderExplode(canvas)
         }
     }

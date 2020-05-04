@@ -1,14 +1,11 @@
 package ru.sneg.android.bug.credentials.bugPlacement
 
-import android.os.Handler
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import ru.sneg.android.bug.domain.repositories.GameRepository
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import ru.sneg.android.bug.game.UI.TakeUI
-import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.engine.NetworkPlayer
-import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
 @InjectViewState
@@ -31,7 +28,7 @@ class BugPlacementPlayerSecondPresenter : MvpPresenter<IBugPlaycementPlayerSecon
         super.onFirstViewAttach()
 
         fun BugPlacementPlayerSecond(str: String) {
-            gameRepository.BugPlacementPlayerShow()
+            gameRepository.bugPlacementPlayerShow()
         }
 
         /*val tokenProvider: () -> String = {

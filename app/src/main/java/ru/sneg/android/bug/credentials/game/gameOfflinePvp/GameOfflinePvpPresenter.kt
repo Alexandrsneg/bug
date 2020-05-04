@@ -19,4 +19,6 @@ class GameOfflinePvpPresenter: MvpPresenter<IGameOfflinePvpView> {
         this.gameRepository = gameRepository
         this.userRepository = userRepository
     }
+
+
 }

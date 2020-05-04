@@ -22,6 +22,7 @@ import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.PlayingFieldUI.Companion.takes
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
+import java.lang.IndexOutOfBoundsException
 import javax.inject.Inject
 class BugPlacementPlayerFragment : ABaseFragment(),
     IBugPlaycementPlayerView {
@@ -73,22 +74,17 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
-
-            /* val animation = AnimationUtils.loadAnimation(context, R.anim.scale)
-            bCleanFields.startAnimation(animation)*/
             clean()
         }
-
 
         bAcceptBug.setOnClickListener {
             var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
-            surrounding(takes)
-
+            surrounding(PlayingFieldUI.takes)
 
             for (i in 0..99) {
-                if (PlayingFieldUI.takes[i].state == 1) {
-                    sum += PlayingFieldUI.takes[i].state
+                if (takes[i].state == 1) {
+                    sum += takes[i].state
                 }
             }
 
@@ -151,7 +147,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         gameView.setGameState(state)
     }
 
-    fun clean() {
+    private fun clean() {
         PlayingFieldUI.fourPartBug = 1
         PlayingFieldUI.threePartBug = 2
         PlayingFieldUI.twoPartBug = 3
@@ -166,7 +162,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
         PlayingFieldUI.chooseHorizontal = 0
         for (index in 0..99) {
-            PlayingFieldUI.takes[index].state = 0
+            takes[index].state = 0
         }
         gameView.render()
     }
@@ -176,44 +172,56 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         for (i: Int in 0..99) {
             if (tk[i].state == 1) {
 
-                // обводка всех клеток по горизонтали сверху
-                if (tk[i + 1].state == 1 && i !in 0..9) {
-                    tk[i - 10].state = 4
-                    tk[i - 9].state = 4
+                // обводка клетки сверху
+                if (i !in 0..9) {
+                    if (tk[i - 10].state == 0){
+                        try {
+                           // tk[i - 11].state = 4;
+                            tk[i - 10].state = 4;
+                           // tk[i - 9].state = 4
+                        } catch (e: ArrayIndexOutOfBoundsException) { println ("Exception") }
+                    }
                 }
-                // если горизонтальный жук
-                if (tk[i - 1].state == 0 && tk[i + 1].state == 1 ){
-                    tk[i - 11].state = 4
-                    tk[i - 1].state = 4
-                    tk[i + 9].state = 4
+                // обводка клетки снизу
+                if(i !in 90..99) {
+                    if (tk[i + 10].state == 0) {
+                        try {
+                            tk[i + 10].state = 4;
+                        } catch (e: Exception) { println ("Exception") }
+                    }
+                }
+                // обводка клетки слева
+                val left = listOf<Int>(0,10,20,30,40,50,60,70,80,90)
+                if (i !in left) {
+                    if (tk[i - 1].state == 0 || tk[i - 1].state == 4) {
+                        tk[i - 1].state = 4;
+                        try {
+                            tk[i + 9].state = 4
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 11].state = 4;
+                        } catch (e: Exception) { println("Exception") }
+                    }
+                }
+                // обводка клетки справа
+                val right = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
+                if (i !in right) {
+                    if (tk[i + 1].state == 0 || tk[i + 1].state == 4) {
+                        tk[i + 1].state = 4;
+                        try {
+                            tk[i + 11].state = 4;
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 9].state = 4
+                        } catch (e: Exception) { println("Exception") }
+                    }
                 }
 
-                    //обводка клеток снизу кор и слева длин
-                    if (tk[i + 1].state == 1 && i !in 90..99) {
-                        tk[i + 10].state = 4
-                        tk[i + 11].state = 4
-                    }
-                    else if (tk[i + 1].state == 0) {
-                        tk[i + 1].state = 4
-                        tk[i + 11].state = 4
-                        tk[i - 9].state = 4
-                    }
-
-                //обводка клетое слева кор и снизу длин
-                if (tk[i + 10].state == 1 && i % 10 != 0 && i != 0) {
-                    tk[i - 11].state = 4
-                    tk[i + 9].state = 4
-                }
-                else if (tk[i + 10].state == 0) {
-                    tk[i + 9].state = 4
-                    tk[i + 10].state = 4
-                    tk[i + 11].state = 4
-                }
-                }
             }
-        gameView.render()
         }
+        gameView.render()
     }
+}
 
 
 

@@ -56,7 +56,6 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         PlayingFieldUI.chooseHorizontal = 0
 
-       //gameViewSecond.render()
 
         tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
         tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
@@ -71,7 +70,6 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-
             gameViewSecond.autoPlacing()
         }
 
@@ -86,34 +84,15 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             else toast(stringId = R.string.not_enougth_bugs_on_field)
         }
 
-        // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
+        // очистка игровогo поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
-
-           /* val animation = AnimationUtils.loadAnimation(context, R.anim.scale)
-            bCleanFields.startAnimation(animation)*/
-
-            PlayingFieldUI.fourPartBug = 1
-            PlayingFieldUI.threePartBug = 2
-            PlayingFieldUI.twoPartBug = 3
-            PlayingFieldUI.onePartBug = 4
-
-            PlayingFieldUI.bugsRemaining = 10
-
-            tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
-            tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
-            tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
-            tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
-
-            PlayingFieldUI.chooseHorizontal = 0
-            for (index in 0..99) {
-                PlayingFieldUI.takesPlayerTwo[index].state = 0
-            }
-            gameViewSecond.render()
+            clean()
         }
 
         bAcceptBug.setOnClickListener {
             var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
+            surrounding(PlayingFieldUI.takesPlayerTwo)
 
             for (i in 0..99) {
                 if ( PlayingFieldUI.takesPlayerTwo[i].state == 1 ) {
@@ -178,6 +157,81 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
     override fun onRender(state: GameState) {
         gameViewSecond.setGameStateSecond(state)
+    }
+
+    private fun clean() {
+        PlayingFieldUI.fourPartBug = 1
+        PlayingFieldUI.threePartBug = 2
+        PlayingFieldUI.twoPartBug = 3
+        PlayingFieldUI.onePartBug = 4
+
+        PlayingFieldUI.bugsRemaining = 10
+
+        tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
+        tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
+        tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
+        tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+
+        PlayingFieldUI.chooseHorizontal = 0
+        for (index in 0..99) {
+            PlayingFieldUI.takesPlayerTwo[index].state = 0
+        }
+        gameViewSecond.render()
+    }
+
+    private fun surrounding(tk: MutableList<TakeUI>) {
+
+        for (i: Int in 0..99) {
+            if (tk[i].state == 1) {
+
+                // обводка клетки сверху
+                if (i !in 0..9) {
+                    if (tk[i - 10].state == 0){
+                        try {
+                            // tk[i - 11].state = 4;
+                            tk[i - 10].state = 4;
+                            // tk[i - 9].state = 4
+                        } catch (e: ArrayIndexOutOfBoundsException) { println ("Exception") }
+                    }
+                }
+                // обводка клетки снизу
+                if(i !in 90..99) {
+                    if (tk[i + 10].state == 0) {
+                        try {
+                            tk[i + 10].state = 4;
+                        } catch (e: Exception) { println ("Exception") }
+                    }
+                }
+                // обводка клетки слева
+                val left = listOf<Int>(0,10,20,30,40,50,60,70,80,90)
+                if (i !in left) {
+                    if (tk[i - 1].state == 0 || tk[i - 1].state == 4) {
+                        tk[i - 1].state = 4;
+                        try {
+                            tk[i + 9].state = 4
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 11].state = 4;
+                        } catch (e: Exception) { println("Exception") }
+                    }
+                }
+                // обводка клетки справа
+                val right = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
+                if (i !in right) {
+                    if (tk[i + 1].state == 0 || tk[i + 1].state == 4) {
+                        tk[i + 1].state = 4;
+                        try {
+                            tk[i + 11].state = 4;
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 9].state = 4
+                        } catch (e: Exception) { println("Exception") }
+                    }
+                }
+
+            }
+        }
+        gameViewSecond.render()
     }
 }
 

@@ -72,7 +72,6 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
     }
 
     fun setGameStateFirstPlayer(state: GameState) {
-
         playingField.setGameStateOne(state)
         render()
     }
