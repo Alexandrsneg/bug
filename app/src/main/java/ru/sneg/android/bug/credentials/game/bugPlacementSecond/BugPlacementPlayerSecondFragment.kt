@@ -27,7 +27,21 @@ import javax.inject.Inject
 class BugPlacementPlayerSecondFragment : ABaseFragment(),
     IBugPlaycementPlayerSecondView {
 
-    //var sum: Int = 0
+    companion object {
+        val listBugFour = mutableListOf<Int>()
+
+        val listBugThreeFirst = mutableListOf<Int>()
+        val listBugThreeSecond = mutableListOf<Int>()
+
+        val listBugTwoFirst = mutableListOf<Int>()
+        val listBugTwoSecond = mutableListOf<Int>()
+        val listBugTwoThird = mutableListOf<Int>()
+
+        val listBugOneFirst = mutableListOf<Int>()
+        val listBugOneSecond = mutableListOf<Int>()
+        val listBugOneThird = mutableListOf<Int>()
+        val listBugOneFourth = mutableListOf<Int>()
+    }
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
@@ -167,10 +181,10 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         PlayingFieldUI.bugsRemaining = 10
 
-        tvCountBugFour.text = PlayingFieldUI.fourPartBug.toString()
-        tvCountBugThree.text = PlayingFieldUI.threePartBug.toString()
-        tvCountBugTwo.text = PlayingFieldUI.twoPartBug.toString()
-        tvCountBugOne.text = PlayingFieldUI.onePartBug.toString()
+        tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
+        tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
+        tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
+        tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
 
         PlayingFieldUI.chooseHorizontal = 0
         for (index in 0..99) {

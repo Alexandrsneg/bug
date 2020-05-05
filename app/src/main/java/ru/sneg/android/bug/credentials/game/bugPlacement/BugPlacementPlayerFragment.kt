@@ -27,6 +27,23 @@ import javax.inject.Inject
 class BugPlacementPlayerFragment : ABaseFragment(),
     IBugPlaycementPlayerView {
 
+companion object {
+    val listBugFour = mutableListOf<Int>()
+
+    val listBugThreeFirst = mutableListOf<Int>()
+    val listBugThreeSecond = mutableListOf<Int>()
+
+    val listBugTwoFirst = mutableListOf<Int>()
+    val listBugTwoSecond = mutableListOf<Int>()
+    val listBugTwoThird = mutableListOf<Int>()
+
+    val listBugOneFirst = mutableListOf<Int>()
+    val listBugOneSecond = mutableListOf<Int>()
+    val listBugOneThird = mutableListOf<Int>()
+    val listBugOneFourth = mutableListOf<Int>()
+}
+
+
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
     lateinit var presenter: BugPlacementPlayerPresenter

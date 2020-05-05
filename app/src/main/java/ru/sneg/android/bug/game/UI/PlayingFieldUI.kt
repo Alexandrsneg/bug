@@ -4,6 +4,9 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
+import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
 import kotlin.random.Random
@@ -44,7 +47,6 @@ class PlayingFieldUI: IElementUI {
             takesPlayerTwo.add(TakeUI(index).apply {
                 state = 0
             })
-
     }
 
 
@@ -62,27 +64,27 @@ class PlayingFieldUI: IElementUI {
                     if ((i in 0..6 || i in 10..16 || i in 20..26)) {
                         if (chooseHorizontal == 0) {
                             chooseHorizontal = 1
-                            bugsWithSurrounding(chooseHorizontal, i, 4, takes)
+                            bugsWithSurrounding(chooseHorizontal, i, 4, takes, BugPlacementPlayerFragment.listBugFour)
                         }
                     }
                     //вертикальная установка по всему полю кроме первых трех строк
                     if (chooseHorizontal == 0 && i in 30..99) {
-                        bugsWithSurrounding(chooseHorizontal, i, 4, takes)
+                        bugsWithSurrounding(chooseHorizontal, i, 4, takes, BugPlacementPlayerFragment.listBugFour)
                     }
                     //горизонтальная расстановка кроме последних трех столбцов
                     if (chooseHorizontal == 1 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
-                        removeBug(i,4, chooseHorizontal,takes)
-                        bugsWithSurrounding(chooseHorizontal,i,4, takes)
+                        removeBug(i,4, chooseHorizontal,takes,BugPlacementPlayerFragment.listBugFour )
+                        bugsWithSurrounding(chooseHorizontal,i,4, takes, BugPlacementPlayerFragment.listBugFour)
                         //chooseHorizontal = 2
                     }
                     // удаление вертикальных кораблей в последних трех столбах
                     if (!( i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
-                        removeBug(i,4, chooseHorizontal,takes)
+                        removeBug(i,4, chooseHorizontal,takes, BugPlacementPlayerFragment.listBugFour)
                         chooseHorizontal = 2
                     }
                     //удаление горизонтального жука, завершение цикла установки корабля
                     if (chooseHorizontal == 2 ) {
-                        removeBug(i,4, chooseHorizontal,takes)
+                        removeBug(i,4, chooseHorizontal,takes, BugPlacementPlayerFragment.listBugFour)
                     }
                     chooseHorizontal++
                     if (chooseHorizontal == 3) {
@@ -95,35 +97,78 @@ class PlayingFieldUI: IElementUI {
                     if ((i in 0..7 || i in 10..17)) {
                         if (chooseHorizontal == 0) {
                             chooseHorizontal = 1
-                            bugsWithSurrounding(chooseHorizontal, i, 3, takes)
+                            when (threePartBug) {
+                                2 -> {
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeFirst)
+                                }
+                                1 -> {
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeSecond)
+                                }
+                            }
                         }
                     }
                     //вертикальная установка по всему полю кроме первых двух строк
                     if (chooseHorizontal == 0 && i in 20..99) {
-                        bugsWithSurrounding(chooseHorizontal, i, 3, takes)
+                        when (threePartBug) {
+                            2 -> {
+                                bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeFirst)
+                            }
+                            1 -> {
+                                bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeSecond)
+                            }
+                        }
                     }
                     //горизонтальная расстановка кроме последних двух столбцов
                     if (chooseHorizontal == 1 && (i in 20..27 ||i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97)) {
                         //чтобы не перетирались значения уже установленных жуков
-                        if(takes[i].state == 1) {
-                            removeBug(i, 3, chooseHorizontal, takes)
+                        when (threePartBug) {
+                            2 -> {
+                                if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeFirst )
+                                bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeFirst)
+                            }
+                            1 -> {
+                                if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeSecond )
+                                bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeSecond)
+                            }
                         }
-                        bugsWithSurrounding(chooseHorizontal,i,3, takes)
-                        //chooseHorizontal = 2
+
                     }
                     // удаление вертикальных кораблей в последних двух столбах
                     if (!( i in 0..7 || i in 10..17 || i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && (chooseHorizontal == 1)) {
                         //чтобы не перетирались значения уже установленных жуков
-                        if(takes[i].state == 1) {
-                            removeBug(i, 3, chooseHorizontal, takes)
-                        }
+                        if (takes[i].state == 1)
+                            when (threePartBug) {
+                                2 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeFirst )
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeFirst)
+                                }
+                                1 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeSecond )
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeSecond)
+                                }
+                            }
                         chooseHorizontal = 2
                     }
                     //удаление горизонтального жука, завершение цикла установки корабля
                     if (chooseHorizontal == 2 ) {
                         //чтобы не перетирались значения уже установленных жуков
-                        if(takes[i].state == 1) {
-                            removeBug(i, 3, chooseHorizontal, takes)
+                        if (takes[i].state == 1) {
+                            when (threePartBug) {
+                                2 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeFirst )
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeFirst)
+                                }
+                                1 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 3, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugThreeSecond )
+                                    bugsWithSurrounding(chooseHorizontal, i, 3, takes, BugPlacementPlayerFragment.listBugThreeSecond)
+                                }
+                            }
                         }
                     }
                     chooseHorizontal++
@@ -137,33 +182,93 @@ class PlayingFieldUI: IElementUI {
                     if (i in 0..8) {
                         if (chooseHorizontal == 0) {
                             chooseHorizontal = 1
-                            bugsWithSurrounding(chooseHorizontal, i, 2, takes)
+                            when (twoPartBug) {
+                                3 -> {
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoFirst)
+                                }
+                                2 -> {
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoSecond)
+                                }
+                                1 -> {
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                }
+                            }
                         }
                     }
                     //вертикальная установка по всему полю кроме первых двух строк
                     if (chooseHorizontal == 0 && i in 10..99) {
-                        bugsWithSurrounding(chooseHorizontal, i, 2, takes)
+                        when (twoPartBug) {
+                            3 -> {
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoFirst)
+                            }
+                            2 -> {
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoSecond)
+                            }
+                            1 -> {
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                            }
+                        }
                     }
                     //горизонтальная расстановка кроме последних двух столбцов
                     if (chooseHorizontal == 1 && (i in 10..18 ||i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98)) {
-                        if(takes[i].state == 1) {
-                            removeBug(i, 2, chooseHorizontal, takes)
+                        when (twoPartBug) {
+                            3 -> {
+                                if (takes[i].state == 1)
+                                removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoFirst )
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoFirst)
+                            }
+                            2 -> {
+                                if (takes[i].state == 1)
+                                removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoSecond )
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoSecond)
+                            }
+                            1 -> {
+                                if (takes[i].state == 1)
+                                removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                            }
                         }
-                        bugsWithSurrounding(chooseHorizontal,i,2, takes)
-                        //chooseHorizontal = 2
                     }
                     // удаление вертикальных кораблей в последних двух столбах
                     if (!( i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && (chooseHorizontal == 1)) {
-                        if(takes[i].state == 1) {
-                            removeBug(i, 2, chooseHorizontal, takes)
-                        }
+                            when (twoPartBug) {
+                                3 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoFirst )
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoFirst)
+                                }
+                                2 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoSecond )
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoSecond)
+                                }
+                                1 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                }
+                            }
                         chooseHorizontal = 2
                     }
                     //удаление горизонтального жука, завершение цикла установки корабля
                     if (chooseHorizontal == 2 ) {
-                        if(takes[i].state == 1) {
-                            removeBug(i, 2, chooseHorizontal, takes)
-                        }
+                            when (twoPartBug) {
+                                3 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoFirst )
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoFirst)
+                                }
+                                2 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoSecond )
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoSecond)
+                                }
+                                1 -> {
+                                    if (takes[i].state == 1)
+                                    removeBug(i, 2, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                    bugsWithSurrounding(chooseHorizontal, i, 2, takes, BugPlacementPlayerFragment.listBugTwoThird)
+                                }
+                            }
                     }
                     chooseHorizontal++
                     if (chooseHorizontal == 3) {
@@ -171,12 +276,41 @@ class PlayingFieldUI: IElementUI {
                     }
                 }
             } else if (twoPartBug == 0 && onePartBug > 0) {
-                bugsWithSurrounding(chooseHorizontal,i,1, takes)
+            when (onePartBug) {
+                4 -> {
+                    bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFirst)
+                }
+                3 -> {
+                    bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneSecond)
+                }
+                2 -> {
+                    bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneThird)
+                }
+                1 -> {
+                    bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFourth)
+                }
+            }
                 if (chooseHorizontal == 1) {
-                    if(takes[i].state == 1) {
-                        removeBug(i, 1, chooseHorizontal, takes)
+                    when (onePartBug) {
+                        4 -> {
+                            if (takes[i].state == 1)
+                            removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneFirst)
+                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFirst)
+                        }
+                        3 -> {if (takes[i].state == 1)
+                            removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneSecond)
+                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneSecond)
+                        }
+                        2 -> {if (takes[i].state == 1)
+                            removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneThird)
+                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneThird)
+                        }
+                        1 -> {if (takes[i].state == 1)
+                            removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneFourth)
+                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFourth)
+                        }
                     }
-                    chooseHorizontal == 2
+                    chooseHorizontal = 2
                     chooseHorizontal++
                 }
                 chooseHorizontal++
@@ -186,140 +320,266 @@ class PlayingFieldUI: IElementUI {
             }
     }
 
-    fun onClickFieldBugPlacingSecond(x: Float, y: Float) {
+     fun onClickFieldBugPlacingSecond(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
 
         val i: Int = y * 10 + x
 
-        if (fourPartBug > 0) {
-            if (i in 0..99) {
-                //горизонтальная установка и удаление на первых трех строках
-                if ((i in 0..6 || i in 10..16 || i in 20..26)) {
-                    if (chooseHorizontal == 0) {
-                        chooseHorizontal = 1
-                        bugsWithSurrounding(chooseHorizontal, i, 4, takesPlayerTwo)
-                    }
-                }
-                //вертикальная установка по всему полю кроме первых трех строк
-                if (chooseHorizontal == 0 && i in 30..99) {
-                    bugsWithSurrounding(chooseHorizontal, i, 4, takesPlayerTwo)
-                }
-                //горизонтальная расстановка кроме последних трех столбцов
-                if (chooseHorizontal == 1 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
-                    removeBug(i,4, chooseHorizontal, takesPlayerTwo)
-                    bugsWithSurrounding(chooseHorizontal,i,4, takesPlayerTwo)
-                    //chooseHorizontal = 2
-                }
-                // удаление вертикальных кораблей в последних трех столбах
-                if (!( i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
-                    removeBug(i,4, chooseHorizontal, takesPlayerTwo)
-                    chooseHorizontal = 2
-                }
-                //удаление горизонтального жука, завершение цикла установки корабля
-                if (chooseHorizontal == 2 ) {
-                    removeBug(i,4, chooseHorizontal, takesPlayerTwo)
-                }
-                chooseHorizontal++
-                if (chooseHorizontal == 3) {
-                    chooseHorizontal = 0
-                }
-            }
-        } else if (fourPartBug == 0 && threePartBug > 0) {
-            if (i in 0..99) {
-                //горизонтальная установка и удаление на первых двух строках
-                if ((i in 0..7 || i in 10..17)) {
-                    if (chooseHorizontal == 0) {
-                        chooseHorizontal = 1
-                        bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo)
-                    }
-                }
-                //вертикальная установка по всему полю кроме первых двух строк
-                if (chooseHorizontal == 0 && i in 20..99) {
-                    bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo)
-                }
-                //горизонтальная расстановка кроме последних двух столбцов
-                if (chooseHorizontal == 1 && (i in 20..27 ||i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97)) {
-                    //чтобы не перетирались значения уже установленных жуков
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 3, chooseHorizontal, takesPlayerTwo)
-                    }
-                    bugsWithSurrounding(chooseHorizontal,i,3, takesPlayerTwo)
-                    //chooseHorizontal = 2
-                }
-                // удаление вертикальных кораблей в последних двух столбах
-                if (!( i in 0..7 || i in 10..17 || i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && (chooseHorizontal == 1)) {
-                    //чтобы не перетирались значения уже установленных жуков
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 3, chooseHorizontal, takesPlayerTwo)
-                    }
-                    chooseHorizontal = 2
-                }
-                //удаление горизонтального жука, завершение цикла установки корабля
-                if (chooseHorizontal == 2 ) {
-                    //чтобы не перетирались значения уже установленных жуков
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 3, chooseHorizontal, takesPlayerTwo)
-                    }
-                }
-                chooseHorizontal++
-                if (chooseHorizontal == 3) {
-                    chooseHorizontal = 0
-                }
-            }
-        } else if (threePartBug == 0 && twoPartBug > 0) {
-            if (i in 0..99) {
-                //горизонтальная установка и удаление на первых двух строках
-                if (i in 0..8) {
-                    if (chooseHorizontal == 0) {
-                        chooseHorizontal = 1
-                        bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo)
-                    }
-                }
-                //вертикальная установка по всему полю кроме первых двух строк
-                if (chooseHorizontal == 0 && i in 10..99) {
-                    bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo)
-                }
-                //горизонтальная расстановка кроме последних двух столбцов
-                if (chooseHorizontal == 1 && (i in 10..18 ||i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98)) {
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 2, chooseHorizontal, takesPlayerTwo)
-                    }
-                    bugsWithSurrounding(chooseHorizontal,i,2, takesPlayerTwo)
-                    //chooseHorizontal = 2
-                }
-                // удаление вертикальных кораблей в последних двух столбах
-                if (!( i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && (chooseHorizontal == 1)) {
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 2, chooseHorizontal, takesPlayerTwo)
-                    }
-                    chooseHorizontal = 2
-                }
-                //удаление горизонтального жука, завершение цикла установки корабля
-                if (chooseHorizontal == 2 ) {
-                    if(takesPlayerTwo[i].state == 1) {
-                        removeBug(i, 2, chooseHorizontal, takesPlayerTwo)
-                    }
-                }
-                chooseHorizontal++
-                if (chooseHorizontal == 3) {
-                    chooseHorizontal = 0
-                }
-            }
-        } else if (twoPartBug == 0 && onePartBug > 0) {
-            bugsWithSurrounding(chooseHorizontal,i,1, takesPlayerTwo)
-            if (chooseHorizontal == 1) {
-                if(takesPlayerTwo[i].state == 1) {
-                    removeBug(i, 1, chooseHorizontal, takesPlayerTwo)
-                }
-                chooseHorizontal == 2
-                chooseHorizontal++
-            }
-            chooseHorizontal++
-            if (chooseHorizontal == 3) {
-                chooseHorizontal = 0
-            }
-        }
+         if (fourPartBug > 0) {
+             if (i in 0..99) {
+                 //горизонтальная установка и удаление на первых трех строках
+                 if ((i in 0..6 || i in 10..16 || i in 20..26)) {
+                     if (chooseHorizontal == 0) {
+                         chooseHorizontal = 1
+                         bugsWithSurrounding(chooseHorizontal, i, 4, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugFour)
+                     }
+                 }
+                 //вертикальная установка по всему полю кроме первых трех строк
+                 if (chooseHorizontal == 0 && i in 30..99) {
+                     bugsWithSurrounding(chooseHorizontal, i, 4, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugFour)
+                 }
+                 //горизонтальная расстановка кроме последних трех столбцов
+                 if (chooseHorizontal == 1 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
+                     removeBug(i,4, chooseHorizontal, takesPlayerTwo,BugPlacementPlayerSecondFragment.listBugFour )
+                     bugsWithSurrounding(chooseHorizontal,i,4, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugFour)
+                     //chooseHorizontal = 2
+                 }
+                 // удаление вертикальных кораблей в последних трех столбах
+                 if (!( i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
+                     removeBug(i,4, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugFour)
+                     chooseHorizontal = 2
+                 }
+                 //удаление горизонтального жука, завершение цикла установки корабля
+                 if (chooseHorizontal == 2 ) {
+                     removeBug(i,4, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugFour)
+                 }
+                 chooseHorizontal++
+                 if (chooseHorizontal == 3) {
+                     chooseHorizontal = 0
+                 }
+             }
+         } else if (fourPartBug == 0 && threePartBug > 0) {
+             if (i in 0..99) {
+                 //горизонтальная установка и удаление на первых двух строках
+                 if ((i in 0..7 || i in 10..17)) {
+                     if (chooseHorizontal == 0) {
+                         chooseHorizontal = 1
+                         when (threePartBug) {
+                             2 -> {
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
+                             }
+                             1 -> {
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
+                             }
+                         }
+                     }
+                 }
+                 //вертикальная установка по всему полю кроме первых двух строк
+                 if (chooseHorizontal == 0 && i in 20..99) {
+                     when (threePartBug) {
+                         2 -> {
+                             bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
+                         }
+                         1 -> {
+                             bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
+                         }
+                     }
+                 }
+                 //горизонтальная расстановка кроме последних двух столбцов
+                 if (chooseHorizontal == 1 && (i in 20..27 ||i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97)) {
+                     //чтобы не перетирались значения уже установленных жуков
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (threePartBug) {
+                             2 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
+                             }
+                             1 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
+                             }
+                         }
+                     }
+                 }
+                 // удаление вертикальных кораблей в последних двух столбах
+                 if (!( i in 0..7 || i in 10..17 || i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && (chooseHorizontal == 1)) {
+                     //чтобы не перетирались значения уже установленных жуков
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (threePartBug) {
+                             2 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
+                             }
+                             1 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
+                             }
+                         }
+                     }
+                     chooseHorizontal = 2
+                 }
+                 //удаление горизонтального жука, завершение цикла установки корабля
+                 if (chooseHorizontal == 2 ) {
+                     //чтобы не перетирались значения уже установленных жуков
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (threePartBug) {
+                             2 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
+                             }
+                             1 -> {
+                                 removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
+                             }
+                         }
+                     }
+                 }
+                 chooseHorizontal++
+                 if (chooseHorizontal == 3) {
+                     chooseHorizontal = 0
+                 }
+             }
+         } else if (threePartBug == 0 && twoPartBug > 0) {
+             if (i in 0..99) {
+                 //горизонтальная установка и удаление на первых двух строках
+                 if (i in 0..8) {
+                     if (chooseHorizontal == 0) {
+                         chooseHorizontal = 1
+                         when (twoPartBug) {
+                             3 -> {
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
+                             }
+                             2 -> {
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
+                             }
+                             1 -> {
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                             }
+                         }
+                     }
+                 }
+                 //вертикальная установка по всему полю кроме первых двух строк
+                 if (chooseHorizontal == 0 && i in 10..99) {
+                     when (twoPartBug) {
+                         3 -> {
+                             bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
+                         }
+                         2 -> {
+                             bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
+                         }
+                         1 -> {
+                             bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                         }
+                     }
+                 }
+                 //горизонтальная расстановка кроме последних двух столбцов
+                 if (chooseHorizontal == 1 && (i in 10..18 ||i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98)) {
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (twoPartBug) {
+                             3 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
+                             }
+                             2 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
+                             }
+                             1 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                             }
+                         }
+                     }
+                 }
+                 // удаление вертикальных кораблей в последних двух столбах
+                 if (!( i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && (chooseHorizontal == 1)) {
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (twoPartBug) {
+                             3 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
+                             }
+                             2 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
+                             }
+                             1 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                             }
+                         }
+                     }
+                     chooseHorizontal = 2
+                 }
+                 //удаление горизонтального жука, завершение цикла установки корабля
+                 if (chooseHorizontal == 2 ) {
+                     if (takesPlayerTwo[i].state == 1) {
+                         when (twoPartBug) {
+                             3 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
+                             }
+                             2 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
+                             }
+                             1 -> {
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                                 bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
+                             }
+                         }
+                     }
+                 }
+                 chooseHorizontal++
+                 if (chooseHorizontal == 3) {
+                     chooseHorizontal = 0
+                 }
+             }
+         } else if (twoPartBug == 0 && onePartBug > 0) {
+             when (onePartBug) {
+                 4 -> {
+                     bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
+                 }
+                 3 -> {
+                     bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
+                 }
+                 2 -> {
+                     bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
+                 }
+                 1 -> {
+                     bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
+                 }
+             }
+             if (chooseHorizontal == 1) {
+                 if(takesPlayerTwo[i].state == 1) {
+                     when (onePartBug) {
+                         4 -> {
+                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
+                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
+                         }
+                         3 -> {
+                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
+                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
+                         }
+                         2 -> {
+                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
+                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
+                         }
+                         1 -> {
+                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
+                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
+                         }
+                     }
+                 }
+                 chooseHorizontal == 2
+                 chooseHorizontal++
+             }
+             chooseHorizontal++
+             if (chooseHorizontal == 3) {
+                 chooseHorizontal = 0
+             }
+         }
     }
 //**************************конец расстановки жуков*****************************************
 
@@ -327,11 +587,21 @@ class PlayingFieldUI: IElementUI {
 fun onClickGameFieldFirst(x: Float, y: Float) {
     val x: Int = (x / (width / 10)).toInt()
     val y: Int = (y / (height / 10)).toInt()
+    val i: Int = y * 10 + x
 
-    if (takes[y * 10 + x].state == 1){  //bug_part
-        takes[y * 10 + x].state = 3}   //explode
+    if (takes[y * 10 + x].state == 1)//bug_part
+    {
+        takes[y * 10 + x].state = 3 //explode
+        if (killCheck(identBug(i),takes)){ // если все элементы жука подбиты
+            surrounding(takes) // обводка клеток вокруг убитого жука
+        }
+    }
+
+
     if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
         takes[y * 10 + x].state = 2}   //miss
+
+
 }
 
     fun onClickGameFieldSecond(x: Float, y: Float) {
@@ -539,6 +809,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
                 takes[i].state = when (game[i]) {
                     Const.SELECT_TYPE_SHIP_PART -> TakeUI.STATE_BUG_PART
                     Const.SELECT_TYPE_MISS -> TakeUI.STATE_MISS
+                    Const.SELECT_TYPE_EXPLODE -> TakeUI.STATE_EXPLODE
                     else -> TakeUI.STATE_UNDEFINED
                 }
 
@@ -553,6 +824,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
             takesPlayerTwo[i].state = when (game[i]) {
                 Const.SELECT_TYPE_SHIP_PART -> TakeUI.STATE_BUG_PART
                 Const.SELECT_TYPE_MISS -> TakeUI.STATE_MISS
+                Const.SELECT_TYPE_EXPLODE -> TakeUI.STATE_EXPLODE
                 else -> TakeUI.STATE_UNDEFINED
             }
 
@@ -560,147 +832,32 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
             println("WIN!")
     }
 
-    private fun bugsWithSurrounding(chooseHor: Int, i: Int, bugPart: Int, tk: MutableList<TakeUI>) {
+    private fun bugsWithSurrounding(chooseHor: Int, i: Int, bugPart: Int, tk: MutableList<TakeUI>, listBug: MutableList<Int>) {
         // *********************вертикальные расстановки****************************
         if (chooseHor == 0) {
-            if (fieldNotEmpty(i,bugPart,chooseHor,tk)){
+            if (fieldNotEmpty(i, bugPart, chooseHor, tk)) {
                 chooseHorizontal = 1
             }
             // проерка, что на пути жука statы пустые
             if (!fieldNotEmpty(i, bugPart, chooseHor, tk)) {
-                for (s in 0 until bugPart) tk[i - 10 * s].state = 1 // сам жук
-                //если голова в крайнем левом столбце
-               /* if (i % 10 == 0) {
-                    // если голова в крайнем нижнем углу
-                    if (i == 90) {
-                        tk[i - 10 * bugPart].state = 4
-                        for (s in 0..bugPart) tk[(i + 1) - 10 * s].state = 4
-                    }
-                    //если хвост попадает на крайний левый угол
-                    if (i - 10 * bugPart == -10) {
-                        tk[i + 10].state = 4
-                        for (s in -1 until bugPart) tk[(i + 1) - 10 * s].state = 4 // поле вокруг жука
-                    }
-                    // все средние значения в первом столбце
-                    if ((i - 10 * bugPart != -10) && i != 90) {
-                        tk[i + 10].state = 4
-                        tk[i - 10 * bugPart].state = 4
-                        for (s in -1..bugPart) tk[(i + 1) - 10 * s].state = 4
-                    }
+                for (s in 0 until bugPart) {
+                    tk[i - 10 * s].state = 1 // сам жук
+                    listBug.add(i - 10 * s)
                 }
-                //если голова в крайнем правом столбце
-                val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
-                if (i in list) {
-                    // если голова в крайнем правом углу
-                    if (i == 99) {
-                        tk[i - 10 * bugPart].state = 4
-                        for (s in 0..bugPart) tk[i - 1 - 10 * s].state = 4
-                    }
-                    //если хвост попадает на крайний правый угол
-                    if (i - 10 * bugPart == -1) {
-                        tk[i + 10].state = 4
-                        for (s in -1 until bugPart) tk[i - 1 - 10 * s].state = 4
-                    }
-                    if ((i - 10 * bugPart != -1) && i != 99) {
-                        tk[i + 10].state = 4
-                        tk[i - 10 * bugPart].state = 4
-                        for (s in -1..bugPart) tk[i - 1 - 10 * s].state = 4
-                    }
-                }
-                // если голова идет по нижнему краю
-                if (i in 91..98) {
-                    tk[i - 10 * bugPart].state = 4
-                    for (s in 0..bugPart) {
-                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
-                    }
-                }
-                // если хвост идёт по верхнему краю
-                if ((i - 10 * bugPart) in -9..-2) {
-                    tk[i + 10].state = 4
-                    for (s in -1 until bugPart) {
-                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
-                    }
-                }
-                // все не пограничные значения
-                if ((i - 10 * bugPart) !in -9..-2 && ( i in 11..18 || i in 21..28 || i in 31..38 || i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88)) {
-                    tk[i - 10 * bugPart].state = 4
-                    tk[i + 10].state = 4
-                    for (s in -1..bugPart) {
-                        tk[i - 1 - 10 * s].state = 4; tk[(i + 1) - 10 * s].state = 4
-                    }
-                }*/
             }
         }
         //*********************горизонтальные расстановки****************************
         if (chooseHor == 1) {
-            if (fieldNotEmpty(i,bugPart,chooseHor,tk)){
+            if (fieldNotEmpty(i, bugPart, chooseHor, tk)) {
                 chooseHorizontal = 2
             }
+
             // проерка, что на пути жука statы пустые
             if (!fieldNotEmpty(i, bugPart, chooseHor, tk)) {
-                for (s in 0 until bugPart) tk[i + s].state = 1 // сам жук
-                //если голова в крайнем левом столбце
-               /* if (i % 10 == 0) {
-                    // если голова в крайнем нижнем углу
-                    if (i == 90) {
-                        tk[i + bugPart].state = 4
-                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
-                    }
-                    //если голова попадает на крайний левый угол
-                   /* if (i == 0) {
-                        tk[i + bugPart].state = 4
-                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4 // поле вокруг жука
-                    }*/
-                    // все средние значения в первом столбце
-                    if (i != 0 && i != 90) {
-                        tk[i + bugPart].state = 4
-                        for (s in 0..bugPart) tk[i - 10 + 1 * s].state = 4
-                        for (s in 0..bugPart) tk[i + 10 + 1 * s].state = 4
-                    }
+                for (s in 0 until bugPart) {
+                    tk[i + s].state = 1 // сам жук
+                    listBug.add(i + s)
                 }
-                //если хвост идёт по крайней правой колонке
-                val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
-                if ((i + 1 * (bugPart-1)) in list) {
-                    // если хвост в  правом верхнем углу
-                    if ((i + 1 * (bugPart-1)) == 9) {
-                        tk[i - 1].state = 4
-                        for (s in -1 until bugPart) tk[i + 10 + s].state = 4
-                    }
-                    // если хвост в  правом нижнем углу
-                    if ((i + 1 * (bugPart-1)) == 99) {
-                        tk[i - 1].state = 4
-                        for (s in -1 until bugPart) tk[i - 10 + s].state = 4
-                    }
-                    if (((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9){
-                        tk[i - 1].state = 4
-                        for (s in -1 until bugPart) tk[i - 10 + s].state = 4
-                        for (s in -1 until bugPart) tk[i + 10 + s].state = 4
-                    }
-                }
-                // если жук идет по нижнему краю
-                if ((i + bugPart-1) in 91..98 && i != 90 && i != 99) {
-
-                    tk[i - 1].state = 4
-                    tk[i + bugPart].state = 4
-                    for (s in -1..bugPart) tk[i - 10 + s].state = 4
-
-                }
-                // если жук идёт по верхнему краю
-                if ((i + bugPart-1) in 1..8 && i != 0 && i != 9) {
-                    tk[i - 1].state = 4
-                    tk[i + bugPart].state = 4
-                    for (s in -1..bugPart) tk[i + 10 + s].state = 4
-
-                }
-                // все не пограничные значения
-               if ((i in 11..18 || i in 21..28 || i in 31..38 || i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88)
-                        && !(((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9)) {
-                    tk[i - 1].state = 4
-                    tk[i + bugPart].state = 4
-                    for (s in -1..bugPart){
-                        tk[i + 10 + s].state = 4; tk[i - 10 + s].state = 4
-                    }
-                }*/
             }
         }
     }
@@ -725,152 +882,131 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         }
 
 
-    private  fun removeBug (i: Int, bugPart: Int, chooseHor: Int, tk: MutableList<TakeUI>) {
+    private  fun removeBug (i: Int, bugPart: Int, chooseHor: Int, tk: MutableList<TakeUI>, listBug: MutableList<Int>) {
         if (chooseHor == 1) {
             for (s in 0 until bugPart)
                 try {
                     tk[i - 10 * s].state = 0 // сам жук
+                    listBug.remove(i - 10 * s)
                 }
                 catch (e : IndexOutOfBoundsException){
                     println(e)
                 }
-           /* //если голова в крайнем левом столбце
-            if (i % 10 == 0) {
-
-                // если голова в крайнем нижнем углу
-                if (i == 90) {
-                    tk[i - 10 * bugPart].state = 0
-                    for (s in 0..bugPart) tk[(i + 1) - 10 * s].state = 0
-                }
-                //если хвост попадает на крайний левый угол
-                if (i - 10 * bugPart == -10) {
-                    tk[i + 10].state = 0
-                    for (s in -1 until bugPart) tk[(i + 1) - 10 * s].state = 0 // поле вокруг жука
-                }
-                // все средние значения в первом столбце
-                if ((i - 10 * bugPart != -10) && i != 90) {
-                    try {
-                        tk[i + 10].state = 0
-                        tk[i - 10 * bugPart].state = 0
-                        for (s in -1..bugPart) tk[(i + 1) - 10 * s].state = 0
-                    }
-                    catch (e : ArrayIndexOutOfBoundsException){
-                        println(e)
-                    }
-                }
-            }
-            //если голова в крайнем правом столбце
-            val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
-            if (i in list && i - 10 * bugPart > -1) {
-                // если голова в крайнем правом углу
-                if (i == 99) {
-                    tk[i - 10 * bugPart].state = 0
-                    for (s in 0..bugPart) tk[i - 1 - 10 * s].state = 0
-                }
-                //если хвост попадает на крайний правый угол
-                if (i - 10 * bugPart == -1) {
-                    tk[i + 10].state = 0
-                    for (s in -1 until bugPart) tk[i - 1 - 10 * s].state = 0
-                }
-                if ((i - 10 * bugPart != -1) && i != 99) {
-                    tk[i + 10].state = 0
-                    tk[i - 10 * bugPart].state = 0
-                    for (s in -1..bugPart) tk[i - 1 - 10 * s].state = 0
-                }
-            }
-            // если голова идет по нижнему краю
-            if (i in 91..98) {
-                tk[i - 10 * bugPart].state = 0
-                for (s in 0..bugPart) {
-                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
-                }
-            }
-            // если хвост идёт по верхнему краю
-            if ((i - 10 * bugPart) in -9..-2) {
-                tk[i + 10].state = 0
-                for (s in -1 until bugPart) {
-                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
-                }
-            }
-            // все не пограничные значения
-            if (i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88) {
-                tk[i - 10 * bugPart].state = 0
-                tk[i + 10].state = 0
-                for (s in -1..bugPart) {
-                    tk[i - 1 - 10 * s].state = 0; tk[(i + 1) - 10 * s].state = 0
-                }
-            }*/
         }
         if (chooseHor == 2){
             for (s in 0 until bugPart)
                     try {
                         tk[i + s].state = 0 // сам жук
+                        listBug.remove(i + s)
                     }
                     catch (e : IndexOutOfBoundsException){
                         println(e)
                     }
-           /* //если голова в крайнем левом столбце
-            if (i % 10 == 0) {
-                // если голова в крайнем нижнем углу
-                if (i == 90) {
-                    tk[i + bugPart].state = 0
-                    for (s in 0..bugPart) tk[i - 10 + s].state = 0
-                }
-                //если голова попадает на крайний левый угол
-                if (i == 0) {
-                    tk[i + bugPart].state = 0
-                    for (s in 0..bugPart) tk[i + 10 + s].state = 0 // поле вокруг жука
-                }
-                // все средние значения в первом столбце
-                if (i != 0 && i != 90) {
-                    tk[i + bugPart].state = 0
-                    for (s in 0..bugPart) tk[i - 10 + s].state = 0
-                    for (s in 0..bugPart) tk[i + 10 + s].state = 0
-                }
-            }
-            //если хвост идёт по крайней правой колонке
-            val list = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
-            if ((i + 1 * (bugPart-1)) in list) {
-                // если хвост в  правом верхнем углу
-                if ((i + 1 * (bugPart-1)) == 9) {
-                    tk[i - 1].state = 0
-                    for (s in -1 until bugPart) tk[i + 10 + s].state = 0
-                }
-                // если хвост в  правом нижнем углу
-                if ((i + 1 * (bugPart-1)) == 99) {
-                    tk[i - 1].state = 0
-                    for (s in -1 until bugPart) tk[i - 10 + s].state = 0
-                }
-                if (((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9){
-                    tk[i - 1].state = 0
-                    for (s in -1 until bugPart) tk[i - 10 + s].state = 0
-                    for (s in -1 until bugPart) tk[i + 10 + s].state = 0
-                }
-            }
-            // если жук идет по нижнему краю
-            if ((i + bugPart-1) in 91..98 && i != 90 && i != 99) {
+        }
+    }
 
-                tk[i - 1].state = 0
-                tk[i + bugPart].state = 0
-                for (s in -1..bugPart) tk[i - 10 + s].state = 0
+    private fun identBug(i: Int): MutableList<Int>{
+        lateinit var listBug: MutableList<Int>
+        // 4x-bug
+       if (BugPlacementPlayerFragment.listBugFour.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugFour
+       }
+        // 3x-bug
+        if (BugPlacementPlayerFragment.listBugThreeFirst.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugThreeFirst
+        }
+        if (BugPlacementPlayerFragment.listBugThreeSecond.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugThreeSecond
+        }
+        //2x-bug
+        if (BugPlacementPlayerFragment.listBugTwoFirst.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugTwoFirst
+        }
+        if (BugPlacementPlayerFragment.listBugTwoSecond.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugTwoSecond
+        }
+        if (BugPlacementPlayerFragment.listBugTwoThird.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugTwoThird
+        }
+        //1x-bug
+        if (BugPlacementPlayerFragment.listBugOneFirst.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugOneFirst
+        }
+        if (BugPlacementPlayerFragment.listBugOneSecond.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugOneSecond
+        }
+        if (BugPlacementPlayerFragment.listBugOneThird.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugOneThird
+        }
+        if (BugPlacementPlayerFragment.listBugOneFourth.contains(i)){
+            listBug = BugPlacementPlayerFragment.listBugOneFourth
+        }
+        return listBug
+    }
 
-            }
-            // если жук идёт по верхнему краю
-            if ((i + bugPart-1) in 1..8 && i != 0 && i != 9) {
-                tk[i - 1].state = 0
-                tk[i + bugPart].state = 0
-                for (s in -1..bugPart) tk[i + 10 + s].state = 0
+    private fun killCheck(listBug : MutableList<Int>, tk: MutableList<TakeUI>): Boolean{
+        var killed : Boolean = false
+        var sum : Int = 0
 
-            }
-            // все не пограничные значения
-            if ((i in 11..18 || i in 21..28 || i in 31..38 || i in 41..48 || i in 51..58 || i in 61..68 || i in 71..78 || i in 81..88)
-                    && !(((i + 1 * (bugPart-1)) in list) && (i + 1 * (bugPart-1)) != 99 && (i + 1 * (bugPart-1)) != 9)) {
-                tk[i - 1].state = 0
-                tk[i + bugPart].state = 0
-                for (s in -1..bugPart){
-                    tk[i + 10 + s].state = 0; tk[i - 10 + s].state = 0
+        for (i in listBug){
+            if (tk[i].state == 3) sum ++
+        }
+        if (sum - listBug.size == 0) killed = true
+
+        return killed
+    }
+
+    private fun surrounding(tk: MutableList<TakeUI>) {
+
+        for (i: Int in 0..99) {
+            if (tk[i].state == 3) {
+
+                // обводка клетки сверху
+                if (i !in 0..9) {
+                    if (tk[i - 10].state == 4){
+                        try {
+                            // tk[i - 11].state = 4;
+                            tk[i - 10].state = 2;
+                            // tk[i - 9].state = 4
+                        } catch (e: ArrayIndexOutOfBoundsException) { println ("Exception") }
+                    }
                 }
-            }*/
+                // обводка клетки снизу
+                if(i !in 90..99) {
+                    if (tk[i + 10].state == 4) {
+                        try {
+                            tk[i + 10].state = 2;
+                        } catch (e: Exception) { println ("Exception") }
+                    }
+                }
+                // обводка клетки слева
+                val left = listOf<Int>(0,10,20,30,40,50,60,70,80,90)
+                if (i !in left) {
+                    if (tk[i - 1].state == 2 || tk[i - 1].state == 4) {
+                        tk[i - 1].state = 2;
+                        try {
+                            tk[i + 9].state = 2
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 11].state = 2;
+                        } catch (e: Exception) { println("Exception") }
+                    }
+                }
+                // обводка клетки справа
+                val right = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
+                if (i !in right) {
+                    if (tk[i + 1].state == 2 || tk[i + 1].state == 4) {
+                        tk[i + 1].state = 2;
+                        try {
+                            tk[i + 11].state = 2;
+                        } catch (e: Exception) { println("Exception") }
+                        try {
+                            tk[i - 9].state = 2
+                        } catch (e: Exception) { println("Exception") }
+                    }
+                }
+
+            }
         }
     }
 }

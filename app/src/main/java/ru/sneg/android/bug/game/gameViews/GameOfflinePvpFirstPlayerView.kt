@@ -28,7 +28,6 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
 
 
 
-
     private val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
@@ -45,7 +44,6 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
                 else -> false
             }
         }
-
     }
 
     override fun onAttachedToWindow() {
@@ -55,15 +53,11 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
 
 
     fun render() {
-
         var canvas: Canvas? = null
-
         try {
-
             canvas = holder.lockCanvas()
             if (canvas != null)
                 render(canvas)
-
         } catch (e: Exception) {
             e.printStackTrace()
         } finally {

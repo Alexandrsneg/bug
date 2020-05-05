@@ -7,11 +7,14 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_offline_pvp.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.engine.GameState
 import javax.inject.Inject
 
 class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
+
+
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
