@@ -389,51 +389,56 @@ class PlayingFieldUI: IElementUI {
                  //горизонтальная расстановка кроме последних двух столбцов
                  if (chooseHorizontal == 1 && (i in 20..27 ||i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97)) {
                      //чтобы не перетирались значения уже установленных жуков
-                     if (takesPlayerTwo[i].state == 1) {
+
                          when (threePartBug) {
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
                              }
                          }
-                     }
+
                  }
                  // удаление вертикальных кораблей в последних двух столбах
                  if (!( i in 0..7 || i in 10..17 || i in 20..27 || i in 30..37 || i in 40..47 || i in 50..57 || i in 60..67 || i in 70..77 || i in 80..87 || i in 90..97) && (chooseHorizontal == 1)) {
                      //чтобы не перетирались значения уже установленных жуков
-                     if (takesPlayerTwo[i].state == 1) {
+
                          when (threePartBug) {
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
                              }
                          }
-                     }
+
                      chooseHorizontal = 2
                  }
                  //удаление горизонтального жука, завершение цикла установки корабля
                  if (chooseHorizontal == 2 ) {
                      //чтобы не перетирались значения уже установленных жуков
-                     if (takesPlayerTwo[i].state == 1) {
+
                          when (threePartBug) {
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeFirst)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 3, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 3, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugThreeSecond)
                              }
                          }
-                     }
                  }
                  chooseHorizontal++
                  if (chooseHorizontal == 3) {
@@ -475,61 +480,66 @@ class PlayingFieldUI: IElementUI {
                  }
                  //горизонтальная расстановка кроме последних двух столбцов
                  if (chooseHorizontal == 1 && (i in 10..18 ||i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98)) {
-                     if (takesPlayerTwo[i].state == 1) {
                          when (twoPartBug) {
                              3 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
                              }
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                              }
                          }
-                     }
                  }
                  // удаление вертикальных кораблей в последних двух столбах
                  if (!( i in 0..8 || i in 10..18 || i in 20..28 || i in 30..38 || i in 40..48 || i in 50..58 || i in 60..68 || i in 70..78 || i in 80..88 || i in 90..98) && (chooseHorizontal == 1)) {
-                     if (takesPlayerTwo[i].state == 1) {
+
                          when (twoPartBug) {
                              3 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
                              }
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                              }
                          }
-                     }
+
                      chooseHorizontal = 2
                  }
                  //удаление горизонтального жука, завершение цикла установки корабля
                  if (chooseHorizontal == 2 ) {
-                     if (takesPlayerTwo[i].state == 1) {
                          when (twoPartBug) {
                              3 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoFirst)
                              }
                              2 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond )
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoSecond)
                              }
                              1 -> {
+                                 if (takesPlayerTwo[i].state == 1)
                                  removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                                  bugsWithSurrounding(chooseHorizontal, i, 2, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugTwoThird)
                              }
                          }
-                     }
                  }
                  chooseHorizontal++
                  if (chooseHorizontal == 3) {
@@ -552,26 +562,28 @@ class PlayingFieldUI: IElementUI {
                  }
              }
              if (chooseHorizontal == 1) {
-                 if(takesPlayerTwo[i].state == 1) {
                      when (onePartBug) {
                          4 -> {
+                             if (takesPlayerTwo[i].state == 1)
                              removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
                              bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
                          }
                          3 -> {
+                             if (takesPlayerTwo[i].state == 1)
                              removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
                              bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
                          }
                          2 -> {
+                             if (takesPlayerTwo[i].state == 1)
                              removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
                              bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
                          }
                          1 -> {
+                             if (takesPlayerTwo[i].state == 1)
                              removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
                              bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
                          }
                      }
-                 }
                  chooseHorizontal == 2
                  chooseHorizontal++
              }
@@ -607,9 +619,15 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
     fun onClickGameFieldSecond(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
+        val i: Int = y * 10 + x
 
-        if (takesPlayerTwo[y * 10 + x].state == 1){  //bug_part
-            takesPlayerTwo[y * 10 + x].state = 3}   //explode
+        if (takesPlayerTwo[y * 10 + x].state == 1)//bug_part
+        {
+            takesPlayerTwo[y * 10 + x].state = 3 //explode
+            if (killCheck(identBug(i),takes)){ // если все элементы жука подбиты
+                surrounding(takes) // обводка клеток вокруг убитого жука
+            }
+        }
         if (takesPlayerTwo[y * 10 + x].state == 0 || takesPlayerTwo[y * 10 + x].state == 4){ //undefined
             takesPlayerTwo[y * 10 + x].state = 2}   //miss
     }
