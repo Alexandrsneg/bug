@@ -19,6 +19,7 @@ import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
@@ -190,6 +191,21 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         for (index in 0..99) {
             PlayingFieldUI.takesPlayerTwo[index].state = 0
         }
+
+        listBugFour.clear()
+
+        listBugThreeFirst.clear()
+        listBugThreeSecond.clear()
+
+        listBugTwoFirst.clear()
+        listBugTwoSecond.clear()
+        listBugTwoThird.clear()
+
+        listBugOneFirst.clear()
+        listBugOneSecond.clear()
+        listBugOneThird.clear()
+        listBugOneFourth.clear()
+
         gameViewSecond.render()
     }
 

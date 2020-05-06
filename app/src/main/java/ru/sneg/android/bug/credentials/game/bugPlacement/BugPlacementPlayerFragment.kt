@@ -28,19 +28,19 @@ class BugPlacementPlayerFragment : ABaseFragment(),
     IBugPlaycementPlayerView {
 
 companion object {
-    val listBugFour = mutableListOf<Int>()
+    var listBugFour = mutableListOf<Int>()
 
-    val listBugThreeFirst = mutableListOf<Int>()
-    val listBugThreeSecond = mutableListOf<Int>()
+    var listBugThreeFirst = mutableListOf<Int>()
+    var listBugThreeSecond = mutableListOf<Int>()
 
-    val listBugTwoFirst = mutableListOf<Int>()
-    val listBugTwoSecond = mutableListOf<Int>()
-    val listBugTwoThird = mutableListOf<Int>()
+    var listBugTwoFirst = mutableListOf<Int>()
+    var listBugTwoSecond = mutableListOf<Int>()
+    var listBugTwoThird = mutableListOf<Int>()
 
-    val listBugOneFirst = mutableListOf<Int>()
-    val listBugOneSecond = mutableListOf<Int>()
-    val listBugOneThird = mutableListOf<Int>()
-    val listBugOneFourth = mutableListOf<Int>()
+    var listBugOneFirst = mutableListOf<Int>()
+    var listBugOneSecond = mutableListOf<Int>()
+    var listBugOneThird = mutableListOf<Int>()
+    var listBugOneFourth = mutableListOf<Int>()
 }
 
 
@@ -181,6 +181,21 @@ companion object {
         for (index in 0..99) {
             takes[index].state = 0
         }
+
+        listBugFour.clear()
+
+        listBugThreeFirst.clear()
+        listBugThreeSecond.clear()
+
+        listBugTwoFirst.clear()
+        listBugTwoSecond.clear()
+        listBugTwoThird.clear()
+
+        listBugOneFirst.clear()
+        listBugOneSecond.clear()
+        listBugOneThird.clear()
+        listBugOneFourth.clear()
+
         gameView.render()
     }
 
@@ -238,6 +253,7 @@ companion object {
         }
         gameView.render()
     }
+  //удаление значений в списках жуков при очищении поля
 }
 
 
