@@ -52,6 +52,7 @@ class PlayingFieldUI: IElementUI {
 
 //*****************расстановка жуков****************************************************
     //обработчик нажатия на клетку поля
+    //логика возможности раастановки жуков по полю, установка в зависимости от расположения второй игрок(офлайн)
     fun onClickFieldBugPlacingFirst(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
@@ -295,23 +296,18 @@ class PlayingFieldUI: IElementUI {
                         4 -> {
                             if (takes[i].state == 1)
                             removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneFirst)
-                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFirst)
                         }
                         3 -> {if (takes[i].state == 1)
                             removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneSecond)
-                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneSecond)
                         }
                         2 -> {if (takes[i].state == 1)
                             removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneThird)
-                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneThird)
                         }
                         1 -> {if (takes[i].state == 1)
                             removeBug(i, 1, chooseHorizontal, takes, BugPlacementPlayerFragment.listBugOneFourth)
-                            bugsWithSurrounding(chooseHorizontal, i, 1, takes, BugPlacementPlayerFragment.listBugOneFourth)
                         }
                     }
                     chooseHorizontal = 2
-                    chooseHorizontal++
                 }
                 chooseHorizontal++
                 if (chooseHorizontal == 3) {
@@ -319,7 +315,7 @@ class PlayingFieldUI: IElementUI {
                 }
             }
     }
-
+    //логика возможности раастановки жуков по полю, установка в зависимости от расположения второй игрок(офлайн)
      fun onClickFieldBugPlacingSecond(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
@@ -565,27 +561,22 @@ class PlayingFieldUI: IElementUI {
                      when (onePartBug) {
                          4 -> {
                              if (takesPlayerTwo[i].state == 1)
-                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
-                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFirst)
                          }
                          3 -> {
                              if (takesPlayerTwo[i].state == 1)
-                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
-                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneSecond)
                          }
                          2 -> {
                              if (takesPlayerTwo[i].state == 1)
-                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
-                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneThird)
                          }
                          1 -> {
                              if (takesPlayerTwo[i].state == 1)
-                             removeBug(i, 1, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
-                             bugsWithSurrounding(chooseHorizontal, i, 1, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
+                                 removeBug(i, 2, chooseHorizontal, takesPlayerTwo, BugPlacementPlayerSecondFragment.listBugOneFourth)
                          }
                      }
-                 chooseHorizontal == 2
-                 chooseHorizontal++
+                 chooseHorizontal = 2
              }
              chooseHorizontal++
              if (chooseHorizontal == 3) {
@@ -596,47 +587,49 @@ class PlayingFieldUI: IElementUI {
 //**************************конец расстановки жуков*****************************************
 
 //**************************выстрелы по полям***********************************************
-fun onClickGameFieldFirst(x: Float, y: Float) {
-    val x: Int = (x / (width / 10)).toInt()
-    val y: Int = (y / (height / 10)).toInt()
-    val i: Int = y * 10 + x
-
-    if (takes[y * 10 + x].state == 1)//bug_part
-    {
-        takes[y * 10 + x].state = 3 //explode
-        if (killCheck(identBug(i),takes)){ // если все элементы жука подбиты
-            surrounding(takes) // обводка клеток вокруг убитого жука
-        }
-    }
-
-
-    if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
-        takes[y * 10 + x].state = 2}   //miss
-
-
-}
-
-    fun onClickGameFieldSecond(x: Float, y: Float) {
+    //отрисовки нажатий на игоровое поле первого игрока (офлайн)
+    fun onClickGameFieldFirst(x: Float, y: Float) {
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
         val i: Int = y * 10 + x
 
-        if (takesPlayerTwo[y * 10 + x].state == 1)//bug_part
-        {
-            takesPlayerTwo[y * 10 + x].state = 3 //explode
+        if (takes[y * 10 + x].state == 1){//bug_part
+
+            takes[y * 10 + x].state = 3 //explode
             if (killCheck(identBug(i),takes)){ // если все элементы жука подбиты
-                surrounding(takes) // обводка клеток вокруг убитого жука
+            surrounding(takes) // обводка клеток вокруг убитого жука
             }
         }
-        if (takesPlayerTwo[y * 10 + x].state == 0 || takesPlayerTwo[y * 10 + x].state == 4){ //undefined
-            takesPlayerTwo[y * 10 + x].state = 2}   //miss
+
+
+        if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
+        takes[y * 10 + x].state = 2}   //miss
+
+
     }
+         //отрисовки нажатий на игоровое поле первого игрока (офлайн)
+        fun onClickGameFieldSecond(x: Float, y: Float) {
+            val x: Int = (x / (width / 10)).toInt()
+            val y: Int = (y / (height / 10)).toInt()
+            val i: Int = y * 10 + x
+
+            if (takesPlayerTwo[y * 10 + x].state == 1){//bug_part
+
+                takesPlayerTwo[y * 10 + x].state = 3 //explode
+                if (killCheck(identBug(i), takesPlayerTwo)){ // если все элементы жука подбиты
+                surrounding(takesPlayerTwo) // обводка клеток вокруг убитого жука
+                }
+            }
+         if (takesPlayerTwo[y * 10 + x].state == 0 || takesPlayerTwo[y * 10 + x].state == 4){ //undefined
+            takesPlayerTwo[y * 10 + x].state = 2
+         }   //miss
+        }
 
 //**************************выстрелы по полям***********************************************
 
 
         fun autoBugsPlacing(kol: Int, parts: Int) {
-            var count: Int = 1
+           /* var count: Int = 1
 
             while (count <= kol) {
 
@@ -662,11 +655,11 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
                         count++
                     }
                 }
-            }
+            }*/
         }
 
 
-        fun chek(part: Int, j: Int, x: Int, y: Int): Int {
+        /*fun chek(part: Int, j: Int, x: Int, y: Int): Int {
             var s: Int = 0
             if (j == 0) {
                 //vertical
@@ -700,8 +693,9 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
                             s++
             }
             return s
-        }
+        }*/
 
+        //отрисовка поля расстановки первого игрока (офлайн)
         override fun render(canvas: Canvas) {
 
             canvas.drawRect(Rect(0, 0, width, height), bgPaint)
@@ -728,7 +722,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
                 }
             }
         }
-
+    //отрисовка поля расстановки второго игрока (офлайн)
     override fun renderSecond(canvas: Canvas) {
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
 
@@ -755,6 +749,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         }
     }
 
+    //отрисовка поля битвы первого игрока (офлайн)
     override fun renderWithoutBugsParts(canvas: Canvas) {
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
 
@@ -781,6 +776,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         }
     }
 
+    //отрисовка поля битвы второго игрока (офлайн)
     override fun renderWithoutBugsPartsSecond(canvas: Canvas) {
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
 
@@ -850,6 +846,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
             println("WIN!")
     }
 
+    //логика возможност выставления жука в зависимости от занятого перед ним пространства
     private fun bugsWithSurrounding(chooseHor: Int, i: Int, bugPart: Int, tk: MutableList<TakeUI>, listBug: MutableList<Int>) {
         // *********************вертикальные расстановки****************************
         if (chooseHor == 0) {
@@ -899,7 +896,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         return notEmpty
         }
 
-
+    //удаление жука в зависимости от расположения, удаление элементов жука из списка
     private  fun removeBug (i: Int, bugPart: Int, chooseHor: Int, tk: MutableList<TakeUI>, listBug: MutableList<Int>) {
         if (chooseHor == 1) {
             for (s in 0 until bugPart)
@@ -923,12 +920,18 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         }
     }
 
+    //определение скольки-палубный жук задет, для того чтобы узнать когда он будет убит
     private fun identBug(i: Int): MutableList<Int>{
         lateinit var listBug: MutableList<Int>
         // 4x-bug
        if (BugPlacementPlayerFragment.listBugFour.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugFour
        }
+        //second fragment
+        if (BugPlacementPlayerSecondFragment.listBugFour.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugFour
+        }
+
         // 3x-bug
         if (BugPlacementPlayerFragment.listBugThreeFirst.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugThreeFirst
@@ -936,6 +939,14 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         if (BugPlacementPlayerFragment.listBugThreeSecond.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugThreeSecond
         }
+        //second fragment
+        if (BugPlacementPlayerSecondFragment.listBugThreeFirst.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugThreeFirst
+        }
+        if (BugPlacementPlayerSecondFragment.listBugThreeSecond.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugThreeSecond
+        }
+
         //2x-bug
         if (BugPlacementPlayerFragment.listBugTwoFirst.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugTwoFirst
@@ -946,6 +957,17 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         if (BugPlacementPlayerFragment.listBugTwoThird.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugTwoThird
         }
+            //second fragment
+        if (BugPlacementPlayerSecondFragment.listBugTwoFirst.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugTwoFirst
+        }
+        if (BugPlacementPlayerSecondFragment.listBugTwoSecond.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugTwoSecond
+        }
+        if (BugPlacementPlayerSecondFragment.listBugTwoThird.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugTwoThird
+        }
+
         //1x-bug
         if (BugPlacementPlayerFragment.listBugOneFirst.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugOneFirst
@@ -958,6 +980,19 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         }
         if (BugPlacementPlayerFragment.listBugOneFourth.contains(i)){
             listBug = BugPlacementPlayerFragment.listBugOneFourth
+        }
+            //second fragment
+        if (BugPlacementPlayerSecondFragment.listBugOneFirst.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugOneFirst
+        }
+        if (BugPlacementPlayerSecondFragment.listBugOneSecond.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugOneSecond
+        }
+        if (BugPlacementPlayerSecondFragment.listBugOneThird.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugOneThird
+        }
+        if (BugPlacementPlayerSecondFragment.listBugOneFourth.contains(i)){
+            listBug = BugPlacementPlayerSecondFragment.listBugOneFourth
         }
         return listBug
     }
@@ -974,6 +1009,7 @@ fun onClickGameFieldFirst(x: Float, y: Float) {
         return killed
     }
 
+    //логика отрисоки клеток вокруг убитых жуков
     private fun surrounding(tk: MutableList<TakeUI>) {
 
         for (i: Int in 0..99) {
