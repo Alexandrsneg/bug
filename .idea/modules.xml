@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-bug.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-bug.iml" group="bug" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="bug/app" />
+      <module fileurl="file://$PROJECT_DIR$/bug.iml" filepath="$PROJECT_DIR$/bug.iml" group="bug" />
+    </modules>
+  </component>
+</project>

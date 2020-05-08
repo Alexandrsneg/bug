@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="Nexus 5X" />
+        <device id="pixel" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="println" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_24" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bug" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="Class" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="845f0c8c8e4ddedbb39b5647067f71a83aa8abc4" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1Z7sHwUrxMue6QRGMyf3iwc9KeW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5X_API_24" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-08T08:17:03.341Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ru.sneg.android.bug.game.gameViews" />
+      <recent name="ru.sneg.android.bug.game.gameObjects" />
+      <recent name="ru.sneg.android.bug.game.engine" />
+      <recent name="ru.sneg.android.bug.game.BugPlacement" />
+      <recent name="ru.sneg.android.bug.activities" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="ru.sneg.android.bug.registration" />
+      <recent name="ru.sneg.android.bug" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="ru.sneg.android.bug.game.gameViews" />
+      <recent name="ru.sneg.android.bug.game" />
+      <recent name="ru.sneg.android.bug.misc.dialogs" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="ru.sneg.android.bug" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\libs" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable-v24" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\layout" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\java\ru\sneg\android\bug\credentials" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\libs" />
+    </key>
+    <key name="android.template.parentActivityClass">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="" />
+      <created>1583487128970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583487128970</updated>
+    </task>
+    <task id="LOCAL-00019" summary="переделал активити авторизацию и регистрацию во фрагменты, запокавал в один активити-контейнер, попытка определять какой фрагмент отображать через Boolean поля в обработчиках нажатий кнопок в первом активити">
+      <created>1584545902687</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1584545902687</updated>
+    </task>
+    <task id="LOCAL-00020" summary="добавил в класс регистрации обработчик нажатия, который умеет переходить&#10;с фрагмента на фрагмент, и обработчик, который умеет переходит с фрагмента&#10;на активити. (на активити пока не переходит - крашится)">
+      <created>1584631705704</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1584631705704</updated>
+    </task>
+    <task id="LOCAL-00021" summary="допилил рабочие обработчики нажатий для переходов типа ФРАГМЕНТ-ФРАГМЕНТ&#10;, ФРАГМЕНТ-АКТИВИТИ. Краш устранен добавлением InjectViewState">
+      <created>1584678785345</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1584678785345</updated>
+    </task>
+    <task id="LOCAL-00022" summary="уменьшил кнопки входа и регистрации, добавил подчеркнутую ссылку ведщую на фргамент регистрации">
+      <created>1584682011757</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1584682011757</updated>
+    </task>
+    <task id="LOCAL-00023" summary="повторял код с занятия, что успевал">
+      <created>1584708911825</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1584708911825</updated>
+    </task>
+    <task id="LOCAL-00024" summary="SignInFragment - в рабочем состоянии, остальное в режиме подгона">
+      <created>1584870081017</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1584870081017</updated>
+    </task>
+    <task id="LOCAL-00025" summary="даггер заработал, работаю с кодом Анатолия">
+      <created>1585143937294</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1585143937294</updated>
+    </task>
+    <task id="LOCAL-00026" summary="приложение билдится, запускается, но не отображает нужные фрагменты">
+      <created>1585146637448</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1585146637448</updated>
+    </task>
+    <task id="LOCAL-00027" summary="приложение билдится, запускается, по экранам пргает в соответсвии с логикой, показывает ошибки при попытке регистрации/авторизаии">
+      <created>1585149986524</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1585149986524</updated>
+    </task>
+    <task id="LOCAL-00028" summary="разбор кода по занятию №3">
+      <created>1585392037639</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1585392037639</updated>
+    </task>
+    <task id="LOCAL-00029" summary="заработал код с занятия 4">
+      <created>1585581988532</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1585581988532</updated>
+    </task>
+    <task id="LOCAL-00030" summary="корректировка фрагмента загрузки, SignIn фрагмента">
+      <created>1585664486095</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1585664486095</updated>
+    </task>
+    <task id="LOCAL-00031" summary="переход на экран профиля в случае если авторизационные данные введены корректно, заглушка из репозитория окрана профиля. Закоментил набросок функции по отображению ачивок в профиле, чтобы приложение собиралось">
+      <created>1585755794137</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1585755794137</updated>
+    </task>
+    <task id="LOCAL-00032" summary="работа нат фрагментом рекордов (запонение ресайкл вью), создал &#10;активити для объединеня фрагентов режимов игры">
+      <created>1585998165466</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1585998165466</updated>
+    </task>
+    <task id="LOCAL-00033" summary="абстрактные фунцкции для получения данных для экрана профиля">
+      <created>1586082242363</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1586082242363</updated>
+    </task>
+    <task id="LOCAL-00034" summary="добавил экран создания/присоединения к игре, добавил актиити и роутеры">
+      <created>1586183243695</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1586183243695</updated>
+    </task>
+    <task id="LOCAL-00035" summary="уу">
+      <created>1586355053377</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1586355053377</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Использовал RecycleView для отображения глобальной таблицы рекордов на экране Score, переход до экрана Score, приложение собирается">
+      <created>1586355492301</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1586355492301</updated>
+    </task>
+    <task id="LOCAL-00037" summary="не закомичивался ScoreFragment...закомитил">
+      <created>1586355676599</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1586355676600</updated>
+    </task>
+    <task id="LOCAL-00038" summary="работа с канвасом">
+      <created>1586410023286</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1586410023286</updated>
+    </task>
+    <task id="LOCAL-00039" summary="рабочие переходы до фрагмента расстановки жуков на SurfaceView">
+      <created>1586438323553</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1586438323553</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fixed SignUp and SignIn funcionals, removed waste code">
+      <created>1586586862385</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1586586862385</updated>
+    </task>
+    <task id="LOCAL-00041" summary="extra save">
+      <created>1586664585938</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1586664585938</updated>
+    </task>
+    <task id="LOCAL-00042" summary="fixed GameModeActivity, now authitication don't droping">
+      <created>1586673273193</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1586673273193</updated>
+    </task>
+    <task id="LOCAL-00043" summary="rendering all variants of states">
+      <created>1586751122054</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1586751122054</updated>
+    </task>
+    <task id="LOCAL-00044" summary="showing name of user (login) at profileFragment">
+      <created>1586768747012</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1586768747012</updated>
+    </task>
+    <task id="LOCAL-00045" summary="added some routing and tapping to the gamefield">
+      <created>1586936995586</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1586936995588</updated>
+    </task>
+    <task id="LOCAL-00046" summary="auto setting vertical four-parts bug">
+      <created>1586945176119</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1586945176119</updated>
+    </task>
+    <task id="LOCAL-00047" summary="correct auto setting vertical four-parts bug &#10;added invalid fields around the ship">
+      <created>1587019851061</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1587019851061</updated>
+    </task>
+    <task id="LOCAL-00048" summary="manual Bugs installing without chekout nearby cells">
+      <created>1587295160828</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1587295160828</updated>
+    </task>
+    <task id="LOCAL-00049" summary="design of BugPlacement fragment, correcting manual placing">
+      <created>1587368712495</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1587368712495</updated>
+    </task>
+    <task id="LOCAL-00050" summary="checking sum of bugs on field when manual placing">
+      <created>1587394224837</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1587394224839</updated>
+    </task>
+    <task id="LOCAL-00051" summary="add CleanField Button">
+      <created>1587477623263</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1587477623264</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add working fragmend of Bug placing for second player">
+      <created>1587701262575</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1587701262578</updated>
+    </task>
+    <task id="LOCAL-00053" summary="add Offline game  fragmend with open fields">
+      <created>1587808431158</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1587808431160</updated>
+    </task>
+    <task id="LOCAL-00054" summary="rendering right offline gemeplay">
+      <created>1587877172535</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1587877172535</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add buttons animation, fix Array index out Exception for 4-part bug">
+      <created>1587982429021</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1587982429024</updated>
+    </task>
+    <task id="LOCAL-00056" summary="add functions for placing any-size bugs and surrounding it with disabled cells">
+      <created>1588069113881</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1588069113883</updated>
+    </task>
+    <task id="LOCAL-00057" summary="fix it and finish for vertical placement">
+      <created>1588082837295</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1588082837296</updated>
+    </task>
+    <task id="LOCAL-00058" summary="added horizontal placing with surrounding">
+      <created>1588222421366</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1588222421366</updated>
+    </task>
+    <task id="LOCAL-00059" summary="refactoring surrounding of bugs">
+      <created>1588343010818</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1588343010818</updated>
+    </task>
+    <task id="LOCAL-00060" summary="finish with Manual Bug Placing">
+      <created>1588574335083</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1588574335083</updated>
+    </task>
+    <task id="LOCAL-00061" summary="fixing first field placing for right visualization of killed bugs">
+      <created>1588687804185</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1588687804233</updated>
+    </task>
+    <task id="LOCAL-00062" summary="added second field placing for right visualization of killed bugs">
+      <created>1588695528767</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1588695528767</updated>
+    </task>
+    <task id="LOCAL-00063" summary="working killed bug logic and surrounding for second field">
+      <created>1588740550105</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1588740550106</updated>
+    </task>
+    <task id="LOCAL-00064" summary="added list.clear() at bugPlacementFragments for cleanfield Button">
+      <created>1588745466717</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1588745466718</updated>
+    </task>
+    <task id="LOCAL-00065" summary="prepared code for lesson">
+      <created>1588922169192</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1588922169192</updated>
+    </task>
+    <task id="LOCAL-00066" summary="prepared code for lesson">
+      <created>1588927222564</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1588927222564</updated>
+    </task>
+    <task id="LOCAL-00067" summary="idea">
+      <created>1588927681279</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1588927681280</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/Alexandr/AndroidStudioProjects/bug/app/src/main/java/ru/sneg/android/bug/game/BugPlacement" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed GameModeActivity, now authitication don't droping" />
+    <MESSAGE value="rendering all variants of states" />
+    <MESSAGE value="showing name of user (login) at profileFragment" />
+    <MESSAGE value="added some routing and tapping to the gamefield" />
+    <MESSAGE value="auto setting vertical four-parts bug" />
+    <MESSAGE value="correct auto setting vertical four-parts bug &#10;added invalid fields around the ship" />
+    <MESSAGE value="manual Bugs installing without chekout nearby cells" />
+    <MESSAGE value="design of BugPlacement fragment, correcting manual placing" />
+    <MESSAGE value="checking sum of bugs on field when manual placing" />
+    <MESSAGE value="add CleanField Button" />
+    <MESSAGE value="add working fragmend of Bug placing for second player" />
+    <MESSAGE value="add Offline game  fragmend with open fields" />
+    <MESSAGE value="rendering right offline gemeplay" />
+    <MESSAGE value="add buttons animation, fix Array index out Exception for 4-part bug" />
+    <MESSAGE value="add functions for placing any-size bugs and surrounding it with disabled cells" />
+    <MESSAGE value="fix it and finish for vertical placement" />
+    <MESSAGE value="added horizontal placing with surrounding" />
+    <MESSAGE value="refactoring surrounding of bugs" />
+    <MESSAGE value="finish with Manual Bug Placing" />
+    <MESSAGE value="fixing first field placing for right visualization of killed bugs" />
+    <MESSAGE value="added second field placing for right visualization of killed bugs" />
+    <MESSAGE value="working killed bug logic and surrounding for second field" />
+    <MESSAGE value="added list.clear() at bugPlacementFragments for cleanfield Button" />
+    <MESSAGE value="prepared code for lesson" />
+    <MESSAGE value="idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="idea" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+</project>
