@@ -17,4 +17,4 @@ settings.gradle
 /captures
 .externalNativeBuild
 .cxx
-'.idea' 
+
