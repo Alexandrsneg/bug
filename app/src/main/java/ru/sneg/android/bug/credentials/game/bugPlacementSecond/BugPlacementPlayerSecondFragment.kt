@@ -107,7 +107,6 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         bAcceptBug.setOnClickListener {
             var sum: Int = 0
             PlayingFieldUI.chooseHorizontal = 0
-            surrounding(PlayingFieldUI.takesPlayerTwo)
 
             for (i in 0..99) {
                 if ( PlayingFieldUI.takesPlayerTwo[i].state == 1 ) {
@@ -123,6 +122,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             }
 
             if (PlayingFieldUI.bugsRemaining == 10 && sum == 4) {
+                surrounding(PlayingFieldUI.takesPlayerTwo)
                 PlayingFieldUI.fourPartBug--
                 tvCountBugFourS.text = PlayingFieldUI.fourPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
@@ -130,6 +130,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             }
 
             if (PlayingFieldUI.bugsRemaining in 8..9 && sum == (4 + (9 - 3*PlayingFieldUI.threePartBug))) {
+                surrounding(PlayingFieldUI.takesPlayerTwo)
                 PlayingFieldUI.threePartBug--
                 tvCountBugThreeS.text = PlayingFieldUI.threePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
@@ -143,6 +144,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             }
 
             if (PlayingFieldUI.bugsRemaining in 5..7 && sum == (10 + (8 - 2*PlayingFieldUI.twoPartBug))) {
+                surrounding(PlayingFieldUI.takesPlayerTwo)
                 PlayingFieldUI.twoPartBug--
                 tvCountBugTwoS.text = PlayingFieldUI.twoPartBug.toString()
                 PlayingFieldUI.bugsRemaining--
@@ -156,6 +158,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
             }
 
             if (PlayingFieldUI.bugsRemaining in 1..4 && sum == (16 + (5 - PlayingFieldUI.onePartBug))) {
+                surrounding(PlayingFieldUI.takesPlayerTwo)
                 PlayingFieldUI.onePartBug--
                 tvCountBugOneS.text = PlayingFieldUI.onePartBug.toString()
                 PlayingFieldUI.bugsRemaining--
