@@ -5,6 +5,7 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_offline_pvp.*
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
@@ -39,6 +40,16 @@ class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
 
+
+
+
+    override fun lock() {
+
+    }
+
+    override fun unlock() {
+        visibility(gameOfflineFirstPlayerView, false)
     }
 }

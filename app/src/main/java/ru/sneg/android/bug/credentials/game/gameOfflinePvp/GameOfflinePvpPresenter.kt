@@ -24,17 +24,10 @@ class GameOfflinePvpPresenter: MvpPresenter<IGameOfflinePvpView> {
         this.userRepository = userRepository
     }
 
-    //метод проверки убит ли жук
- fun killCheck(listBug : MutableList<Int>, tk: MutableList<TakeUI>): Boolean{
-     var killed : Boolean = false
-     for (i in listBug){
-         killed = tk[i].state == 3
-     }
-     return killed
- }
+
 
     //метод смена хода
-    fun onChangeTurn(){
+    open fun onChangeTurn(){
 
     }
 

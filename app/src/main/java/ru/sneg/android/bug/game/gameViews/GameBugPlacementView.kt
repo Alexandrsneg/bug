@@ -51,13 +51,9 @@ class GameBugPlacementView @JvmOverloads constructor(
         postDelayed({ render() }, 2000)
     }
 
-    fun autoPlacing(){
-        playingField.autoBugsPlacing(1,4)
-        playingField.autoBugsPlacing(2,3)
-        playingField.autoBugsPlacing(3,2)
-        playingField.autoBugsPlacing(4,1)
+   /* fun autoPlacing(){
         render()
-    }
+    }*/
 
     fun render() {
 

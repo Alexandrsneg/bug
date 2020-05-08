@@ -39,16 +39,7 @@ class SignInFragment : ABaseFragment(), ISignInView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /* обработчик нажатия на кнопку вход, переход с ФРАГМЕНТА на АКТИВИТИ
-        bSigInBtn.setOnClickListener {
 
-            activity?.let{
-                val intent = Intent (it, ProfileActivity::class.java)
-                it.startActivity(intent)
-            } */
-
-        /* нажимая на кнопку вход - проверяем на заполненность логин и пароль и отправляем в
-        презентер на проверку*/
         bSigInBtn.setOnClickListener {
 
             val login = "${editText.text}"  //конструкия показывает, что переменная будет String

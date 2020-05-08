@@ -7,6 +7,7 @@ import android.graphics.Rect
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpPresenter
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Const
 import kotlin.random.Random
@@ -593,17 +594,20 @@ class PlayingFieldUI: IElementUI {
         val y: Int = (y / (height / 10)).toInt()
         val i: Int = y * 10 + x
 
-        if (takes[y * 10 + x].state == 1){//bug_part
+        if (takes[y * 10 + x].state == 1){   //bug_part
+            takes[y * 10 + x].state = 3      //explode
 
-            takes[y * 10 + x].state = 3 //explode
             if (killCheck(identBug(i),takes)){ // если все элементы жука подбиты
             surrounding(takes) // обводка клеток вокруг убитого жука
             }
         }
 
+    if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
+        takes[y * 10 + x].state = 2  //miss
+            // смена хода, блокировка первого поля, разблокировка второго поля
 
-        if (takes[y * 10 + x].state == 0 || takes[y * 10 + x].state == 4){ //undefined
-        takes[y * 10 + x].state = 2}   //miss
+
+        }
 
 
     }
@@ -628,72 +632,7 @@ class PlayingFieldUI: IElementUI {
 //**************************выстрелы по полям***********************************************
 
 
-        fun autoBugsPlacing(kol: Int, parts: Int) {
-           /* var count: Int = 1
 
-            while (count <= kol) {
-
-                val random = Random(System.currentTimeMillis())
-                var kx: Int = random.nextInt(10 - (parts - 1))
-                var ky: Int = random.nextInt(10 - (parts - 1))
-                var j: Int = random.nextInt(2)
-
-                if (j == 0) {
-                    //вертикальная постановка
-                    if (chek(parts, 0, kx, ky) == 0) {
-                        for (i in 1..parts) {
-                            takes[(ky + i - 1) * 10 + kx].state = 1
-                        }
-                        count++
-                    }
-                } else {
-                    //горизонтальная
-                    if (chek(parts, 1, kx, ky) == 0) {
-                        for (i in 1..parts) {
-                            takes[ky * 10 + kx + i - 1].state = 1
-                        }
-                        count++
-                    }
-                }
-            }*/
-        }
-
-
-        /*fun chek(part: Int, j: Int, x: Int, y: Int): Int {
-            var s: Int = 0
-            if (j == 0) {
-                //vertical
-                var a: Int = x - 1
-                var b: Int = x + 1
-                var c: Int = y - 1
-                var d: Int = y + part
-                //проверка не вышли ли за пределы поля
-                if (a == -1) a++
-                if (b == 10) b--
-                if (c == -1) c++
-                if (d == 10) d--
-
-                for (i in a..b)
-                    for (j in c..d)
-                        if (takes[j * 10 + i].state == 1)
-                            s++
-            } else {//gorizontal
-                var a: Int = x - 1
-                var b: Int = x + part
-                var c: Int = y - 1
-                var d: Int = y + 1
-                if (a == -1) a++
-                if (b == 10) b--
-                if (c == -1) c++
-                if (d == 10) d--
-
-                for (i in a..b)
-                    for (j in c..d)
-                        if (takes[j * 10 + i].state == 1)
-                            s++
-            }
-            return s
-        }*/
 
         //отрисовка поля расстановки первого игрока (офлайн)
         override fun render(canvas: Canvas) {

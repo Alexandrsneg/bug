@@ -85,7 +85,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-            gameViewSecond.autoPlacing()
+           // gameViewSecond.autoPlacing()
         }
 
         // смена фрагмента на фрагмент игры офлайн

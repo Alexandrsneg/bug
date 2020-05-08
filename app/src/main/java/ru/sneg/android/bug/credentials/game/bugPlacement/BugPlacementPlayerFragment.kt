@@ -86,7 +86,7 @@ companion object {
         }
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-            gameView.autoPlacing()
+            //gameView.autoPlacing()
         }
 
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
