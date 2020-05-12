@@ -15,8 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -28,16 +26,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/IElementUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/IElementUI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/TakeUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/TakeUI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementSecondPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementSecondPlayerView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpSecondPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpSecondPlayerView.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -227,13 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00020" summary="добавил в класс регистрации обработчик нажатия, который умеет переходить&#10;с фрагмента на фрагмент, и обработчик, который умеет переходит с фрагмента&#10;на активити. (на активити пока не переходит - крашится)">
-      <created>1584631705704</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1584631705704</updated>
     </task>
     <task id="LOCAL-00021" summary="допилил рабочие обработчики нажатий для переходов типа ФРАГМЕНТ-ФРАГМЕНТ&#10;, ФРАГМЕНТ-АКТИВИТИ. Краш устранен добавлением InjectViewState">
       <created>1584678785345</created>
@@ -571,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588932215822</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="refactor and remove redundant code, add Bugs class and and BugsPlacing class">
+      <created>1589264015083</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1589264015084</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -627,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rendering all variants of states" />
     <MESSAGE value="showing name of user (login) at profileFragment" />
     <MESSAGE value="added some routing and tapping to the gamefield" />
     <MESSAGE value="auto setting vertical four-parts bug" />
@@ -652,7 +645,8 @@
     <MESSAGE value="prepared code for lesson" />
     <MESSAGE value="idea" />
     <MESSAGE value="clear gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear gitignore" />
+    <MESSAGE value="refactor and remove redundant code, add Bugs class and and BugsPlacing class" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor and remove redundant code, add Bugs class and and BugsPlacing class" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

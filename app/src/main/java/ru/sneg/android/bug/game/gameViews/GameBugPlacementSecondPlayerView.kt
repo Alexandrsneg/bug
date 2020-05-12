@@ -28,8 +28,6 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
             render()
         }
 
-
-
     private val playingField = PlayingFieldUI()
     companion object {
         var secondPlayerBugs = Bugs()
@@ -62,11 +60,8 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
     }*/
 
     fun render() {
-
         var canvas: Canvas? = null
-
         try {
-
             canvas = holder.lockCanvas()
             if (canvas != null)
                 render(canvas)
@@ -94,7 +89,6 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
 
         playingField.onClickFieldBugPlacing(x, y, secondPlayerBugs)
             render()
-
 
         val listener = onSelectListener ?: return false
 

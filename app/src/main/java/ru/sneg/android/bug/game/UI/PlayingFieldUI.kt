@@ -6,29 +6,14 @@ import android.graphics.Paint
 import android.graphics.Rect
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
-import ru.sneg.android.bug.game.gameObjects.Bugs.Companion.chooseHorizontal
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.chooseHorizontal
 import ru.sneg.android.bug.game.gameObjects.Const
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
-
-    companion object {
-
-        /*var fourPartBug: Int = 1
-        var threePartBug: Int = 2
-        var twoPartBug: Int = 3
-        var onePartBug: Int = 4
-
-        var bugsRemaining: Int = 10*/
-
-        //var chooseHorizontal: Int = 0
-
-        //val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
-        //val takesPlayerTwo = mutableListOf<TakeUI>() //список возможных выборов второго пользователя
-    }
-
 
     private val bgPaint = Paint().apply { color = Color.DKGRAY }
 
@@ -41,13 +26,13 @@ class PlayingFieldUI: IElementUI {
             GameBugPlacementView.firstPlayerBugs.takes.add(TakeUI(index).apply {
                 state = 0
             })
-
         for (index in 0..99)
             GameBugPlacementSecondPlayerView.secondPlayerBugs.takes.add(TakeUI(index).apply {
                 state = 0
             })
     }
 
+    var bugsPlacing = BugsPlacing()
 
 //*****************расстановка жуков****************************************************
     //обработчик нажатия на клетку поля
@@ -61,35 +46,7 @@ class PlayingFieldUI: IElementUI {
 
         if (bug.fourPartBug > 0) {
                 if (i in 0..99) {
-                    //горизонтальная установка и удаление на первых трех строках
-                    if ((i in 0..6 || i in 10..16 || i in 20..26)) {
-                        if (chooseHorizontal == 0) {
-                            chooseHorizontal = 1
-                                bugPlacing(chooseHorizontal, i, 4, bug, bug.listBugFour)
-                        }
-                    }
-                    //вертикальная установка по всему полю кроме первых трех строк
-                    if (chooseHorizontal == 0 && i in 30..99) {
-                            bugPlacing(chooseHorizontal, i, 4, bug, bug.listBugFour)
-
-                    }
-                    //горизонтальная расстановка кроме последних трех столбцов
-                    if (chooseHorizontal == 1 && (i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96)) {
-                        removeBug(i,4, chooseHorizontal,bug,bug.listBugFour)
-                        bugPlacing(chooseHorizontal, i, 4, bug, bug.listBugFour)
-                    }
-                    // удаление вертикальных кораблей в последних трех столбах
-                    if (!( i in 0..6 || i in 10..16 || i in 20..26 || i in 30..36 || i in 40..46 || i in 50..56 || i in 60..66 || i in 70..76 || i in 80..86 || i in 90..96) && (chooseHorizontal == 1)) {
-                        removeBug(i,4, chooseHorizontal,bug,bug.listBugFour )
-                        chooseHorizontal = 2
-                    }
-                    //удаление горизонтального жука, завершение цикла установки корабля
-                    if (chooseHorizontal == 2 )
-                        removeBug(i,4, chooseHorizontal,bug,bug.listBugFour)
-
-                    chooseHorizontal++
-                    if (chooseHorizontal == 3)
-                        chooseHorizontal = 0
+                    bugsPlacing.horVertOrRemovePlacing(4,i, chooseHorizontal,bug, bug.listBugFour)
                 }
             } else if (bug.fourPartBug == 0 && bug.threePartBug > 0) {
             if (i in 0..99) {

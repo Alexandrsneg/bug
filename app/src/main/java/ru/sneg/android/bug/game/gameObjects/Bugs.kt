@@ -3,6 +3,7 @@ package ru.sneg.android.bug.game.gameObjects
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.chooseHorizontal
 
 class Bugs(
         var fourPartBug: Int = 1,
@@ -29,12 +30,6 @@ class Bugs(
     //список возможных выборов пользователя
     var takes = mutableListOf<TakeUI>()
 
-    companion object {
-        var chooseHorizontal: Int = 0
-
-        //val takes = mutableListOf<TakeUI>() //список возможных выборов пользователя
-        //val takesPlayerTwo = mutableListOf<TakeUI>() //список возможных выборов второго пользователя
-    }
 
     // удаление всех поставленных жуков и обводок, очистка списков жуков
      fun cleanField() {
