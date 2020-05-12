@@ -3,6 +3,7 @@ package ru.sneg.android.bug.game.UI
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import ru.sneg.android.bug.game.gameObjects.Bugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 
 //выбор игрока
@@ -38,8 +39,8 @@ open class TakeUI(
     var state: Int = STATE_UNDEFINED
 
 
-    override fun render(canvas: Canvas) {
 
+    override fun renderGameField(canvas: Canvas, bugs: Bugs) {
         renderField(canvas)
 
         when (state) {
@@ -49,17 +50,9 @@ open class TakeUI(
             STATE_EXPLODE -> renderExplode(canvas)
         }
     }
-    override fun renderSecond(canvas: Canvas) {
-        renderField(canvas)
-        when (state) {
-           //STATE_UNDEFINED -> renderField(canvas)
-            STATE_BUG_PART -> renderBugPart(canvas)
-            STATE_NOTHING  -> renderNothing(canvas)
-            STATE_EXPLODE -> renderExplode(canvas)
-        }
-    }
 
-    override fun renderWithoutBugsParts(canvas: Canvas) {
+
+    override fun renderWithoutBugsParts(canvas: Canvas, bugs: Bugs) {
         renderField(canvas)
 
         when (state) {
@@ -68,13 +61,6 @@ open class TakeUI(
         }
     }
 
-    override fun renderWithoutBugsPartsSecond(canvas: Canvas) {
-        renderField(canvas)
-        when (state) {
-            STATE_MISS  -> renderMiss(canvas)
-            STATE_EXPLODE -> renderExplode(canvas)
-        }
-    }
 
     //функция отрисовки игрового поля
     private fun renderField(canvas: Canvas) {

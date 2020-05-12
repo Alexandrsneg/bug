@@ -9,6 +9,9 @@ import android.view.SurfaceView
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
+import ru.sneg.android.bug.game.gameObjects.Bugs
+import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
+
 
 class GameOfflinePvpSecondPlayerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -25,8 +28,6 @@ class GameOfflinePvpSecondPlayerView @JvmOverloads constructor(
             value?.addCallback(this)
             render()
         }
-
-
 
     private val playingField = PlayingFieldUI()
 
@@ -71,25 +72,24 @@ class GameOfflinePvpSecondPlayerView @JvmOverloads constructor(
 
     fun setGameStateSecondPlayer(state: GameState) {
 
-        playingField.setGameStateSecond(state)
+        playingField.setGameState(state, secondPlayerBugs)
         render()
     }
 
     private fun render(canvas: Canvas) {
         playingField.width = width
         playingField.height = height
-        playingField.renderWithoutBugsPartsSecond(canvas)
+        playingField.renderWithoutBugsParts(canvas, secondPlayerBugs)
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
-            playingField.onClickGameFieldSecond(x, y)
+        playingField.onClickGameField(x, y, secondPlayerBugs)
             render()
-
 
         val listener = onSelectListener ?: return false
 
-       playingField.onClickSecond(x,y)?.let{  //если значения onClick не null -> срабатывет .let
+       playingField.onClick(x,y, secondPlayerBugs)?.let{  //если значения onClick не null -> срабатывет .let
            if(it.state == TakeUI.STATE_UNDEFINED)
            listener(it)
        }

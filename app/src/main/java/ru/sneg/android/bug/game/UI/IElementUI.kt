@@ -1,12 +1,12 @@
 package ru.sneg.android.bug.game.UI
 
 import android.graphics.Canvas
+import ru.sneg.android.bug.game.gameObjects.Bugs
 
 interface IElementUI {
 
-    fun render(canvas: Canvas)
-    fun renderSecond(canvas: Canvas)
+    fun renderGameField(canvas: Canvas, bug: Bugs )
 
-    fun renderWithoutBugsParts(canvas: Canvas)
-    fun renderWithoutBugsPartsSecond(canvas: Canvas)
+    fun renderWithoutBugsParts(canvas: Canvas, bug: Bugs )
+
 }
