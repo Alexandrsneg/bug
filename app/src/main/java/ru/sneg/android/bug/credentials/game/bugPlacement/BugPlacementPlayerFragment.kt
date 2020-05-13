@@ -19,7 +19,6 @@ import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.engine.GameState
-import ru.sneg.android.bug.game.gameObjects.Bugs
 import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
@@ -80,7 +79,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
         bAcceptBug.setOnClickListener {
             var sum = 0
-            BugsPlacing.chooseHorizontal = 0
+            BugsPlacing.orientationAndRemoving = 0
 
             for (i in 0..99) {
                 if (firstPlayerBugs.takes[i].state == 1)  sum += firstPlayerBugs.takes[i].state

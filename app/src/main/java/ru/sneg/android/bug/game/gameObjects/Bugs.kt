@@ -1,9 +1,7 @@
 package ru.sneg.android.bug.game.gameObjects
 
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
-import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
-import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.chooseHorizontal
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.orientationAndRemoving
 
 class Bugs(
         var fourPartBug: Int = 1,
@@ -40,7 +38,7 @@ class Bugs(
 
         bugsRemaining = 10
 
-        chooseHorizontal = 0
+        orientationAndRemoving = 0
         for (index in 0..99) {
             takes[index].state = 0
         }
@@ -60,7 +58,7 @@ class Bugs(
         listBugOneFourth.clear()
 
     }
-
+      //функция обводки клеток жуков во время установки
      fun acceptBugSurrounding() {
 
         for (i: Int in 0..99) {
@@ -112,7 +110,7 @@ class Bugs(
             }
         }
     }
-
+        //функция обводки клеток убитых жуков во время игры
     fun killedBugSurrounding() {
 
         for (i: Int in 0..99) {
@@ -163,5 +161,58 @@ class Bugs(
 
             }
         }
+    }
+
+    //определение скольки-палубный жук задет, для того чтобы узнать когда он будет убит
+    fun identBug(i: Int): MutableList<Int>{
+        lateinit var listBug: MutableList<Int>
+        // 4x-bug
+        if (listBugFour.contains(i)){
+            listBug = listBugFour
+        }
+        // 3x-bug
+        if (listBugThreeFirst.contains(i)){
+            listBug = listBugThreeFirst
+        }
+        if (listBugThreeSecond.contains(i)){
+            listBug = listBugThreeSecond
+        }
+        //2x-bug
+        if (listBugTwoFirst.contains(i)){
+            listBug = listBugTwoFirst
+        }
+        if (listBugTwoSecond.contains(i)){
+            listBug = listBugTwoSecond
+        }
+        if (listBugTwoThird.contains(i)){
+            listBug = listBugTwoThird
+        }
+
+        //1x-bug
+        if (listBugOneFirst.contains(i)){
+            listBug = listBugOneFirst
+        }
+        if (listBugOneSecond.contains(i)){
+            listBug = listBugOneSecond
+        }
+        if (listBugOneThird.contains(i)){
+            listBug =listBugOneThird
+        }
+        if (listBugOneFourth.contains(i)){
+            listBug = listBugOneFourth
+        }
+        return listBug
+    }
+
+    fun killCheck(listBug : MutableList<Int>): Boolean{
+        var killed : Boolean = false
+        var sum : Int = 0
+
+        for (i in listBug){
+            if (takes[i].state == 3) sum ++
+        }
+        if (sum - listBug.size == 0) killed = true
+
+        return killed
     }
 }

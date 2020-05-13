@@ -88,5 +88,4 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
        }
         return true
     }
-
 }
