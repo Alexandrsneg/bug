@@ -215,4 +215,12 @@ class Bugs(
 
         return killed
     }
+    fun checkSum (bug: Bugs) : Int{
+        var sum = 0
+        for (i in 0..99) {
+            if (bug.takes[i].state == 1)
+                sum += bug.takes[i].state
+        }
+        return sum
+    }
 }

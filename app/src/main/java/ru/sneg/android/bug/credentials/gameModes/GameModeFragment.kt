@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameActivity
 import ru.sneg.android.bug.activities.CreateGameActivity
+import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.ScoreActivity
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
@@ -53,7 +54,7 @@ class GameModeFragment : ABaseFragment(), IGameModeView {
         }
         //кнопка перехода на профиль
         bProfile.setOnClickListener {
-            ScoreActivity.show()
+            GameModeActivity.show()
         }
     }
 

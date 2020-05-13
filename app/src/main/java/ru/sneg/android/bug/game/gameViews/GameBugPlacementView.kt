@@ -53,10 +53,6 @@ companion object {
         postDelayed({ render() }, 2000)
     }
 
-   /* fun autoPlacing(){
-        render()
-    }*/
-
     fun render() {
 
         var canvas: Canvas? = null
@@ -84,6 +80,11 @@ companion object {
         playingField.width = width
         playingField.height = height
         playingField.renderGameField(canvas, firstPlayerBugs)
+    }
+
+    fun autoPlacing(){
+        playingField.autoPlacing(firstPlayerBugs)
+        render()
     }
 
     private fun onClick(x: Float, y: Float) : Boolean{

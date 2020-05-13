@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAcceptBug
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAutoSetUp
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bCleanFields
@@ -51,7 +52,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
 
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-           // gameViewSecond.autoPlacing()
+            autoPlacing()
         }
 
         // смена фрагмента на фрагмент игры офлайн
@@ -68,6 +69,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         // очистка игровогo поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
             cleanField()
+            showTvCounts()
         }
 
         bAcceptBug.setOnClickListener {
@@ -142,20 +144,27 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
     }
     //очищает поле от всех жуков и обводок
     private fun cleanField() {
-
         secondPlayerBugs.cleanField()
-
-        tvCountBugFourS.text = secondPlayerBugs.fourPartBug.toString()
-        tvCountBugThreeS.text = secondPlayerBugs.threePartBug.toString()
-        tvCountBugTwoS.text = secondPlayerBugs.twoPartBug.toString()
-        tvCountBugOneS.text = secondPlayerBugs.onePartBug.toString()
-
         gameViewSecond.render()
     }
     //обводка после нажатия кнопик "установить"
     private fun surrounding() {
         secondPlayerBugs.acceptBugSurrounding()
         gameViewSecond.render()
+    }
+    private fun autoPlacing() {
+        gameViewSecond.autoPlacing()
+        secondPlayerBugs.fourPartBug = 0
+        secondPlayerBugs.threePartBug = 0
+        secondPlayerBugs.twoPartBug = 0
+        secondPlayerBugs.onePartBug = 0
+    }
+
+    private fun showTvCounts(){
+        tvCountBugFourS.text = secondPlayerBugs.fourPartBug.toString()
+        tvCountBugThreeS.text = secondPlayerBugs.threePartBug.toString()
+        tvCountBugTwoS.text = secondPlayerBugs.twoPartBug.toString()
+        tvCountBugOneS.text = secondPlayerBugs.onePartBug.toString()
     }
 }
 

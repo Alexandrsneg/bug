@@ -18,6 +18,7 @@ import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
+import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 
@@ -44,10 +45,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvCountBugFour.text = firstPlayerBugs.fourPartBug.toString()
-        tvCountBugThree.text = firstPlayerBugs.threePartBug.toString()
-        tvCountBugTwo.text = firstPlayerBugs.twoPartBug.toString()
-        tvCountBugOne.text = firstPlayerBugs.onePartBug.toString()
+        showTvCounts()
 
         gameView.onSelectListener = {
             println(it)
@@ -70,11 +68,14 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-            //gameView.autoPlacing()
+            cleanField()
+            autoPlacing()
+            showTvCounts()
         }
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
             cleanField()
+            showTvCounts()
         }
 
         bAcceptBug.setOnClickListener {
@@ -148,18 +149,27 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         gameView.setGameState(state)
     }
     private fun cleanField() {
-
         firstPlayerBugs.cleanField()
-
-        tvCountBugFour.text = firstPlayerBugs.fourPartBug.toString()
-        tvCountBugThree.text = firstPlayerBugs.threePartBug.toString()
-        tvCountBugTwo.text = firstPlayerBugs.twoPartBug.toString()
-        tvCountBugOne.text = firstPlayerBugs.onePartBug.toString()
-
         gameView.render()
     }
     private fun surrounding() {
         firstPlayerBugs.acceptBugSurrounding()
         gameView.render()
     }
+
+    private fun autoPlacing() {
+        gameView.autoPlacing()
+        firstPlayerBugs.fourPartBug = 0
+        firstPlayerBugs.threePartBug = 0
+        firstPlayerBugs.twoPartBug = 0
+        firstPlayerBugs.onePartBug = 0
+    }
+
+    private fun showTvCounts(){
+        tvCountBugFour.text = firstPlayerBugs.fourPartBug.toString()
+        tvCountBugThree.text = firstPlayerBugs.threePartBug.toString()
+        tvCountBugTwo.text = firstPlayerBugs.twoPartBug.toString()
+        tvCountBugOne.text = firstPlayerBugs.onePartBug.toString()
+    }
+
 }

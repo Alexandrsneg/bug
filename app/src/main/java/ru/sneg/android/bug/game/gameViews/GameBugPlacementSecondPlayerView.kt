@@ -85,6 +85,10 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
         playingField.renderGameField(canvas, secondPlayerBugs)
     }
 
+    fun autoPlacing(){
+        playingField.autoPlacing(GameBugPlacementSecondPlayerView.secondPlayerBugs)
+        render()
+    }
     private fun onClick(x: Float, y: Float) : Boolean{
 
         playingField.onClickFieldBugPlacing(x, y, secondPlayerBugs)

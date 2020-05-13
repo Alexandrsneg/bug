@@ -10,6 +10,7 @@ import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 import ru.sneg.android.bug.game.gameObjects.Const
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
+import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
@@ -33,7 +34,43 @@ class PlayingFieldUI: IElementUI {
 
     var bugsPlacing = BugsPlacing()
 
-//*****************расстановка жуков****************************************************
+//*****************автоматическая расстановка жуков****************************************************
+fun autoPlacing(bug: Bugs){
+
+    do{bugsPlacing.autoPlacing(4, bug, bug.listBugFour)}
+        while (bug.checkSum(bug) < 4)
+
+    do{bugsPlacing.autoPlacing(3, bug, bug.listBugThreeFirst)}
+        while (bug.checkSum(bug) < 7)
+
+    do{bugsPlacing.autoPlacing(3,bug,bug.listBugThreeSecond)}
+        while (bug.checkSum(bug) < 10)
+
+    do{bugsPlacing.autoPlacing(2,bug,bug.listBugTwoFirst)}
+        while (bug.checkSum(bug) < 12)
+
+    do{bugsPlacing.autoPlacing(2,bug,bug.listBugTwoSecond)}
+        while (bug.checkSum(bug) < 14)
+
+    do{bugsPlacing.autoPlacing(2,bug,bug.listBugTwoThird)}
+        while (bug.checkSum(bug) < 16)
+
+    do{bugsPlacing.autoPlacing(1,bug,bug.listBugOneFirst)}
+        while (bug.checkSum(bug) < 17)
+
+    do{bugsPlacing.autoPlacing(1,bug,bug.listBugOneSecond)}
+        while (bug.checkSum(bug) < 18)
+
+    do{bugsPlacing.autoPlacing(1,bug,bug.listBugOneThird)}
+        while (bug.checkSum(bug) < 19)
+
+    do{bugsPlacing.autoPlacing(1,bug,bug.listBugOneFourth)}
+        while (bug.checkSum(bug) < 20)
+
+    bug.bugsRemaining = 0
+}
+
+//*****************ручная расстановка жуков****************************************************
     //обработчик нажатия на клетку поля
     //логика возможности раастановки жуков по полю, установка в зависимости от расположения(офлайн)
     fun onClickFieldBugPlacing(x: Float, y: Float, bug: Bugs) {
@@ -54,7 +91,6 @@ class PlayingFieldUI: IElementUI {
                 1 -> { bugsPlacing.placingEngine(3, i,  bug, bug.listBugThreeSecond) }
             }
         }
-
     } else if (bug.threePartBug == 0 && bug.twoPartBug > 0) {
         if (i in 0..99) {
             when (bug.twoPartBug) {

@@ -1,5 +1,7 @@
 package ru.sneg.android.bug.game.gameObjects
 
+import kotlin.random.Random
+
 
 class BugsPlacing {
 
@@ -7,10 +9,21 @@ class BugsPlacing {
         var orientationAndRemoving: Int = 0 // 0 - vertical, 1 - horizontal, 2 - removing
     }
 
+    fun autoPlacing(bugPart: Int, bug: Bugs, listBug: MutableList<Int>){
+        val random = Random(System.nanoTime())
+        var i = 0
+        do{i = random.nextInt(0, 100)}
+            while(bug.takes[i].state != 0 )
+
+            placingEngine(bugPart, i, bug, listBug)
+            bug.acceptBugSurrounding()
+
+    }
+
     // движок расстановки и удаления всех видов жуков
     fun placingEngine(bugPart: Int, i: Int, bug: Bugs, listBug: MutableList<Int>){
 
-        var lineX = i%10 //переменная для проверки выхода хвоста жука за пределы поля по иксу
+        val lineX = i%10 //переменная для проверки выхода хвоста жука за пределы поля по иксу
 
         // *********************вертикальные расстановки****************************
         //все возможные случаи вертикальных расстановок
