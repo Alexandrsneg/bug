@@ -53,6 +53,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
             autoPlacing()
+            showTvCounts()
         }
 
         // смена фрагмента на фрагмент игры офлайн

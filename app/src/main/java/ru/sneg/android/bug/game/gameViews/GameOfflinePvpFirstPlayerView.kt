@@ -35,14 +35,14 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
         holder.addCallback(this)
 
         //обработчик нажатия
-        setOnTouchListener {_, event ->
+       /* setOnTouchListener {_, event ->
 
             when (event.action){
                 MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
                 MotionEvent.ACTION_UP -> onClick(event.x, event.y)
                 else -> false
             }
-        }
+        }*/
     }
 
     override fun onAttachedToWindow() {
@@ -64,6 +64,7 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
         }
     }
 
+
     fun setGameStateFirstPlayer(state: GameState) {
         playingField.setGameState(state, firstPlayerBugs)
         render()
@@ -75,7 +76,7 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
         playingField.renderWithoutBugsParts(canvas, firstPlayerBugs )
     }
 
-    private fun onClick(x: Float, y: Float) : Boolean{
+     fun onClick(x: Float, y: Float) : Boolean{
 
             playingField.onClickGameField(x, y, firstPlayerBugs)
             render()

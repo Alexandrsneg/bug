@@ -27,4 +27,6 @@
     <string name="extra_bugs_on_field">уберите лишних жуков</string>
     <string name="not_enougth_bugs_on_field">на поле не хватает жуков</string>
     <string name="clean_field">очистить поле</string>
+    <string name="player_1">игрок 1</string>
+    <string name="player_2">игрок 2</string>
 </resources>

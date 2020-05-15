@@ -12,7 +12,7 @@ class BugsPlacing {
     fun autoPlacing(bugPart: Int, bug: Bugs, listBug: MutableList<Int>){
         val random = Random(System.nanoTime())
         var i = 0
-        do{i = random.nextInt(0, 100)}
+        do{i = random.nextInt(0,100)}
             while(bug.takes[i].state != 0 )
 
             placingEngine(bugPart, i, bug, listBug)

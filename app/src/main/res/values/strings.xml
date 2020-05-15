@@ -26,4 +26,6 @@
     <string name="extra_bugs_on_field">delete excess bugs</string>
     <string name="not_enougth_bugs_on_field">add bugs</string>
     <string name="clean_field">clean field</string>
+    <string name="player_1">player 1</string>
+    <string name="player_2">player 2</string>
 </resources>

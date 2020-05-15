@@ -4,6 +4,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
+import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment.Companion.changeMove
+import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpPresenter
+import ru.sneg.android.bug.domain.repositories.UserRepository
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
 import ru.sneg.android.bug.game.gameObjects.BugsPlacing
@@ -112,8 +116,9 @@ fun autoPlacing(bug: Bugs){
 //**************************конец расстановки жуков*****************************************
 
 //**************************выстрелы по полям***********************************************
-    //отрисовки нажатий на игоровое поле первого игрока (офлайн)
+    //отрисовки нажатий на игоровое
     fun onClickGameField(x: Float, y: Float, bug: Bugs) {
+
         val x: Int = (x / (width / 10)).toInt()
         val y: Int = (y / (height / 10)).toInt()
         val i: Int = y * 10 + x
@@ -128,8 +133,8 @@ fun autoPlacing(bug: Bugs){
 
     if (bug.takes[y * 10 + x].state == 0 || bug.takes[y * 10 + x].state == 4){ //undefined
         bug.takes[y * 10 + x].state = 2  //miss
-            // смена хода, блокировка первого поля, разблокировка второго поля
-
+        // смена хода, блокировка первого поля, разблокировка второго поля
+        changeMove = true
         }
     }
 
