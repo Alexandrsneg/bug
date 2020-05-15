@@ -64,7 +64,7 @@
 
     <ImageView
         android:id="@+id/bug_heads"
-        android:layout_width="172dp"
+        android:layout_width="217dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

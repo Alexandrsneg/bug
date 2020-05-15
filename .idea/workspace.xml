@@ -15,36 +15,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/ClashOfBugsPlayer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/rotate_center.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/anim_arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/anim_arrow2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/arrow.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/BlindActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/TicTacToeEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GameEngine.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpSecondPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpSecondPlayerView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_blind.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/btn_profile_anim.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/btn_profile_anim.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/background_main_jpg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_main_jpg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bg_empty.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_empty.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/blind.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/big_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey_anim.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey_anim.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_create.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -234,13 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00024" summary="SignInFragment - в рабочем состоянии, остальное в режиме подгона">
-      <created>1584870081017</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1584870081017</updated>
     </task>
     <task id="LOCAL-00025" summary="даггер заработал, работаю с кодом Анатолия">
       <created>1585143937294</created>
@@ -578,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589366904751</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="added move changing for two players game, added animated arrow and protecting of fields">
+      <created>1589527102326</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1589527102328</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -634,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correct auto setting vertical four-parts bug &#10;added invalid fields around the ship" />
     <MESSAGE value="manual Bugs installing without chekout nearby cells" />
     <MESSAGE value="design of BugPlacement fragment, correcting manual placing" />
     <MESSAGE value="checking sum of bugs on field when manual placing" />
@@ -659,7 +645,8 @@
     <MESSAGE value="creating a function which placing and remove all types of bugs" />
     <MESSAGE value="new working funcional of manual placing" />
     <MESSAGE value="add autoPlacing funcional" />
-    <option name="LAST_COMMIT_MESSAGE" value="add autoPlacing funcional" />
+    <MESSAGE value="added move changing for two players game, added animated arrow and protecting of fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="added move changing for two players game, added animated arrow and protecting of fields" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">

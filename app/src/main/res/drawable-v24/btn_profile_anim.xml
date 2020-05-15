@@ -6,7 +6,7 @@
         android:drawable="@drawable/btn_profile_grey"/>
     <item
         android:state_enabled="false"
-        android:drawable="@drawable/btn_big_grey" />
+        android:drawable="@drawable/btn_profile_grey" />
     <item
         android:state_pressed="true"
         android:state_enabled="true"

@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:id="@+id/containerMain"
     android:background="@drawable/background_main_jpg"
-    tools:context=".activities.MainActivity">
+    >
 
     <Button
         android:id="@+id/bSignInBtn"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_big_grey"
+        android:background="@drawable/big_grey"
         android:foreground="?android:attr/selectableItemBackground"
         android:fontFamily="@font/bones"
         android:text="@string/sign_in"
