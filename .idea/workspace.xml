@@ -19,19 +19,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/btn_profile_anim.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/btn_profile_anim.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/background_main_jpg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_main_jpg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bg_empty.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_empty.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/blind.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/big_grey.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey_anim.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_big_grey_anim.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_create.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameModeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameModeActivity.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +31,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="a0ab33a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_24" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -221,13 +213,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00025" summary="даггер заработал, работаю с кодом Анатолия">
-      <created>1585143937294</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1585143937294</updated>
     </task>
     <task id="LOCAL-00026" summary="приложение билдится, запускается, но не отображает нужные фрагменты">
       <created>1585146637448</created>
@@ -565,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589527102328</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="reloaded some drawable files">
+      <created>1589529148380</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1589529148380</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -621,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="manual Bugs installing without chekout nearby cells" />
     <MESSAGE value="design of BugPlacement fragment, correcting manual placing" />
     <MESSAGE value="checking sum of bugs on field when manual placing" />
     <MESSAGE value="add CleanField Button" />
@@ -646,7 +637,8 @@
     <MESSAGE value="new working funcional of manual placing" />
     <MESSAGE value="add autoPlacing funcional" />
     <MESSAGE value="added move changing for two players game, added animated arrow and protecting of fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="added move changing for two players game, added animated arrow and protecting of fields" />
+    <MESSAGE value="reloaded some drawable files" />
+    <option name="LAST_COMMIT_MESSAGE" value="reloaded some drawable files" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
