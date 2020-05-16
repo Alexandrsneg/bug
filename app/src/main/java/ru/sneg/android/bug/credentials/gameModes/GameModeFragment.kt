@@ -13,6 +13,7 @@ import ru.sneg.android.bug.activities.CreateGameActivity
 import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.ScoreActivity
 import ru.sneg.android.bug.base.ABaseFragment
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import javax.inject.Inject
 
@@ -38,6 +39,7 @@ class GameModeFragment : ABaseFragment(), IGameModeView {
 
         //игра против бота
         bBugVsCpuBug.setOnClickListener() {
+            BugPlacementPlayerFragment.botGame = true
             GameActivity.show()
         }
         //игра на одном устройстве

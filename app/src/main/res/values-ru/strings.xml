@@ -29,4 +29,5 @@
     <string name="clean_field">очистить поле</string>
     <string name="player_1">игрок 1</string>
     <string name="player_2">игрок 2</string>
+    <string name="android">андроид</string>
 </resources>

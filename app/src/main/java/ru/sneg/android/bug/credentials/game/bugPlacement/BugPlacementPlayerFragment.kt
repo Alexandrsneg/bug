@@ -15,10 +15,9 @@ import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugTh
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugTwo
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
-import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
+import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
-import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 
@@ -26,6 +25,10 @@ import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 import javax.inject.Inject
 class BugPlacementPlayerFragment : ABaseFragment(),
     IBugPlaycementPlayerView {
+
+    companion object{
+        var botGame = false
+    }
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
     @InjectPresenter // аннотация Moxy управляет ж. циклом Presenter
@@ -56,10 +59,17 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         bForward.setOnClickListener {
             if (firstPlayerBugs.bugsRemaining == 0) {
                 activity?.let {
-                    if (it is IBattleGroundsRouter)
+                    if (it is IBattleGroundsGameRouter)
                         it.showBugPlaycementSecond()
                 }
             } else toast(stringId = R.string.not_enougth_bugs_on_field)
+
+            if (firstPlayerBugs.bugsRemaining == 0 && botGame) {
+                activity?.let {
+                    if (it is IBattleGroundsGameRouter)
+                        it.showBugVsCpuBugGame()
+                }
+            } else if(botGame) toast(stringId = R.string.not_enougth_bugs_on_field)
         }
 
         //при нажатии кнопки Change profile выводим фрагмент SignIn в CredentialsActivity
@@ -143,6 +153,11 @@ class BugPlacementPlayerFragment : ABaseFragment(),
                 toast(stringId = R.string.not_enougth_bugs_on_field)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        botGame = false
     }
 
     override fun onRender(state: GameState) {

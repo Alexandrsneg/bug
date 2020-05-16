@@ -28,4 +28,5 @@
     <string name="clean_field">clean field</string>
     <string name="player_1">player 1</string>
     <string name="player_2">player 2</string>
+    <string name="android">android</string>
 </resources>

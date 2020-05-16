@@ -7,13 +7,13 @@ import android.view.WindowManager
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
+import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
-import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
-class GameActivity : ABaseActivity(), IBattleGroundsRouter {
+class GameActivity : ABaseActivity(), IBattleGroundsGameRouter {
     companion object {
 
         private const val ARG_DROP_CREDENTIALS = "ARG_DROP_CREDENTIALS"
@@ -57,5 +57,9 @@ class GameActivity : ABaseActivity(), IBattleGroundsRouter {
 
     override fun showBugVsBugGame() {
         replace(GameOfflinePvpFragment())
+    }
+
+    override fun showBugVsCpuBugGame() {
+        replace(GameOfflineBotFragment())
     }
 }

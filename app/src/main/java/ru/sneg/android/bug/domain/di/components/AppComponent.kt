@@ -5,6 +5,7 @@ import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragm
 import ru.sneg.android.bug.credentials.auth.SignInFragment
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.credentials.createGame.CreateGameFragment
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 import ru.sneg.android.bug.credentials.gameModes.GameModeFragment
 import ru.sneg.android.bug.credentials.loading.LoadingFragment
@@ -33,5 +34,6 @@ interface AppComponent {
     fun inject(target: ScoreFragment)
     fun inject(target: BugPlacementPlayerSecondFragment)
     fun inject(target: GameOfflinePvpFragment)
+    fun inject(target: GameOfflineBotFragment)
 
 }

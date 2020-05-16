@@ -26,10 +26,6 @@ class GameOfflinePvpPresenter: MvpPresenter<IGameOfflinePvpView> {
 
     fun whoIsFirst(): Int {
         val random = Random(System.nanoTime())
-        return random.nextInt(1,2)
+        return random.nextInt(1,3)
     }
-
-    var change = false
-
-
 }

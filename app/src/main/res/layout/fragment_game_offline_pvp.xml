@@ -38,29 +38,29 @@
         android:id="@+id/tv_player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/bones"
         android:text="@string/player_1"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        android:fontFamily="@font/bones"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gameOfflineFirstPlayerView"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineFirstPlayerView" />
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="@+id/gameOfflineFirstPlayerView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_player"
+        android:id="@+id/tv_player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/bones"
         android:text="@string/player_2"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gameOfflineSecondPlayerView"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineSecondPlayerView" />
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="@+id/gameOfflineSecondPlayerView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/bug_heads"

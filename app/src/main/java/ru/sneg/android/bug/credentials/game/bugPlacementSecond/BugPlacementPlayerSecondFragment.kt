@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAcceptBug
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAutoSetUp
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bCleanFields
 import kotlinx.android.synthetic.main.fragment_bug_placement_player_second.*
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.routers.IBattleGroundsRouter
+import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.engine.GameState
@@ -60,7 +59,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         bForwardSecond.setOnClickListener {
             if(secondPlayerBugs.bugsRemaining == 0) {
                 activity?.let {
-                    if (it is IBattleGroundsRouter)
+                    if (it is IBattleGroundsGameRouter)
                         it.showBugVsBugGame()
                 }
             }

@@ -20,6 +20,7 @@ import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
+import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 import javax.inject.Inject
 
 
@@ -65,8 +66,6 @@ class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
                 gameOfflineSecondPlayerView.isEnabled = true
                 gameOfflineFirstPlayerView.isEnabled = false
 
-                //поворот стрелки в случае промаха на правое поле
-                iv_anim_arrow.animate().rotation(360F)
                 changeMove = false
             }
         }
@@ -96,9 +95,12 @@ class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
                 else -> false
             }
         }
+    }
 
-
-
+    override fun onDestroy() {
+        super.onDestroy()
+        firstPlayerBugs.cleanField()
+        secondPlayerBugs.cleanField()
     }
 
     fun rotate360(): Boolean{
@@ -113,6 +115,11 @@ class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
             changeMove = false
         }
             return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
     }
 
     fun rotate180(): Boolean{
