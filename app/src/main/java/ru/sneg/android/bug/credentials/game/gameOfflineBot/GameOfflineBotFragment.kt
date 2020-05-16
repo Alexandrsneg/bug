@@ -3,28 +3,19 @@ package ru.sneg.android.bug.credentials.game.gameOfflineBot
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TextView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import kotlinx.android.synthetic.main.fragment_game_offline_bot.*
-import kotlinx.android.synthetic.main.fragment_game_offline_pvp.*
 import kotlinx.android.synthetic.main.fragment_game_offline_pvp.gameOfflineFirstPlayerView
 import kotlinx.android.synthetic.main.fragment_game_offline_pvp.gameOfflineSecondPlayerView
 import kotlinx.android.synthetic.main.fragment_game_offline_pvp.iv_anim_arrow
 import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.GameActivity
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
-import ru.sneg.android.bug.game.UI.PlayingFieldUI
-import ru.sneg.android.bug.game.UI.TakeUI
+import ru.sneg.android.bug.game.engine.BotPlayer
 import ru.sneg.android.bug.game.engine.GameState
-import ru.sneg.android.bug.game.gameObjects.Bugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
-import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 import javax.inject.Inject
 
@@ -32,8 +23,10 @@ import javax.inject.Inject
 class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
     companion object{
-        var changeMove = false
+        var playerMiss = false
+        var botMiss = false
     }
+    val botPlayer = BotPlayer()
 
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
@@ -51,9 +44,9 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
 
             override fun onRender(state: GameState) {
-        gameOfflineFirstPlayerView.setGameStateFirstPlayer(state)
+        gameOfflineBotFirstPlayerView.setGameStateFirstPlayer(state)
 
-        gameOfflineSecondPlayerView.setGameStateSecondPlayer(state)
+        gameOfflineBotSecondPlayerView.setGameStateSecondPlayer(state)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,29 +54,31 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
         tv_player_login.text = UserStorage().getUser()?.login ?:  "Unonimous bug"
 
+        //поле игрока всегда заблокированно для касаний
+
+
         //лпределяем чей ход будет первым, если нужно поворачиваем стрелку
         when (presenter.whoIsFirst()) {
-            1 -> {
-                iv_anim_arrow.animate().rotation(180F)
-                gameOfflineSecondPlayerView.isEnabled = false
-                gameOfflineFirstPlayerView.isEnabled = true
+            1 -> { // первый ходит бот
+                rotate180()
+                //блокировка поля бота
+                gameOfflineBotSecondPlayerView.isEnabled = false
+                botMove()
             }
-            2 -> {
-                // блокировка левого поля
-                gameOfflineSecondPlayerView.isEnabled = true
-                gameOfflineFirstPlayerView.isEnabled = false
+            2 -> { // первый ходит игрок
+                // разблокировка поля бота
+                gameOfflineBotSecondPlayerView.isEnabled = true
 
-                changeMove = false
             }
         }
 
-        gameOfflineFirstPlayerView.setOnTouchListener {_, event ->
+        gameOfflineBotSecondPlayerView.setOnTouchListener {_, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
                 MotionEvent.ACTION_UP -> {
-                    gameOfflineFirstPlayerView.onClick(event.x, event.y)
-                    //поворот стрелки в случае промаха на правое полеБ блокировка левого
-                    rotate360()
+                    gameOfflineBotSecondPlayerView.onClick(event.x, event.y)
+                    //поворот стрелки в случае промаха на правое поле, блокировка левого
+                    changeMove()
                 }
                 else -> false
             }
@@ -94,33 +89,52 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     override fun onDestroyView() {
         super.onDestroyView()
         firstPlayerBugs.cleanField()
+        secondPlayerBugs.cleanField()
     }
 
-    fun rotate360(): Boolean{
+    private fun changeMove(): Boolean{
+            if(playerMiss) {
+                // блокировка поля андроида
+                gameOfflineBotSecondPlayerView.isEnabled = false
 
-        if (changeMove) {
-            // блокировка левого поля
-            gameOfflineSecondPlayerView.isEnabled = true
-            gameOfflineFirstPlayerView.isEnabled = false
+                //поворот стрелки в случае промаха на левое поле
+                rotate180()
+                Thread.sleep(1000)
 
-            //поворот стрелки в случае промаха на правое поле
-            iv_anim_arrow.animate().rotation(360F)
-            changeMove = false
-        }
+                //обнуление смены хода для игрока
+                !playerMiss
+                //ход бота
+                botMove()
+            }
+
+
             return true
     }
 
-    fun rotate180(): Boolean{
 
-        if(changeMove) {
-            iv_anim_arrow.animate().rotation(180F)
-            gameOfflineSecondPlayerView.isEnabled = false
-            gameOfflineFirstPlayerView.isEnabled = true
-            changeMove = false
+    private fun botMove(){
+        var x = botPlayer.botMove().first
+        var y = botPlayer.botMove().second
+        gameOfflineBotFirstPlayerView.onClickByBot(x,y)
+        if (!botMiss) {
+            Thread.sleep(1000)
+            botMove()
+        }
+        else {
+            botMiss
+            rotate360()
+            gameOfflineBotSecondPlayerView.isEnabled = true
         }
 
-        return true
     }
+
+    private fun rotate180(){
+        iv_anim_arrow_bot.animate().rotation(180F)
+    }
+    private fun rotate360(){
+        iv_anim_arrow_bot.animate().rotation(360F)
+    }
+
 
     override fun lock() {
 

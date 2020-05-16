@@ -3,11 +3,11 @@ package ru.sneg.android.bug.game.gameViews
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
+import ru.sneg.android.bug.game.engine.BotPlayer
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 
@@ -33,16 +33,7 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
 
     init {
         holder.addCallback(this)
-
         //обработчик нажатия
-       /* setOnTouchListener {_, event ->
-
-            when (event.action){
-                MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
-                MotionEvent.ACTION_UP -> onClick(event.x, event.y)
-                else -> false
-            }
-        }*/
     }
 
     override fun onAttachedToWindow() {
@@ -81,12 +72,20 @@ class GameOfflinePvpFirstPlayerView @JvmOverloads constructor(
             playingField.onClickGameField(x, y, firstPlayerBugs)
             render()
 
+
         val listener = onSelectListener ?: return false
 
        playingField.onClick(x,y, firstPlayerBugs)?.let{  //если значения onClick не null -> срабатывет .let
            if(it.state == TakeUI.STATE_UNDEFINED)
            listener(it)
        }
+        return true
+    }
+    fun onClickByBot(x: Float, y: Float) : Boolean{
+
+        BotPlayer().onClickGameFieldByBot(x, y, firstPlayerBugs)
+        render()
+
         return true
     }
 }

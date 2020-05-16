@@ -152,7 +152,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         secondPlayerBugs.acceptBugSurrounding()
         gameViewSecond.render()
     }
-    private fun autoPlacing() {
+     fun autoPlacing() {
         gameViewSecond.autoPlacing()
         secondPlayerBugs.fourPartBug = 0
         secondPlayerBugs.threePartBug = 0

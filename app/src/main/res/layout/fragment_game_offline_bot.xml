@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ru.sneg.android.bug.game.gameViews.GameOfflinePvpFirstPlayerView
-        android:id="@+id/gameOfflineFirstPlayerView"
+        android:id="@+id/gameOfflineBotFirstPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginStart="28dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ru.sneg.android.bug.game.gameViews.GameOfflinePvpSecondPlayerView
-        android:id="@+id/gameOfflineSecondPlayerView"
+        android:id="@+id/gameOfflineBotSecondPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginEnd="28dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_anim_arrow"
+        android:id="@+id/iv_anim_arrow_bot"
         android:layout_width="71dp"
         android:layout_height="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,9 +43,9 @@
         android:text="@string/player_1"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/gameOfflineFirstPlayerView"
+        app:layout_constraintEnd_toEndOf="@+id/gameOfflineBotFirstPlayerView"
         app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineFirstPlayerView"
+        app:layout_constraintStart_toStartOf="@+id/gameOfflineBotFirstPlayerView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -57,9 +57,9 @@
         android:text="@string/android"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/gameOfflineSecondPlayerView"
+        app:layout_constraintEnd_toEndOf="@+id/gameOfflineBotSecondPlayerView"
         app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineSecondPlayerView"
+        app:layout_constraintStart_toStartOf="@+id/gameOfflineBotSecondPlayerView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
