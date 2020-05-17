@@ -52,6 +52,9 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        visibility(iv_anim_arrow_bot_right, false)
+        visibility(iv_anim_arrow_bot_left, false)
+
         tv_player_login.text = UserStorage().getUser()?.login ?:  "Unonimous bug"
 
         //поле игрока всегда заблокированно для касаний
@@ -60,15 +63,8 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
         //лпределяем чей ход будет первым, если нужно поворачиваем стрелку
         when (presenter.whoIsFirst()) {
             1 -> { // первый ходит бот
-                rotate180()
-                //блокировка поля бота
-                gameOfflineBotSecondPlayerView.isEnabled = false
+                //arrowToLeft()
                 botMove()
-            }
-            2 -> { // первый ходит игрок
-                // разблокировка поля бота
-                gameOfflineBotSecondPlayerView.isEnabled = true
-
             }
         }
 
@@ -77,7 +73,7 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
                 MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
                 MotionEvent.ACTION_UP -> {
                     gameOfflineBotSecondPlayerView.onClick(event.x, event.y)
-                    //поворот стрелки в случае промаха на правое поле, блокировка левого
+
                     changeMove()
                 }
                 else -> false
@@ -94,54 +90,53 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
     private fun changeMove(): Boolean{
             if(playerMiss) {
-                // блокировка поля андроида
-                gameOfflineBotSecondPlayerView.isEnabled = false
+                //отображение стрелки в случае промаха на левое поле
+               //arrowToLeft()
 
-                //поворот стрелки в случае промаха на левое поле
-                rotate180()
+                //время на "подумать" для бота
                 Thread.sleep(1000)
-
                 //обнуление смены хода для игрока
                 !playerMiss
                 //ход бота
                 botMove()
             }
-
-
             return true
     }
-
 
     private fun botMove(){
         var x = botPlayer.botMove().first
         var y = botPlayer.botMove().second
-        gameOfflineBotFirstPlayerView.onClickByBot(x,y)
+        if (botMiss) {
+            gameOfflineBotFirstPlayerView.onClickByBot(x, y)
+        }
+
         if (!botMiss) {
+            gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShootX.toFloat(), BotPlayer.nextShootY.toFloat())
+            //время на "подумать" для бота
             Thread.sleep(1000)
+
             botMove()
         }
         else {
             botMiss
-            rotate360()
-            gameOfflineBotSecondPlayerView.isEnabled = true
+            //arrowToRight()
         }
-
     }
 
-    private fun rotate180(){
-        iv_anim_arrow_bot.animate().rotation(180F)
+    private fun arrowToRight(){
+        visibility(iv_anim_arrow_bot_right, true)
+        visibility(iv_anim_arrow_bot_left, false)
     }
-    private fun rotate360(){
-        iv_anim_arrow_bot.animate().rotation(360F)
+    private fun arrowToLeft(){
+        visibility(iv_anim_arrow_bot_right, false)
+        visibility(iv_anim_arrow_bot_left, true)
     }
 
 
     override fun lock() {
-
     }
 
     override fun unlock() {
-        visibility(gameOfflineFirstPlayerView, false)
     }
 
 }

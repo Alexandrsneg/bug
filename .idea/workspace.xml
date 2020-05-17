@@ -28,12 +28,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -225,13 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00028" summary="разбор кода по занятию №3">
-      <created>1585392037639</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1585392037639</updated>
     </task>
     <task id="LOCAL-00029" summary="заработал код с занятия 4">
       <created>1585581988532</created>
@@ -569,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589612419851</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add play with bot first version. Arrow doesn't working, bot do only random shooter">
+      <created>1589643291417</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1589643291418</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -625,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add CleanField Button" />
     <MESSAGE value="add working fragmend of Bug placing for second player" />
     <MESSAGE value="add Offline game  fragmend with open fields" />
     <MESSAGE value="rendering right offline gemeplay" />
@@ -650,7 +645,8 @@
     <MESSAGE value="reloaded some drawable files" />
     <MESSAGE value="exit if press the back phone btn in profile fragment" />
     <MESSAGE value="add layout for play with bot, and clearing fields when views of game destroys" />
-    <option name="LAST_COMMIT_MESSAGE" value="add layout for play with bot, and clearing fields when views of game destroys" />
+    <MESSAGE value="add play with bot first version. Arrow doesn't working, bot do only random shooter" />
+    <option name="LAST_COMMIT_MESSAGE" value="add play with bot first version. Arrow doesn't working, bot do only random shooter" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -662,19 +658,19 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt</url>
-          <line>141</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>37</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>51</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt</url>
-          <line>80</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt</url>
-          <line>95</line>
-          <option name="timeStamp" value="34" />
+          <line>113</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
