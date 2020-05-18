@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.different
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
@@ -125,6 +126,14 @@ fun autoPlacing(bug: Bugs){
         val y: Int = (y / (height / 10)).toInt()
 
         val i: Int = y * 10 + x
+
+        //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
+        if ((bug.takes[i].state == 2 || bug.takes[i].state == 3)) {
+            different = false
+            return
+        }
+        else different = true
+        //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
 
         if (bug.takes[y * 10 + x].state == 1){   //bug_part
             bug.takes[y * 10 + x].state = 3      //explode

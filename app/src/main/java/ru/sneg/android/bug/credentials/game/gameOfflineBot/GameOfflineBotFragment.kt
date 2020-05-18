@@ -6,9 +6,6 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_offline_bot.*
-import kotlinx.android.synthetic.main.fragment_game_offline_pvp.gameOfflineFirstPlayerView
-import kotlinx.android.synthetic.main.fragment_game_offline_pvp.gameOfflineSecondPlayerView
-import kotlinx.android.synthetic.main.fragment_game_offline_pvp.iv_anim_arrow
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
@@ -25,8 +22,12 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     companion object{
         var playerMiss = false
         var botMiss = false
+
+        var different = true
     }
     val botPlayer = BotPlayer()
+
+    var firstBotShot = true
 
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
@@ -74,7 +75,12 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
                 MotionEvent.ACTION_UP -> {
                     gameOfflineBotSecondPlayerView.onClick(event.x, event.y)
 
-                    changeMove()
+                    //если клетка ещё не сыграна, переход хода  *******
+                    if (different) {
+                        changeMove()
+                    }
+                    //если клетка ещё не сыграна, переход хода  *******
+                    true
                 }
                 else -> false
             }
@@ -92,7 +98,6 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
             if(playerMiss) {
                 //отображение стрелки в случае промаха на левое поле
                //arrowToLeft()
-
                 //время на "подумать" для бота
                 Thread.sleep(1000)
                 //обнуление смены хода для игрока
@@ -104,23 +109,21 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     }
 
     private fun botMove(){
-        var x = botPlayer.botMove().first
-        var y = botPlayer.botMove().second
-        if (botMiss) {
-            gameOfflineBotFirstPlayerView.onClickByBot(x, y)
+        //если это первый выстрел бота
+        if (firstBotShot){
+            gameOfflineBotFirstPlayerView.onClickByBot(botPlayer.botNewShot().first, botPlayer.botNewShot().second)
         }
-
-        if (!botMiss) {
-            gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShootX.toFloat(), BotPlayer.nextShootY.toFloat())
+            //если бот помахивается - следующий выстрел случайный
+         if (!firstBotShot && botMiss) {
+            gameOfflineBotFirstPlayerView.onClickByBot(botPlayer.botNewShot().first, botPlayer.botNewShot().second)
+        }
+            //если бот попал - обстрел ближайших полей
+        while (!botMiss) {
             //время на "подумать" для бота
             Thread.sleep(1000)
-
-            botMove()
+            gameOfflineBotFirstPlayerView.onClickByBot(botPlayer.nextShootX.toFloat(), botPlayer.nextShootY.toFloat())
         }
-        else {
-            botMiss
-            //arrowToRight()
-        }
+        firstBotShot = false
     }
 
     private fun arrowToRight(){
