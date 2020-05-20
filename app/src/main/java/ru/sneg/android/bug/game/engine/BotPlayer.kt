@@ -2,127 +2,235 @@ package ru.sneg.android.bug.game.engine
 
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.game.gameObjects.Bugs
+import java.lang.Exception
 import kotlin.random.Random
 
 class BotPlayer () {
 // в конструкторе был netPlayer: NetworkPlayer
 
+    companion object {
 
-        var firstGoodShoot = 0
+        var firstGoodShoot = Pair(0, 0)
+        var lastGoodShoot = Pair(0, 0)
 
-        var nextShootX = 0
-        var nextShootY = 0
-
-
-     fun botNewShot(): Pair<Float,Float> {
-        val random = Random(System.nanoTime())
-       var x = random.nextInt(0,10).toFloat()
-        var y = random.nextInt(0,10).toFloat()
+        var nextShoot = Pair(0, 0)
 
 
-        return Pair(x,y)
+        var firstBlood = false
+
+        var botFindAndFinishingBug = false
+
+        var goOnShootLeft = Pair(lastGoodShoot.first - 1, lastGoodShoot.second)
+        var goOnShootRight = Pair(lastGoodShoot.first + 1, lastGoodShoot.second)
+        var goOnShootUp = Pair(lastGoodShoot.first, lastGoodShoot.second - 1)
+        var goOnShootDown = Pair(lastGoodShoot.first, lastGoodShoot.second + 1)
+
+        var tryShootLeft = Pair(firstGoodShoot.first - 1, firstGoodShoot.second)
+        var tryShootRight = Pair(firstGoodShoot.first + 1, firstGoodShoot.second)
+        var tryShootUp = Pair(firstGoodShoot.first, firstGoodShoot.second - 1)
+        var tryShootDown = Pair(firstGoodShoot.first, firstGoodShoot.second + 1)
+
     }
 
+
+    fun botNewShot(): Pair<Float, Float> {
+        val random = Random(System.nanoTime())
+        var x = random.nextInt(0, 10).toFloat()
+        var y = random.nextInt(0, 10).toFloat()
+
+        return Pair(x, y)
+    }
 
 
     fun onClickGameFieldByBot(x: Float, y: Float, bug: Bugs) {
 
-        val x: Int = x.toInt()
-        val y: Int = y.toInt()
-
+        var x: Int = x.toInt()
+        var y: Int = y.toInt()
         var i: Int = y * 10 + x
 
         //если клетка в которую ткнул бот уже сыграна, рандомно меняем клетку пока не попадем на свободную
         if ((bug.takes[i].state == 2 || bug.takes[i].state == 3))
             do {
-                i = Random(System.nanoTime()).nextInt(0, 100)
-            }
-                while ((bug.takes[i].state == 2 || bug.takes[i].state == 3))
+                x = Random.nextInt(0,10)
+                y = Random.nextInt(0,10)
+                i = y*10 + x
+            } while ((bug.takes[i].state == 2 || bug.takes[i].state == 3))
 
 
-        if (bug.takes[i].state == 1){   //bug_part
+        if (bug.takes[i].state == 1) {   //bug_part
             bug.takes[i].state = 3      //explode
 
-            firstGoodShoot = i
+            lastGoodShoot = Pair(x, y)
 
-            if (bug.killCheck(bug.identBug(i))){ // если все элементы жука подбиты
+            if (!firstBlood)
+                firstGoodShoot = Pair(x, y)
+
+            goOnShootLeft = Pair(lastGoodShoot.first - 1, lastGoodShoot.second)
+            goOnShootRight = Pair(lastGoodShoot.first + 1, lastGoodShoot.second)
+            goOnShootUp = Pair(lastGoodShoot.first, lastGoodShoot.second - 1)
+            goOnShootDown = Pair(lastGoodShoot.first, lastGoodShoot.second + 1)
+
+            tryShootLeft = Pair(firstGoodShoot.first - 1, firstGoodShoot.second)
+            tryShootRight = Pair(firstGoodShoot.first + 1, firstGoodShoot.second)
+            tryShootUp = Pair(firstGoodShoot.first, firstGoodShoot.second - 1)
+            tryShootDown = Pair(firstGoodShoot.first, firstGoodShoot.second + 1)
+
+
+            nextBotShoot(x,y,i,bug)
+
+            firstBlood = true
+            botFindAndFinishingBug = true
+
+
+            if (bug.killCheck(bug.identBug(i))) { // если все элементы жука подбиты
                 bug.killedBugSurrounding() // обводка клеток вокруг всех убитых жуков
+                firstBlood = false
+                botFindAndFinishingBug = false
             }
             GameOfflineBotFragment.botMiss = false
-            nextShoot(x,y,i,bug)
+
         }
 
-        if (bug.takes[i].state == 0 || bug.takes[i].state == 4){ //undefined
+        if (bug.takes[i].state == 0 || bug.takes[i].state == 4) { //undefined
             bug.takes[i].state = 2  //miss
+
+            // если в режиме добивания и известна ориентация
+            if (firstBlood && !bug.killCheck(bug.identBug(firstGoodShoot.second * 10 + firstGoodShoot.first))) {
+
+                if(bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first -1].state !=2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first -1].state !=3 )
+                    nextShoot = tryShootLeft
+
+                if(bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first +1].state !=2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first +1].state !=3 )
+                    nextShoot = tryShootRight
+
+                if(bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first -10].state !=2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first -10].state !=3 )
+                    nextShoot = tryShootUp
+
+                if(bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first +10].state !=2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first +10].state !=3 )
+                    nextShoot = tryShootDown
+
+                //nextBotShoot(x,y,i,bug)
+            }
+
             // смена хода
             GameOfflineBotFragment.botMiss = true
         }
     }
 
-    private fun nextShoot(x: Int, y: Int, i: Int, bug: Bugs){
 
-                // если поле сверху UNDEFINED, BUGSURROUNDIG или BUGPART
-                upShoot(x,y,i,bug)
+    fun lastGoodDirection(i: Int, bug: Bugs): String{
+        var dir = ""
+        try {
+            if (bug.takes[i - 1].state == 3)
+                dir = "RIGHT"
 
-                // если поле снизу UNDEFINED, BUGSURROUNDIG или BUGPART
-                downShoot(x,y,i,bug)
+            if (bug.takes[i + 1].state == 3)
+                dir = "LEFT"
 
-                // если поле сплева UNDEFINED, BUGSURROUNDIG или BUGPART
-                leftShoot(x,y,i,bug)
+            if (bug.takes[i - 10].state == 3)
+                dir = "DOWN"
 
-                // если поле справа UNDEFINED, BUGSURROUNDIG или BUGPART
-                rightShoot(x,y,i,bug)
-
+            if (bug.takes[i + 10].state == 3)
+                dir = "UP"
+            if (!firstBlood)
+                dir = "FIRST_BLOOD"
+        }
+        catch (e: Exception){
+            println("lastGoodDirectionException")
+        }
+        return dir
     }
 
-    fun upShoot(x: Int, y: Int, i: Int, bug: Bugs){
-        if (i !in 0..9) {
-            if (bug.takes[i - 10].state == 0 || bug.takes[i - 10].state == 4 || bug.takes[i - 10].state == 1 ){
-                if(y - 1 > -1) {
-                    // bug.takes[i - 10].state = 2
-                    nextShootX = x
-                    nextShootY = y - 1
+    fun nextGoodDirection(i: Int, bug: Bugs): String{
+        var dir = ""
+        try {
+            if (bug.takes[i + 1].state != 2 || bug.takes[i + 1].state != 3)
+                dir = "RIGHT"
+
+            if (bug.takes[i - 1].state != 2 || bug.takes[i - 1].state != 3 )
+                dir = "LEFT"
+
+            if (bug.takes[i + 10].state != 2 || bug.takes[i + 10].state !=3 )
+                dir = "DOWN"
+
+            if (bug.takes[i - 10].state != 2 || bug.takes[i - 10].state != 3)
+                dir = "UP"
+
+        }
+        catch (e: Exception){
+            println("lastGoodDirectionException")
+        }
+        return dir
+    }
+
+    fun nextBotShoot(x: Int, y: Int, i: Int, bug: Bugs){
+
+        if (lastGoodDirection(i, bug) == "UP") {
+            if (y - 1 > -1) {
+                if (bug.takes[i - 10].state != 2) {
+                    nextShoot = goOnShootUp
+                }
+                else {
+                    nextShoot = tryShootDown
                 }
             }
         }
-    }
-
-    fun downShoot(x: Int, y: Int, i: Int, bug: Bugs) {
-        if (i !in 90..99 && i != 0) {
-            if (bug.takes[i + 10].state == 0 || bug.takes[i + 10].state == 4 || bug.takes[i + 10].state == 1) {
-                if (y + 1 < 10) {
-                    // bug.takes[i + 10].state = 2
-                    nextShootX = x
-                    nextShootY = y + 1
+        if (lastGoodDirection(i, bug) == "DOWN") {
+            if (y + 1 < 10) {
+                if (bug.takes[i + 10].state != 2) {
+                    nextShoot = goOnShootDown
+                }
+                else {
+                   nextShoot = tryShootUp
                 }
             }
         }
-    }
-
-    fun leftShoot(x: Int, y: Int, i: Int, bug: Bugs) {
-        val left = listOf<Int>(0, 10, 20, 30, 40, 50, 60, 70, 80, 90)
-        if (i !in left) {
-            if (bug.takes[i - 1].state == 0 || bug.takes[i - 1].state == 4 || bug.takes[i - 1].state == 1) {
-                if (x - 1 > -1) {
-                    nextShootX = x - 1
-                    nextShootY = y
+        if (lastGoodDirection(i, bug) == "RIGHT") {
+            if (x + 1 < 11) {
+                if (bug.takes[i + 1].state != 2) {
+                   nextShoot = goOnShootRight
+                }
+                if (bug.takes[i].state == 2){
+                    nextShoot = tryShootLeft
                 }
             }
         }
-    }
-
-        fun rightShoot(x: Int, y: Int, i: Int, bug: Bugs) {
-            val right = listOf<Int>(9,19,29,39,49,59,69,79,89,99)
-            if (i !in right) {
-                if (bug.takes[i + 1].state == 0 || bug.takes[i + 1].state == 4 || bug.takes[i + 1].state == 1) {
-                    // bug.takes[i + 1].state = 2
-                    if(x + 1 < 10) {
-                        nextShootX = x + 1
-                        nextShootY = y
-                    }
+        if (lastGoodDirection(i, bug) == "LEFT") {
+            if (x - 1 > -1) {
+                if (bug.takes[i - 1].state != 2) {
+                   nextShoot = goOnShootLeft
+                }
+                else {
+                    nextShoot = tryShootRight
                 }
             }
         }
+        if (lastGoodDirection(i, bug) == "FIRST_BLOOD") {
+                    nextMovesFirstBlood(bug)
+            }
+    }
+
+    fun nextMovesFirstBlood(bug: Bugs) {
+        //следующий в лево
+        if ((firstGoodShoot.first - 1 > -1))
+            if (bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first - 1].state != 2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first - 1].state != 3)
+                nextShoot = tryShootLeft
+
+        //следующий вверх
+        if (firstGoodShoot.second - 1 > -1)
+            if (bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first - 10].state != 2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first - 10].state != 3 )
+                nextShoot = tryShootUp
+
+        //следущий вниз
+        if (firstGoodShoot.second + 1 < 9)
+            if (bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first + 10].state != 2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first + 10].state != 3)
+                nextShoot = tryShootDown
+        //следующий вправо
+        if (firstGoodShoot.first + 1 < 9)
+            if (bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first + 1].state != 2 && bug.takes[firstGoodShoot.second * 10 + firstGoodShoot.first + 1].state != 3)
+                nextShoot = tryShootRight
+    }
+
 
 
 }

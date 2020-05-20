@@ -135,8 +135,8 @@ fun autoPlacing(bug: Bugs){
         else different = true
         //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
 
-        if (bug.takes[y * 10 + x].state == 1){   //bug_part
-            bug.takes[y * 10 + x].state = 3      //explode
+        if (bug.takes[i].state == 1){   //bug_part
+            bug.takes[i].state = 3      //explode
 
             if (bug.killCheck(bug.identBug(i))){ // если все элементы жука подбиты
             bug.killedBugSurrounding() // обводка клеток вокруг всех убитых жуков
@@ -144,8 +144,8 @@ fun autoPlacing(bug: Bugs){
             GameOfflineBotFragment.playerMiss = false
         }
 
-    if (bug.takes[y * 10 + x].state == 0 || bug.takes[y * 10 + x].state == 4){ //undefined
-        bug.takes[y * 10 + x].state = 2  //miss
+    if (bug.takes[i].state == 0 || bug.takes[i].state == 4){ //undefined
+        bug.takes[i].state = 2  //miss
         // смена хода, блокировка первого поля, разблокировка второго поля
         GameOfflinePvpFragment.changeMove = true
         GameOfflineBotFragment.playerMiss = true

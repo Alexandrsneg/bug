@@ -37,7 +37,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="a0ab33a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_24" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -220,13 +220,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00030" summary="корректировка фрагмента загрузки, SignIn фрагмента">
-      <created>1585664486095</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1585664486095</updated>
     </task>
     <task id="LOCAL-00031" summary="переход на экран профиля в случае если авторизационные данные введены корректно, заглушка из репозитория окрана профиля. Закоментил набросок функции по отображению ачивок в профиле, чтобы приложение собиралось">
       <created>1585755794137</created>
@@ -564,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589699917849</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="shoots goes in right turn, add blocking if cell already played">
+      <created>1589808323187</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1589808323188</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -620,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Offline game  fragmend with open fields" />
     <MESSAGE value="rendering right offline gemeplay" />
     <MESSAGE value="add buttons animation, fix Array index out Exception for 4-part bug" />
     <MESSAGE value="add functions for placing any-size bugs and surrounding it with disabled cells" />
@@ -645,7 +644,8 @@
     <MESSAGE value="add layout for play with bot, and clearing fields when views of game destroys" />
     <MESSAGE value="add play with bot first version. Arrow doesn't working, bot do only random shooter" />
     <MESSAGE value="bot is getting smart" />
-    <option name="LAST_COMMIT_MESSAGE" value="bot is getting smart" />
+    <MESSAGE value="shoots goes in right turn, add blocking if cell already played" />
+    <option name="LAST_COMMIT_MESSAGE" value="shoots goes in right turn, add blocking if cell already played" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -658,13 +658,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt</url>
-          <line>113</line>
-          <option name="timeStamp" value="22" />
+          <line>121</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt</url>
-          <line>117</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>167</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>214</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>60</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>111</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
