@@ -9,12 +9,14 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="println" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Firebase" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/ResultBotFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/wasted_player.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot_result.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,11 +27,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/routers/IBattleGroundsGameRouter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/routers/IBattleGroundsGameRouter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +44,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_24" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="a0ab33a" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -74,9 +81,9 @@
         <option value="Kotlin Object" />
         <option value="layoutResourceFile" />
         <option value="Class" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -97,7 +104,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
@@ -128,8 +135,8 @@
       <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable-v24" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\layout" />
       <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable" />
+      <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\layout" />
       <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\res\drawable-v24" />
       <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\app\src\main\java\ru\sneg\android\bug\credentials" />
       <recent name="C:\Users\Alexandr\AndroidStudioProjects\bug\libs" />
@@ -220,13 +227,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00031" summary="переход на экран профиля в случае если авторизационные данные введены корректно, заглушка из репозитория окрана профиля. Закоментил набросок функции по отображению ачивок в профиле, чтобы приложение собиралось">
-      <created>1585755794137</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1585755794137</updated>
     </task>
     <task id="LOCAL-00032" summary="работа нат фрагментом рекордов (запонение ресайкл вью), создал &#10;активити для объединеня фрагентов режимов игры">
       <created>1585998165466</created>
@@ -564,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589808323188</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="half-working bot">
+      <created>1589971564352</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1589971564352</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -620,7 +627,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rendering right offline gemeplay" />
     <MESSAGE value="add buttons animation, fix Array index out Exception for 4-part bug" />
     <MESSAGE value="add functions for placing any-size bugs and surrounding it with disabled cells" />
     <MESSAGE value="fix it and finish for vertical placement" />
@@ -645,7 +651,8 @@
     <MESSAGE value="add play with bot first version. Arrow doesn't working, bot do only random shooter" />
     <MESSAGE value="bot is getting smart" />
     <MESSAGE value="shoots goes in right turn, add blocking if cell already played" />
-    <option name="LAST_COMMIT_MESSAGE" value="shoots goes in right turn, add blocking if cell already played" />
+    <MESSAGE value="half-working bot" />
+    <option name="LAST_COMMIT_MESSAGE" value="half-working bot" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -657,29 +664,14 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt</url>
-          <line>121</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <line>99</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
-          <line>167</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
-          <line>214</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
-          <line>60</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
-          <line>111</line>
-          <option name="timeStamp" value="48" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt</url>
+          <line>147</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

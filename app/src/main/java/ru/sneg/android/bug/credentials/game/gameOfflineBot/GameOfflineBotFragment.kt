@@ -1,5 +1,6 @@
 package ru.sneg.android.bug.credentials.game.gameOfflineBot
 
+import android.net.sip.SipSession
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -7,11 +8,16 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_game_offline_bot.*
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 import ru.sneg.android.bug.game.engine.BotPlayer
 import ru.sneg.android.bug.game.engine.BotPlayer.Companion.botFindAndFinishingBug
+import ru.sneg.android.bug.game.engine.BotPlayer.Companion.firstBlood
+import ru.sneg.android.bug.game.engine.BotPlayer.Companion.firstGoodShoot
+import ru.sneg.android.bug.game.engine.BotPlayer.Companion.lastGoodShoot
+import ru.sneg.android.bug.game.engine.BotPlayer.Companion.nextShoot
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
@@ -25,8 +31,10 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
         var botMiss = false
 
         var different = true
+        var gameWithBotIsOver = false
+
     }
-    val botPlayer = BotPlayer()
+    private val botPlayer = BotPlayer()
 
     var firstBotShot = true
 
@@ -57,9 +65,15 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
         tv_player_login.text = UserStorage().getUser()?.login ?:  "Unonimous bug"
 
         //лпределяем чей ход будет первым
-        when (presenter.whoIsFirst()) {
+       /* when (presenter.whoIsFirst()) {
             1 -> { // первый ходит бот
                 botMove()
+            }
+        }*/
+        gameOfflineBotSecondPlayerView.onSelectListener = {
+            if (gameWithBotIsOver){
+                if (it is IBattleGroundsGameRouter)
+                    it.showBugPlaycementSecond()
             }
         }
 
@@ -67,7 +81,6 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
             when (event.action){
                 MotionEvent.ACTION_DOWN -> true // Иначе не сработает ACTION_UP
                 MotionEvent.ACTION_UP -> {
-
                     gameOfflineBotSecondPlayerView.onClick(event.x, event.y)
 
                     //если клетка ещё не сыграна, переход хода  *******
@@ -83,8 +96,18 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        //очистка поля
         firstPlayerBugs.cleanField()
         secondPlayerBugs.cleanField()
+
+        //обнуление значений для нормально работы бота в новой игре
+        firstGoodShoot = Pair(0, 0)
+        lastGoodShoot = Pair(0, 0)
+        nextShoot = Pair(0, 0)
+
+        firstBlood = false
+        botFindAndFinishingBug = false
+        gameWithBotIsOver = false
     }
 
     private fun changeMove(): Boolean{

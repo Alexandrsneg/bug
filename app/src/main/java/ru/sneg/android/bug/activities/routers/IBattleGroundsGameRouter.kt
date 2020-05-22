@@ -5,4 +5,5 @@ interface IBattleGroundsGameRouter {
     fun showBugPlaycementSecond()
     fun showBugVsBugGame()
     fun showBugVsCpuBugGame()
+    fun showBugVsCpeResult()
 }

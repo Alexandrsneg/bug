@@ -24,27 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_anim_arrow_bot_right"
-        android:layout_width="71dp"
-        android:layout_height="88dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/anim_arrow" />
-
-    <ImageView
-        android:id="@+id/iv_anim_arrow_bot_left"
-        android:layout_width="71dp"
-        android:layout_height="88dp"
-        android:rotation="180"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/anim_arrow" />
-
     <TextView
         android:id="@+id/tv_player_login"
         android:layout_width="wrap_content"

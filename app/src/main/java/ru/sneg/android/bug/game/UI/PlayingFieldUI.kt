@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.different
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
@@ -140,6 +141,13 @@ fun autoPlacing(bug: Bugs){
 
             if (bug.killCheck(bug.identBug(i))){ // если все элементы жука подбиты
             bug.killedBugSurrounding() // обводка клеток вокруг всех убитых жуков
+
+                //конец игры, все жуки бота убиты!!!
+                if(bug.checkSum(bug) == 20) {
+                    GameOfflineBotFragment.gameWithBotIsOver = true
+                    ResultBotFragment.winnerIs = "Player"
+                }
+
             }
             GameOfflineBotFragment.playerMiss = false
         }

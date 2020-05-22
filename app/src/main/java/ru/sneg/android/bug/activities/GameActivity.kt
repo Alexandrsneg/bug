@@ -11,6 +11,7 @@ import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseActivity
 import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 
 class GameActivity : ABaseActivity(), IBattleGroundsGameRouter {
@@ -61,5 +62,9 @@ class GameActivity : ABaseActivity(), IBattleGroundsGameRouter {
 
     override fun showBugVsCpuBugGame() {
         replace(GameOfflineBotFragment())
+    }
+
+    override fun showBugVsCpeResult() {
+        replace(ResultBotFragment())
     }
 }
