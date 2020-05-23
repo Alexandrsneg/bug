@@ -2,6 +2,7 @@ package ru.sneg.android.bug.credentials.game.bugPlacement
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
@@ -70,7 +71,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             // если была нажата кнопка игры против бота
             if (firstPlayerBugs.bugsRemaining == 0 && botGame) {
                 //авторасстановка жуков для бота
-               PlayingFieldUI().autoPlacing(secondPlayerBugs)
+               BugsPlacing().eachBugAutoPlacing(secondPlayerBugs)
 
                 activity?.let {
                     if (it is IBattleGroundsGameRouter)
@@ -85,80 +86,25 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
-            cleanField()
-            autoPlacing()
+            firstPlayerBugs.cleanField()
+            BugsPlacing().eachBugAutoPlacing(GameBugPlacementView.firstPlayerBugs)
             showTvCounts()
+            gameView.render()
         }
         // очистка игровога поля, сброс всех счетчиков для работы логики расстановки жуков
         bCleanFields.setOnClickListener {
-            cleanField()
+            firstPlayerBugs.cleanField()
             showTvCounts()
+            gameView.render()
         }
-
+        //кнопка подтверждения установки жука
         bAcceptBug.setOnClickListener {
-            var sum = 0
-            BugsPlacing.orientationAndRemoving = 0
-
-            for (i in 0..99) {
-                if (firstPlayerBugs.takes[i].state == 1)  sum += firstPlayerBugs.takes[i].state
+            when (BugsPlacing().bugPlacingCheckOut(firstPlayerBugs)){
+                "delete" -> toast(stringId = R.string.extra_bugs_on_field)
+                "add" -> toast(stringId = R.string.not_enougth_bugs_on_field)
             }
-
-            if (firstPlayerBugs.bugsRemaining == 10 && sum > 4) {
-                toast(stringId = R.string.extra_bugs_on_field)
-            }
-            if (firstPlayerBugs.bugsRemaining == 10 && sum < 4) {
-                toast(stringId = R.string.not_enougth_bugs_on_field)
-            }
-
-            if (firstPlayerBugs.bugsRemaining == 10 && sum == 4) {
-                surrounding()
-                firstPlayerBugs.fourPartBug--
-                tvCountBugFour.text = firstPlayerBugs.fourPartBug.toString()
-                firstPlayerBugs.bugsRemaining--
-                return@setOnClickListener
-            }
-
-            if (firstPlayerBugs.bugsRemaining in 8..9 && sum == (4 + (9 - 3 * firstPlayerBugs.threePartBug))) {
-                surrounding()
-                firstPlayerBugs.threePartBug--
-                tvCountBugThree.text = firstPlayerBugs.threePartBug.toString()
-                firstPlayerBugs.bugsRemaining--
-                return@setOnClickListener
-            }
-            if (firstPlayerBugs.bugsRemaining in 8..9 && sum > (4 + (9 - 3 * firstPlayerBugs.threePartBug))) {
-                toast(stringId = R.string.extra_bugs_on_field)
-            }
-            if (firstPlayerBugs.bugsRemaining in 8..9 && sum < (4 + (9 - 3 * firstPlayerBugs.threePartBug))) {
-                toast(stringId = R.string.not_enougth_bugs_on_field)
-            }
-
-            if (firstPlayerBugs.bugsRemaining in 5..7 && sum == (10 + (8 - 2 * firstPlayerBugs.twoPartBug))) {
-                surrounding()
-                firstPlayerBugs.twoPartBug--
-                tvCountBugTwo.text = firstPlayerBugs.twoPartBug.toString()
-                firstPlayerBugs.bugsRemaining--
-                return@setOnClickListener
-            }
-            if (firstPlayerBugs.bugsRemaining in 5..7 && sum > (10 + (8 - 2 * firstPlayerBugs.twoPartBug))) {
-                toast(stringId = R.string.extra_bugs_on_field)
-            }
-            if (firstPlayerBugs.bugsRemaining in 5..7 && sum < (10 + (8 - 2 * firstPlayerBugs.twoPartBug))) {
-                toast(stringId = R.string.not_enougth_bugs_on_field)
-            }
-
-            if (firstPlayerBugs.bugsRemaining in 1..4 && sum == (16 + (5 - firstPlayerBugs.onePartBug))) {
-                surrounding()
-                firstPlayerBugs.onePartBug--
-                tvCountBugOne.text = firstPlayerBugs.onePartBug.toString()
-                firstPlayerBugs.bugsRemaining--
-                return@setOnClickListener
-            }
-            if (firstPlayerBugs.bugsRemaining in 1..4 && sum > (16 + (5 - firstPlayerBugs.onePartBug))) {
-                toast(stringId = R.string.extra_bugs_on_field)
-            }
-            if (firstPlayerBugs.bugsRemaining in 1..4 && sum < (16 + (5 - firstPlayerBugs.onePartBug))) {
-                toast(stringId = R.string.not_enougth_bugs_on_field)
-            }
+            showTvCounts()
+            gameView.render()
         }
     }
 
@@ -169,22 +115,6 @@ class BugPlacementPlayerFragment : ABaseFragment(),
 
     override fun onRender(state: GameState) {
         gameView.setGameState(state)
-    }
-    private fun cleanField() {
-        firstPlayerBugs.cleanField()
-        gameView.render()
-    }
-    private fun surrounding() {
-        firstPlayerBugs.acceptBugSurrounding()
-        gameView.render()
-    }
-
-    private fun autoPlacing() {
-        gameView.autoPlacing()
-        firstPlayerBugs.fourPartBug = 0
-        firstPlayerBugs.threePartBug = 0
-        firstPlayerBugs.twoPartBug = 0
-        firstPlayerBugs.onePartBug = 0
     }
 
     private fun showTvCounts(){

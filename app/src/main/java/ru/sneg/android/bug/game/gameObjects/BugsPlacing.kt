@@ -1,5 +1,11 @@
 package ru.sneg.android.bug.game.gameObjects
 
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
+import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.GameActivity
+import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
+import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 import kotlin.random.Random
 
 
@@ -156,6 +162,112 @@ class BugsPlacing {
                     println(e)
                 }
         }
+    }
+
+    //последовательная атоустановка всех жуков от самого длинного к однопалубным
+    fun eachBugAutoPlacing(bug: Bugs){
+
+        bug.fourPartBug = 0
+        bug.threePartBug = 0
+        bug.twoPartBug = 0
+        bug.onePartBug = 0
+
+        do{autoPlacing(4, bug, bug.listBugFour)}
+        while (bug.checkSum(bug) < 4)
+
+        do{autoPlacing(3, bug, bug.listBugThreeFirst)}
+        while (bug.checkSum(bug) < 7)
+
+        do{autoPlacing(3,bug,bug.listBugThreeSecond)}
+        while (bug.checkSum(bug) < 10)
+
+        do{autoPlacing(2,bug,bug.listBugTwoFirst)}
+        while (bug.checkSum(bug) < 12)
+
+        do{autoPlacing(2,bug,bug.listBugTwoSecond)}
+        while (bug.checkSum(bug) < 14)
+
+        do{autoPlacing(2,bug,bug.listBugTwoThird)}
+        while (bug.checkSum(bug) < 16)
+
+        do{autoPlacing(1,bug,bug.listBugOneFirst)}
+        while (bug.checkSum(bug) < 17)
+
+        do{autoPlacing(1,bug,bug.listBugOneSecond)}
+        while (bug.checkSum(bug) < 18)
+
+        do{autoPlacing(1,bug,bug.listBugOneThird)}
+        while (bug.checkSum(bug) < 19)
+
+        do{autoPlacing(1,bug,bug.listBugOneFourth)}
+        while (bug.checkSum(bug) < 20)
+
+        bug.bugsRemaining = 0
+    }
+
+    //проверка ручной установки, ответы для тостов с замечаниями
+    fun bugPlacingCheckOut(bug: Bugs) : String {
+        var warning = ""
+
+        var sum = 0
+        orientationAndRemoving = 0
+
+        for (i in 0..99) {
+            if (bug.takes[i].state == 1)  sum += bug.takes[i].state
+        }
+
+        if (bug.bugsRemaining == 10 && sum > 4) {
+            warning = "delete"
+
+        }
+        if (bug.bugsRemaining == 10 && sum < 4) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 8..9 && sum > (4 + (9 - 3 * bug.threePartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 8..9 && sum < (4 + (9 - 3 * bug.threePartBug))) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 5..7 && sum > (10 + (8 - 2 * bug.twoPartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 5..7 && sum < (10 + (8 - 2 * bug.twoPartBug))) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 1..4 && sum > (16 + (5 - bug.onePartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 1..4 && sum < (16 + (5 - bug.onePartBug))) {
+            warning = "add"
+        }
+        if (bug.bugsRemaining == 10 && sum == 4) {
+            bug.acceptBugSurrounding()
+            bug.fourPartBug--
+            bug.bugsRemaining--
+        }
+
+        if (bug.bugsRemaining in 8..9 && sum == (4 + (9 - 3 * bug.threePartBug))) {
+            bug.acceptBugSurrounding()
+            bug.threePartBug--
+            bug.bugsRemaining--
+        }
+
+        if (bug.bugsRemaining in 5..7 && sum == (10 + (8 - 2 * bug.twoPartBug))) {
+            bug.acceptBugSurrounding()
+            bug.twoPartBug--
+            bug.bugsRemaining--
+        }
+        if (bug.bugsRemaining in 1..4 && sum == (16 + (5 - bug.onePartBug))) {
+            bug.acceptBugSurrounding()
+            bug.onePartBug--
+            bug.bugsRemaining--
+        }
+
+        return warning
     }
 
 }

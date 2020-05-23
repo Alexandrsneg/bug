@@ -10,6 +10,7 @@ import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 
 
 class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
@@ -28,6 +29,7 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
             render()
         }
 
+    private val bugsPlacing = BugsPlacing()
     private val playingField = PlayingFieldUI()
     companion object {
         var secondPlayerBugs = Bugs()
@@ -86,7 +88,7 @@ class GameBugPlacementSecondPlayerView @JvmOverloads constructor(
     }
 
     fun autoPlacing(){
-        playingField.autoPlacing(GameBugPlacementSecondPlayerView.secondPlayerBugs)
+        bugsPlacing.eachBugAutoPlacing(secondPlayerBugs)
         render()
     }
     private fun onClick(x: Float, y: Float) : Boolean{

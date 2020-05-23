@@ -1,5 +1,7 @@
 package ru.sneg.android.bug.game.gameObjects
 
+import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
+import ru.sneg.android.bug.R
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.orientationAndRemoving
 
@@ -227,4 +229,5 @@ class Bugs(
         }
         return sum
     }
+
 }

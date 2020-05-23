@@ -10,6 +10,7 @@ import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
+import ru.sneg.android.bug.game.gameObjects.BugsPlacing
 
 class GameBugPlacementView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -82,10 +83,6 @@ companion object {
         playingField.renderGameField(canvas, firstPlayerBugs)
     }
 
-    fun autoPlacing(){
-        playingField.autoPlacing(firstPlayerBugs)
-        render()
-    }
 
     private fun onClick(x: Float, y: Float) : Boolean{
 
