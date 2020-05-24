@@ -4,23 +4,16 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
-import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
-import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.different
-import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment
-import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameObjects.Bugs
-import ru.sneg.android.bug.game.gameObjects.BugsPlacing
+import ru.sneg.android.bug.game.engine.BugsPlacingEngine
+import ru.sneg.android.bug.game.engine.GameEngine
 import ru.sneg.android.bug.game.gameObjects.Const
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
 
 //отображение игрового поля
 class PlayingFieldUI: IElementUI {
-
-    companion object{
-        var bot = false
-    }
 
     private val bgPaint = Paint().apply { color = Color.DKGRAY }
 
@@ -39,9 +32,6 @@ class PlayingFieldUI: IElementUI {
             })
     }
 
-    var bugsPlacing = BugsPlacing()
-
-
 //*****************ручная расстановка жуков****************************************************
     //обработчик нажатия на клетку поля
     //логика возможности раастановки жуков по полю, установка в зависимости от расположения
@@ -50,86 +40,22 @@ class PlayingFieldUI: IElementUI {
     val x: Int = (x / (width / 10)).toInt()
     val y: Int = (y / (height / 10)).toInt()
 
-    val i: Int = y * 10 + x
-
-    if (bug.fourPartBug > 0) {
-        if (i in 0..99) {
-            bugsPlacing.placingEngine(4, i, bug, bug.listBugFour)
-        }
-    } else if (bug.fourPartBug == 0 && bug.threePartBug > 0) {
-        if (i in 0..99) {
-            when (bug.threePartBug) {
-                2 -> { bugsPlacing.placingEngine(3, i,  bug, bug.listBugThreeFirst) }
-                1 -> { bugsPlacing.placingEngine(3, i,  bug, bug.listBugThreeSecond) }
-            }
-        }
-    } else if (bug.threePartBug == 0 && bug.twoPartBug > 0) {
-        if (i in 0..99) {
-            when (bug.twoPartBug) {
-                3 -> { bugsPlacing.placingEngine(2, i,  bug, bug.listBugTwoFirst) }
-                2 -> { bugsPlacing.placingEngine(2, i,  bug, bug.listBugTwoSecond) }
-                1 -> { bugsPlacing.placingEngine(2, i,  bug, bug.listBugTwoThird) }
-            }
-        }
-    } else if (bug.twoPartBug == 0 && bug.onePartBug > 0) {
-        when (bug.onePartBug) {
-            4 -> { bugsPlacing.placingEngine(1, i, bug, bug.listBugOneFirst) }
-            3 -> { bugsPlacing.placingEngine(1, i, bug, bug.listBugOneSecond) }
-            2 -> { bugsPlacing.placingEngine(1, i, bug, bug.listBugOneThird) }
-            1 -> { bugsPlacing.placingEngine(1, i, bug, bug.listBugOneFourth) }
-        }
-    }
+    BugsPlacingEngine().onClickFieldBugPlacing(x, y, bug)
 }
 
-//**************************конец расстановки жуков*****************************************
-
 //**************************выстрелы по полям***********************************************
-    //отрисовки нажатий на игоровое
+    //отрисовки нажатий на игоровое поле
     fun onClickGameField(x: Float, y: Float, bug: Bugs) {
 
+    val x: Int = (x / (width / 10)).toInt()
+    val y: Int = (y / (height / 10)).toInt()
 
-        val x: Int = (x / (width / 10)).toInt()
-        val y: Int = (y / (height / 10)).toInt()
+    GameEngine().onClickGameField(x, y, bug)
+}
 
-        val i: Int = y * 10 + x
 
-        //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
-        if ((bug.takes[i].state == 2 || bug.takes[i].state == 3)) {
-            different = false
-            return
-        }
-        else different = true
-        //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
-
-        if (bug.takes[i].state == 1){   //bug_part
-            bug.takes[i].state = 3      //explode
-
-            if (bug.killCheck(bug.identBug(i))){ // если все элементы жука подбиты
-            bug.killedBugSurrounding() // обводка клеток вокруг всех убитых жуков
-
-                //конец игры, все жуки бота убиты!!!
-                if(bug.checkSum(bug) == 20) {
-                    GameOfflineBotFragment.gameWithBotIsOver = true
-                    ResultBotFragment.winnerIs = "Player"
-                }
-
-            }
-            GameOfflineBotFragment.playerMiss = false
-        }
-
-    if (bug.takes[i].state == 0 || bug.takes[i].state == 4){ //undefined
-        bug.takes[i].state = 2  //miss
-        // смена хода, блокировка первого поля, разблокировка второго поля
-        GameOfflinePvpFragment.changeMove = true
-        GameOfflineBotFragment.playerMiss = true
-
-        }
-    }
-
-//**************************выстрелы по полям***********************************************
-
-        //отрисовка поля расстановки первого игрока (офлайн)
-        override fun renderGameField(canvas: Canvas, bug: Bugs) {
+    //отрисовка поля расстановки жуков
+    override fun renderGameField(canvas: Canvas, bug: Bugs) {
 
             canvas.drawRect(Rect(0, 0, width, height), bgPaint)
 
@@ -155,7 +81,7 @@ class PlayingFieldUI: IElementUI {
                 }
             }
         }
-
+    //отрисовка поля боя
     override fun renderWithoutBugsParts(canvas: Canvas, bug: Bugs) {
 
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
@@ -204,6 +130,5 @@ class PlayingFieldUI: IElementUI {
             if (state.winner != null)
                 println("WIN!")
         }
-
 }
 

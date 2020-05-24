@@ -1,9 +1,7 @@
 package ru.sneg.android.bug.game.gameObjects
 
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
-import ru.sneg.android.bug.R
 import ru.sneg.android.bug.game.UI.TakeUI
-import ru.sneg.android.bug.game.gameObjects.BugsPlacing.Companion.orientationAndRemoving
+import ru.sneg.android.bug.game.engine.BugsPlacingEngine.Companion.orientationAndRemoving
 
 class Bugs(
         var fourPartBug: Int = 1,
@@ -205,7 +203,7 @@ class Bugs(
         }
         return listBug
     }
-
+    //проверка убит ли жук
     fun killCheck(listBug : MutableList<Int>): Boolean{
         var killed : Boolean = false
         var sum : Int = 0
@@ -217,10 +215,11 @@ class Bugs(
 
         return killed
     }
+
     fun checkSum (bug: Bugs) : Int{
         var sum = 0
         for (i in 0..99) {
-            //подсчет для пвторасстановки
+            //подсчет для авторасстановки
             if (bug.takes[i].state == 1)
                 sum += bug.takes[i].state
             //подсчет для мониторинга завершения игры

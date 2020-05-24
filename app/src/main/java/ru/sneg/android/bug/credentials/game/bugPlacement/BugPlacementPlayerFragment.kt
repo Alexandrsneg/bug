@@ -2,7 +2,6 @@ package ru.sneg.android.bug.credentials.game.bugPlacement
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
@@ -14,16 +13,13 @@ import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugFo
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugOne
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugThree
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.tvCountBugTwo
-import kotlinx.android.synthetic.main.fragment_bug_placement_player_second.*
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
-import ru.sneg.android.bug.credentials.bugPlacement.BugPlacementPlayerSecondFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
-import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.engine.GameState
-import ru.sneg.android.bug.game.gameObjects.BugsPlacing
+import ru.sneg.android.bug.game.engine.BugsPlacingEngine
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
 
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
@@ -71,7 +67,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
             // если была нажата кнопка игры против бота
             if (firstPlayerBugs.bugsRemaining == 0 && botGame) {
                 //авторасстановка жуков для бота
-               BugsPlacing().eachBugAutoPlacing(secondPlayerBugs)
+               BugsPlacingEngine().eachBugAutoPlacing(secondPlayerBugs)
 
                 activity?.let {
                     if (it is IBattleGroundsGameRouter)
@@ -87,7 +83,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
             firstPlayerBugs.cleanField()
-            BugsPlacing().eachBugAutoPlacing(GameBugPlacementView.firstPlayerBugs)
+            BugsPlacingEngine().eachBugAutoPlacing(GameBugPlacementView.firstPlayerBugs)
             showTvCounts()
             gameView.render()
         }
@@ -99,7 +95,7 @@ class BugPlacementPlayerFragment : ABaseFragment(),
         }
         //кнопка подтверждения установки жука
         bAcceptBug.setOnClickListener {
-            when (BugsPlacing().bugPlacingCheckOut(firstPlayerBugs)){
+            when (BugsPlacingEngine().bugPlacingCheckOut(firstPlayerBugs)){
                 "delete" -> toast(stringId = R.string.extra_bugs_on_field)
                 "add" -> toast(stringId = R.string.not_enougth_bugs_on_field)
             }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ru.sneg.android.bug.game.gameViews.GameOfflinePvpFirstPlayerView
+    <ru.sneg.android.bug.game.gameViews.GamePlayFieldFirstPlayerView
         android:id="@+id/gameOfflineBotFirstPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ru.sneg.android.bug.game.gameViews.GameOfflinePvpSecondPlayerView
+    <ru.sneg.android.bug.game.gameViews.GamePlayFieldSecondPlayerView
         android:id="@+id/gameOfflineBotSecondPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"

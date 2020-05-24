@@ -1,19 +1,15 @@
-package ru.sneg.android.bug.game.gameObjects
+package ru.sneg.android.bug.game.engine
 
-import android.widget.Toast
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
-import ru.sneg.android.bug.R
-import ru.sneg.android.bug.activities.GameActivity
-import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
-import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
+import ru.sneg.android.bug.game.gameObjects.Bugs
 import kotlin.random.Random
 
 
-class BugsPlacing {
+class BugsPlacingEngine {
 
     companion object {
         var orientationAndRemoving: Int = 0 // 0 - vertical, 1 - horizontal, 2 - removing
     }
+
 
     fun autoPlacing(bugPart: Int, bug: Bugs, listBug: MutableList<Int>){
         val random = Random(System.nanoTime())
@@ -24,6 +20,148 @@ class BugsPlacing {
             placingEngine(bugPart, i, bug, listBug)
             bug.acceptBugSurrounding()
 
+    }
+
+    //*****************ручная расстановка жуков****************************************************
+    //обработчик нажатия на клетку поля
+    //логика возможности раастановки жуков по полю, установка в зависимости от расположения
+    fun onClickFieldBugPlacing(x: Int, y: Int, bug: Bugs) {
+
+        val i: Int = y * 10 + x
+
+        if (bug.fourPartBug > 0) {
+            if (i in 0..99) {
+                placingEngine(4, i, bug, bug.listBugFour)
+            }
+        } else if (bug.fourPartBug == 0 && bug.threePartBug > 0) {
+            if (i in 0..99) {
+                when (bug.threePartBug) {
+                    2 -> { placingEngine(3, i,  bug, bug.listBugThreeFirst) }
+                    1 -> { placingEngine(3, i,  bug, bug.listBugThreeSecond) }
+                }
+            }
+        } else if (bug.threePartBug == 0 && bug.twoPartBug > 0) {
+            if (i in 0..99) {
+                when (bug.twoPartBug) {
+                    3 -> { placingEngine(2, i,  bug, bug.listBugTwoFirst) }
+                    2 -> { placingEngine(2, i,  bug, bug.listBugTwoSecond) }
+                    1 -> { placingEngine(2, i,  bug, bug.listBugTwoThird) }
+                }
+            }
+        } else if (bug.twoPartBug == 0 && bug.onePartBug > 0) {
+            when (bug.onePartBug) {
+                4 -> {placingEngine(1, i, bug, bug.listBugOneFirst) }
+                3 -> {placingEngine(1, i, bug, bug.listBugOneSecond) }
+                2 -> {placingEngine(1, i, bug, bug.listBugOneThird) }
+                1 -> {placingEngine(1, i, bug, bug.listBugOneFourth) }
+            }
+        }
+    }
+
+    //последовательная атоустановка всех жуков от самого длинного к однопалубным
+    fun eachBugAutoPlacing(bug: Bugs){
+
+        bug.fourPartBug = 0
+        bug.threePartBug = 0
+        bug.twoPartBug = 0
+        bug.onePartBug = 0
+
+        do{autoPlacing(4, bug, bug.listBugFour)}
+        while (bug.checkSum(bug) < 4)
+
+        do{autoPlacing(3, bug, bug.listBugThreeFirst)}
+        while (bug.checkSum(bug) < 7)
+
+        do{autoPlacing(3,bug,bug.listBugThreeSecond)}
+        while (bug.checkSum(bug) < 10)
+
+        do{autoPlacing(2,bug,bug.listBugTwoFirst)}
+        while (bug.checkSum(bug) < 12)
+
+        do{autoPlacing(2,bug,bug.listBugTwoSecond)}
+        while (bug.checkSum(bug) < 14)
+
+        do{autoPlacing(2,bug,bug.listBugTwoThird)}
+        while (bug.checkSum(bug) < 16)
+
+        do{autoPlacing(1,bug,bug.listBugOneFirst)}
+        while (bug.checkSum(bug) < 17)
+
+        do{autoPlacing(1,bug,bug.listBugOneSecond)}
+        while (bug.checkSum(bug) < 18)
+
+        do{autoPlacing(1,bug,bug.listBugOneThird)}
+        while (bug.checkSum(bug) < 19)
+
+        do{autoPlacing(1,bug,bug.listBugOneFourth)}
+        while (bug.checkSum(bug) < 20)
+
+        bug.bugsRemaining = 0
+    }
+
+    //проверка ручной установки, ответы для тостов с замечаниями
+    fun bugPlacingCheckOut(bug: Bugs) : String {
+        var warning = ""
+
+        var sum = 0
+        orientationAndRemoving = 0
+
+        for (i in 0..99) {
+            if (bug.takes[i].state == 1)  sum += bug.takes[i].state
+        }
+
+        if (bug.bugsRemaining == 10 && sum > 4) {
+            warning = "delete"
+
+        }
+        if (bug.bugsRemaining == 10 && sum < 4) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 8..9 && sum > (4 + (9 - 3 * bug.threePartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 8..9 && sum < (4 + (9 - 3 * bug.threePartBug))) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 5..7 && sum > (10 + (8 - 2 * bug.twoPartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 5..7 && sum < (10 + (8 - 2 * bug.twoPartBug))) {
+            warning = "add"
+        }
+
+        if (bug.bugsRemaining in 1..4 && sum > (16 + (5 - bug.onePartBug))) {
+            warning = "delete"
+        }
+        if (bug.bugsRemaining in 1..4 && sum < (16 + (5 - bug.onePartBug))) {
+            warning = "add"
+        }
+        if (bug.bugsRemaining == 10 && sum == 4) {
+            bug.acceptBugSurrounding()
+            bug.fourPartBug--
+            bug.bugsRemaining--
+        }
+
+        if (bug.bugsRemaining in 8..9 && sum == (4 + (9 - 3 * bug.threePartBug))) {
+            bug.acceptBugSurrounding()
+            bug.threePartBug--
+            bug.bugsRemaining--
+        }
+
+        if (bug.bugsRemaining in 5..7 && sum == (10 + (8 - 2 * bug.twoPartBug))) {
+            bug.acceptBugSurrounding()
+            bug.twoPartBug--
+            bug.bugsRemaining--
+        }
+        if (bug.bugsRemaining in 1..4 && sum == (16 + (5 - bug.onePartBug))) {
+            bug.acceptBugSurrounding()
+            bug.onePartBug--
+            bug.bugsRemaining--
+        }
+
+        return warning
     }
 
     // движок расстановки и удаления всех видов жуков
@@ -49,7 +187,7 @@ class BugsPlacing {
             removeBug(i, bugPart, orientationAndRemoving, bug, listBug)
             //если гоизонтально поставить нельзя, то увеличиваем счетчик ориентации для обнуления
             if (fieldNotEmpty(i, bugPart, orientationAndRemoving, bug)){
-                orientationAndRemoving ++
+                orientationAndRemoving++
             }
         }
         //****************************горзонтальные расстановки******************************************
@@ -162,112 +300,6 @@ class BugsPlacing {
                     println(e)
                 }
         }
-    }
-
-    //последовательная атоустановка всех жуков от самого длинного к однопалубным
-    fun eachBugAutoPlacing(bug: Bugs){
-
-        bug.fourPartBug = 0
-        bug.threePartBug = 0
-        bug.twoPartBug = 0
-        bug.onePartBug = 0
-
-        do{autoPlacing(4, bug, bug.listBugFour)}
-        while (bug.checkSum(bug) < 4)
-
-        do{autoPlacing(3, bug, bug.listBugThreeFirst)}
-        while (bug.checkSum(bug) < 7)
-
-        do{autoPlacing(3,bug,bug.listBugThreeSecond)}
-        while (bug.checkSum(bug) < 10)
-
-        do{autoPlacing(2,bug,bug.listBugTwoFirst)}
-        while (bug.checkSum(bug) < 12)
-
-        do{autoPlacing(2,bug,bug.listBugTwoSecond)}
-        while (bug.checkSum(bug) < 14)
-
-        do{autoPlacing(2,bug,bug.listBugTwoThird)}
-        while (bug.checkSum(bug) < 16)
-
-        do{autoPlacing(1,bug,bug.listBugOneFirst)}
-        while (bug.checkSum(bug) < 17)
-
-        do{autoPlacing(1,bug,bug.listBugOneSecond)}
-        while (bug.checkSum(bug) < 18)
-
-        do{autoPlacing(1,bug,bug.listBugOneThird)}
-        while (bug.checkSum(bug) < 19)
-
-        do{autoPlacing(1,bug,bug.listBugOneFourth)}
-        while (bug.checkSum(bug) < 20)
-
-        bug.bugsRemaining = 0
-    }
-
-    //проверка ручной установки, ответы для тостов с замечаниями
-    fun bugPlacingCheckOut(bug: Bugs) : String {
-        var warning = ""
-
-        var sum = 0
-        orientationAndRemoving = 0
-
-        for (i in 0..99) {
-            if (bug.takes[i].state == 1)  sum += bug.takes[i].state
-        }
-
-        if (bug.bugsRemaining == 10 && sum > 4) {
-            warning = "delete"
-
-        }
-        if (bug.bugsRemaining == 10 && sum < 4) {
-            warning = "add"
-        }
-
-        if (bug.bugsRemaining in 8..9 && sum > (4 + (9 - 3 * bug.threePartBug))) {
-            warning = "delete"
-        }
-        if (bug.bugsRemaining in 8..9 && sum < (4 + (9 - 3 * bug.threePartBug))) {
-            warning = "add"
-        }
-
-        if (bug.bugsRemaining in 5..7 && sum > (10 + (8 - 2 * bug.twoPartBug))) {
-            warning = "delete"
-        }
-        if (bug.bugsRemaining in 5..7 && sum < (10 + (8 - 2 * bug.twoPartBug))) {
-            warning = "add"
-        }
-
-        if (bug.bugsRemaining in 1..4 && sum > (16 + (5 - bug.onePartBug))) {
-            warning = "delete"
-        }
-        if (bug.bugsRemaining in 1..4 && sum < (16 + (5 - bug.onePartBug))) {
-            warning = "add"
-        }
-        if (bug.bugsRemaining == 10 && sum == 4) {
-            bug.acceptBugSurrounding()
-            bug.fourPartBug--
-            bug.bugsRemaining--
-        }
-
-        if (bug.bugsRemaining in 8..9 && sum == (4 + (9 - 3 * bug.threePartBug))) {
-            bug.acceptBugSurrounding()
-            bug.threePartBug--
-            bug.bugsRemaining--
-        }
-
-        if (bug.bugsRemaining in 5..7 && sum == (10 + (8 - 2 * bug.twoPartBug))) {
-            bug.acceptBugSurrounding()
-            bug.twoPartBug--
-            bug.bugsRemaining--
-        }
-        if (bug.bugsRemaining in 1..4 && sum == (16 + (5 - bug.onePartBug))) {
-            bug.acceptBugSurrounding()
-            bug.onePartBug--
-            bug.bugsRemaining--
-        }
-
-        return warning
     }
 
 }

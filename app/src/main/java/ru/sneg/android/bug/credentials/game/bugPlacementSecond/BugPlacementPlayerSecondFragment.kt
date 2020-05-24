@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.fragment_bug_placement_player.*
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAcceptBug
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bAutoSetUp
 import kotlinx.android.synthetic.main.fragment_bug_placement_player.bCleanFields
@@ -14,10 +13,8 @@ import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.game.engine.GameState
-import ru.sneg.android.bug.game.gameObjects.BugsPlacing
+import ru.sneg.android.bug.game.engine.BugsPlacingEngine
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView
-import ru.sneg.android.bug.game.gameViews.GameBugPlacementView
-import ru.sneg.android.bug.game.gameViews.GameOfflinePvpFirstPlayerView
 import javax.inject.Inject
 class BugPlacementPlayerSecondFragment : ABaseFragment(),
     IBugPlaycementPlayerSecondView {
@@ -55,7 +52,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         //автоматическая расстановка жуков
         bAutoSetUp.setOnClickListener {
             secondPlayerBugs.cleanField()
-            BugsPlacing().eachBugAutoPlacing(GameBugPlacementSecondPlayerView.secondPlayerBugs)
+            BugsPlacingEngine().eachBugAutoPlacing(GameBugPlacementSecondPlayerView.secondPlayerBugs)
             showTvCounts()
             gameViewSecond.render()
         }
@@ -79,7 +76,7 @@ class BugPlacementPlayerSecondFragment : ABaseFragment(),
         }
 
         bAcceptBug.setOnClickListener {
-            when (BugsPlacing().bugPlacingCheckOut(secondPlayerBugs)){
+            when (BugsPlacingEngine().bugPlacingCheckOut(secondPlayerBugs)){
                 "delete" -> toast(stringId = R.string.extra_bugs_on_field)
                 "add" -> toast(stringId = R.string.not_enougth_bugs_on_field)
             }

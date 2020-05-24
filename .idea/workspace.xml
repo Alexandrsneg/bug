@@ -27,13 +27,28 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacement/BugPlacementPlayerPresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/bugPlacementSecond/BugPlacementPlayerSecondPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflineBot/GameOfflineBotPresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpPresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/players/BotPlayer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GameEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GamePlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/players/LocalPlayer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GameState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/GameState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/NetworkPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/players/NetworkPlayer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/Bugs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameObjects/BugsPlacing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BugsPlacingEngine.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementSecondPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementSecondPlayerView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpFirstPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GamePlayFieldFirstPlayerView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameOfflinePvpSecondPlayerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GamePlayFieldSecondPlayerView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_bot_result.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_offline_pvp.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,11 +122,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ru.sneg.android.bug.game.engine" />
+      <recent name="ru.sneg.android.bug.game.engine.players" />
       <recent name="ru.sneg.android.bug.game.gameViews" />
       <recent name="ru.sneg.android.bug.game.gameObjects" />
-      <recent name="ru.sneg.android.bug.game.engine" />
       <recent name="ru.sneg.android.bug.game.BugPlacement" />
-      <recent name="ru.sneg.android.bug.activities" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="ru.sneg.android.bug.registration" />
@@ -224,13 +239,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00033" summary="абстрактные фунцкции для получения данных для экрана профиля">
-      <created>1586082242363</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1586082242363</updated>
     </task>
     <task id="LOCAL-00034" summary="добавил экран создания/присоединения к игре, добавил актиити и роутеры">
       <created>1586183243695</created>
@@ -568,7 +576,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590136233449</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="remove redundant code, separate view layer from placing engine at BugPlacementFragments">
+      <created>1590227984135</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1590227984136</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -624,7 +639,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add functions for placing any-size bugs and surrounding it with disabled cells" />
     <MESSAGE value="fix it and finish for vertical placement" />
     <MESSAGE value="added horizontal placing with surrounding" />
     <MESSAGE value="refactoring surrounding of bugs" />
@@ -649,26 +663,32 @@
     <MESSAGE value="shoots goes in right turn, add blocking if cell already played" />
     <MESSAGE value="half-working bot" />
     <MESSAGE value="almost perfect working bot, trying to end the game and show winner" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost perfect working bot, trying to end the game and show winner" />
+    <MESSAGE value="remove redundant code, separate view layer from placing engine at BugPlacementFragments" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove redundant code, separate view layer from placing engine at BugPlacementFragments" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/game/gameOfflinePvp/GameOfflinePvpFragment.kt</url>
-          <line>60</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BotPlayer.kt</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/players/BotPlayer.kt</url>
           <line>99</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/UI/PlayingFieldUI.kt</url>
-          <line>112</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementView.kt</url>
+          <line>87</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/engine/BugsPlacingEngine.kt</url>
+          <line>29</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/game/gameViews/GameBugPlacementSecondPlayerView.kt</url>
+          <line>95</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

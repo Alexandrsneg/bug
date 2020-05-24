@@ -1,6 +1,6 @@
-package ru.sneg.android.bug.game.engine
+package ru.sneg.android.bug.game.engine.players
 
-data class GamePlayer(
+data class LocalPlayer(
     val userId: Int,
     val userLogin: String,
     val action: Boolean,

@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ru.sneg.android.bug.game.gameViews.GameOfflinePvpFirstPlayerView
-        android:id="@+id/gameOfflineFirstPlayerView"
+    <ru.sneg.android.bug.game.gameViews.GamePlayFieldFirstPlayerView
+        android:id="@+id/gamePlayFieldFirstPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginStart="28dp"
@@ -15,8 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ru.sneg.android.bug.game.gameViews.GameOfflinePvpSecondPlayerView
-        android:id="@+id/gameOfflineSecondPlayerView"
+    <ru.sneg.android.bug.game.gameViews.GamePlayFieldSecondPlayerView
+        android:id="@+id/gamePlayFieldSecondPlayerView"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginEnd="28dp"
@@ -43,9 +43,9 @@
         android:text="@string/player_1"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/gameOfflineFirstPlayerView"
+        app:layout_constraintEnd_toEndOf="@+id/gamePlayFieldFirstPlayerView"
         app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineFirstPlayerView"
+        app:layout_constraintStart_toStartOf="@+id/gamePlayFieldFirstPlayerView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -57,9 +57,9 @@
         android:text="@string/player_2"
         android:textColor="#FCE203"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/gameOfflineSecondPlayerView"
+        app:layout_constraintEnd_toEndOf="@+id/gamePlayFieldSecondPlayerView"
         app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="@+id/gameOfflineSecondPlayerView"
+        app:layout_constraintStart_toStartOf="@+id/gamePlayFieldSecondPlayerView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

@@ -1,6 +1,5 @@
 package ru.sneg.android.bug.credentials.game.gameOfflineBot
 
-import android.net.sip.SipSession
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -12,12 +11,12 @@ import ru.sneg.android.bug.activities.routers.IBattleGroundsGameRouter
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
-import ru.sneg.android.bug.game.engine.BotPlayer
-import ru.sneg.android.bug.game.engine.BotPlayer.Companion.botFindAndFinishingBug
-import ru.sneg.android.bug.game.engine.BotPlayer.Companion.firstBlood
-import ru.sneg.android.bug.game.engine.BotPlayer.Companion.firstGoodShoot
-import ru.sneg.android.bug.game.engine.BotPlayer.Companion.lastGoodShoot
-import ru.sneg.android.bug.game.engine.BotPlayer.Companion.nextShoot
+import ru.sneg.android.bug.game.engine.players.BotPlayer
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.botFindAndFinishingBug
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.firstBlood
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.firstGoodShoot
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.lastGoodShoot
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.nextShoot
 import ru.sneg.android.bug.game.engine.GameState
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs

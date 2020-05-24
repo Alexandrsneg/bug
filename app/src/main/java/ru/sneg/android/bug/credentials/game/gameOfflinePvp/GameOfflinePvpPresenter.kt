@@ -1,14 +1,9 @@
 package ru.sneg.android.bug.credentials.game.gameOfflinePvp
 
-import android.text.BoringLayout
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
-import ru.sneg.android.bug.domain.repositories.GameRepository
-import ru.sneg.android.bug.domain.repositories.UserRepository
-import ru.sneg.android.bug.game.UI.PlayingFieldUI
-import ru.sneg.android.bug.game.UI.TakeUI
-import ru.sneg.android.bug.game.engine.NetworkPlayer
+import ru.sneg.android.bug.game.engine.players.NetworkPlayer
 import javax.inject.Inject
 import kotlin.random.Random
 

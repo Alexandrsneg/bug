@@ -1,10 +1,12 @@
-package ru.sneg.android.bug.game.engine
+package ru.sneg.android.bug.game.engine.players
 
 import com.google.gson.GsonBuilder
 import eac.network.Connection
 import eac.network.PackageReceiver
 import eac.network.PackageSender
 import eac.network.Tcp
+import ru.sneg.android.bug.game.engine.GameState
+import ru.sneg.android.bug.game.engine.IPlayer
 import java.util.concurrent.atomic.AtomicBoolean
 
 

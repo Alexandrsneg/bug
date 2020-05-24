@@ -1,10 +1,9 @@
-package ru.sneg.android.bug.game.engine
+package ru.sneg.android.bug.game.engine.players
 
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.gameWithBotIsOver
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment.Companion.winnerIs
 import ru.sneg.android.bug.game.gameObjects.Bugs
-import java.lang.Exception
 import kotlin.random.Random
 
 class BotPlayer () {

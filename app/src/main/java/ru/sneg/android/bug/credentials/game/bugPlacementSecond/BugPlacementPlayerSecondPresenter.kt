@@ -5,7 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 import ru.sneg.android.bug.domain.repositories.GameRepository
 import ru.sneg.android.bug.domain.repositories.UserRepository
 import ru.sneg.android.bug.game.UI.TakeUI
-import ru.sneg.android.bug.game.engine.NetworkPlayer
+import ru.sneg.android.bug.game.engine.players.NetworkPlayer
 import javax.inject.Inject
 
 @InjectViewState
