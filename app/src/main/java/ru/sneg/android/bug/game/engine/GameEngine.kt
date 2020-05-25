@@ -12,7 +12,7 @@ import java.util.*
 //игровой движок на стороне клиента
 class GameEngine {
 
- var player1 : IPlayer? = null
+    var player1 : IPlayer? = null
     var player2 : IPlayer? = null
 
 
