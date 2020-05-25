@@ -4,18 +4,24 @@ import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragmen
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.different
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
+import ru.sneg.android.bug.game.engine.players.LocalPlayer
+import ru.sneg.android.bug.game.engine.players.Player
 import ru.sneg.android.bug.game.gameObjects.Bugs
 import java.util.*
 
 //игровой движок на стороне клиента
 class GameEngine {
 
-    var player1: IPlayer? = null
-    var player2: IPlayer? = null
+ var player1 : IPlayer? = null
+    var player2 : IPlayer? = null
+
+
+
 
 
     //реакции на попадания
     fun onClickGameField(x: Int, y: Int, bug: Bugs) {
+        //если сетевой, то
 
         val i: Int = y * 10 + x
         //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
@@ -33,6 +39,7 @@ class GameEngine {
 
                 //конец игры, все жуки бота убиты!!!
                 if (bug.checkSum(bug) == 20) {
+
                     GameOfflineBotFragment.gameWithBotIsOver = true
                     ResultBotFragment.winnerIs = "Player"
                 }
@@ -43,8 +50,12 @@ class GameEngine {
         if (bug.takes[i].state == 0 || bug.takes[i].state == 4) { //undefined
             bug.takes[i].state = 2  //miss
             // смена хода, блокировка первого поля, разблокировка второго поля
+
+
             GameOfflinePvpFragment.changeMove = true
             GameOfflineBotFragment.playerMiss = true
         }
     }
+
+
 }

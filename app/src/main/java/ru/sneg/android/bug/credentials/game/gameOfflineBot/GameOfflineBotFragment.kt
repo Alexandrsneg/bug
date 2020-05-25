@@ -26,6 +26,7 @@ import javax.inject.Inject
 class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
     companion object{
+
         var playerMiss = false
         var botMiss = false
 
@@ -33,7 +34,7 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
         var gameWithBotIsOver = false
 
     }
-    private val botPlayer = BotPlayer()
+    private val botPlayer = BotPlayer(this)
 
     var firstBotShot = true
 
@@ -50,6 +51,7 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     }
 
     override fun getViewId(): Int = R.layout.fragment_game_offline_bot
+
 
 
             override fun onRender(state: GameState) {
@@ -122,29 +124,9 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
     }
 
     private fun botMove(){
-        //если это первый выстрел бота
-        if (firstBotShot){
-            gameOfflineBotFirstPlayerView.onClickByBot(botPlayer.botNewShot().first, botPlayer.botNewShot().second)
-        }
-
-        //если бот промахнуля в проессе добивания жука - ход по алгоритму поиска
-        if (!firstBotShot && botMiss && botFindAndFinishingBug) {
-            gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShoot.first.toFloat(), BotPlayer.nextShoot.second.toFloat())
-        }
-
-        //если бот помахивается и он не добивает жука - следующий выстрел случайный
-        if (!firstBotShot && botMiss && !botFindAndFinishingBug) {
-            gameOfflineBotFirstPlayerView.onClickByBot(botPlayer.botNewShot().first, botPlayer.botNewShot().second)
-        }
-
-        //если бот попал - случайный обстрел ближайшего поля
-        while (!botMiss) {
-            //время на "подумать" для бота
-            Thread.sleep(1000)
-            gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShoot.first.toFloat(), BotPlayer.nextShoot.second.toFloat())
-        }
-        firstBotShot = false
+        botPlayer.botShootingTactics()
     }
+
 
     override fun lock() {
     }

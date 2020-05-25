@@ -72,7 +72,6 @@ class GamePlayFieldFirstPlayerView @JvmOverloads constructor(
             playingField.onClickGameField(x, y, firstPlayerBugs)
             render()
 
-
         val listener = onSelectListener ?: return false
 
        playingField.onClick(x,y, firstPlayerBugs)?.let{  //если значения onClick не null -> срабатывет .let
