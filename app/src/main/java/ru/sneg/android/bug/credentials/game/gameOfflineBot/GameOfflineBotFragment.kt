@@ -18,6 +18,7 @@ import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.firstGoodShoo
 import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.lastGoodShoot
 import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.nextShoot
 import ru.sneg.android.bug.game.engine.GameState
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.playerMiss
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementSecondPlayerView.Companion.secondPlayerBugs
 import ru.sneg.android.bug.game.gameViews.GameBugPlacementView.Companion.firstPlayerBugs
 import javax.inject.Inject
@@ -26,17 +27,10 @@ import javax.inject.Inject
 class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
     companion object{
-
-        var playerMiss = false
-        var botMiss = false
-
-        var different = true
         var gameWithBotIsOver = false
-
     }
-    private val botPlayer = BotPlayer(this)
 
-    var firstBotShot = true
+    private val botPlayer = BotPlayer(this)
 
 
     @Inject //использование Даггером конструктора из презентера, подставление зависимости
@@ -65,12 +59,7 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
 
         tv_player_login.text = UserStorage().getUser()?.login ?:  "Unonimous bug"
 
-        //лпределяем чей ход будет первым
-       /* when (presenter.whoIsFirst()) {
-            1 -> { // первый ходит бот
-                botMove()
-            }
-        }*/
+
         gameOfflineBotSecondPlayerView.onSelectListener = {
             if (gameWithBotIsOver){
                 if (it is IBattleGroundsGameRouter)
@@ -85,7 +74,7 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
                     gameOfflineBotSecondPlayerView.onClick(event.x, event.y)
 
                     //если клетка ещё не сыграна, переход хода  *******
-                    if (different) {
+                    if (BotPlayer.differentCell) {
                         changeMove()
                     }
                     true
@@ -118,13 +107,9 @@ class GameOfflineBotFragment: ABaseFragment(), IGameOfflineBotView {
                 //обнуление смены хода для игрока
                 !playerMiss
                 //ход бота
-                botMove()
+                botPlayer.botShootingTactics()
             }
             return true
-    }
-
-    private fun botMove(){
-        botPlayer.botShootingTactics()
     }
 
 

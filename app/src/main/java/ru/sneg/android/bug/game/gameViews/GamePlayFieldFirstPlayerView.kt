@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
 import ru.sneg.android.bug.game.UI.PlayingFieldUI
 import ru.sneg.android.bug.game.UI.TakeUI
 import ru.sneg.android.bug.game.engine.players.BotPlayer
@@ -28,6 +29,7 @@ class GamePlayFieldFirstPlayerView @JvmOverloads constructor(
         }
 
     private val playingField = PlayingFieldUI()
+    private val botPlayer = BotPlayer(GameOfflineBotFragment())
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
 
@@ -82,7 +84,7 @@ class GamePlayFieldFirstPlayerView @JvmOverloads constructor(
     }
     fun onClickByBot(x: Float, y: Float) : Boolean{
 
-        BotPlayer().onClickGameFieldByBot(x, y, firstPlayerBugs)
+        botPlayer.onClickGameFieldByBot(x, y, firstPlayerBugs)
         render()
 
         return true

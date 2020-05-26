@@ -2,8 +2,11 @@ package ru.sneg.android.bug.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Chronometer
+import android.widget.Toast
 import ru.sneg.android.bug.App
 import ru.sneg.android.bug.credentials.game.bugPlacement.BugPlacementPlayerFragment
 import ru.sneg.android.bug.R
@@ -16,6 +19,8 @@ import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragmen
 
 class GameActivity : ABaseActivity(), IBattleGroundsGameRouter {
     companion object {
+        var counter = 0
+        var startTime : Long = System.currentTimeMillis()
 
         private const val ARG_DROP_CREDENTIALS = "ARG_DROP_CREDENTIALS"
 
@@ -43,6 +48,23 @@ class GameActivity : ABaseActivity(), IBattleGroundsGameRouter {
             showBugPlaycement()
             return
         }
+    }
+
+
+
+    override fun onBackPressed() {
+        //если между нажатиями меньше 5 секунд -> выход из игры
+        if (System.currentTimeMillis() - startTime > 2000 ) {
+            Toast.makeText(this,"Нажмите ещё раз для выхода", Toast.LENGTH_SHORT).show()
+            counter = 0
+        }
+        counter++
+
+        if (counter == 2) {
+            super.onBackPressed()
+            counter = 0
+        }
+        startTime = System.currentTimeMillis()
     }
 
     // переопределенные ниже функции взяты из интерфейса-маршрутизатора ICredentialsRouter

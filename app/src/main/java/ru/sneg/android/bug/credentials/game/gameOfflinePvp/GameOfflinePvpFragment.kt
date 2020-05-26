@@ -96,6 +96,7 @@ class GameOfflinePvpFragment: ABaseFragment(), IGameOfflinePvpView {
         secondPlayerBugs.cleanField()
     }
 
+
     fun rotate360(): Boolean{
 
         if (changeMove) {

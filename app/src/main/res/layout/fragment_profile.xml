@@ -84,26 +84,17 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/avatarka"
+    <Button
+        android:id="@+id/bChangeProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/btn_big_grey_anim"
+        android:fontFamily="@font/bones"
+        android:text="@string/change_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:id="@+id/bChangeProfile"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/btn_big_grey_anim"
-        android:text="@string/change_profile"
-        android:fontFamily="@font/bones"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarka" />
 
     <Button
         android:id="@+id/bScore"

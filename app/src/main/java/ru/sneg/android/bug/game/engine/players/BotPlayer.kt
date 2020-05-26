@@ -1,22 +1,24 @@
 package ru.sneg.android.bug.game.engine.players
 
-import android.R
-import android.app.PendingIntent.getActivity
-import android.view.View
-import android.widget.TextView
+
 import kotlinx.android.synthetic.main.fragment_game_offline_bot.*
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
-import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.gameWithBotIsOver
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment.Companion.winnerIs
 import ru.sneg.android.bug.game.gameObjects.Bugs
 import kotlin.random.Random
 
 
-class BotPlayer (val botFragment: GameOfflineBotFragment) {
+open class BotPlayer (val botFragment: GameOfflineBotFragment) {
 // в конструкторе был netPlayer: NetworkPlayer
 
 
     companion object {
+
+        var playerMiss = false
+        var botMiss = false
+
+        var differentCell = true
+        var gameWithBotIsOver = false
 
         var firstGoodShoot = Pair(0, 0)
         var lastGoodShoot = Pair(0, 0)
@@ -48,7 +50,7 @@ class BotPlayer (val botFragment: GameOfflineBotFragment) {
     }
 
 //******************************* логика ходов бота************************************
-    fun onClickGameFieldByBot(x: Float, y: Float, bug: Bugs) {
+  open  fun onClickGameFieldByBot(x: Float, y: Float, bug: Bugs) {
 
         var x: Int = x.toInt()
         var y: Int = y.toInt()
@@ -107,7 +109,7 @@ class BotPlayer (val botFragment: GameOfflineBotFragment) {
                     winnerIs = "Bot"
                 }
             }
-            GameOfflineBotFragment.botMiss = false
+            botMiss = false
         }
         //********************если промахнулся**********************************************
 
@@ -120,7 +122,7 @@ class BotPlayer (val botFragment: GameOfflineBotFragment) {
                 tryToFindNextBugPart(bug)
             }
             // смена хода
-            GameOfflineBotFragment.botMiss = true
+            botMiss = true
         }
     }
 
@@ -133,20 +135,20 @@ class BotPlayer (val botFragment: GameOfflineBotFragment) {
          }
 
          //если бот промахнуля в проессе добивания жука - ход по алгоритму поиска
-         if (!firstBotShot && GameOfflineBotFragment.botMiss && botFindAndFinishingBug) {
-             botFragment.gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShoot.first.toFloat(), BotPlayer.nextShoot.second.toFloat())
+         if (!firstBotShot && botMiss && botFindAndFinishingBug) {
+             botFragment.gameOfflineBotFirstPlayerView.onClickByBot(nextShoot.first.toFloat(), nextShoot.second.toFloat())
          }
 
          //если бот помахивается и он не добивает жука - следующий выстрел случайный
-         if (!firstBotShot && GameOfflineBotFragment.botMiss && !botFindAndFinishingBug) {
+         if (!firstBotShot && botMiss && !botFindAndFinishingBug) {
              botFragment.gameOfflineBotFirstPlayerView.onClickByBot(botNewShot().first.toFloat(), botNewShot().second.toFloat())
          }
 
          //если бот попал - случайный обстрел ближайшего поля
-         while (!GameOfflineBotFragment.botMiss) {
+         while (!botMiss) {
              //время на "подумать" для бота
              Thread.sleep(1000)
-             botFragment.gameOfflineBotFirstPlayerView.onClickByBot(BotPlayer.nextShoot.first.toFloat(), BotPlayer.nextShoot.second.toFloat())
+             botFragment.gameOfflineBotFirstPlayerView.onClickByBot(nextShoot.first.toFloat(), nextShoot.second.toFloat())
          }
          firstBotShot = false
     }
@@ -175,30 +177,39 @@ class BotPlayer (val botFragment: GameOfflineBotFragment) {
 
     //логика продолжительного обстрела (если без промахов)
     private fun nextBotComboShoot(x: Int, y: Int, i: Int, bug: Bugs){
+        when (lastGoodDirection(x,y,i, bug)) {
+            "UP" ->
+                if (y - 1 > -1) {
+                    if (bug.takes[i - 10].state != 2)
+                        nextShoot = goOnShootUp
+                }
+            else nextShoot = tryShootDown
 
-        if (lastGoodDirection(x,y,i, bug) == "UP")
-            if (y - 1 > -1)
-                if (bug.takes[i - 10].state != 2)
-                    nextShoot = goOnShootUp
+            "DOWN" ->
+                if (y + 1 < 10) {
+                    if (bug.takes[i + 10].state != 2)
+                        nextShoot = goOnShootDown
+                }
+            else nextShoot = tryShootUp
 
-        if (lastGoodDirection(x,y,i, bug) == "DOWN")
-            if (y + 1 < 10)
-                if (bug.takes[i + 10].state != 2)
-                    nextShoot = goOnShootDown
+            "RIGHT" ->
+                if (x + 1 < 10) {
+                    if (bug.takes[i + 1].state != 2)
+                        nextShoot = goOnShootRight
+                }
+            else nextShoot = tryShootLeft
 
+            "LEFT" ->
+                if (x - 1 > -1) {
+                    if (bug.takes[i - 1].state != 2)
+                        nextShoot = goOnShootLeft
+                }
+            else nextShoot = tryShootRight
 
-        if (lastGoodDirection(x,y,i, bug) == "RIGHT")
-            if (x + 1 < 10)
-                if (bug.takes[i + 1].state != 2)
-                    nextShoot = goOnShootRight
+            "FIRST_BLOOD" ->
+                tryToFindNextBugPart(bug)
 
-        if (lastGoodDirection(x,y,i, bug) == "LEFT")
-            if (x - 1 > -1)
-                if (bug.takes[i - 1].state != 2)
-                    nextShoot = goOnShootLeft
-
-        if (lastGoodDirection(x,y,i, bug) == "FIRST_BLOOD")
-            tryToFindNextBugPart(bug)
+        }
     }
 
     // определение удачного направления обстрела

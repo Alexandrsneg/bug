@@ -1,11 +1,11 @@
 package ru.sneg.android.bug.game.engine
 
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment
-import ru.sneg.android.bug.credentials.game.gameOfflineBot.GameOfflineBotFragment.Companion.different
 import ru.sneg.android.bug.credentials.game.gameOfflineBot.ResultBotFragment
 import ru.sneg.android.bug.credentials.game.gameOfflinePvp.GameOfflinePvpFragment
-import ru.sneg.android.bug.game.engine.players.LocalPlayer
-import ru.sneg.android.bug.game.engine.players.Player
+import ru.sneg.android.bug.game.engine.players.BotPlayer
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.differentCell
+import ru.sneg.android.bug.game.engine.players.BotPlayer.Companion.playerMiss
 import ru.sneg.android.bug.game.gameObjects.Bugs
 import java.util.*
 
@@ -26,9 +26,9 @@ class GameEngine {
         val i: Int = y * 10 + x
         //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
         if ((bug.takes[i].state == 2 || bug.takes[i].state == 3)) {
-            GameOfflineBotFragment.different = false
+            differentCell = false
             return
-        } else different = true
+        } else differentCell = true
         //если нажать на сыгранную клетку в игре с ботом, переход хода не произойдет *******
 
         if (bug.takes[i].state == 1) {   //bug_part
@@ -44,16 +44,15 @@ class GameEngine {
                     ResultBotFragment.winnerIs = "Player"
                 }
             }
-            GameOfflineBotFragment.playerMiss = false
+            playerMiss = false
         }
 
         if (bug.takes[i].state == 0 || bug.takes[i].state == 4) { //undefined
             bug.takes[i].state = 2  //miss
             // смена хода, блокировка первого поля, разблокировка второго поля
 
-
             GameOfflinePvpFragment.changeMove = true
-            GameOfflineBotFragment.playerMiss = true
+            playerMiss = true
         }
     }
 
