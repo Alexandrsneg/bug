@@ -1,9 +1,12 @@
 package ru.sneg.android.bug.credentials.score
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -23,6 +26,7 @@ import javax.inject.Inject
 class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
     IScoreView {
 
+    var cont = activity
 
     class Adapter : ABaseAdapter<CellUserItem, RecyclerView.ViewHolder>(){
 
@@ -44,8 +48,15 @@ class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
            val view = holder.itemView
-            if (view is ITypeView)
-                view.bind(data[position+1])
+            if (view is ITypeView){
+                view.bind(data[position])
+            }
+            if (position %2 == 0){
+                Log.d("POS", position.toString())
+                view.setBackgroundColor(0xff00ff00.toInt())
+            }
+            else view.setBackgroundColor(0xff444444.toInt())
+
         }
     }
 

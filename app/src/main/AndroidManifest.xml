@@ -17,11 +17,6 @@
 
         <activity android:name=".activities.CredentialsActivity"
             android:screenOrientation="landscape">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity
             android:name=".activities.CreateGameActivity"
@@ -34,7 +29,13 @@
             android:screenOrientation="landscape"/>
         <activity
             android:name=".activities.ScoreActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".BlindActivity"
             android:screenOrientation="landscape" />

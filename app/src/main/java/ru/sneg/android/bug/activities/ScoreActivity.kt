@@ -35,12 +35,12 @@ class ScoreActivity : ABaseActivity(), IScoreRouter {
             WindowManager.LayoutParams.FLAG_FULLSCREEN )
         setContentView(R.layout.activity_score_conteiner)
 
-        if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
-           // UserStorage().dropCredentials()
-            showScore()
-            return
-        }
-
+//        if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
+//           // UserStorage().dropCredentials()
+//            return
+//        }
+        showScore()
+        return
     }
 
     override fun showScore() {
