@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_in.editText
 import kotlinx.android.synthetic.main.fragment_sign_in.editText2
 import ru.sneg.android.bug.R
+import ru.sneg.android.bug.activities.GameModeActivity
 import ru.sneg.android.bug.base.ABaseFragment
 import ru.sneg.android.bug.activities.routers.ICredentialsRouter
 import ru.sneg.android.bug.domain.di.components.DaggerAppComponent
@@ -52,24 +53,17 @@ class SignInFragment : ABaseFragment(), ISignInView {
                 presenter.signIn(login, password)
             }
 
-        /*
-         * обработчик нажатия кнопк регистрации во ФРАГМЕНТЕ, реализует переход на др. ФРАГМЕНТ
-        tvSignUpBtn.setOnClickListener {
-            var fr = getFragmentManager()?.beginTransaction()
-            fr?.replace(R.id.containerActivity,
-                SignUpFragment()
-            )
-            fr?.addToBackStack(null) //добавляем транзацкию в стэк для возврата назад
-            fr?.commit()
-        }*/
-
         tvSignUpBtn.setOnClickListener {
             activity?.let {
                 if (it is ICredentialsRouter)
                     it.showSignUp()
             }
         }
-    }
+
+        tvGuestBtn.setOnClickListener {
+            GameModeActivity.show()
+            }
+        }
 
         override fun lock() {
             visibility(flBtnContainer)

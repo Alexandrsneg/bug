@@ -9,6 +9,7 @@ import ru.sneg.android.bug.credentials.gameModes.GameModeFragment
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IGameModeRouter
 import ru.sneg.android.bug.base.ABaseActivity
+import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.credentials.profile.ProfileFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 

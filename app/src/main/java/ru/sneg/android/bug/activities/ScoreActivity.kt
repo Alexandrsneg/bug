@@ -8,6 +8,7 @@ import ru.sneg.android.bug.App
 import ru.sneg.android.bug.R
 import ru.sneg.android.bug.activities.routers.IScoreRouter
 import ru.sneg.android.bug.base.ABaseActivity
+import ru.sneg.android.bug.credentials.loading.LoadingFragment
 import ru.sneg.android.bug.credentials.score.ScoreFragment
 import ru.sneg.android.bug.domain.repositories.local.UserStorage
 
@@ -40,7 +41,6 @@ class ScoreActivity : ABaseActivity(), IScoreRouter {
 //            return
 //        }
         showScore()
-        return
     }
 
     override fun showScore() {

@@ -20,7 +20,7 @@ class LoadingPresenter : MvpPresenter<ILoadingView> {
     override fun onFirstViewAttach() { //метод вызывается только один раз, кода она первый раз появляется и к ней приатачивается презентер
         super.onFirstViewAttach()
 
-        loadStaticResources()
+       loadStaticResources()
     }
 
     fun loadStaticResources() {

@@ -48,6 +48,16 @@
                 android:gravity="center"
                 android:text="@string/sign_up_link"
                 android:textColor="@android:color/primary_text_dark" />
+
+            <TextView
+                android:id="@+id/tvGuestBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:fontFamily="@font/bones"
+                android:gravity="center"
+                android:text="Войти как гость"
+                android:textColor="@android:color/primary_text_dark" />
          </LinearLayout>
 
         <FrameLayout

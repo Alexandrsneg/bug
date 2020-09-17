@@ -26,18 +26,14 @@ import javax.inject.Inject
 class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
     IScoreView {
 
-    var cont = activity
 
     class Adapter : ABaseAdapter<CellUserItem, RecyclerView.ViewHolder>(){
-
 
         companion object{
             const val TYPE_CELL_USER = 0
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-
             val view: View = CellUserView(parent.context)
             return object: RecyclerView.ViewHolder(view){ }
         }
@@ -56,7 +52,6 @@ class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
                 view.setBackgroundColor(0xff00ff00.toInt())
             }
             else view.setBackgroundColor(0xff444444.toInt())
-
         }
     }
 
@@ -91,5 +86,4 @@ class ScoreFragment: ABaseListFragment<CellUserItem, RecyclerView.ViewHolder>(),
     override fun bindDialogs(dialogs: List<CellUserItem>) {
         adapter.data = dialogs.toMutableList()
     }
-
 }
