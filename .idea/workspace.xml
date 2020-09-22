@@ -13,7 +13,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="added enter as guest">
+    <list default="true" id="8698362b-2c13-43d9-9e28-f6ade3ae3f76" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/PIR.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,32 +26,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___C__Users_Alexandr_AndroidStudioProjects_bug_app_libs_network_jar_unspecified_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidStudioProjects-bug.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameModeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/GameModeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/ScoreActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/activities/ScoreActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/auth/SignInFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/auth/SignInFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/loading/LoadingPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/loading/LoadingPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/score/ScoreFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/sneg/android/bug/credentials/score/ScoreFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_score.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_score.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bug.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bug.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="a0ab33a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_28" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -83,13 +67,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Kotlin File" />
         <option value="Kotlin Object" />
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="resourceFile" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -104,6 +88,11 @@
   </component>
   <component name="ProjectId" id="1Z7sHwUrxMue6QRGMyf3iwc9KeW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5X_API_24" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-08T08:17:03.341Z" />
@@ -152,7 +141,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.PIRKt">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -211,6 +200,24 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PIRKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ru.sneg.android.bug.PIRKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.PIRKt" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -222,13 +229,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583487128970</updated>
-    </task>
-    <task id="LOCAL-00037" summary="не закомичивался ScoreFragment...закомитил">
-      <created>1586355676599</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1586355676600</updated>
     </task>
     <task id="LOCAL-00038" summary="работа с канвасом">
       <created>1586410023286</created>
@@ -566,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590487908017</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="added enter as guest">
+      <created>1600313289353</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1600313289355</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -622,7 +629,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish with Manual Bug Placing" />
     <MESSAGE value="fixing first field placing for right visualization of killed bugs" />
     <MESSAGE value="added second field placing for right visualization of killed bugs" />
     <MESSAGE value="working killed bug logic and surrounding for second field" />
@@ -647,7 +653,8 @@
     <MESSAGE value="try to crate players models, remove game-logic code from PlayingFieldUI" />
     <MESSAGE value="commit" />
     <MESSAGE value="some fix bot logic, added backPressed toasts at game, add launch icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fix bot logic, added backPressed toasts at game, add launch icon" />
+    <MESSAGE value="added enter as guest" />
+    <option name="LAST_COMMIT_MESSAGE" value="added enter as guest" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -655,6 +662,58 @@
       <screen x="0" y="23" width="1920" height="982" />
     </state>
     <state x="186" y="127" key="CommitChangelistDialog2/0.23.1920.982@0.23.1920.982" timestamp="1600313287537" />
+    <state width="1371" height="219" key="GridCell.Tab.0.bottom" timestamp="1600768422560">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state width="1371" height="219" key="GridCell.Tab.0.bottom/0.23.1920.981@0.23.1920.981" timestamp="1600768422560" />
+    <state width="1371" height="268" key="GridCell.Tab.0.bottom/0.23.1920.982@0.23.1920.982" timestamp="1600683881088" />
+    <state width="1371" height="219" key="GridCell.Tab.0.center" timestamp="1600768422559">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state width="1371" height="219" key="GridCell.Tab.0.center/0.23.1920.981@0.23.1920.981" timestamp="1600768422559" />
+    <state width="1371" height="268" key="GridCell.Tab.0.center/0.23.1920.982@0.23.1920.982" timestamp="1600683881087" />
+    <state width="1371" height="219" key="GridCell.Tab.0.left" timestamp="1600768422558">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state width="1371" height="219" key="GridCell.Tab.0.left/0.23.1920.981@0.23.1920.981" timestamp="1600768422558" />
+    <state width="1371" height="268" key="GridCell.Tab.0.left/0.23.1920.982@0.23.1920.982" timestamp="1600683881087" />
+    <state width="1371" height="219" key="GridCell.Tab.0.right" timestamp="1600768422560">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state width="1371" height="219" key="GridCell.Tab.0.right/0.23.1920.981@0.23.1920.981" timestamp="1600768422560" />
+    <state width="1371" height="268" key="GridCell.Tab.0.right/0.23.1920.982@0.23.1920.982" timestamp="1600683881088" />
+    <state width="1371" height="268" key="GridCell.Tab.1.bottom" timestamp="1600683881090">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state width="1371" height="268" key="GridCell.Tab.1.bottom/0.23.1920.981@0.23.1920.981" timestamp="1600681617971" />
+    <state width="1371" height="268" key="GridCell.Tab.1.bottom/0.23.1920.982@0.23.1920.982" timestamp="1600683881090" />
+    <state width="1371" height="268" key="GridCell.Tab.1.center" timestamp="1600683881089">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state width="1371" height="268" key="GridCell.Tab.1.center/0.23.1920.981@0.23.1920.981" timestamp="1600681617969" />
+    <state width="1371" height="268" key="GridCell.Tab.1.center/0.23.1920.982@0.23.1920.982" timestamp="1600683881089" />
+    <state width="1371" height="268" key="GridCell.Tab.1.left" timestamp="1600683881089">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state width="1371" height="268" key="GridCell.Tab.1.left/0.23.1920.981@0.23.1920.981" timestamp="1600681617969" />
+    <state width="1371" height="268" key="GridCell.Tab.1.left/0.23.1920.982@0.23.1920.982" timestamp="1600683881089" />
+    <state width="1371" height="268" key="GridCell.Tab.1.right" timestamp="1600683881089">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state width="1371" height="268" key="GridCell.Tab.1.right/0.23.1920.981@0.23.1920.981" timestamp="1600681617970" />
+    <state width="1371" height="268" key="GridCell.Tab.1.right/0.23.1920.982@0.23.1920.982" timestamp="1600683881089" />
+    <state x="454" y="282" key="SettingsEditor" timestamp="1600683189646">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state x="454" y="282" key="SettingsEditor/0.23.1920.981@0.23.1920.981" timestamp="1600683189646" />
+    <state x="371" y="265" key="Vcs.Push.Dialog.v2" timestamp="1600313344032">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state x="371" y="265" key="Vcs.Push.Dialog.v2/0.23.1920.982@0.23.1920.982" timestamp="1600313344032" />
+    <state x="739" y="376" key="com.intellij.ide.util.TipDialog" timestamp="1600758233512">
+      <screen x="0" y="23" width="1920" height="981" />
+    </state>
+    <state x="739" y="376" key="com.intellij.ide.util.TipDialog/0.23.1920.981@0.23.1920.981" timestamp="1600758233512" />
     <state x="546" y="264" width="670" height="676" key="search.everywhere.popup" timestamp="1600311345026">
       <screen x="0" y="23" width="1920" height="984" />
     </state>
