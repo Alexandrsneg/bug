@@ -4,20 +4,27 @@ fun main(args: Array<String>){
 
 
 
-        val words = readLine()
+        val words = "PDDPEM MXWHL XJID XJID XJID DTQEHGC DTQEHGC MXWHL XJID DTQEHGC DTQEHGC MXWHL PDDPEM QUCO DTQEHGC MXWHL DTQEHGC MXWHL PDDPEM XJID MXWHL DTQEHGC DTQEHGC XJID XJID XJID MXWHL MXWHL MXWHL MXWHL DTQEHGC PDDPEM DTQEHGC DTQEHGC PDDPEM"
 
         var maxWord =""
-        val list : List<String> = (words?.split(" ") ?: "") as List<String>
-        val map : HashMap<String, Int>;
+        val list : List<String> = words.split(" ")
+        val frequenciesByWord = list.groupingBy{it}.eachCount()
 
-        list.forEach {
-            var count = 0
-            if (list.contains(it))
-                count++
-            map[it] = count
-        }
+    val filteredValuesMap = frequenciesByWord.filterValues { it == frequenciesByWord.values.max() }
 
-       print(list[1])
+    print(frequenciesByWord)
+    var key: String = filteredValuesMap.keys.toString().removePrefix("[").removeSuffix("]")
+    print(key)
+
+//    fun calculateWordStat(input:String): String{
+//        val list : List<String> = input.split(" ")
+//        val frequenciesByWord = list.groupingBy{it}.eachCount()
+//
+//        val filteredValuesMap = frequenciesByWord.filterValues { it == frequenciesByWord.values.max() }
+//
+//
+//        return filteredValuesMap.keys.toString()
+//    }
 
 
 //    fun getCubeList(n:Int): List<Int>{
