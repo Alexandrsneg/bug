@@ -15,21 +15,15 @@ import javax.inject.Inject
 
 //Сущность подставляющая во все запросы Токены авторизации, обновляет токены
 //взяли с рабочего проекта
-class TokenInterceptor : Interceptor {
+class TokenInterceptor//репозиторий предоставляет данные текущео польователя
+@Inject constructor(private val userRepository: UserRepository) : Interceptor {
     companion object {
 
         const val HEADER_AUTHORIZATION = "access_token"
     }
 
 
-    private val userRepository: UserRepository
     private val lock = ReentrantLock()
-
-
-    @Inject
-    constructor(userRepository: UserRepository) {
-        this.userRepository = userRepository  //репозиторий предоставляет данные текущео польователя
-    }
 
 
     override fun intercept(inChain: Interceptor.Chain?): Response {

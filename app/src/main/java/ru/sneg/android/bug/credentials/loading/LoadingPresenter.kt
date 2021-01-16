@@ -8,32 +8,23 @@ import ru.sneg.android.bug.domain.repositories.UserRepository
 import javax.inject.Inject
 
 @InjectViewState
-class LoadingPresenter : MvpPresenter<ILoadingView> {
-
-    private val userRepository : UserRepository
-
-    @Inject
-    constructor(userRepository: UserRepository){
-        this.userRepository = userRepository
-    }
+class LoadingPresenter @Inject constructor(private val userRepository: UserRepository) :
+    MvpPresenter<ILoadingView>() {
 
     override fun onFirstViewAttach() { //метод вызывается только один раз, кода она первый раз появляется и к ней приатачивается презентер
         super.onFirstViewAttach()
-
        loadStaticResources()
     }
 
-    fun loadStaticResources() {
+    private fun loadStaticResources() {
         Handler().postDelayed({ // Handler - работает с потоками, по дефолту приатачивается к главному потоку
-
             val user = userRepository.getUser()
-            if (user != null){
+            user?.let {
                 GameModeActivity.show()
                 return@postDelayed
             }
 
             viewState.showAuth()
-
         }, 2000)
     }
 }

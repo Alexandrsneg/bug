@@ -18,7 +18,7 @@ import javax.inject.Singleton
 //скопипастили с рабочего проекта
 @Module
 class NetModule {
-    companion object { // секция кода, которая из Котлина на Джаву транслируется в статические методы и атрибуты класса
+    companion object {
 
         private const val DOMAIN = "212.75.210.227" // взяли со свагера
         private const val DOMAIN_MAIN_API = "http://$DOMAIN:8080"

@@ -9,13 +9,10 @@ import ru.sneg.android.bug.domain.repositories.models.toBase
 import ru.sneg.android.bug.domain.repositories.models.toRealm
 import javax.inject.Inject
 
-class UserStorage {
+class UserStorage @Inject constructor() {
 
     private lateinit var score: List<User?>
     private var user: User? = null
-
-    @Inject
-    constructor()
 
     fun save(user: User) {
         this.user = user

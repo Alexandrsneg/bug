@@ -43,7 +43,7 @@ class SignInFragment : ABaseFragment(), ISignInView {
 
         bSigInBtn.setOnClickListener {
 
-            val login = "${editText.text}"  //конструкия показывает, что переменная будет String
+            val login = "${editText.text}"
             val password = "${editText2.text}"
 
             if (login.isEmpty() || password.isEmpty()) {
@@ -66,16 +66,15 @@ class SignInFragment : ABaseFragment(), ISignInView {
         }
 
         override fun lock() {
-            visibility(flBtnContainer)
+            visibility(flBtnContainer, false)
         }
 
         override fun unlock() {
-            visibility(flBtnContainer, false)
+            visibility(flBtnContainer, true)
         }
 
         override fun onSuccess() {
             toast("SUCCESS")
-
         }
 }
 

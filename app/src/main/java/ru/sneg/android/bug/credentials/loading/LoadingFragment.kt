@@ -16,7 +16,7 @@ class LoadingFragment : ABaseFragment(), ILoadingView {
     lateinit var presenter: LoadingPresenter
 
         @ProvidePresenter
-    fun providePresenter() =presenter
+    fun providePresenter() = presenter
 
     override fun inject(){
         DaggerAppComponent.create().inject(this)

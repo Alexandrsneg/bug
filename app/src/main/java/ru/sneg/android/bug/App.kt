@@ -9,22 +9,16 @@ import ru.sneg.android.bug.domain.di.components.AppComponent
 class App : Application() {
 
     companion object {
-
         lateinit var appContext: Context
-
     }
 
     override fun onCreate() {
         super.onCreate()
-
         appContext = applicationContext
-
         initRealm()
-
     }
 
     private fun initRealm() {
-
         Realm.init(this)
         Realm.setDefaultConfiguration(RealmConfiguration.Builder()
             .deleteRealmIfMigrationNeeded()

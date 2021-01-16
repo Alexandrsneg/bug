@@ -11,16 +11,10 @@ import java.net.HttpURLConnection
 import javax.inject.Inject
 
 
-class UserRepository {
-
-    private val storage: UserStorage
+class UserRepository @Inject constructor(
+    private val storage: UserStorage,
     private val rest: UserRestApi
-
-    @Inject
-    constructor(storage: UserStorage, rest: UserRestApi) {
-        this.storage = storage
-        this.rest = rest
-    }
+) {
 
     fun registration(observer: SubRX<User>, login: String, pass: String) {
 

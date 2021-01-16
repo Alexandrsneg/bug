@@ -6,9 +6,9 @@ import io.reactivex.disposables.Disposable
 
 class SubRX<T>: Observer<T>, Disposable {
 
-    private var iComplete: () -> Unit = {}
+//    private var iComplete: () -> Unit = {}
     private var iError: (Throwable) -> Unit = {}
-    private var iNext: (T) -> Unit = {}
+//    private var iNext: (T) -> Unit = {}
     private var iFinally: (T?, Throwable?) -> Unit = { _: T?, _: Throwable? -> }
     private var iSubscribe: (Disposable) -> Unit = {}
 
@@ -24,7 +24,7 @@ class SubRX<T>: Observer<T>, Disposable {
     }
 
     fun setComplete(complete: () -> Unit): SubRX<T> {
-        iComplete = complete
+//        iComplete = complete
         return this
     }
 
@@ -34,7 +34,7 @@ class SubRX<T>: Observer<T>, Disposable {
     }
 
     fun setNext(next: (T) -> Unit): SubRX<T> {
-        iNext = next
+//        iNext = next
         return this
     }
 
@@ -52,7 +52,7 @@ class SubRX<T>: Observer<T>, Disposable {
      * @return
      */
     fun setFinal(finally: (T?, Throwable?) -> Unit): SubRX<T> {
-        iFinally = finally
+//        iFinally = finally
         return this
     }
 
@@ -62,7 +62,7 @@ class SubRX<T>: Observer<T>, Disposable {
     }
 
     override fun onComplete() {
-        iComplete()
+//        iComplete()
         iFinally(onNextResult, onErrorReason)
     }
 
@@ -73,7 +73,7 @@ class SubRX<T>: Observer<T>, Disposable {
     }
 
     override fun onNext(t: T) {
-        iNext(t)
+//        iNext(t)
         onNextResult = t
     }
 

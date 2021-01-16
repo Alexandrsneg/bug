@@ -8,11 +8,8 @@ import ru.sneg.android.bug.domain.repositories.rest.service.IUserRestApiService
 import javax.inject.Inject
 import javax.inject.Named
 
-class UserRestApi : ABaseRestApi<IUserRestApiService> {
-
-
-    @Inject
-    constructor(@Named(NetModule.NAME_AUTH_REST_CLIENT) client: IRestClient) : super(client)
+class UserRestApi @Inject constructor(@Named(NetModule.NAME_AUTH_REST_CLIENT) client: IRestClient) :
+    ABaseRestApi<IUserRestApiService>(client) {
 
 
     fun registration(login: String, password: String)
